@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Галерија на фотографии од ДСУ РЦСОО Коле Неделковски - Велес. Погледнете ги нашите објекти, активности, настани и секојдневниот живот во училиштето.">
+  <meta name="keywords" content="галерија, фотографии, училиште, Велес, активности, настани">
+  <title>Галерија | ДСУ РЦСОО "Коле Неделковски" - Велес</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-logo">
+        <div class="navbar-logo-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div class="navbar-logo-text">
+          <h1>ДСУ РЦСОО</h1>
+          <p>"Коле Неделковски"</p>
+        </div>
+      </a>
+
+      <div class="navbar-links">
+        <a href="index.html" class="navbar-link">Почетна</a>
+        <a href="index.html#about" class="navbar-link">За Нас</a>
+        <a href="struki.html" class="navbar-link">Струки</a>
+        <a href="profesori.html" class="navbar-link">Професори</a>
+        <a href="galerija.html" class="navbar-link active">Галерија</a>
+        <a href="postignuvanja.html" class="navbar-link">Успеси</a>
+        <a href="kontakt.html" class="navbar-link">Контакт</a>
+      </div>
+
+      <div class="navbar-actions">
+        <button class="navbar-btn" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <a href="kontakt.html" class="navbar-cta">Пријави се</a>
+        <button class="navbar-menu-btn" aria-label="Menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <div class="search-bar-content">
+        <div class="search-input-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" class="search-input" placeholder="Пребарувајте на страницата...">
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay"></div>
+  <div class="mobile-menu">
+    <div class="mobile-menu-content">
+      <a href="index.html" class="mobile-menu-link">Почетна</a>
+      <a href="index.html#about" class="mobile-menu-link">За Нас</a>
+      <a href="struki.html" class="mobile-menu-link">Струки</a>
+      <a href="profesori.html" class="mobile-menu-link">Професори</a>
+      <a href="galerija.html" class="mobile-menu-link active">Галерија</a>
+      <a href="postignuvanja.html" class="mobile-menu-link">Успеси</a>
+      <a href="kontakt.html" class="mobile-menu-link">Контакт</a>
+      <a href="kontakt.html" class="mobile-menu-cta">Пријави се</a>
+      <div class="mobile-menu-contact">
+        <p>Контакт информации</p>
+        <a href="tel:043231460">043/231-460</a>
+        <a href="mailto:kolenedelkovski@yahoo.com">kolenedelkovski@yahoo.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="page-header-bg">
+      <div class="page-header-bg-image" style="background-image: url('images/gallery-hero.jpg')"></div>
+      <div class="page-header-bg-overlay"></div>
+    </div>
+    <div class="page-header-content">
+      <h1 class="page-header-title">Галерија</h1>
+      <p class="page-header-subtitle">Моменти од нашиот училишен живот</p>
+      <nav class="page-header-breadcrumb">
+        <a href="index.html">Почетна</a>
+        <span>/</span>
+        <span>Галерија</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Gallery Filter -->
+  <section class="gallery-filter">
+    <div class="container">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Сите</button>
+        <button class="filter-btn" data-filter="school">Училиште</button>
+        <button class="filter-btn" data-filter="activities">Активности</button>
+        <button class="filter-btn" data-filter="workshops">Работилници</button>
+        <button class="filter-btn" data-filter="events">Настани</button>
+        <button class="filter-btn" data-filter="sports">Спорт</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="gallery-grid">
+        <!-- School Images -->
+        <div class="gallery-item" data-category="school">
+          <div class="gallery-image">
+            <img src="images/gallery/school-building.jpg" alt="Училишна зграда">
+          </div>
+          <div class="gallery-overlay">
+            <h3>Училишна Зграда</h3>
+            <p>Главна зграда на училиштето</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="school">
+          <div class="gallery-image">
+            <img src="images/gallery/classroom.jpg" alt="Училница">
+          </div>
+          <div class="gallery-overlay">
+            <h3>Современа Училница</h3>
+            <p>Опремена со најнова технологија</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="school">
+          <div class="gallery-image">
+            <img src="images/gallery/library.jpg" alt="Библиотека">
+          </div>
+          <div class="gallery-overlay">
+            <h3>Училишна Библиотека</h3>
+            <p>Богат фонд на книги и ресурси</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="school">
+          <div class="gallery-image">
+            <img src="images/gallery/computer-lab.jpg" alt="Компјутерска лабораторија">
+          </div>
+          <div class="gallery-overlay">
+            <h3>Компјутерска Лабораторија</h3>
+            <p>Современи компјутери за обука</p>
+          </div>
+        </div>
+
+        <!-- Workshop Images -->
+        <div class="gallery-item" data-category="workshops">
+          <div class="gallery-image">
+            <img src="images/gallery/mashinska-workshop.jpg" alt="Машинска работилница">
+          </div>
+          <div class="gallery-overlay">
+            <h3>Машинска Работилница</h3>
+            <p>CNC стругови и фрези</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="workshops">
+          <div class="gallery-image">
+            <img src="images/gallery/electro-lab.jpg" alt="Електротехничка лабораторија">
+          </div>
+          <div class="gallery-overlay">
+            <h3>Електротехничка Лабораторија</h3>
+            <p>Мерни инструменти и опрема</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="workshops">
+          <div class="gallery-image">
+            <img src="images/gallery/culinary-kitchen.jpg" alt="Кулинарска кујна">
+          </div>
+          <div class="gallery-overlay">
+            <h3>Кулинарска Кујна</h3>
+            <p>Професионална опрема за готвење</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="workshops">
+          <div class="gallery-image">
+            <img src="images/gallery/welding-station.jpg" alt="Заварувачка станица">
+          </div>
+          <div class="gallery-overlay">
+            <h3>Заварувачка Станица</h3>
+            <p>MIG, TIG и електролачно заварување</p>
+          </div>
+        </div>
+
+        <!-- Activities Images -->
+        <div class="gallery-item" data-category="activities">
+          <div class="gallery-image">
+            <img src="images/gallery/students-working.jpg" alt="Ученици на работа">
+          </div>
+          <div class="gallery-overlay">
+            <h3>Практична Обука</h3>
+            <p>Ученици во работилниците</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="activities">
+          <div class="gallery-image">
+            <img src="images/gallery/group-project.jpg" alt="Групен проект">
+          </div>
+          <div class="gallery-overlay">
+            <h3>Групен Проект</h3>
+            <p>Соработка меѓу ученици</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="activities">
+          <div class="gallery-image">
+            <img src="images/gallery/field-trip.jpg" alt="Екскурзија">
+          </div>
+          <div class="gallery-overlay">
+            <h3>Екскурзија</h3>
+            <p>Посета на индустриски објект</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="activities">
+          <div class="gallery-image">
+            <img src="images/gallery/practice-training.jpg" alt="Пракса">
+          </div>
+          <div class="gallery-overlay">
+            <h3>Пракса</h3>
+            <p>Стручна пракса во компании</p>
+          </div>
+        </div>
+
+        <!-- Events Images -->
+        <div class="gallery-item" data-category="events">
+          <div class="gallery-image">
+            <img src="images/gallery/graduation.jpg" alt="Матура">
+          </div>
+          <div class="gallery-overlay">
+            <h3>Матурска Свеченост</h3>
+            <p>Прослава на дипломирањето</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="events">
+          <div class="gallery-image">
+            <img src="images/gallery/open-day.jpg" alt="Отворен ден">
+          </div>
+          <div class="gallery-overlay">
+            <h3>Отворен Ден</h3>
+            <p>Презентација на училиштето</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="events">
+          <div class="gallery-image">
+            <img src="images/gallery/competition.jpg" alt="Натпревар">
+          </div>
+          <div class="gallery-overlay">
+            <h3>Стручен Натпревар</h3>
+            <p>Ученици на натпревар</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="events">
+          <div class="gallery-image">
+            <img src="images/gallery/award-ceremony.jpg" alt="Доделување награди">
+          </div>
+          <div class="gallery-overlay">
+            <h3>Доделување Награди</h3>
+            <p>Признание за успешни ученици</p>
+          </div>
+        </div>
+
+        <!-- Sports Images -->
+        <div class="gallery-item" data-category="sports">
+          <div class="gallery-image">
+            <img src="images/gallery/sports-day.jpg" alt="Спортски ден">
+          </div>
+          <div class="gallery-overlay">
+            <h3>Спортски Ден</h3>
+            <p>Ученици на спортски активности</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="sports">
+          <div class="gallery-image">
+            <img src="images/gallery/basketball.jpg" alt="Кошарка">
+          </div>
+          <div class="gallery-overlay">
+            <h3>Кошаркарски Тим</h3>
+            <p>Училишен кошаркарски тим</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="sports">
+          <div class="gallery-image">
+            <img src="images/gallery/football.jpg" alt="Фудбал">
+          </div>
+          <div class="gallery-overlay">
+            <h3>Фудбалски Тим</h3>
+            <p>Училишен фудбалски тим</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="sports">
+          <div class="gallery-image">
+            <img src="images/gallery/volleyball.jpg" alt="Одбојка">
+          </div>
+          <div class="gallery-overlay">
+            <h3>Одбојкарски Тим</h3>
+            <p>Училишен одбојкарски тим</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Section -->
+  <section class="video-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Видео Галерија</h2>
+        <p class="section-subtitle">Погледнете ги нашите видеа</p>
+      </div>
+
+      <div class="video-grid">
+        <div class="video-item">
+          <div class="video-thumbnail">
+            <img src="images/video-thumb-1.jpg" alt="Видео 1">
+            <button class="video-play-btn" aria-label="Play video">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            </button>
+          </div>
+          <h3>Промоционално Видео</h3>
+          <p>Запознајте го нашето училиште</p>
+        </div>
+
+        <div class="video-item">
+          <div class="video-thumbnail">
+            <img src="images/video-thumb-2.jpg" alt="Видео 2">
+            <button class="video-play-btn" aria-label="Play video">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            </button>
+          </div>
+          <h3>Ден на Отворени Врати</h3>
+          <p>Презентација на струките</p>
+        </div>
+
+        <div class="video-item">
+          <div class="video-thumbnail">
+            <img src="images/video-thumb-3.jpg" alt="Видео 3">
+            <button class="video-play-btn" aria-label="Play video">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            </button>
+          </div>
+          <h3>Матурска Свеченост 2024</h3>
+          <p>Нajубавите моменти</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-bg">
+      <div class="cta-bg-image" style="background-image: url('images/cta-bg.jpg')"></div>
+      <div class="cta-bg-overlay"></div>
+    </div>
+    <div class="cta-content">
+      <h2 class="cta-title">Запишете се во нашето училиште</h2>
+      <p class="cta-text">Отворете ги вратите кон успешна кариера со квалитетно стручно образование</p>
+      <div class="cta-buttons">
+        <a href="kontakt.html" class="btn btn-white">Пријави се сега</a>
+        <a href="kontakt.html" class="btn btn-outline-white">Контактирај не</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- About Column -->
+        <div class="footer-about">
+          <div class="footer-logo">
+            <div class="footer-logo-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div class="footer-logo-text">
+              <h3>ДСУ РЦСОО</h3>
+              <p>"Коле Неделковски"</p>
+            </div>
+          </div>
+          <p class="footer-description">Квалитетно стручно образование од 1965 година. Подготвуваме идни професионалци за успешна кариера.</p>
+          <div class="footer-social">
+            <a href="#" class="footer-social-link" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="YouTube">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links">
+          <h4 class="footer-title">Брзи Линкови</h4>
+          <ul class="footer-list">
+            <li><a href="index.html">Почетна</a></li>
+            <li><a href="index.html#about">За Нас</a></li>
+            <li><a href="struki.html">Струки</a></li>
+            <li><a href="profesori.html">Професори</a></li>
+            <li><a href="galerija.html">Галерија</a></li>
+            <li><a href="kontakt.html">Контакт</a></li>
+          </ul>
+        </div>
+
+        <!-- Programs -->
+        <div class="footer-links">
+          <h4 class="footer-title">Струки</h4>
+          <ul class="footer-list">
+            <li><a href="struki.html#mashinska">Машинска Струка</a></li>
+            <li><a href="struki.html#elektro">Електротехничка</a></li>
+            <li><a href="struki.html#soobrakajna">Сообраќајна Струка</a></li>
+            <li><a href="struki.html#ugostitelstvo">Угостителска Струка</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-contact">
+          <h4 class="footer-title">Контакт</h4>
+          <ul class="footer-list">
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Ул. 7ми Ноември бр. 50<br>1400 Велес, Северна Македонија</span>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <a href="tel:043231460">043/231-460</a>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <a href="mailto:kolenedelkovski@yahoo.com">kolenedelkovski@yahoo.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 ДСУ РЦСОО "Коле Неделковски" - Велес. Сите права задржани.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" aria-label="Scroll to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" aria-label="Close">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+    <button class="lightbox-prev" aria-label="Previous">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <button class="lightbox-next" aria-label="Next">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+    <div class="lightbox-content">
+      <img src="" alt="Gallery image" class="lightbox-image">
+      <div class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
