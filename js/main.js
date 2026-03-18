@@ -120,38 +120,50 @@ function initTestimonialsSlider() {
   if (slides.length === 0) return;
 
   let currentIndex = 0;
-  let autoplayInterval;
+
+  // Use CSS animation end to trigger next slide for perfect synchronization
+  const dotsContainer = document.querySelector('.testimonials-dots');
+  if (dotsContainer) {
+    dotsContainer.addEventListener('animationend', (e) => {
+      if (e.animationName === 'dotFill' && e.target.classList.contains('active')) {
+        nextSlide();
+      }
+    });
+  }
 
   function updateSlides() {
     slides.forEach((slide, index) => {
       const diff = index - currentIndex;
 
       if (diff === 0) {
-        // Current slide
         slide.style.transform = 'translateX(0) translateZ(100px) scale(1)';
         slide.style.opacity = '1';
         slide.style.zIndex = '10';
       } else if (diff === 1 || diff === -(slides.length - 1)) {
-        // Next slide
         slide.style.transform = 'translateX(120%) translateZ(-50px) rotateY(-15deg) scale(0.85)';
         slide.style.opacity = '0.6';
         slide.style.zIndex = '5';
       } else if (diff === -1 || diff === (slides.length - 1)) {
-        // Previous slide
         slide.style.transform = 'translateX(-120%) translateZ(-50px) rotateY(15deg) scale(0.85)';
         slide.style.opacity = '0.6';
         slide.style.zIndex = '5';
       } else {
-        // Hidden slides
         slide.style.transform = 'translateZ(-200px) scale(0.5)';
         slide.style.opacity = '0';
         slide.style.zIndex = '0';
       }
     });
 
-    // Update dots
+    // Update dots — restart progress animation on the active dot
     dots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentIndex);
+      if (index === currentIndex) {
+        // Restart CSS animation by forcing reflow
+        dot.classList.remove('active');
+        void dot.offsetWidth; // force reflow
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
     });
   }
 
@@ -170,36 +182,28 @@ function initTestimonialsSlider() {
     goToSlide(currentIndex - 1);
   }
 
-  function startAutoplay() {
-    autoplayInterval = setInterval(nextSlide, 5000);
-  }
-
-  function stopAutoplay() {
-    clearInterval(autoplayInterval);
-  }
-
   // Event listeners
-  if (prevBtn) prevBtn.addEventListener('click', () => { stopAutoplay(); prevSlide(); startAutoplay(); });
-  if (nextBtn) nextBtn.addEventListener('click', () => { stopAutoplay(); nextSlide(); startAutoplay(); });
+  if (prevBtn) prevBtn.addEventListener('click', () => { goToSlide(currentIndex - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', () => { goToSlide(currentIndex + 1); });
 
   dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => { stopAutoplay(); goToSlide(index); startAutoplay(); });
+    dot.addEventListener('click', () => { goToSlide(index); });
   });
 
   // Pause on hover
-  slider.addEventListener('mouseenter', stopAutoplay);
-  slider.addEventListener('mouseleave', startAutoplay);
+  slider.addEventListener('mouseenter', () => slider.classList.add('is-paused'));
+  slider.addEventListener('mouseleave', () => slider.classList.remove('is-paused'));
 
   // Initialize
   updateSlides();
-  startAutoplay();
 }
+
 
 /**
  * Scroll to top button
  */
 function initScrollToTop() {
-  const scrollTopBtn = document.querySelector('.scroll-top');
+  const scrollTopBtn = document.querySelector('.scroll-to-top');
   if (!scrollTopBtn) return;
 
   window.addEventListener('scroll', function () {

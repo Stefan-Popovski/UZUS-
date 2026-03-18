@@ -4,53 +4,851 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Галерија на фотографии од ДСУ РЦСОО Коле Неделковски - Велес. Погледнете ги нашите објекти, активности, настани и секојдневниот живот во училиштето.">
-  <meta name="keywords" content="галерија, фотографии, училиште, Велес, активности, настани">
+  <meta name="description" content="Галерија на фотографии од ДСУ РЦСОО Коле Неделковски - Велес.">
   <title>Галерија | ДСУ РЦСОО "Коле Неделковски" - Велес</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ══════════════════════════
+       HERO
+    ══════════════════════════ */
+    .g-hero {
+      position: relative;
+      min-height: 58vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding-top: 5rem;
+    }
+
+    .g-hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .g-hero-img {
+      position: absolute;
+      inset: 0;
+      background: url('images/hero-classroom.jpg') center/cover no-repeat;
+      animation: kenBurns 20s ease-out forwards;
+    }
+
+    .g-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg,
+          rgba(30, 58, 95, .78) 0%, rgba(30, 58, 95, .68) 50%, rgba(21, 42, 69, .84) 100%);
+    }
+
+    .g-hero-decor {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .g-hero-decor .hero-decor-circle {
+      position: absolute;
+      border: 2px solid rgba(212, 175, 55, .2);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .g-hero-decor .hero-decor-circle:nth-child(1) {
+      width: 8rem;
+      height: 8rem;
+      top: 5rem;
+      left: 2.5rem;
+    }
+
+    .g-hero-decor .hero-decor-circle:nth-child(2) {
+      width: 5rem;
+      height: 5rem;
+      top: 10rem;
+      right: 5rem;
+      background: rgba(212, 175, 55, .1);
+      border: none;
+      animation: floatSlow 10s ease-in-out infinite;
+    }
+
+    .g-hero-decor .hero-decor-circle:nth-child(3) {
+      width: 4rem;
+      height: 4rem;
+      bottom: 8rem;
+      left: 25%;
+      border-color: rgba(255, 255, 255, .1);
+      animation-delay: 2s;
+    }
+
+    .g-hero-decor .hero-decor-circle:nth-child(4) {
+      width: 6rem;
+      height: 6rem;
+      bottom: 3rem;
+      right: 33%;
+      background: rgba(255, 255, 255, .05);
+      border: none;
+      animation: floatSlow 10s ease-in-out infinite;
+      animation-delay: 1s;
+    }
+
+    .g-hero-grid {
+      position: absolute;
+      inset: 0;
+      opacity: .05;
+      background-image: linear-gradient(rgba(255, 255, 255, .1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .1) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    .g-hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3.5rem;
+      text-align: center;
+    }
+
+    .g-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .35rem 1rem;
+      background: rgba(212, 175, 55, .14);
+      border: 1px solid rgba(212, 175, 55, .35);
+      border-radius: 9999px;
+      margin-bottom: 1.5rem;
+    }
+
+    .g-hero-badge svg {
+      width: 8px;
+      height: 8px;
+      fill: var(--school-gold);
+    }
+
+    .g-hero-badge span {
+      font-family: var(--font-accent);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--school-gold);
+    }
+
+    .g-hero-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--white);
+      font-size: 2.25rem;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+
+    @media(min-width:640px) {
+      .g-hero-title {
+        font-size: 3.5rem;
+      }
+    }
+
+    @media(min-width:1024px) {
+      .g-hero-title {
+        font-size: 5rem;
+      }
+    }
+
+    .g-hero-title em {
+      font-style: italic;
+      color: var(--school-gold);
+    }
+
+    .g-hero-sub {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, .8);
+      max-width: 520px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.65;
+    }
+
+    .g-hero-breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      font-family: var(--font-accent);
+      font-size: .875rem;
+      color: rgba(255, 255, 255, .5);
+    }
+
+    .g-hero-breadcrumb a {
+      color: var(--school-gold);
+      text-decoration: none;
+    }
+
+    /* ══════════════════════════
+       FILTER BAR
+    ══════════════════════════ */
+    .g-filter {
+      background: var(--white);
+      padding: 2rem 0;
+      position: sticky;
+      top: 68px;
+      z-index: 50;
+      border-bottom: 1px solid var(--gray-100);
+      box-shadow: 0 4px 20px rgba(30, 58, 95, .06);
+    }
+
+    .g-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .g-filter-btns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .6rem;
+    }
+
+    .g-filter-btn {
+      padding: .5rem 1.25rem;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      color: var(--gray-600);
+      font-family: var(--font-accent);
+      font-size: .82rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all .25s ease;
+    }
+
+    .g-filter-btn:hover {
+      background: rgba(30, 58, 95, .08);
+      color: var(--school-blue);
+      border-color: rgba(30, 58, 95, .2);
+    }
+
+    .g-filter-btn.active {
+      background: var(--school-blue);
+      color: var(--white);
+      border-color: var(--school-blue);
+    }
+
+    /* ══════════════════════════
+       GALLERY GRID
+    ══════════════════════════ */
+    .g-section {
+      padding: 5rem 0;
+      background: var(--gray-50);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .g-section::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(30, 58, 95, .04), transparent 70%);
+      top: -150px;
+      right: -150px;
+      pointer-events: none;
+    }
+
+    .g-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    @media(max-width:1024px) {
+      .g-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media(max-width:700px) {
+      .g-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width:440px) {
+      .g-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .g-item {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(30, 58, 95, .08);
+      transition: transform .35s cubic-bezier(.4, 0, .2, 1), box-shadow .35s ease;
+    }
+
+    .g-item:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: var(--shadow-school-lg);
+    }
+
+    .g-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+      display: block;
+    }
+
+    .g-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .g-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(30, 58, 95, .88) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity .35s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.25rem;
+    }
+
+    .g-item:hover .g-item-overlay {
+      opacity: 1;
+    }
+
+    .g-item-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: .2rem;
+    }
+
+    .g-item-sub {
+      font-size: .78rem;
+      color: rgba(255, 255, 255, .75);
+      font-family: var(--font-accent);
+    }
+
+    .g-item-zoom {
+      position: absolute;
+      top: .75rem;
+      right: .75rem;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .15);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+
+    .g-item:hover .g-item-zoom {
+      opacity: 1;
+    }
+
+    .g-item-zoom svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* hidden items */
+    .g-item.hidden {
+      display: none;
+    }
+
+    /* ══════════════════════════
+       VIDEO SECTION
+    ══════════════════════════ */
+    .g-video-section {
+      padding: 6rem 0;
+      background: var(--white);
+    }
+
+    .g-sec-head {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .g-video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media(max-width:900px) {
+      .g-video-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+    }
+
+    .g-video-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--gray-100);
+      box-shadow: 0 4px 24px rgba(30, 58, 95, .06);
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+
+    .g-video-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-school-lg);
+    }
+
+    .g-video-thumb {
+      position: relative;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .g-video-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+
+    .g-video-card:hover .g-video-thumb img {
+      transform: scale(1.05);
+    }
+
+    .g-video-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(30, 58, 95, .4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .3s ease;
+    }
+
+    .g-video-card:hover .g-video-thumb-overlay {
+      background: rgba(30, 58, 95, .55);
+    }
+
+    .g-play-btn {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .2);
+      backdrop-filter: blur(4px);
+      border: 2px solid rgba(255, 255, 255, .6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      cursor: pointer;
+      transition: all .25s ease;
+    }
+
+    .g-video-card:hover .g-play-btn {
+      background: var(--school-gold);
+      border-color: var(--school-gold);
+      transform: scale(1.1);
+    }
+
+    .g-play-btn svg {
+      width: 24px;
+      height: 24px;
+      margin-left: 3px;
+    }
+
+    .g-video-info {
+      padding: 1.25rem 1.5rem;
+    }
+
+    .g-video-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: .3rem;
+    }
+
+    .g-video-info p {
+      font-size: .84rem;
+      color: var(--gray-500);
+    }
+
+    /* ══════════════════════════
+       BLUE CTA SECTION
+    ══════════════════════════ */
+    .g-blue {
+      padding: 6rem 0;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--school-blue) 0%, var(--school-blue-light) 50%, var(--school-blue-dark) 100%);
+      background-size: 200% 200%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    .g-blue-decor {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .g-blue-decor .bd-circle {
+      position: absolute;
+      border: 2px solid rgba(255, 255, 255, .1);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .g-blue-decor .bd-circle:nth-child(1) {
+      width: 5rem;
+      height: 5rem;
+      top: 2.5rem;
+      left: 2.5rem;
+    }
+
+    .g-blue-decor .bd-circle:nth-child(2) {
+      width: 8rem;
+      height: 8rem;
+      bottom: 2.5rem;
+      right: 2.5rem;
+      animation: floatSlow 10s ease-in-out infinite;
+    }
+
+    .g-blue-decor .bd-dot {
+      position: absolute;
+      width: 1rem;
+      height: 1rem;
+      background: rgba(212, 175, 55, .3);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .g-blue-decor .bd-dot:nth-child(3) {
+      top: 50%;
+      left: 25%;
+      animation-delay: 1s;
+    }
+
+    .g-blue-decor .bd-dot:nth-child(4) {
+      top: 33%;
+      right: 33%;
+      animation: floatSlow 10s ease-in-out infinite;
+      animation-delay: 2s;
+    }
+
+    .g-blue-decor .bd-star {
+      position: absolute;
+      color: rgba(212, 175, 55, .4);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .g-blue-decor .bd-star:nth-child(5) {
+      top: 5rem;
+      right: 5rem;
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .g-blue-decor .bd-star:nth-child(6) {
+      bottom: 5rem;
+      left: 5rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      animation-delay: 1s;
+    }
+
+    .g-blue-inner {
+      position: relative;
+      z-index: 10;
+    }
+
+    .g-blue .section-label {
+      background: rgba(255, 255, 255, .1);
+      color: rgba(255, 255, 255, .85);
+    }
+
+    .g-blue .section-title {
+      color: var(--white);
+    }
+
+    .g-blue .section-description {
+      color: rgba(255, 255, 255, .7);
+    }
+
+    .g-cta-wrap {
+      max-width: 56rem;
+      margin: 0 auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+
+    .g-cta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .25rem 1rem;
+      background: rgba(255, 255, 255, .1);
+      color: var(--white);
+      font-family: var(--font-accent);
+      font-size: .875rem;
+      border-radius: 9999px;
+      margin-bottom: 1.5rem;
+    }
+
+    .g-cta-badge svg {
+      fill: var(--school-gold);
+      color: var(--school-gold);
+      width: 8px;
+      height: 8px;
+    }
+
+    .g-cta-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    @media(min-width:640px) {
+      .g-cta-title {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media(min-width:768px) {
+      .g-cta-title {
+        font-size: 3rem;
+      }
+    }
+
+    @media(min-width:1024px) {
+      .g-cta-title {
+        font-size: 3.75rem;
+      }
+    }
+
+    .g-cta-title em {
+      font-style: italic;
+      color: var(--school-gold);
+    }
+
+    .g-cta-desc {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, .8);
+      margin-bottom: 2.5rem;
+      max-width: 42rem;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+
+    .g-cta-btns {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    @media(min-width:640px) {
+      .g-cta-btns {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+
+    .g-cta-trust {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      color: rgba(255, 255, 255, .6);
+      font-size: .875rem;
+    }
+
+    .g-cta-trust span {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .g-cta-trust-dot {
+      width: .5rem;
+      height: .5rem;
+      background: var(--school-gold);
+      border-radius: 50%;
+    }
+
+    /* ══════════════════════════
+       LIGHTBOX
+    ══════════════════════════ */
+    .g-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0, 0, 0, .95);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all .3s ease;
+    }
+
+    .g-lightbox.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .g-lb-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .12);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      transition: all .25s ease;
+    }
+
+    .g-lb-close:hover {
+      background: rgba(255, 255, 255, .22);
+      transform: scale(1.1);
+    }
+
+    .g-lb-close svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .g-lb-prev,
+    .g-lb-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .12);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      transition: all .25s ease;
+    }
+
+    .g-lb-prev:hover,
+    .g-lb-next:hover {
+      background: var(--school-gold);
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    .g-lb-prev svg,
+    .g-lb-next svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .g-lb-prev {
+      left: 1.25rem;
+    }
+
+    .g-lb-next {
+      right: 1.25rem;
+    }
+
+    .g-lb-img-wrap {
+      max-width: 90vw;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .g-lb-img {
+      max-width: 100%;
+      max-height: 75vh;
+      border-radius: 12px;
+      object-fit: contain;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+    }
+
+    .g-lb-caption {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, .85);
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Navigation -->
+
+  <!-- ═══ NAVBAR ═══ -->
   <nav class="navbar">
     <div class="navbar-container">
       <a href="index.html" class="navbar-logo">
         <div class="navbar-logo-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-            <path d="M6 12v5c3 3 9 3 12 0v-5" />
-          </svg>
+          <img src="images/logo-belo%20copy.png" alt="Logo">
         </div>
         <div class="navbar-logo-text">
           <h1>ДСУ РЦСОО</h1>
           <p>"Коле Неделковски"</p>
         </div>
       </a>
-
       <div class="navbar-links">
         <a href="index.html" class="navbar-link">Почетна</a>
         <a href="index.html#about" class="navbar-link">За Нас</a>
         <a href="struki.html" class="navbar-link">Струки</a>
         <a href="profesori.html" class="navbar-link">Професори</a>
-        <a href="galerija.html" class="navbar-link active">Галерија</a>
+        <a href="galerija.html" class="navbar-link">Галерија</a>
         <a href="postignuvanja.html" class="navbar-link">Успеси</a>
         <a href="kontakt.html" class="navbar-link">Контакт</a>
       </div>
-
       <div class="navbar-actions">
         <button class="navbar-btn" aria-label="Search">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            stroke="currentColor" stroke-width="2">
             <circle cx="11" cy="11" r="8" />
             <path d="m21 21-4.3-4.3" />
           </svg>
         </button>
-        <a href="kontakt.html" class="navbar-cta">Пријави се</a>
+        <a href="upisi.html" class="navbar-cta">Уписи 2026/2027</a>
+        <a href="kolkulator.html" class="navbar-cta navbar-cta-calc"><svg xmlns="http://www.w3.org/2000/svg" width="14"
+            height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <rect width="16" height="20" x="4" y="2" rx="2" />
+            <line x1="8" x2="16" y1="6" y2="6" />
+            <line x1="8" x2="16" y1="10" y2="10" />
+            <line x1="8" x2="12" y1="14" y2="14" />
+          </svg>Калкулатор</a>
         <button class="navbar-menu-btn" aria-label="Menu">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            stroke="currentColor" stroke-width="2">
             <line x1="4" x2="20" y1="12" y2="12" />
             <line x1="4" x2="20" y1="6" y2="6" />
             <line x1="4" x2="20" y1="18" y2="18" />
@@ -58,13 +856,11 @@
         </button>
       </div>
     </div>
-
-    <!-- Search Bar -->
     <div class="search-bar">
       <div class="search-bar-content">
         <div class="search-input-wrapper">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            stroke="currentColor" stroke-width="2">
             <circle cx="11" cy="11" r="8" />
             <path d="m21 21-4.3-4.3" />
           </svg>
@@ -82,10 +878,11 @@
       <a href="index.html#about" class="mobile-menu-link">За Нас</a>
       <a href="struki.html" class="mobile-menu-link">Струки</a>
       <a href="profesori.html" class="mobile-menu-link">Професори</a>
-      <a href="galerija.html" class="mobile-menu-link active">Галерија</a>
+      <a href="galerija.html" class="mobile-menu-link">Галерија</a>
       <a href="postignuvanja.html" class="mobile-menu-link">Успеси</a>
       <a href="kontakt.html" class="mobile-menu-link">Контакт</a>
-      <a href="kontakt.html" class="mobile-menu-cta">Пријави се</a>
+      <a href="upisi.html" class="mobile-menu-cta">Уписи 2026/2027</a>
+      <a href="kolkulator.html" class="mobile-menu-cta-calc">Калкулатор за бодови</a>
       <div class="mobile-menu-contact">
         <p>Контакт информации</p>
         <a href="tel:043231460">043/231-460</a>
@@ -94,353 +891,540 @@
     </div>
   </div>
 
-  <!-- Page Header -->
-  <section class="page-header">
-    <div class="page-header-bg">
-      <div class="page-header-bg-image" style="background-image: url('images/gallery-hero.jpg')"></div>
-      <div class="page-header-bg-overlay"></div>
+  <!-- ═══ HERO ═══ -->
+  <section class="g-hero">
+    <div class="g-hero-bg">
+      <div class="g-hero-img"></div>
+      <div class="g-hero-overlay"></div>
     </div>
-    <div class="page-header-content">
-      <h1 class="page-header-title">Галерија</h1>
-      <p class="page-header-subtitle">Моменти од нашиот училишен живот</p>
-      <nav class="page-header-breadcrumb">
-        <a href="index.html">Почетна</a>
-        <span>/</span>
-        <span>Галерија</span>
+    <div class="g-hero-decor">
+      <div class="hero-decor-circle"></div>
+      <div class="hero-decor-circle"></div>
+      <div class="hero-decor-circle"></div>
+      <div class="hero-decor-circle"></div>
+    </div>
+    <div class="g-hero-grid"></div>
+    <div class="g-hero-content">
+      <div class="g-hero-badge">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10" />
+        </svg>
+        <span>Фото галерија</span>
+      </div>
+      <h1 class="g-hero-title">Нашата<br><em>Галерија</em></h1>
+      <p class="g-hero-sub">Моменти, активности и секојдневниот живот во нашето училиште.</p>
+      <nav class="g-hero-breadcrumb">
+        <a href="index.html">Почетна</a><span>/</span><span>Галерија</span>
       </nav>
     </div>
   </section>
 
-  <!-- Gallery Filter -->
-  <section class="gallery-filter">
-    <div class="container">
-      <div class="filter-buttons">
-        <button class="filter-btn active" data-filter="all">Сите</button>
-        <button class="filter-btn" data-filter="school">Училиште</button>
-        <button class="filter-btn" data-filter="activities">Активности</button>
-        <button class="filter-btn" data-filter="workshops">Работилници</button>
-        <button class="filter-btn" data-filter="events">Настани</button>
-        <button class="filter-btn" data-filter="sports">Спорт</button>
+  <!-- ═══ FILTER BAR ═══ -->
+  <section class="g-filter">
+    <div class="g-container">
+      <div class="g-filter-btns">
+        <button class="g-filter-btn active" data-filter="all">Сите</button>
+        <button class="g-filter-btn" data-filter="school">Училиште</button>
+        <button class="g-filter-btn" data-filter="activities">Активности</button>
+        <button class="g-filter-btn" data-filter="workshops">Работилници</button>
+        <button class="g-filter-btn" data-filter="events">Настани</button>
+        <button class="g-filter-btn" data-filter="sports">Спорт</button>
       </div>
     </div>
   </section>
 
-  <!-- Gallery Grid -->
-  <section class="gallery-section">
-    <div class="container">
-      <div class="gallery-grid">
-        <!-- School Images -->
-        <div class="gallery-item" data-category="school">
-          <div class="gallery-image">
-            <img src="images/gallery/school-building.jpg" alt="Училишна зграда">
+  <!-- ═══ GALLERY GRID ═══ -->
+  <section class="g-section">
+    <div class="g-container">
+      <div class="g-grid" id="galleryGrid">
+
+        <!-- School -->
+        <div class="g-item reveal" data-category="school" data-title="Училишна Зграда"
+          data-sub="Главна зграда на училиштето">
+          <img src="images/gallery/school-building.jpg" alt="Училишна зграда">
+          <div class="g-item-overlay">
+            <h3 class="g-item-title">Училишна Зграда</h3>
+            <p class="g-item-sub">Главна зграда на училиштето</p>
           </div>
-          <div class="gallery-overlay">
-            <h3>Училишна Зграда</h3>
-            <p>Главна зграда на училиштето</p>
-          </div>
+          <div class="g-item-zoom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg></div>
         </div>
 
-        <div class="gallery-item" data-category="school">
-          <div class="gallery-image">
-            <img src="images/gallery/classroom.jpg" alt="Училница">
+        <div class="g-item reveal" data-category="school" data-title="Современа Училница"
+          data-sub="Опремена со најнова технологија" style="animation-delay:.04s">
+          <img src="images/gallery/classroom.jpg" alt="Училница">
+          <div class="g-item-overlay">
+            <h3 class="g-item-title">Современа Училница</h3>
+            <p class="g-item-sub">Опремена со најнова технологија</p>
           </div>
-          <div class="gallery-overlay">
-            <h3>Современа Училница</h3>
-            <p>Опремена со најнова технологија</p>
-          </div>
+          <div class="g-item-zoom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg></div>
         </div>
 
-        <div class="gallery-item" data-category="school">
-          <div class="gallery-image">
-            <img src="images/gallery/library.jpg" alt="Библиотека">
+        <div class="g-item reveal" data-category="school" data-title="Училишна Библиотека"
+          data-sub="Богат фонд на книги" style="animation-delay:.08s">
+          <img src="images/gallery/library.jpg" alt="Библиотека">
+          <div class="g-item-overlay">
+            <h3 class="g-item-title">Училишна Библиотека</h3>
+            <p class="g-item-sub">Богат фонд на книги и ресурси</p>
           </div>
-          <div class="gallery-overlay">
-            <h3>Училишна Библиотека</h3>
-            <p>Богат фонд на книги и ресурси</p>
-          </div>
+          <div class="g-item-zoom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg></div>
         </div>
 
-        <div class="gallery-item" data-category="school">
-          <div class="gallery-image">
-            <img src="images/gallery/computer-lab.jpg" alt="Компјутерска лабораторија">
+        <div class="g-item reveal" data-category="school" data-title="Компјутерска Лабораторија"
+          data-sub="Современи компјутери за обука" style="animation-delay:.12s">
+          <img src="images/gallery/computer-lab.jpg" alt="Компјутерска лабораторија">
+          <div class="g-item-overlay">
+            <h3 class="g-item-title">Компјутерска Лабораторија</h3>
+            <p class="g-item-sub">Современи компјутери за обука</p>
           </div>
-          <div class="gallery-overlay">
-            <h3>Компјутерска Лабораторија</h3>
-            <p>Современи компјутери за обука</p>
-          </div>
+          <div class="g-item-zoom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg></div>
         </div>
 
-        <!-- Workshop Images -->
-        <div class="gallery-item" data-category="workshops">
-          <div class="gallery-image">
-            <img src="images/gallery/mashinska-workshop.jpg" alt="Машинска работилница">
+        <!-- Workshops -->
+        <div class="g-item reveal" data-category="workshops" data-title="Машинска Работилница"
+          data-sub="CNC стругови и фрези" style="animation-delay:.06s">
+          <img src="images/gallery/mashinska-workshop.jpg" alt="Машинска работилница">
+          <div class="g-item-overlay">
+            <h3 class="g-item-title">Машинска Работилница</h3>
+            <p class="g-item-sub">CNC стругови и фрези</p>
           </div>
-          <div class="gallery-overlay">
-            <h3>Машинска Работилница</h3>
-            <p>CNC стругови и фрези</p>
-          </div>
+          <div class="g-item-zoom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg></div>
         </div>
 
-        <div class="gallery-item" data-category="workshops">
-          <div class="gallery-image">
-            <img src="images/gallery/electro-lab.jpg" alt="Електротехничка лабораторија">
+        <div class="g-item reveal" data-category="workshops" data-title="Електротехничка Лабораторија"
+          data-sub="Мерни инструменти и опрема" style="animation-delay:.1s">
+          <img src="images/gallery/electro-lab.jpg" alt="Електротехничка лабораторија">
+          <div class="g-item-overlay">
+            <h3 class="g-item-title">Електротехничка Лабораторија</h3>
+            <p class="g-item-sub">Мерни инструменти и опрема</p>
           </div>
-          <div class="gallery-overlay">
-            <h3>Електротехничка Лабораторија</h3>
-            <p>Мерни инструменти и опрема</p>
-          </div>
+          <div class="g-item-zoom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg></div>
         </div>
 
-        <div class="gallery-item" data-category="workshops">
-          <div class="gallery-image">
-            <img src="images/gallery/culinary-kitchen.jpg" alt="Кулинарска кујна">
+        <div class="g-item reveal" data-category="workshops" data-title="Кулинарска Кујна"
+          data-sub="Професионална опрема за готвење" style="animation-delay:.14s">
+          <img src="images/gallery/culinary-kitchen.jpg" alt="Кулинарска кујна">
+          <div class="g-item-overlay">
+            <h3 class="g-item-title">Кулинарска Кујна</h3>
+            <p class="g-item-sub">Професионална опрема за готвење</p>
           </div>
-          <div class="gallery-overlay">
-            <h3>Кулинарска Кујна</h3>
-            <p>Професионална опрема за готвење</p>
-          </div>
+          <div class="g-item-zoom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg></div>
         </div>
 
-        <div class="gallery-item" data-category="workshops">
-          <div class="gallery-image">
-            <img src="images/gallery/welding-station.jpg" alt="Заварувачка станица">
+        <div class="g-item reveal" data-category="workshops" data-title="Заварувачка Станица"
+          data-sub="MIG, TIG и електролачно заварување" style="animation-delay:.18s">
+          <img src="images/gallery/welding-station.jpg" alt="Заварувачка станица">
+          <div class="g-item-overlay">
+            <h3 class="g-item-title">Заварувачка Станица</h3>
+            <p class="g-item-sub">MIG, TIG и електролачно заварување</p>
           </div>
-          <div class="gallery-overlay">
-            <h3>Заварувачка Станица</h3>
-            <p>MIG, TIG и електролачно заварување</p>
-          </div>
+          <div class="g-item-zoom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg></div>
         </div>
 
-        <!-- Activities Images -->
-        <div class="gallery-item" data-category="activities">
-          <div class="gallery-image">
-            <img src="images/gallery/students-working.jpg" alt="Ученици на работа">
+        <!-- Activities -->
+        <div class="g-item reveal" data-category="activities" data-title="Практична Обука"
+          data-sub="Ученици во работилниците">
+          <img src="images/gallery/students-working.jpg" alt="Ученици на работа">
+          <div class="g-item-overlay">
+            <h3 class="g-item-title">Практична Обука</h3>
+            <p class="g-item-sub">Ученици во работилниците</p>
           </div>
-          <div class="gallery-overlay">
-            <h3>Практична Обука</h3>
-            <p>Ученици во работилниците</p>
-          </div>
+          <div class="g-item-zoom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg></div>
         </div>
 
-        <div class="gallery-item" data-category="activities">
-          <div class="gallery-image">
-            <img src="images/gallery/group-project.jpg" alt="Групен проект">
+        <div class="g-item reveal" data-category="activities" data-title="Групен Проект"
+          data-sub="Соработка меѓу ученици" style="animation-delay:.05s">
+          <img src="images/gallery/group-project.jpg" alt="Групен проект">
+          <div class="g-item-overlay">
+            <h3 class="g-item-title">Групен Проект</h3>
+            <p class="g-item-sub">Соработка меѓу ученици</p>
           </div>
-          <div class="gallery-overlay">
-            <h3>Групен Проект</h3>
-            <p>Соработка меѓу ученици</p>
-          </div>
+          <div class="g-item-zoom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg></div>
         </div>
 
-        <div class="gallery-item" data-category="activities">
-          <div class="gallery-image">
-            <img src="images/gallery/field-trip.jpg" alt="Екскурзија">
+        <div class="g-item reveal" data-category="activities" data-title="Екскурзија"
+          data-sub="Посета на индустриски објект" style="animation-delay:.1s">
+          <img src="images/gallery/field-trip.jpg" alt="Екскурзија">
+          <div class="g-item-overlay">
+            <h3 class="g-item-title">Екскурзија</h3>
+            <p class="g-item-sub">Посета на индустриски објект</p>
           </div>
-          <div class="gallery-overlay">
-            <h3>Екскурзија</h3>
-            <p>Посета на индустриски објект</p>
-          </div>
+          <div class="g-item-zoom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg></div>
         </div>
 
-        <div class="gallery-item" data-category="activities">
-          <div class="gallery-image">
-            <img src="images/gallery/practice-training.jpg" alt="Пракса">
+        <div class="g-item reveal" data-category="activities" data-title="Стручна Пракса" data-sub="Пракса во компании"
+          style="animation-delay:.15s">
+          <img src="images/gallery/practice-training.jpg" alt="Пракса">
+          <div class="g-item-overlay">
+            <h3 class="g-item-title">Стручна Пракса</h3>
+            <p class="g-item-sub">Пракса во компании</p>
           </div>
-          <div class="gallery-overlay">
-            <h3>Пракса</h3>
-            <p>Стручна пракса во компании</p>
-          </div>
+          <div class="g-item-zoom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg></div>
         </div>
 
-        <!-- Events Images -->
-        <div class="gallery-item" data-category="events">
-          <div class="gallery-image">
-            <img src="images/gallery/graduation.jpg" alt="Матура">
+        <!-- Events -->
+        <div class="g-item reveal" data-category="events" data-title="Матурска Свеченост"
+          data-sub="Прослава на дипломирањето">
+          <img src="images/gallery/graduation.jpg" alt="Матура">
+          <div class="g-item-overlay">
+            <h3 class="g-item-title">Матурска Свеченост</h3>
+            <p class="g-item-sub">Прослава на дипломирањето</p>
           </div>
-          <div class="gallery-overlay">
-            <h3>Матурска Свеченост</h3>
-            <p>Прослава на дипломирањето</p>
-          </div>
+          <div class="g-item-zoom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg></div>
         </div>
 
-        <div class="gallery-item" data-category="events">
-          <div class="gallery-image">
-            <img src="images/gallery/open-day.jpg" alt="Отворен ден">
+        <div class="g-item reveal" data-category="events" data-title="Отворен Ден" data-sub="Презентација на училиштето"
+          style="animation-delay:.05s">
+          <img src="images/gallery/open-day.jpg" alt="Отворен ден">
+          <div class="g-item-overlay">
+            <h3 class="g-item-title">Отворен Ден</h3>
+            <p class="g-item-sub">Презентација на училиштето</p>
           </div>
-          <div class="gallery-overlay">
-            <h3>Отворен Ден</h3>
-            <p>Презентација на училиштето</p>
-          </div>
+          <div class="g-item-zoom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg></div>
         </div>
 
-        <div class="gallery-item" data-category="events">
-          <div class="gallery-image">
-            <img src="images/gallery/competition.jpg" alt="Натпревар">
+        <div class="g-item reveal" data-category="events" data-title="Стручен Натпревар" data-sub="Ученици на натпревар"
+          style="animation-delay:.1s">
+          <img src="images/gallery/competition.jpg" alt="Натпревар">
+          <div class="g-item-overlay">
+            <h3 class="g-item-title">Стручен Натпревар</h3>
+            <p class="g-item-sub">Ученици на натпревар</p>
           </div>
-          <div class="gallery-overlay">
-            <h3>Стручен Натпревар</h3>
-            <p>Ученици на натпревар</p>
-          </div>
+          <div class="g-item-zoom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg></div>
         </div>
 
-        <div class="gallery-item" data-category="events">
-          <div class="gallery-image">
-            <img src="images/gallery/award-ceremony.jpg" alt="Доделување награди">
+        <div class="g-item reveal" data-category="events" data-title="Доделување Награди"
+          data-sub="Признание за успешни ученици" style="animation-delay:.15s">
+          <img src="images/gallery/award-ceremony.jpg" alt="Доделување награди">
+          <div class="g-item-overlay">
+            <h3 class="g-item-title">Доделување Награди</h3>
+            <p class="g-item-sub">Признание за успешни ученици</p>
           </div>
-          <div class="gallery-overlay">
-            <h3>Доделување Награди</h3>
-            <p>Признание за успешни ученици</p>
-          </div>
+          <div class="g-item-zoom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg></div>
         </div>
 
-        <!-- Sports Images -->
-        <div class="gallery-item" data-category="sports">
-          <div class="gallery-image">
-            <img src="images/gallery/sports-day.jpg" alt="Спортски ден">
+        <!-- Sports -->
+        <div class="g-item reveal" data-category="sports" data-title="Спортски Ден"
+          data-sub="Ученици на спортски активности">
+          <img src="images/gallery/sports-day.jpg" alt="Спортски ден">
+          <div class="g-item-overlay">
+            <h3 class="g-item-title">Спортски Ден</h3>
+            <p class="g-item-sub">Ученици на спортски активности</p>
           </div>
-          <div class="gallery-overlay">
-            <h3>Спортски Ден</h3>
-            <p>Ученици на спортски активности</p>
-          </div>
+          <div class="g-item-zoom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg></div>
         </div>
 
-        <div class="gallery-item" data-category="sports">
-          <div class="gallery-image">
-            <img src="images/gallery/basketball.jpg" alt="Кошарка">
+        <div class="g-item reveal" data-category="sports" data-title="Кошаркарски Тим"
+          data-sub="Училишен кошаркарски тим" style="animation-delay:.05s">
+          <img src="images/gallery/basketball.jpg" alt="Кошарка">
+          <div class="g-item-overlay">
+            <h3 class="g-item-title">Кошаркарски Тим</h3>
+            <p class="g-item-sub">Училишен кошаркарски тим</p>
           </div>
-          <div class="gallery-overlay">
-            <h3>Кошаркарски Тим</h3>
-            <p>Училишен кошаркарски тим</p>
-          </div>
+          <div class="g-item-zoom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg></div>
         </div>
 
-        <div class="gallery-item" data-category="sports">
-          <div class="gallery-image">
-            <img src="images/gallery/football.jpg" alt="Фудбал">
+        <div class="g-item reveal" data-category="sports" data-title="Фудбалски Тим" data-sub="Училишен фудбалски тим"
+          style="animation-delay:.1s">
+          <img src="images/gallery/football.jpg" alt="Фудбал">
+          <div class="g-item-overlay">
+            <h3 class="g-item-title">Фудбалски Тим</h3>
+            <p class="g-item-sub">Училишен фудбалски тим</p>
           </div>
-          <div class="gallery-overlay">
-            <h3>Фудбалски Тим</h3>
-            <p>Училишен фудбалски тим</p>
-          </div>
+          <div class="g-item-zoom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg></div>
         </div>
 
-        <div class="gallery-item" data-category="sports">
-          <div class="gallery-image">
-            <img src="images/gallery/volleyball.jpg" alt="Одбојка">
+        <div class="g-item reveal" data-category="sports" data-title="Одбојкарски Тим"
+          data-sub="Училишен одбојкарски тим" style="animation-delay:.15s">
+          <img src="images/gallery/volleyball.jpg" alt="Одбојка">
+          <div class="g-item-overlay">
+            <h3 class="g-item-title">Одбојкарски Тим</h3>
+            <p class="g-item-sub">Училишен одбојкарски тим</p>
           </div>
-          <div class="gallery-overlay">
-            <h3>Одбојкарски Тим</h3>
-            <p>Училишен одбојкарски тим</p>
-          </div>
+          <div class="g-item-zoom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg></div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Video Section -->
-  <section class="video-section">
-    <div class="container">
-      <div class="section-header">
+  <!-- ═══ VIDEO SECTION ═══ -->
+  <section class="g-video-section">
+    <div class="g-container">
+      <div class="g-sec-head reveal">
+        <span class="section-label">Видеа</span>
         <h2 class="section-title">Видео Галерија</h2>
-        <p class="section-subtitle">Погледнете ги нашите видеа</p>
+        <p class="section-description">Погледнете ги нашите видеа и промотивни материјали</p>
       </div>
+      <div class="g-video-grid">
 
-      <div class="video-grid">
-        <div class="video-item">
-          <div class="video-thumbnail">
+        <div class="g-video-card reveal">
+          <div class="g-video-thumb">
             <img src="images/video-thumb-1.jpg" alt="Видео 1">
-            <button class="video-play-btn" aria-label="Play video">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <polygon points="10 8 16 12 10 16 10 8" />
-              </svg>
-            </button>
+            <div class="g-video-thumb-overlay">
+              <button class="g-play-btn" aria-label="Play"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                  fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg></button>
+            </div>
           </div>
-          <h3>Промоционално Видео</h3>
-          <p>Запознајте го нашето училиште</p>
+          <div class="g-video-info">
+            <h3>Промоционално Видео</h3>
+            <p>Запознајте го нашето училиште</p>
+          </div>
         </div>
 
-        <div class="video-item">
-          <div class="video-thumbnail">
+        <div class="g-video-card reveal" style="animation-delay:.08s">
+          <div class="g-video-thumb">
             <img src="images/video-thumb-2.jpg" alt="Видео 2">
-            <button class="video-play-btn" aria-label="Play video">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <polygon points="10 8 16 12 10 16 10 8" />
-              </svg>
-            </button>
+            <div class="g-video-thumb-overlay">
+              <button class="g-play-btn" aria-label="Play"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                  fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg></button>
+            </div>
           </div>
-          <h3>Ден на Отворени Врати</h3>
-          <p>Презентација на струките</p>
+          <div class="g-video-info">
+            <h3>Ден на Отворени Врати</h3>
+            <p>Презентација на струките</p>
+          </div>
         </div>
 
-        <div class="video-item">
-          <div class="video-thumbnail">
+        <div class="g-video-card reveal" style="animation-delay:.16s">
+          <div class="g-video-thumb">
             <img src="images/video-thumb-3.jpg" alt="Видео 3">
-            <button class="video-play-btn" aria-label="Play video">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <polygon points="10 8 16 12 10 16 10 8" />
-              </svg>
-            </button>
+            <div class="g-video-thumb-overlay">
+              <button class="g-play-btn" aria-label="Play"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                  fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg></button>
+            </div>
           </div>
-          <h3>Матурска Свеченост 2024</h3>
-          <p>Нajубавите моменти</p>
+          <div class="g-video-info">
+            <h3>Матурска Свеченост 2024</h3>
+            <p>Најубавите моменти</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA — blue section ═══ -->
+  <section class="g-blue">
+    <div class="g-blue-decor">
+      <div class="bd-circle"></div>
+      <div class="bd-circle"></div>
+      <div class="bd-dot"></div>
+      <div class="bd-dot"></div>
+      <svg class="bd-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2">
+        <path
+          d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+      </svg>
+      <svg class="bd-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2">
+        <path
+          d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+      </svg>
+    </div>
+    <div class="g-blue-inner g-container">
+      <div class="g-cta-wrap reveal">
+        <div class="g-cta-badge"><svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" />
+          </svg>Уписи 2026/2027</div>
+        <h2 class="g-cta-title">Запишете се и<br>станете дел <em>од нас!</em></h2>
+        <p class="g-cta-desc">Отворете ги вратите кон успешна кариера со квалитетно стручно образование. Уписите се
+          реализираат во месец јуни.</p>
+        <div class="g-cta-btns">
+          <a href="upisi.html" class="btn btn-primary cta-btn-pulse">
+            Уписи 2026/2027 сега
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </a>
+          <a href="kontakt.html" class="btn btn-outline">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            Контактирај не
+          </a>
+        </div>
+        <div class="g-cta-trust">
+          <span><span class="g-cta-trust-dot"></span>Бесплатна консултација</span>
+          <span><span class="g-cta-trust-dot"></span>Индивидуален пристап</span>
+          <span><span class="g-cta-trust-dot"></span>Гаранција за квалитет</span>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- CTA Section -->
-  <section class="cta-section">
-    <div class="cta-bg">
-      <div class="cta-bg-image" style="background-image: url('images/cta-bg.jpg')"></div>
-      <div class="cta-bg-overlay"></div>
-    </div>
-    <div class="cta-content">
-      <h2 class="cta-title">Запишете се во нашето училиште</h2>
-      <p class="cta-text">Отворете ги вратите кон успешна кариера со квалитетно стручно образование</p>
-      <div class="cta-buttons">
-        <a href="kontakt.html" class="btn btn-white">Пријави се сега</a>
-        <a href="kontakt.html" class="btn btn-outline-white">Контактирај не</a>
-      </div>
-    </div>
-  </section>
-
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-border"></div>
-    
+
     <div class="footer-container">
       <div class="footer-grid">
         <!-- Column 1 -->
         <div class="footer-column">
           <a href="index.html" class="footer-logo">
             <div class="footer-logo-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              <img src="images/logo-yellow.png" alt="Logo">
             </div>
             <div class="footer-logo-text">
               <h3>ДСУ РЦСОО</h3>
               <p>"Коле Неделковски"</p>
             </div>
           </a>
-          
-          <p class="footer-text">Квалитетно стручно образование од 1965 година. Подготвуваме идни професионалци за пазарот на труд.</p>
+
+          <p class="footer-text">Квалитетно стручно образование од 1965 година. Подготвуваме идни професионалци за
+            пазарот на труд.</p>
 
           <div class="footer-contact">
             <a href="https://maps.google.com/?q=Андон+Шурков+4а+Велес" target="_blank" rel="noopener noreferrer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
               <span>Андон Шурков бр.4а, Велес</span>
             </a>
             <a href="tel:043231460">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
               <span>043/231-460</span>
             </a>
             <a href="mailto:kolenedelkovski@yahoo.com">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
               <span>kolenedelkovski@yahoo.com</span>
             </a>
           </div>
@@ -464,12 +1448,12 @@
         <div class="footer-column">
           <h4 class="footer-title">Ресурси</h4>
           <ul class="footer-links">
-            <li><a href="kontakt.html" class="footer-link">Уписи</a></li>
-            <li><a href="struki.html" class="footer-link">Образовни профили</a></li>
-            <li><a href="struki.html" class="footer-link">Дуално образование</a></li>
-            <li><a href="postignuvanja.html" class="footer-link">Еразмус+</a></li>
-            <li><a href="galerija.html" class="footer-link">Галерија</a></li>
-            <li><a href="postignuvanja.html" class="footer-link">Новости</a></li>
+            <li><a href="https://ednevnik.edu.mk/" class="footer-link">E-Дневник</a></li>
+            <li><a href="https://csoo.edu.mk/" class="footer-link">Центар за стручно образование</a></li>
+            <li><a href="kolkulator.html" class="footer-link">Калкулатор за бодови</a></li>
+            <li><a href="https://e-uslugi.mon.gov.mk/" class="footer-link">Систем за упис во средно</a></li>
+            <li><a href="https://heyzine.com/flip-book/44ad87f9d5.html#page/1" class="footer-link">Е-Весник ЕМКУС</a>
+            <li><a href="http://matura.gov.mk/" class="footer-link">Матурантски испити</a></li>
           </ul>
         </div>
 
@@ -477,23 +1461,25 @@
         <div class="footer-column">
           <h4 class="footer-title">Следете не</h4>
           <p class="footer-social-text">Бидете во тек со најновите информации и настани.</p>
-          
+
           <div class="footer-social">
-            <a href="#" aria-label="Facebook">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            <a href="https://www.facebook.com/dsurcsookolenedelkovski" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
             </a>
-            <a href="#" aria-label="Instagram">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-            </a>
-            <a href="#" aria-label="YouTube">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+            <a href="https://www.instagram.com/rcsoo.kolenedelkovski.veles/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+              </svg>
             </a>
           </div>
 
-          <a href="http://www.kolenedelkovski.edu.mk" target="_blank" rel="noopener noreferrer" class="footer-external">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-            <span>www.kolenedelkovski.edu.mk</span>
-          </a>
+
         </div>
       </div>
     </div>
@@ -509,42 +1495,82 @@
     </div>
   </footer>
 
-  <!-- Scroll to Top Button -->
-  <button class="scroll-to-top" aria-label="Scroll to top">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="m18 15-6-6-6 6" />
-    </svg>
-  </button>
 
-  <!-- Lightbox Modal -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" aria-label="Close">
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- ═══ LIGHTBOX ═══ -->
+  <div class="g-lightbox" id="gLightbox">
+    <button class="g-lb-close" id="lbClose"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2">
         <path d="M18 6 6 18" />
         <path d="m6 6 12 12" />
-      </svg>
-    </button>
-    <button class="lightbox-prev" aria-label="Previous">
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      </svg></button>
+    <button class="g-lb-prev" id="lbPrev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2">
         <path d="m15 18-6-6 6-6" />
-      </svg>
-    </button>
-    <button class="lightbox-next" aria-label="Next">
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      </svg></button>
+    <button class="g-lb-next" id="lbNext"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2">
         <path d="m9 18 6-6-6-6" />
-      </svg>
-    </button>
-    <div class="lightbox-content">
-      <img src="" alt="Gallery image" class="lightbox-image">
-      <div class="lightbox-caption"></div>
+      </svg></button>
+    <div class="g-lb-img-wrap">
+      <img src="" alt="" class="g-lb-img" id="lbImg">
+      <p class="g-lb-caption" id="lbCaption"></p>
     </div>
   </div>
 
   <script src="js/main.js"></script>
+  <script>
+    // ── GALLERY FILTER ──
+    const filterBtns = document.querySelectorAll('.g-filter-btn');
+    const items = document.querySelectorAll('.g-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.dataset.filter;
+        items.forEach(item => {
+          item.classList.toggle('hidden', cat !== 'all' && item.dataset.category !== cat);
+        });
+      });
+    });
+
+    // ── LIGHTBOX ──
+    const lightbox = document.getElementById('gLightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbCap = document.getElementById('lbCaption');
+    let visibleItems = [], currentIdx = 0;
+
+    function getVisible() {
+      return Array.from(items).filter(i => !i.classList.contains('hidden'));
+    }
+    function openLightbox(idx) {
+      visibleItems = getVisible();
+      currentIdx = idx;
+      const item = visibleItems[idx];
+      lbImg.src = item.querySelector('img').src;
+      lbImg.alt = item.dataset.title;
+      lbCap.textContent = item.dataset.title + (item.dataset.sub ? ' — ' + item.dataset.sub : '');
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
+    function prevImg() { currentIdx = (currentIdx - 1 + visibleItems.length) % visibleItems.length; openLightbox(currentIdx); }
+    function nextImg() { currentIdx = (currentIdx + 1) % visibleItems.length; openLightbox(currentIdx); }
+
+    items.forEach((item, i) => {
+      item.addEventListener('click', () => openLightbox(getVisible().indexOf(item)));
+    });
+    document.getElementById('lbClose').addEventListener('click', closeLightbox);
+    document.getElementById('lbPrev').addEventListener('click', prevImg);
+    document.getElementById('lbNext').addEventListener('click', nextImg);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') prevImg();
+      if (e.key === 'ArrowRight') nextImg();
+    });
+  </script>
 </body>
 
 </html>
