@@ -1,5 +1,5 @@
 /**
- * ДСУ РЦСОО "Коле Неделковски" - Велес
+ * ДСУ РЦСОО „Коле Неделковски“ - Велес
  * Main JavaScript File
  */
 
@@ -23,13 +23,17 @@ function initNavbar() {
   const navbar = document.querySelector('.navbar');
   if (!navbar) return;
 
-  window.addEventListener('scroll', function () {
+  const handleScroll = () => {
     if (window.scrollY > 50) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
     }
-  });
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  // Initialize state on load
+  handleScroll();
 }
 
 /**
@@ -207,7 +211,7 @@ function initScrollToTop() {
   if (!scrollTopBtn) return;
 
   window.addEventListener('scroll', function () {
-    if (window.scrollY > 500) {
+    if (window.scrollY > window.innerHeight) {
       scrollTopBtn.classList.add('visible');
     } else {
       scrollTopBtn.classList.remove('visible');
@@ -464,20 +468,24 @@ function initCounters() {
       if (entry.isIntersecting) {
         const counter = entry.target;
         const target = parseInt(counter.getAttribute('data-counter'));
+        const hasPlus = counter.hasAttribute('data-plus') || counter.textContent.includes('+');
         const duration = 2000;
-        const step = target / (duration / 16);
+        const frames = (duration / 16);
+        const step = target / frames;
         let current = 0;
 
         const updateCounter = () => {
           current += step;
           if (current < target) {
-            counter.textContent = Math.floor(current);
+            counter.textContent = Math.floor(current) + (hasPlus ? '+' : '');
             requestAnimationFrame(updateCounter);
           } else {
-            counter.textContent = target;
+            counter.textContent = target + (hasPlus ? '+' : '');
           }
         };
 
+        // Reset text and start
+        counter.textContent = '0' + (hasPlus ? '+' : '');
         updateCounter();
         observer.unobserve(counter);
       }
@@ -672,46 +680,7 @@ function initContactForm() {
   });
 }
 
-/**
- * Stats Counter Animation
- */
-function initStatsCounter() {
-  const statNumbers = document.querySelectorAll('.stat-number');
 
-  if (statNumbers.length === 0) return;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const element = entry.target;
-        const text = element.textContent;
-        const hasPlus = text.includes('+');
-        const target = parseInt(text.replace(/\D/g, ''));
-
-        if (isNaN(target)) return;
-
-        const duration = 2000;
-        const step = target / (duration / 16);
-        let current = 0;
-
-        const updateCounter = () => {
-          current += step;
-          if (current < target) {
-            element.textContent = Math.floor(current) + (hasPlus ? '+' : '');
-            requestAnimationFrame(updateCounter);
-          } else {
-            element.textContent = target + (hasPlus ? '+' : '');
-          }
-        };
-
-        updateCounter();
-        observer.unobserve(element);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  statNumbers.forEach(stat => observer.observe(stat));
-}
 
 // Initialize new components when DOM is loaded
 document.addEventListener('DOMContentLoaded', function () {
@@ -719,7 +688,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initLightbox();
   initFAQ();
   initContactForm();
-  initStatsCounter();
+  initFlipbookModal();
 });
 
 // Add fadeInUp animation keyframes
@@ -746,3 +715,78 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
+/**
+ * Flipbook Modal Integration
+ */
+function initFlipbookModal() {
+  const flipbookLinks = document.querySelectorAll('a[href*="heyzine.com"]');
+  if (flipbookLinks.length === 0) return;
+
+  const modalHtml = `
+    <div id="flipbook-modal" class="flipbook-overlay">
+      <div class="flipbook-modal-content">
+        <button id="close-flipbook" class="flipbook-close" aria-label="Затвори">&times;</button>
+        <div class="flipbook-header">
+          <div class="flipbook-icon-bg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+          </div>
+          <h3 class="flipbook-title">Е-Весник ЕМКУС</h3>
+          <p class="flipbook-subtitle">Изберете издание за читање</p>
+        </div>
+        <div class="flipbook-grid">
+          <a href="https://heyzine.com/flip-book/1f3d1e449f99e4e2.html" target="_blank" class="flipbook-card">
+            <div class="flipbook-cover cover-1">
+              <div class="cover-design">
+                <span class="cover-issue">БР. 1</span>
+                <span class="cover-label">Е-ВЕСНИК</span>
+              </div>
+            </div>
+            <div class="flipbook-info">
+              <h4>Прво Издание</h4>
+              <p>Отвори за читање</p>
+              <span class="flipbook-btn">Читај <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span>
+            </div>
+          </a>
+          <a href="https://heyzine.com/flip-book/44ad87f9d5.html" target="_blank" class="flipbook-card">
+            <div class="flipbook-cover cover-2">
+              <div class="cover-design">
+                <span class="cover-issue">БР. 2</span>
+                <span class="cover-label">Е-ВЕСНИК</span>
+              </div>
+            </div>
+            <div class="flipbook-info">
+              <h4>Второ Издание</h4>
+              <p>Отвори за читање</p>
+              <span class="flipbook-btn">Читај <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+  const modal = document.getElementById('flipbook-modal');
+  const closeBtn = document.getElementById('close-flipbook');
+
+  flipbookLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  closeBtn.addEventListener('click', closeFlipbookModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeFlipbookModal();
+  });
+
+  function closeFlipbookModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+

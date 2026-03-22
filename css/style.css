@@ -1,5 +1,5 @@
 /* ============================================
-   ДСУ РЦСОО "Коле Неделковски" - Велес
+   ДСУ РЦСОО „Коле Неделковски“ - Велес
    Main Stylesheet
    ============================================ */
 
@@ -3003,7 +3003,7 @@ ol {
   right: 2rem;
   width: 3rem;
   height: 3rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-color: var(--school-gold);
   color: white;
   border-radius: 50%;
   box-shadow: var(--shadow-lg);
@@ -5615,7 +5615,7 @@ ol {
   right: 2rem;
   width: 3rem;
   height: 3rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--school-gold-light);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -5630,6 +5630,15 @@ ol {
   border: none;
 }
 
+@media (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 5rem;
+    right: 1.25rem;
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}
+
 .scroll-to-top.visible {
   opacity: 1;
   visibility: visible;
@@ -5637,7 +5646,7 @@ ol {
 }
 
 .scroll-to-top:hover {
-  background: linear-gradient(135deg, #768df2 0%, #8a57bd 100%);
+  background: var(--school-gold);
   transform: translateY(-4px) scale(1.05);
   box-shadow: 0 8px 20px rgba(118, 75, 162, 0.5);
 }
@@ -5722,4 +5731,234 @@ ol {
 .professors-stats .stat-icon svg,
 .achievements-stats .stat-icon svg {
   color: var(--school-gold);
+}
+
+/* ============================================
+   FLIPBOOK MODAL
+   ============================================ */
+
+.flipbook-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 1.5rem;
+}
+
+.flipbook-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.flipbook-modal-content {
+  background: var(--white);
+  border-radius: var(--radius-2xl);
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 700px;
+  position: relative;
+  transform: scale(0.95) translateY(10px);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.flipbook-overlay.active .flipbook-modal-content {
+  transform: scale(1) translateY(0);
+}
+
+.flipbook-modal-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--school-blue), var(--school-gold));
+}
+
+.flipbook-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--gray-500);
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.flipbook-close:hover {
+  background: var(--gray-200);
+  color: var(--gray-900);
+  transform: rotate(90deg);
+}
+
+.flipbook-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.flipbook-icon-bg {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  background: rgba(30, 58, 95, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  transform: rotate(-5deg);
+}
+
+.flipbook-icon-bg svg {
+  color: var(--school-blue);
+  width: 32px;
+  height: 32px;
+}
+
+.flipbook-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--gray-900);
+  margin-bottom: 0.5rem;
+}
+
+.flipbook-subtitle {
+  font-size: 1rem;
+  color: var(--gray-500);
+}
+
+.flipbook-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .flipbook-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.flipbook-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  text-decoration: none;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flipbook-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -10px rgba(30, 58, 95, 0.15);
+  border-color: var(--school-blue);
+}
+
+.flipbook-cover {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.flipbook-cover.cover-1 {
+  background: linear-gradient(135deg, #1e3a5f 0%, #30588c 100%);
+}
+
+.flipbook-cover.cover-2 {
+  background: linear-gradient(135deg, #d4af37 0%, #e8c547 100%);
+}
+
+.flipbook-cover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 20px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
+}
+
+.cover-design {
+  border: 4px inset rgba(255, 255, 255, 0.2);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  color: var(--white);
+  border-radius: 4px;
+}
+
+.cover-issue {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.cover-label {
+  display: block;
+  font-family: var(--font-accent);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.flipbook-info {
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flipbook-info h4 {
+  font-size: 1.15rem;
+  color: var(--gray-900);
+  margin-bottom: 0.25rem;
+  font-family: var(--font-display);
+}
+
+.flipbook-info p {
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  margin-bottom: 1rem;
+}
+
+.flipbook-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(30, 58, 95, 0.05);
+  color: var(--school-blue);
+  font-family: var(--font-accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+.flipbook-card:hover .flipbook-btn {
+  background: var(--school-blue);
+  color: var(--white);
 }

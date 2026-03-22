@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Контакт информации за ДСУ РЦСОО Коле Неделковски - Велес.">
-  <title>Контакт | ДСУ РЦСОО "Коле Неделковски" - Велес</title>
+  <title>Контакт | ДСУ РЦСОО „Коле Неделковски“ - Велес</title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="shortcut icon" href="images/blue-logo.png" type="image/x-icon">
+  <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
   <style>
     /* ══════════════════════════
        HERO
@@ -846,6 +846,16 @@
       }
     }
   </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <script type="text/javascript">
+    (function () {
+      // Replace with your actual Public Key from Account Settings -> API Keys
+      emailjs.init({
+        publicKey: "covGW8o0Venl-FZTX",
+      });
+    })();
+  </script>
 </head>
 
 <body>
@@ -859,7 +869,7 @@
         </div>
         <div class="navbar-logo-text">
           <h1>ДСУ РЦСОО</h1>
-          <p>"Коле Неделковски"</p>
+          <p>„Коле Неделковски“</p>
         </div>
       </a>
       <div class="navbar-links">
@@ -880,7 +890,7 @@
           </svg>
         </button>
         <a href="upisi.html" class="navbar-cta">Уписи 2026/2027</a>
-        <a href="kolkulator.html" class="navbar-cta navbar-cta-calc"><svg xmlns="http://www.w3.org/2000/svg" width="14"
+        <a href="kalkulator.html" class="navbar-cta navbar-cta-calc"><svg xmlns="http://www.w3.org/2000/svg" width="14"
             height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <rect width="16" height="20" x="4" y="2" rx="2" />
             <line x1="8" x2="16" y1="6" y2="6" />
@@ -923,7 +933,7 @@
       <a href="postignuvanja.html" class="mobile-menu-link">Успеси</a>
       <a href="kontakt.html" class="mobile-menu-link">Контакт</a>
       <a href="upisi.html" class="mobile-menu-cta">Уписи 2026/2027</a>
-      <a href="kolkulator.html" class="mobile-menu-cta-calc">Калкулатор за бодови</a>
+      <a href="kalkulator.html" class="mobile-menu-cta-calc">Калкулатор за бодови</a>
       <div class="mobile-menu-contact">
         <p>Контакт информации</p>
         <a href="tel:043231460">043/231-460</a>
@@ -953,7 +963,7 @@
         <span>Стапете во контакт</span>
       </div>
       <h1 class="k-hero-title">Контактирајте<br><em>со нас</em></h1>
-      <p class="k-hero-sub">Секогаш сме тука за вашите прашања, сугестии и соработка. Со задоволство ќе ви одговориме.
+      <p class="k-hero-sub">Секогаш сме тука за вашите прашања, сугестии и соработка. Со задоволство ќе Ви одговориме.
       </p>
       <nav class="k-hero-breadcrumb">
         <a href="index.html">Почетна</a><span>/</span><span>Контакт</span>
@@ -966,7 +976,8 @@
     <div class="k-container">
       <div class="k-info-grid">
 
-        <div class="k-info-card reveal">
+        <a href="https://maps.google.com/?q=Андон+Шурков+4а+Велес" target="_blank" rel="noopener noreferrer" <div
+          class="k-info-card reveal">
           <div class="k-info-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="2">
@@ -976,7 +987,7 @@
           </div>
           <h3>Адреса</h3>
           <p>Ул. Андон Шурков бр. 4а<br>1400 Велес<br>Северна Македонија</p>
-        </div>
+        </a>
 
         <div class="k-info-card reveal" style="animation-delay:.08s">
           <div class="k-info-icon">
@@ -1018,7 +1029,7 @@
             </svg>
           </div>
           <h3>Работно Време</h3>
-          <p>Пон – Пет: 07:00 – 19:00<br>Сабота – Недела:<br>Затворено</p>
+          <p>Пон – Пет: 07:00 – 19:30<br>Сабота – Недела:<br>Затворено</p>
         </div>
 
       </div>
@@ -1033,7 +1044,7 @@
         <!-- FORM -->
         <div class="k-form-wrap reveal">
           <h2 class="k-form-title">Испратете ни порака</h2>
-          <p class="k-form-sub">Пополнете го формуларот и ние ќе ве контактираме наскоро.</p>
+          <p class="k-form-sub">Пополнете го формуларот и ние ќе Ве контактираме наскоро.</p>
 
           <form id="contactForm">
             <div class="k-form-row">
@@ -1059,7 +1070,7 @@
             <div class="k-form-group">
               <label for="subject">Наслов <span class="k-required">*</span></label>
               <select id="subject" name="subject" required>
-                <option value="">Изберете наслов</option>
+                <option value="">Изберете наслов на пораката</option>
                 <option value="upis">Информации за упис</option>
                 <option value="struki">Информации за струки</option>
                 <option value="praksa">Стручна пракса</option>
@@ -1091,7 +1102,7 @@
         <div class="k-map-wrap reveal" style="animation-delay:.1s">
           <div class="k-map-header">
             <h2>Наша Локација</h2>
-            <p>Посетете не или пронајдете не на картата</p>
+            <p>Посетете нѐ или пронајдете нѐ на картата</p>
           </div>
 
           <div class="k-map-frame">
@@ -1111,7 +1122,8 @@
               </svg>
               Андон Шурков бр.4а, Велес
             </div>
-            <a href="https://maps.google.com/?q=Veles+North+Macedonia" target="_blank" class="btn btn-outline btn-sm">
+            <a href="https://maps.google.com/?q=Veles+North+Macedonia" target="_blank" class="btn btn-outline btn-sm"
+              style="color: var(--school-blue); border-color: var(--school-blue);">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2">
                 <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
@@ -1270,7 +1282,7 @@
             </div>
             <div class="footer-logo-text">
               <h3>ДСУ РЦСОО</h3>
-              <p>"Коле Неделковски"</p>
+              <p>„Коле Неделковски“</p>
             </div>
           </a>
 
@@ -1323,28 +1335,33 @@
         <div class="footer-column">
           <h4 class="footer-title">Ресурси</h4>
           <ul class="footer-links">
-            <li><a href="https://ednevnik.edu.mk/" class="footer-link">E-Дневник</a></li>
-            <li><a href="https://csoo.edu.mk/" class="footer-link">Центар за стручно образование</a></li>
-            <li><a href="kolkulator.html" class="footer-link">Калкулатор за бодови</a></li>
-            <li><a href="https://e-uslugi.mon.gov.mk/" class="footer-link">Систем за упис во средно</a></li>
-            <li><a href="https://heyzine.com/flip-book/44ad87f9d5.html#page/1" class="footer-link">Е-Весник ЕМКУС</a>
-            <li><a href="http://matura.gov.mk/" class="footer-link">Матурантски испити</a></li>
+            <li><a href="https://ednevnik.edu.mk/" class="footer-link" target="_blank">E-Дневник</a></li>
+            <li><a href="https://csoo.edu.mk/" class="footer-link" target="_blank">Центар за стручно образование</a>
+            </li>
+            <li><a href="kalkulator.html" class="footer-link" target="_blank">Калкулатор за бодови</a></li>
+            <li><a href="https://e-uslugi.mon.gov.mk/" class="footer-link" target="_blank">Систем за упис во средно</a>
+            </li>
+            <li><a href="https://heyzine.com/flip-book/44ad87f9d5.html" class="footer-link" target="_blank">Е-Весник
+                ЕМКУС</a>
+            <li><a href="http://matura.gov.mk/" class="footer-link" target="_blank">Државна матура</a></li>
           </ul>
         </div>
 
         <!-- Column 4 -->
         <div class="footer-column">
-          <h4 class="footer-title">Следете не</h4>
+          <h4 class="footer-title">Следете нѐ</h4>
           <p class="footer-social-text">Бидете во тек со најновите информации и настани.</p>
 
           <div class="footer-social">
-            <a href="https://www.facebook.com/dsurcsookolenedelkovski" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.facebook.com/dsurcsookolenedelkovski" aria-label="Facebook" target="_blank"
+              rel="noopener noreferrer">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
               </svg>
             </a>
-            <a href="https://www.instagram.com/rcsoo.kolenedelkovski.veles/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/rcsoo.kolenedelkovski.veles/" aria-label="Instagram" target="_blank"
+              rel="noopener noreferrer">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
@@ -1361,7 +1378,7 @@
 
     <div class="footer-bottom">
       <div class="footer-bottom-container">
-        <p class="footer-copyright">© 2026 ДСУ РЦСОО "Коле Неделковски". Сите права задржани.</p>
+        <p class="footer-copyright">© 2026 ДСУ РЦСОО „Коле Неделковски“. Сите права задржани.</p>
         <div class="footer-legal">
           <a href="#">Политика за приватност</a>
           <a href="#">Услови за користење</a>
@@ -1389,6 +1406,64 @@
         if (!isOpen) item.classList.add('open');
       });
     });
+  </script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyA1TVtxYUNRbASRw7tKbqyQRYc68x8rBwk",
+      authDomain: "kole-nedelkovski.firebaseapp.com",
+      projectId: "kole-nedelkovski",
+      storageBucket: "kole-nedelkovski.firebasestorage.app",
+      messagingSenderId: "877496607272",
+      appId: "1:877496607272:web:67f095ecb48e2b61e18b1d",
+      measurementId: "G-BWZJXT9DGY"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const contactForm = document.getElementById('contactForm');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = {
+          firstName: document.getElementById('firstName').value,
+          lastName: document.getElementById('lastName').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          subject: document.getElementById('subject').value,
+          message: document.getElementById('message').value,
+          sentAt: new Date()
+        };
+
+        try {
+          // Save to Firestore silently
+          await addDoc(collection(db, "contact_messages"), formData);
+
+          const templateParams = {
+            sentAt: formData.sentAt,
+            firstName: formData.firstName,
+            email: formData.email,
+            message: formData.message
+          };
+
+          // Send to EmailJS silently
+          await emailjs.send("service_ex5zlu3", "template_ggs4xpe", templateParams);
+
+          // Clear form and log success to console for your reference
+          console.log("Database and Email successfully updated.");
+          contactForm.reset();
+
+        } catch (error) {
+          // Log the error for you to debug, but don't show the user
+          console.error("Firebase/EmailJS Error:", error);
+        }
+      });
+    }
   </script>
 </body>
 
