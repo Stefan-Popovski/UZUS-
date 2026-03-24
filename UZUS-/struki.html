@@ -1,0 +1,1915 @@
+<!DOCTYPE html>
+<html lang="mk">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Струки и образовни профили во ДСУ РЦСОО Коле Неделковски - Велес.">
+  <title>Струки | ДСУ РЦСОО „Коле Неделковски“ - Велес</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+  <style>
+    /* ══════════════════════════
+       HERO
+    ══════════════════════════ */
+    .st-hero {
+      position: relative;
+      min-height: 58vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding-top: 5rem;
+    }
+
+    .st-hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .st-hero-img {
+      position: absolute;
+      inset: 0;
+      background: url('images/hero-classroom.jpg') center/cover no-repeat;
+      animation: kenBurns 20s ease-out forwards;
+    }
+
+    .st-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg,
+          rgba(30, 58, 95, .78) 0%, rgba(30, 58, 95, .68) 50%, rgba(21, 42, 69, .84) 100%);
+    }
+
+    .st-hero-decor {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .st-hero-decor .hero-decor-circle {
+      position: absolute;
+      border: 2px solid rgba(212, 175, 55, .2);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .st-hero-decor .hero-decor-circle:nth-child(1) {
+      width: 8rem;
+      height: 8rem;
+      top: 5rem;
+      left: 2.5rem;
+    }
+
+    .st-hero-decor .hero-decor-circle:nth-child(2) {
+      width: 5rem;
+      height: 5rem;
+      top: 10rem;
+      right: 5rem;
+      background: rgba(212, 175, 55, .1);
+      border: none;
+      animation: floatSlow 10s ease-in-out infinite;
+    }
+
+    .st-hero-decor .hero-decor-circle:nth-child(3) {
+      width: 4rem;
+      height: 4rem;
+      bottom: 8rem;
+      left: 25%;
+      border-color: rgba(255, 255, 255, .1);
+      animation-delay: 2s;
+    }
+
+    .st-hero-decor .hero-decor-circle:nth-child(4) {
+      width: 6rem;
+      height: 6rem;
+      bottom: 3rem;
+      right: 33%;
+      background: rgba(255, 255, 255, .05);
+      border: none;
+      animation: floatSlow 10s ease-in-out infinite;
+      animation-delay: 1s;
+    }
+
+    .st-hero-grid {
+      position: absolute;
+      inset: 0;
+      opacity: .05;
+      background-image: linear-gradient(rgba(255, 255, 255, .1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .1) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    .st-hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3.5rem;
+      text-align: center;
+    }
+
+    .st-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .35rem 1rem;
+      background: rgba(212, 175, 55, .14);
+      border: 1px solid rgba(212, 175, 55, .35);
+      border-radius: 9999px;
+      margin-bottom: 1.5rem;
+    }
+
+    .st-hero-badge svg {
+      width: 8px;
+      height: 8px;
+      fill: var(--school-gold);
+    }
+
+    .st-hero-badge span {
+      font-family: var(--font-accent);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--school-gold);
+    }
+
+    .st-hero-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--white);
+      font-size: 2.25rem;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+
+    @media(min-width:640px) {
+      .st-hero-title {
+        font-size: 3.5rem;
+      }
+    }
+
+    @media(min-width:1024px) {
+      .st-hero-title {
+        font-size: 5rem;
+      }
+    }
+
+    .st-hero-title em {
+      font-style: italic;
+      color: var(--school-gold);
+    }
+
+    .st-hero-sub {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, .8);
+      max-width: 520px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.65;
+    }
+
+    .st-hero-breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      font-family: var(--font-accent);
+      font-size: .875rem;
+      color: rgba(255, 255, 255, .5);
+    }
+
+    .st-hero-breadcrumb a {
+      color: var(--school-gold);
+      text-decoration: none;
+    }
+
+    /* ══════════════════════════
+       INFO CARDS
+    ══════════════════════════ */
+    .st-info-strip {
+      background: var(--gray-50);
+      padding: 4rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .st-info-strip::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(30, 58, 95, .04), transparent 70%);
+      top: -150px;
+      right: -150px;
+      pointer-events: none;
+    }
+
+    .st-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .st-info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media(max-width:1024px) {
+      .st-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width:540px) {
+      .st-info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .st-info-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2rem 1.75rem;
+      text-align: center;
+      border: 1px solid var(--gray-100);
+      box-shadow: 0 4px 24px rgba(30, 58, 95, .06);
+      transition: transform .35s cubic-bezier(.4, 0, .2, 1), box-shadow .35s ease, border-color .35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .st-info-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--school-blue), var(--school-gold));
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .st-info-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-school-lg);
+      border-color: transparent;
+    }
+
+    .st-info-card:hover::after {
+      opacity: 1;
+    }
+
+    .st-info-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: rgba(30, 58, 95, .06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      transition: all .3s ease;
+    }
+
+    .st-info-card:hover .st-info-icon {
+      background: var(--school-blue);
+    }
+
+    .st-info-icon svg {
+      color: var(--school-blue);
+      width: 24px;
+      height: 24px;
+      transition: color .3s;
+    }
+
+    .st-info-card:hover .st-info-icon svg {
+      color: var(--school-gold);
+    }
+
+    .st-info-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: .5rem;
+    }
+
+    .st-info-card p {
+      font-size: .88rem;
+      color: var(--gray-500);
+      line-height: 1.6;
+    }
+
+    /* ══════════════════════════
+       STRUKI NAV TABS
+    ══════════════════════════ */
+    .st-nav {
+      background: var(--white);
+      padding: 2rem 0;
+      position: sticky;
+      top: 68px;
+      z-index: 50;
+      border-bottom: 1px solid var(--gray-100);
+      box-shadow: 0 4px 20px rgba(30, 58, 95, .06);
+    }
+
+    .st-nav-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    @media(max-width:800px) {
+      .st-nav-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width:440px) {
+      .st-nav-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .st-nav-btn {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .85rem 1.25rem;
+      border-radius: 14px;
+      background: var(--gray-50);
+      border: 1.5px solid var(--gray-200);
+      color: var(--gray-600);
+      font-family: var(--font-accent);
+      font-size: .85rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .25s ease;
+    }
+
+    .st-nav-btn svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .st-nav-btn:hover {
+      background: rgba(30, 58, 95, .07);
+      color: var(--school-blue);
+      border-color: rgba(30, 58, 95, .2);
+    }
+
+    .st-nav-btn.active {
+      background: var(--school-blue);
+      color: var(--white);
+      border-color: var(--school-blue);
+    }
+
+    .st-nav-btn.active svg {
+      color: var(--school-gold);
+    }
+
+    /* ══════════════════════════
+       SECTION SHARED
+    ══════════════════════════ */
+    .st-section {
+      padding: 6rem 0;
+      scroll-margin-top: 170px;
+    }
+
+    .st-section-alt {
+      background: var(--gray-50);
+    }
+
+    .st-section-white {
+      background: var(--white);
+    }
+
+    /* ── section header with accent bar ── */
+    .st-dept-head {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .st-dept-icon-wrap {
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--school-blue), var(--school-blue-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .st-dept-icon-wrap svg {
+      color: var(--school-gold);
+      width: 32px;
+      height: 32px;
+    }
+
+    .st-dept-title h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      line-height: 1.2;
+    }
+
+    .st-dept-title p {
+      font-size: .95rem;
+      color: var(--gray-500);
+      margin-top: .3rem;
+    }
+
+    /* ── intro grid ── */
+    .st-intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      margin-bottom: 4rem;
+    }
+
+    @media(max-width:900px) {
+      .st-intro-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .st-intro-img {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(30, 58, 95, .12);
+    }
+
+    .st-intro-img img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s ease;
+    }
+
+    .st-intro-img:hover img {
+      transform: scale(1.03);
+    }
+
+    .st-intro-text h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 1rem;
+    }
+
+    .st-intro-text p {
+      font-size: .95rem;
+      color: var(--gray-600);
+      line-height: 1.8;
+      margin-bottom: 1.75rem;
+    }
+
+    .st-stats-row {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .st-stat {
+      text-align: center;
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: 14px;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 2px 12px rgba(30, 58, 95, .05);
+      min-width: 90px;
+    }
+
+    .st-stat-n {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--school-blue);
+      line-height: 1;
+    }
+
+    .st-stat-l {
+      font-family: var(--font-accent);
+      font-size: .68rem;
+      font-weight: 600;
+      color: var(--gray-400);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-top: 3px;
+    }
+
+    /* alt intro: text left, image right */
+    .st-intro-grid.rev {
+      direction: rtl;
+    }
+
+    .st-intro-grid.rev>* {
+      direction: ltr;
+    }
+
+    /* ── profiles grid ── */
+    .st-profiles-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 1.75rem;
+    }
+
+    .st-profiles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 3.5rem;
+    }
+
+    @media(max-width:700px) {
+      .st-profiles-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .st-profile-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--gray-100);
+      box-shadow: 0 4px 20px rgba(30, 58, 95, .05);
+      transition: transform .35s ease, box-shadow .35s ease;
+      position: relative;
+    }
+
+    .st-profile-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--school-blue), var(--school-gold));
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .st-profile-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-school-lg);
+    }
+
+    .st-profile-card:hover::after {
+      opacity: 1;
+    }
+
+    .st-profile-head {
+      background: linear-gradient(135deg, var(--school-blue), var(--school-blue-light));
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .st-profile-head::after {
+      content: '';
+      position: absolute;
+      right: -20px;
+      top: -20px;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, rgba(212, 175, 55, .15), transparent 70%);
+      border-radius: 50%;
+    }
+
+    .st-profile-head-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, .12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .st-profile-head-icon svg {
+      color: var(--school-gold);
+      width: 18px;
+      height: 18px;
+    }
+
+    .st-profile-head h4 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .st-profile-body {
+      padding: 1.25rem 1.5rem;
+    }
+
+    .st-profile-dur {
+      font-family: var(--font-accent);
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--school-gold);
+      margin-bottom: .6rem;
+    }
+
+    .st-profile-desc {
+      font-size: .87rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .st-profile-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+
+    .st-tag {
+      padding: .22rem .75rem;
+      background: rgba(30, 58, 95, .07);
+      color: var(--school-blue);
+      font-family: var(--font-accent);
+      font-size: .7rem;
+      font-weight: 600;
+      border-radius: 9999px;
+    }
+
+    /* ── partners ── */
+    .st-partners-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 1.25rem;
+    }
+
+    .st-partners-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .st-partner {
+      padding: .5rem 1.25rem;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 9999px;
+      font-family: var(--font-accent);
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      transition: all .25s ease;
+    }
+
+    .st-partner:hover {
+      background: var(--school-blue);
+      color: var(--white);
+      border-color: var(--school-blue);
+      transform: translateY(-2px);
+    }
+
+    .st-section-alt .st-partner {
+      background: var(--gray-50);
+    }
+
+    .st-section-alt .st-partner:hover {
+      background: var(--school-blue);
+      color: var(--white);
+    }
+
+    /* ── equipment ── */
+    .st-equip-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 1.25rem;
+    }
+
+    .st-equip-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    @media(max-width:1024px) {
+      .st-equip-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width:540px) {
+      .st-equip-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .st-equip-card {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--gray-100);
+      box-shadow: 0 4px 16px rgba(30, 58, 95, .05);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .st-equip-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-school-lg);
+    }
+
+    .st-equip-img {
+      height: 160px;
+      overflow: hidden;
+    }
+
+    .st-equip-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+      display: block;
+    }
+
+    .st-equip-card:hover .st-equip-img img {
+      transform: scale(1.06);
+    }
+
+    .st-equip-info {
+      padding: 1rem 1.1rem 1.25rem;
+    }
+
+    .st-equip-info h4 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: .3rem;
+    }
+
+    .st-equip-info p {
+      font-size: .8rem;
+      color: var(--gray-500);
+      line-height: 1.6;
+    }
+
+    .st-section-alt .st-equip-card {
+      background: var(--white);
+    }
+
+    /* ══════════════════════════
+       BLUE CTA
+    ══════════════════════════ */
+    .st-blue {
+      padding: 6rem 0;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--school-blue) 0%, var(--school-blue-light) 50%, var(--school-blue-dark) 100%);
+      background-size: 200% 200%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    .st-blue-decor {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .st-blue-decor .bd-circle {
+      position: absolute;
+      border: 2px solid rgba(255, 255, 255, .1);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .st-blue-decor .bd-circle:nth-child(1) {
+      width: 5rem;
+      height: 5rem;
+      top: 2.5rem;
+      left: 2.5rem;
+    }
+
+    .st-blue-decor .bd-circle:nth-child(2) {
+      width: 8rem;
+      height: 8rem;
+      bottom: 2.5rem;
+      right: 2.5rem;
+      animation: floatSlow 10s ease-in-out infinite;
+    }
+
+    .st-blue-decor .bd-dot {
+      position: absolute;
+      width: 1rem;
+      height: 1rem;
+      background: rgba(212, 175, 55, .3);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .st-blue-decor .bd-dot:nth-child(3) {
+      top: 50%;
+      left: 25%;
+      animation-delay: 1s;
+    }
+
+    .st-blue-decor .bd-dot:nth-child(4) {
+      top: 33%;
+      right: 33%;
+      animation: floatSlow 10s ease-in-out infinite;
+      animation-delay: 2s;
+    }
+
+    .st-blue-decor .bd-star {
+      position: absolute;
+      color: rgba(212, 175, 55, .4);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .st-blue-decor .bd-star:nth-child(5) {
+      top: 5rem;
+      right: 5rem;
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .st-blue-decor .bd-star:nth-child(6) {
+      bottom: 5rem;
+      left: 5rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      animation-delay: 1s;
+    }
+
+    .st-blue-inner {
+      position: relative;
+      z-index: 10;
+    }
+
+    .st-cta-wrap {
+      max-width: 56rem;
+      margin: 0 auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+
+    .st-cta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .25rem 1rem;
+      background: rgba(255, 255, 255, .1);
+      color: var(--white);
+      font-family: var(--font-accent);
+      font-size: .875rem;
+      border-radius: 9999px;
+      margin-bottom: 1.5rem;
+    }
+
+    .st-cta-badge svg {
+      fill: var(--school-gold);
+      color: var(--school-gold);
+      width: 8px;
+      height: 8px;
+    }
+
+    .st-cta-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    @media(min-width:640px) {
+      .st-cta-title {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media(min-width:768px) {
+      .st-cta-title {
+        font-size: 3rem;
+      }
+    }
+
+    @media(min-width:1024px) {
+      .st-cta-title {
+        font-size: 3.75rem;
+      }
+    }
+
+    .st-cta-title em {
+      font-style: italic;
+      color: var(--school-gold);
+    }
+
+    .st-cta-desc {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, .8);
+      margin-bottom: 2.5rem;
+      max-width: 42rem;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+
+    .st-cta-btns {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    @media(min-width:640px) {
+      .st-cta-btns {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+
+    .st-cta-trust {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      color: rgba(255, 255, 255, .6);
+      font-size: .875rem;
+    }
+
+    .st-cta-trust span {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .st-cta-trust-dot {
+      width: .5rem;
+      height: .5rem;
+      background: var(--school-gold);
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-logo">
+        <div class="navbar-logo-icon"><img src="images/logo-belo%20copy.png" alt="Logo"></div>
+        <div class="navbar-logo-text">
+          <h1>ДСУ РЦСОО</h1>
+          <p>„Коле Неделковски"</p>
+        </div>
+      </a>
+      <div class="navbar-links">
+        <a href="index.html" class="navbar-link">Почетна</a>
+        <a href="index.html#about" class="navbar-link">За Нас</a>
+        <a href="struki.html" class="navbar-link">Струки</a>
+        <a href="profesori.html" class="navbar-link">Професори</a>
+        <a href="galerija.html" class="navbar-link">Галерија</a>
+        <a href="postignuvanja.html" class="navbar-link">Успеси</a>
+        <a href="kontakt.html" class="navbar-link">Контакт</a>
+        
+        <a href="https://ednevnik.edu.mk/" class="navbar-btn" aria-label="E-dnevnik Link" target="_blank">
+          <img src="./images/e-dnevnik.png" width="20" height="20" class="e-dnevnik-logo" alt="">
+        </a>
+      </div>
+      <div class="navbar-actions">
+        <button class="navbar-btn" aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg></button>
+        <a href="upisi.html" class="navbar-cta">Уписи 2026/2027</a>
+        <a href="kalkulator.html" class="navbar-cta navbar-cta-calc"><svg xmlns="http://www.w3.org/2000/svg" width="14"
+            height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <rect width="16" height="20" x="4" y="2" rx="2" />
+            <line x1="8" x2="16" y1="6" y2="6" />
+            <line x1="8" x2="16" y1="10" y2="10" />
+            <line x1="8" x2="12" y1="14" y2="14" />
+          </svg>Калкулатор</a>
+        <button class="navbar-menu-btn" aria-label="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="4" x2="20" y1="12" y2="12" />
+            <line x1="4" x2="20" y1="6" y2="6" />
+            <line x1="4" x2="20" y1="18" y2="18" />
+          </svg></button>
+      </div>
+    </div>
+    <div class="search-bar">
+      <div class="search-bar-content">
+        <div class="search-input-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg><input type="text" class="search-input" placeholder="Пребарувајте на страницата..."></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay"></div>
+  <div class="mobile-menu">
+    <div class="mobile-menu-content">
+      <a href="index.html" class="mobile-menu-link">Почетна</a>
+      <a href="index.html#about" class="mobile-menu-link">За Нас</a>
+      <a href="struki.html" class="mobile-menu-link">Струки</a>
+      <a href="profesori.html" class="mobile-menu-link">Професори</a>
+      <a href="galerija.html" class="mobile-menu-link">Галерија</a>
+      <a href="postignuvanja.html" class="mobile-menu-link">Успеси</a>
+      <a href="kontakt.html" class="mobile-menu-link">Контакт</a>
+      <a href="https://ednevnik.edu.mk/" class="mobile-menu-link" target="_blank">Е-Дневник</a>
+      <a href="upisi.html" class="mobile-menu-cta">Уписи 2026/2027</a>
+      <a href="kalkulator.html" class="mobile-menu-cta-calc">Калкулатор за бодови</a>
+      <div class="mobile-menu-contact">
+        <p>Контакт информации</p><a href="tel:043231460">043/231-460</a><a
+          href="mailto:kolenedelkovski@yahoo.com">kolenedelkovski@yahoo.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="st-hero">
+    <div class="st-hero-bg">
+      <div class="st-hero-img"></div>
+      <div class="st-hero-overlay"></div>
+    </div>
+    <div class="st-hero-decor">
+      <div class="hero-decor-circle"></div>
+      <div class="hero-decor-circle"></div>
+      <div class="hero-decor-circle"></div>
+      <div class="hero-decor-circle"></div>
+    </div>
+    <div class="st-hero-grid"></div>
+    <div class="st-hero-content">
+      <div class="st-hero-badge"><svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10" />
+        </svg><span>Нашите Струки</span></div>
+      <h1 class="st-hero-title">Нашите<br><em>Струки</em></h1>
+      <p class="st-hero-sub">Квалитетно стручно образование за идните професионалци</p>
+      <nav class="st-hero-breadcrumb"><a href="index.html">Почетна</a><span>/</span><span>Струки</span></nav>
+    </div>
+  </section>
+
+  <!-- ═══ INFO CARDS ═══ -->
+  <section class="st-info-strip">
+    <div class="st-container">
+      <div class="st-info-grid">
+        <div class="st-info-card reveal">
+          <div class="st-info-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 2 7 12 12 22 7 12 2" />
+              <polyline points="2 17 12 22 22 17" />
+              <polyline points="2 12 12 17 22 12" />
+            </svg></div>
+          <h3>4</h3>
+          <p>Стручни струки со широка палета на образовни профили</p>
+        </div>
+        <div class="st-info-card reveal" style="animation-delay:.08s">
+          <div class="st-info-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            </svg></div>
+          <h3>25+</h3>
+          <p>Образовни профили достапни за запишување</p>
+        </div>
+        <div class="st-info-card reveal" style="animation-delay:.16s">
+          <div class="st-info-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg></div>
+          <h3>862+</h3>
+          <p>Ученици запишани во тековната учебна година</p>
+        </div>
+        <div class="st-info-card reveal" style="animation-delay:.24s">
+          <div class="st-info-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg></div>
+          <h3>60+</h3>
+          <p>Години традиција во стручното образование</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ NAVIGATION TABS ═══ -->
+  <nav class="st-nav">
+    <div class="st-container">
+      <div class="st-nav-grid">
+        <a href="#mashinska" class="st-nav-btn active" id="tab-mashinska">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path
+              d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+          </svg>
+          Машинска Струка
+        </a>
+        <a href="#elektro" class="st-nav-btn" id="tab-elektro">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path
+              d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" />
+          </svg>
+          Електротехничка
+        </a>
+        <a href="#soobrakajna" class="st-nav-btn" id="tab-soobrakajna">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 18H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v11" />
+            <path d="M14 9h4l4 4v4c0 .6-.4 1-1 1h-2" />
+            <circle cx="7" cy="18" r="2" />
+            <path d="M15 18H9" />
+            <circle cx="17" cy="18" r="2" />
+          </svg>
+          Сообраќајна
+        </a>
+        <a href="#ugostitelstvo" class="st-nav-btn" id="tab-ugostitelstvo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+            <path d="M7 2v20" />
+            <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />
+          </svg>
+          Угостителска
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ МАШИНСКА СТРУКА ═══ -->
+  <section id="mashinska" class="st-section st-section-white">
+    <div class="st-container">
+      <div class="st-dept-head reveal">
+        <div class="st-dept-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <path
+              d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+          </svg></div>
+        <div class="st-dept-title">
+          <h2>Машинска Струка</h2>
+          <p>Машински техничар и сродни занимања</p>
+        </div>
+      </div>
+
+      <div class="st-intro-grid reveal">
+        <div class="st-intro-img"><img src="images/mashinska-workshop.jpg" alt="Машинска работилница"></div>
+        <div class="st-intro-text">
+          <h3>За струката</h3>
+          <p>Машинската струка е една од најстарите и најпрестижните во нашето училиште. Учениците стекнуваат знаења и
+            вештини за работа со современи машини и технологии за обработка на метали. Нашите лаборатории се опремени со
+            најсовремена опрема за практична обука.</p>
+          <div class="st-stats-row">
+            <div class="st-stat">
+              <div class="st-stat-n">5</div>
+              <div class="st-stat-l">профили</div>
+            </div>
+            <div class="st-stat">
+              <div class="st-stat-n">280</div>
+              <div class="st-stat-l">ученици</div>
+            </div>
+            <div class="st-stat">
+              <div class="st-stat-n">12</div>
+              <div class="st-stat-l">професори</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="st-profiles-title reveal">Образовни Профили</h3>
+      <div class="st-profiles-grid">
+        <div class="st-profile-card reveal">
+          <div class="st-profile-head">
+            <div class="st-profile-head-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path
+                  d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+              </svg></div>
+            <h4>Машински техничар/техничар за производно машинство</h4>
+          </div>
+          <div class="st-profile-body">
+            <p>45/55 поени минимум</p>
+            <p class="st-profile-dur">⏱ 4 години</p>
+            <p class="st-profile-desc">Проектирање, изработка и одржување на машински делови и склопови. Механика,
+              отпорност на материјали, термодинамика и машински елементи.</p>
+            <div class="st-profile-tags"><span class="st-tag">Техничко цртање</span><span
+                class="st-tag">Механика</span><span class="st-tag">CAD/CAM</span><span class="st-tag">CNC
+                технологии</span></div>
+          </div>
+        </div>
+        <div class="st-profile-card reveal" style="animation-delay:.06s">
+          <div class="st-profile-head">
+            <div class="st-profile-head-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" />
+              </svg></div>
+            <h4>Автомеханичар/заварувач</h4>
+          </div>
+          <div class="st-profile-body">
+            <p>30 поени минимум</p>
+            <p class="st-profile-dur">⏱ 3 години</p>
+            <p class="st-profile-desc">Поправка и одржување на моторни возила. Мотори, електрични инсталации, суспензија
+              и сопирачки системи на современи автомобили.</p>
+            <div class="st-profile-tags"><span class="st-tag">Мотори со внатрешно согорување</span><span
+                class="st-tag">Автоелектрика</span><span class="st-tag">Хидраулика</span><span
+                class="st-tag">Дијагностика</span></div>
+          </div>
+        </div>
+        <div class="st-profile-card reveal" style="animation-delay:.12s">
+          <div class="st-profile-head">
+            <div class="st-profile-head-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M12 2v4" />
+                <path d="m16.2 7.8 2.9-2.9" />
+                <path d="M18 12h4" />
+                <path d="m16.2 16.2 2.9 2.9" />
+                <path d="M12 18v4" />
+                <path d="m4.9 19.1 2.9-2.9" />
+                <path d="M2 12h4" />
+                <path d="m4.9 4.9 2.9 2.9" />
+              </svg></div>
+            <h4>Машински техничар за моторни возила</h4>
+          </div>
+          <div class="st-profile-body">
+            <p>45 поени минимум</p>
+            <p class="st-profile-dur">⏱ 4 години</p>
+            <p class="st-profile-desc">
+            <div class="st-profile-tags"><span class="st-tag"></span><span class="st-tag"></span><span
+                class="st-tag"></span><span class="st-tag"></span></div>
+          </div>
+        </div>
+        <div class="st-profile-card reveal" style="animation-delay:.18s">
+          <div class="st-profile-head">
+            <div class="st-profile-head-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <rect x="2" y="6" width="20" height="12" rx="2" />
+                <path d="M12 12h.01" />
+                <path d="M17 12h.01" />
+                <path d="M7 12h.01" />
+              </svg></div>
+            <h4>Техничар за компјутерско управување</h4>
+          </div>
+          <div class="st-profile-body">
+            <p>45 поени минимум</p>
+            <p class="st-profile-dur">⏱ 3 години</p>
+            <p class="st-profile-desc">
+            <div class="st-profile-tags"><span class="st-tag"></span><span class="st-tag"></span><span
+                class="st-tag"></span><span class="st-tag"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="st-partners-title reveal">Соработка со Компании</h3>
+      <div class="st-partners-row reveal">
+        <span class="st-partner">Макпетрол</span><span class="st-partner">ОКТА</span><span
+          class="st-partner">Железници</span><span class="st-partner">Макстил</span><span
+          class="st-partner">Бетон</span><span class="st-partner">АД Инг</span>
+      </div>
+
+      <h3 class="st-equip-title reveal">Опрема и Лаборатории</h3>
+      <div class="st-equip-grid">
+        <div class="st-equip-card reveal">
+          <div class="st-equip-img"><img src="images/cnc-machine.jpg" alt="CNC машина"></div>
+          <div class="st-equip-info">
+            <h4>CNC Стругови</h4>
+            <p>Современи компјутерски управувани стругови за прецизна обработка</p>
+          </div>
+        </div>
+        <div class="st-equip-card reveal" style="animation-delay:.06s">
+          <div class="st-equip-img"><img src="images/milling-machine.jpg" alt="Фреза"></div>
+          <div class="st-equip-info">
+            <h4>Универзални Фрези</h4>
+            <p>Професионални фрези за обработка на метални делови</p>
+          </div>
+        </div>
+        <div class="st-equip-card reveal" style="animation-delay:.12s">
+          <div class="st-equip-img"><img src="images/welding-station.jpg" alt="Заварување"></div>
+          <div class="st-equip-info">
+            <h4>Заварувачки Станици</h4>
+            <p>MIG, TIG и електролачно заварување</p>
+          </div>
+        </div>
+        <div class="st-equip-card reveal" style="animation-delay:.18s">
+          <div class="st-equip-img"><img src="images/cad-lab.jpg" alt="CAD лабораторија"></div>
+          <div class="st-equip-info">
+            <h4>CAD/CAM Лабораторија</h4>
+            <p>Компјутерско проектирање и симулација</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ЕЛЕКТРОТЕХНИЧКА ═══ -->
+  <section id="elektro" class="st-section st-section-alt">
+    <div class="st-container">
+      <div class="st-dept-head reveal">
+        <div class="st-dept-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <path
+              d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" />
+          </svg></div>
+        <div class="st-dept-title">
+          <h2>Електротехничка Струка</h2>
+          <p>Електротехничар и сродни занимања</p>
+        </div>
+      </div>
+
+      <div class="st-intro-grid rev reveal">
+        <div class="st-intro-img"><img src="images/elektro-lab.jpg" alt="Електротехничка лабораторија"></div>
+        <div class="st-intro-text">
+          <h3>За струката</h3>
+          <p>Електротехничката струка подготвува стручни кадри за работа во областа на електротехниката, електрониката и
+            информатичката технологија. Учениците стекнуваат знаења за електрични инсталации, електронски кола,
+            програмирање и мрежни технологии.</p>
+          <div class="st-stats-row">
+            <div class="st-stat">
+              <div class="st-stat-n">4</div>
+              <div class="st-stat-l">профили</div>
+            </div>
+            <div class="st-stat">
+              <div class="st-stat-n">320</div>
+              <div class="st-stat-l">ученици</div>
+            </div>
+            <div class="st-stat">
+              <div class="st-stat-n">14</div>
+              <div class="st-stat-l">професори</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="st-profiles-title reveal">Образовни Профили</h3>
+      <div class="st-profiles-grid">
+        <div class="st-profile-card reveal">
+          <div class="st-profile-head">
+            <div class="st-profile-head-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path
+                  d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" />
+              </svg></div>
+            <h4>Електротехничар - енергетичар</h4>
+          </div>
+          <div class="st-profile-body">
+            <p>45 поени минимум</p>
+            <p class="st-profile-dur">⏱ 4 години</p>
+            <p class="st-profile-desc">Проектирање, монтажа и одржување на електрични инсталации и уреди. Електрични
+              кола, машини, трансформатори и електроенергетика.</p>
+            <div class="st-profile-tags"><span class="st-tag">Електротехника</span><span class="st-tag">Електрични
+                инсталации</span><span class="st-tag">Електромотори</span><span class="st-tag">Мерења</span></div>
+          </div>
+        </div>
+        <div class="st-profile-card reveal" style="animation-delay:.06s">
+          <div class="st-profile-head">
+            <div class="st-profile-head-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <rect width="20" height="14" x="2" y="3" rx="2" />
+                <line x1="8" x2="16" y1="21" y2="21" />
+                <line x1="12" x2="12" y1="17" y2="21" />
+              </svg></div>
+            <h4>Техничар за индустриска мехатроника</h4>
+          </div>
+          <div class="st-profile-body">
+            <p>55 поени минимум</p>
+            <p class="st-profile-dur">⏱ 4 години</p>
+            <p class="st-profile-desc"></p>
+            <div class="st-profile-tags"><span class="st-tag"></span><span class="st-tag">
+              </span><span class="st-tag"></span><span class="st-tag"></span></div>
+          </div>
+        </div>
+        <div class="st-profile-card reveal" style="animation-delay:.12s">
+          <div class="st-profile-head">
+            <div class="st-profile-head-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="m18 16 4-4-4-4" />
+                <path d="m6 8-4 4 4 4" />
+                <path d="m14.5 4-5 16" />
+              </svg></div>
+            <h4>Електротехничар за компјутерска техника и автоматика</h4>
+          </div>
+          <div class="st-profile-body">
+            <p>55 поени минимум</p>
+            <p class="st-profile-dur">⏱ 4 години</p>
+            <p class="st-profile-desc">Програмирање и развој на софтвер. Повеќе програмски јазици, бази на податоци,
+              веб-развој и апликативно програмирање.</p>
+            <div class="st-profile-tags"><span class="st-tag">Програмирање</span><span class="st-tag">Бази на
+                податоци</span><span class="st-tag">Веб-развој</span><span class="st-tag">Мобилни апликации</span></div>
+          </div>
+        </div>
+        <div class="st-profile-card reveal" style="animation-delay:.18s">
+          <div class="st-profile-head">
+            <div class="st-profile-head-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7" />
+              </svg></div>
+            <h4>Електротехничар за електроника и телекомуникации</h4>
+          </div>
+          <div class="st-profile-body">
+            <p>50 поени минимум</p>
+            <p class="st-profile-dur">⏱ 4 години</p>
+            <p class="st-profile-desc"></p>
+            <div class="st-profile-tags"><span class="st-tag"></span><span class="st-tag"></span><span
+                class="st-tag"></span><span class="st-tag"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="st-partners-title reveal">Соработка со Компании</h3>
+      <div class="st-partners-row reveal">
+        <span class="st-partner">ЕВН</span><span class="st-partner">МЕПСО</span><span class="st-partner">А1</span><span
+          class="st-partner">Телеком</span><span class="st-partner">Нетселект</span><span
+          class="st-partner">Солвео</span>
+      </div>
+
+      <h3 class="st-equip-title reveal">Опрема и Лаборатории</h3>
+      <div class="st-equip-grid">
+        <div class="st-equip-card reveal">
+          <div class="st-equip-img"><img src="images/electronics-lab.jpg" alt="Електронска лабораторија"></div>
+          <div class="st-equip-info">
+            <h4>Електронска Лабораторија</h4>
+            <p>Осцилоскопи, генератори, напојувања и мерни инструменти</p>
+          </div>
+        </div>
+        <div class="st-equip-card reveal" style="animation-delay:.06s">
+          <div class="st-equip-img"><img src="images/computer-lab.jpg" alt="Компјутерска лабораторија"></div>
+          <div class="st-equip-info">
+            <h4>Компјутерски Лаборатории</h4>
+            <p>Современи компјутери за програмирање и мрежна обука</p>
+          </div>
+        </div>
+        <div class="st-equip-card reveal" style="animation-delay:.12s">
+          <div class="st-equip-img"><img src="images/installation-workshop.jpg" alt="Инсталациска работилница"></div>
+          <div class="st-equip-info">
+            <h4>Инсталациска Работилница</h4>
+            <p>Практична обука за електрични инсталации</p>
+          </div>
+        </div>
+        <div class="st-equip-card reveal" style="animation-delay:.18s">
+          <div class="st-equip-img"><img src="images/robotics-lab.jpg" alt="Роботика"></div>
+          <div class="st-equip-info">
+            <h4>Лабораторија за Роботика</h4>
+            <p>Роботи и автоматизирани системи</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ СООБРАЌАЈНА ═══ -->
+  <section id="soobrakajna" class="st-section st-section-white">
+    <div class="st-container">
+      <div class="st-dept-head reveal">
+        <div class="st-dept-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <path d="M5 18H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v11" />
+            <path d="M14 9h4l4 4v4c0 .6-.4 1-1 1h-2" />
+            <circle cx="7" cy="18" r="2" />
+            <path d="M15 18H9" />
+            <circle cx="17" cy="18" r="2" />
+          </svg></div>
+        <div class="st-dept-title">
+          <h2>Сообраќајна Струка</h2>
+          <p>Возач и сродни занимања</p>
+        </div>
+      </div>
+
+      <div class="st-intro-grid reveal">
+        <div class="st-intro-img"><img src="images/transport-training.jpg" alt="Сообраќајна обука"></div>
+        <div class="st-intro-text">
+          <h3>За струката</h3>
+          <p>Сообраќајната струка подготвува професионални возачи и сообраќајни техничари. Учениците стекнуваат
+            теоретски знаења и практични вештини за безбедно управување со возила, сообраќајни прописи и транспортна
+            логистика.</p>
+          <div class="st-stats-row">
+            <div class="st-stat">
+              <div class="st-stat-n">3</div>
+              <div class="st-stat-l">профили</div>
+            </div>
+            <div class="st-stat">
+              <div class="st-stat-n">180</div>
+              <div class="st-stat-l">ученици</div>
+            </div>
+            <div class="st-stat">
+              <div class="st-stat-n">8</div>
+              <div class="st-stat-l">професори</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="st-profiles-title reveal">Образовни Профили</h3>
+      <div class="st-profiles-grid">
+        <div class="st-profile-card reveal">
+          <div class="st-profile-head">
+            <div class="st-profile-head-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M5 18H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v11" />
+                <path d="M14 9h4l4 4v4c0 .6-.4 1-1 1h-2" />
+                <circle cx="7" cy="18" r="2" />
+                <circle cx="17" cy="18" r="2" />
+              </svg></div>
+            <h4>Техничар за траснпорт и шпедиција</h4>
+          </div>
+          <div class="st-profile-body">
+            <p>60 поени минимум</p>
+            <p class="st-profile-dur">⏱ 4 години</p>
+            <p class="st-profile-desc"></p>
+            <div class="st-profile-tags"><span class="st-tag">Сообраќајни прописи</span><span class="st-tag">Безбедна
+                возачка техника</span><span class="st-tag">Конструкција на возила</span><span class="st-tag">Прва
+                помош</span></div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="st-partners-title reveal">Соработка со Компании</h3>
+      <div class="st-partners-row reveal">
+        <span class="st-partner">Макпетрол</span><span class="st-partner">Железници</span><span class="st-partner">Даути
+          Транс</span><span class="st-partner">Балкан Експрес</span><span class="st-partner">Трансмет</span><span
+          class="st-partner">Автокоманди</span>
+      </div>
+
+      <h3 class="st-equip-title reveal">Опрема и Возила</h3>
+      <div class="st-equip-grid">
+        <div class="st-equip-card reveal">
+          <div class="st-equip-img"><img src="images/driving-school-car.jpg" alt="Возило за обука"></div>
+          <div class="st-equip-info">
+            <h4>Училишни Возила</h4>
+            <p>Современи возила за практична обука со двојни команди</p>
+          </div>
+        </div>
+        <div class="st-equip-card reveal" style="animation-delay:.06s">
+          <div class="st-equip-img"><img src="images/truck-training.jpg" alt="Камион за обука"></div>
+          <div class="st-equip-info">
+            <h4>Товарни Возила</h4>
+            <p>Камиони за обука на професионални возачи</p>
+          </div>
+        </div>
+        <div class="st-equip-card reveal" style="animation-delay:.12s">
+          <div class="st-equip-img"><img src="images/simulator.jpg" alt="Симулатор"></div>
+          <div class="st-equip-info">
+            <h4>Возачки Симулатор</h4>
+            <p>Компјутерски симулатор за безбедна обука</p>
+          </div>
+        </div>
+        <div class="st-equip-card reveal" style="animation-delay:.18s">
+          <div class="st-equip-img"><img src="images/traffic-classroom.jpg" alt="Училница"></div>
+          <div class="st-equip-info">
+            <h4>Сообраќајна Училница</h4>
+            <p>Модерна училница со интерактивна опрема</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ УГОСТИТЕЛСКА ═══ -->
+  <section id="ugostitelstvo" class="st-section st-section-alt">
+    <div class="st-container">
+      <div class="st-dept-head reveal">
+        <div class="st-dept-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+            <path d="M7 2v20" />
+            <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />
+          </svg></div>
+        <div class="st-dept-title">
+          <h2>Угостителско-Туристичка Струка</h2>
+          <p>Готвач, келнер и слаткар</p>
+        </div>
+      </div>
+
+      <div class="st-intro-grid rev reveal">
+        <div class="st-intro-img"><img src="images/culinary-kitchen.jpg" alt="Кулинарска работилница"></div>
+        <div class="st-intro-text">
+          <h3>За струката</h3>
+          <p>Угостителско-туристичката струка подготвува кадри за работа во угостителството и туризмот. Учениците
+            стекнуваат практични вештини за готвење, сервирање, барменство и хотелски услуги во нашите современи кујни и
+            училишен ресторан.</p>
+          <div class="st-stats-row">
+            <div class="st-stat">
+              <div class="st-stat-n">4</div>
+              <div class="st-stat-l">профили</div>
+            </div>
+            <div class="st-stat">
+              <div class="st-stat-n">150</div>
+              <div class="st-stat-l">ученици</div>
+            </div>
+            <div class="st-stat">
+              <div class="st-stat-n">10</div>
+              <div class="st-stat-l">професори</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="st-profiles-title reveal">Образовни Профили</h3>
+      <div class="st-profiles-grid">
+        <div class="st-profile-card reveal">
+          <div class="st-profile-head">
+            <div class="st-profile-head-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                <path d="M7 2v20" />
+              </svg></div>
+            <h4>Готвач/келнер</h4>
+          </div>
+          <div class="st-profile-body">
+            <p class="st-profile-dur">⏱ 3 години</p>
+            <p class="st-profile-desc">Практична обука во училишната кујна. Подготовка на јадења, сечење техники,
+              сосови, супи, главни јадења и десерти.</p>
+            <div class="st-profile-tags"><span class="st-tag">Технологија на готвење</span><span
+                class="st-tag">Сечење</span><span class="st-tag">Сосови и супи</span><span
+                class="st-tag">Пекарство</span></div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="st-partners-title reveal">Соработка со Компании</h3>
+      <div class="st-partners-row reveal">
+        <span class="st-partner">Хотелски Скопје</span><span class="st-partner">Ресторани Велес</span><span
+          class="st-partner">Кафулиња</span><span class="st-partner">Туристички Агенции</span><span
+          class="st-partner">Хотел Романтик</span><span class="st-partner">Ресторан Стар</span>
+      </div>
+
+      <h3 class="st-equip-title reveal">Опрема и Објекти</h3>
+      <div class="st-equip-grid">
+        <div class="st-equip-card reveal">
+          <div class="st-equip-img"><img src="images/school-kitchen.jpg" alt="Училишна кујна"></div>
+          <div class="st-equip-info">
+            <h4>Училишна Кујна</h4>
+            <p>Професионално опремена кујна за практична обука</p>
+          </div>
+        </div>
+        <div class="st-equip-card reveal" style="animation-delay:.06s">
+          <div class="st-equip-img"><img src="images/school-restaurant.jpg" alt="Училишен ресторан"></div>
+          <div class="st-equip-info">
+            <h4>Училишен Ресторан</h4>
+            <p>Ресторан каде учениците вежбаат сервирање</p>
+          </div>
+        </div>
+        <div class="st-equip-card reveal" style="animation-delay:.12s">
+          <div class="st-equip-img"><img src="images/bar-station.jpg" alt="Бар станица"></div>
+          <div class="st-equip-info">
+            <h4>Бар Станица</h4>
+            <p>Комплетно опремен бар за обука на бармани</p>
+          </div>
+        </div>
+        <div class="st-equip-card reveal" style="animation-delay:.18s">
+          <div class="st-equip-img"><img src="images/bakery-workshop.jpg" alt="Пекарска работилница"></div>
+          <div class="st-equip-info">
+            <h4>Пекарска Работилница</h4>
+            <p>Работилница за пекарство и слаткарство</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="st-blue">
+    <div class="st-blue-decor">
+      <div class="bd-circle"></div>
+      <div class="bd-circle"></div>
+      <div class="bd-dot"></div>
+      <div class="bd-dot"></div>
+      <svg class="bd-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2">
+        <path
+          d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+      </svg>
+      <svg class="bd-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2">
+        <path
+          d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+      </svg>
+    </div>
+    <div class="st-blue-inner st-container">
+      <div class="st-cta-wrap reveal">
+        <div class="st-cta-badge"><svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" />
+          </svg>Уписи 2026/2027</div>
+        <h2 class="st-cta-title">Избери ја<br>твојата <em>струка!</em></h2>
+        <p class="st-cta-desc">Секоја струка е патот кон успешна кариера. Запиши се и почни да ја градиш иднината денес.
+        </p>
+        <div class="st-cta-btns">
+          <a href="upisi.html" class="btn btn-primary cta-btn-pulse">Уписи 2026/2027 сега <svg
+              xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg></a>
+          <a href="kontakt.html" class="btn btn-outline"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>Контактирајте нѐ</a>
+        </div>
+        <div class="st-cta-trust">
+          <span><span class="st-cta-trust-dot"></span>Бесплатна консултација</span>
+          <span><span class="st-cta-trust-dot"></span>Индивидуален пристап</span>
+          <span><span class="st-cta-trust-dot"></span>Гаранција за квалитет</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-border"></div>
+
+    <div class="footer-container">
+      <div class="footer-grid">
+        <!-- Column 1 -->
+        <div class="footer-column">
+          <a href="index.html" class="footer-logo">
+            <div class="footer-logo-icon">
+              <img src="images/logo-yellow.png" alt="Logo">
+            </div>
+            <div class="footer-logo-text">
+              <h3>ДСУ РЦСОО</h3>
+              <p>„Коле Неделковски“</p>
+            </div>
+          </a>
+
+          <p class="footer-text">Квалитетно стручно образование од 1965 година. Подготвуваме идни професионалци за
+            пазарот на труд.</p>
+
+          <div class="footer-contact">
+            <a href="https://maps.google.com/?q=Андон+Шурков+4а+Велес" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>Андон Шурков бр.4а, Велес</span>
+            </a>
+            <a href="tel:043231460">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              <span>043/231-460</span>
+            </a>
+            <a href="mailto:kolenedelkovski@yahoo.com">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+              <span>kolenedelkovski@yahoo.com</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="footer-column">
+          <h4 class="footer-title">Брзи линкови</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Почетна</a></li>
+            <li><a href="index.html#about" class="footer-link">За Нас</a></li>
+            <li><a href="struki.html" class="footer-link">Струки</a></li>
+            <li><a href="profesori.html" class="footer-link">Професори</a></li>
+            <li><a href="galerija.html" class="footer-link">Галерија</a></li>
+            <li><a href="postignuvanja.html" class="footer-link">Успеси</a></li>
+            <li><a href="kontakt.html" class="footer-link">Контакт</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="footer-column">
+          <h4 class="footer-title">Ресурси</h4>
+          <ul class="footer-links">
+            <li><a href="https://ednevnik.edu.mk/" class="footer-link" target="_blank">E-Дневник</a></li>
+            <li><a href="https://csoo.edu.mk/" class="footer-link" target="_blank">Центар за стручно образование</a>
+            </li>
+            <li><a href="kalkulator.html" class="footer-link" target="_blank">Калкулатор за бодови</a></li>
+            <li><a href="https://e-uslugi.mon.gov.mk/" class="footer-link" target="_blank">Систем за упис во средно</a>
+            </li>
+            <li><a href="https://heyzine.com/flip-book/44ad87f9d5.html" class="footer-link" target="_blank">Е-Весник
+                ЕМКУС</a>
+            <li><a href="http://matura.gov.mk/" class="footer-link" target="_blank">Државна матура</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4 -->
+        <div class="footer-column">
+          <h4 class="footer-title">Следете нѐ</h4>
+          <p class="footer-social-text">Бидете во тек со најновите информации и настани.</p>
+
+          <div class="footer-social">
+            <a href="https://www.facebook.com/dsurcsookolenedelkovski" aria-label="Facebook" target="_blank"
+              rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/rcsoo.kolenedelkovski.veles/" aria-label="Instagram" target="_blank"
+              rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+              </svg>
+            </a>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-container">
+        <p class="footer-copyright">© 2026 ДСУ РЦСОО „Коле Неделковски“. Сите права задржани.</p>
+        <div class="footer-legal">
+          <a href="#">Политика за приватност</a>
+          <a href="#">Услови за користење</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <button class="scroll-to-top" aria-label="Scroll to top"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+      height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="m18 15-6-6-6 6" />
+    </svg></button>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Highlight active tab on scroll
+    const sections = ['mashinska', 'elektro', 'soobrakajna', 'ugostitelstvo'];
+    const tabs = sections.map(id => document.getElementById('tab-' + id));
+
+    let isClickScrolling = false;
+    tabs.forEach(tab => {
+      if (tab) {
+        tab.addEventListener('click', () => {
+          isClickScrolling = true;
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          // Allow smooth transition to finish before re-enabling observer (approx 800ms)
+          setTimeout(() => { isClickScrolling = false; }, 800);
+        });
+      }
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !isClickScrolling) {
+          tabs.forEach(t => t.classList.remove('active'));
+          const tab = document.getElementById('tab-' + entry.target.id);
+          if (tab) tab.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(id => { const el = document.getElementById(id); if (el) observer.observe(el); });
+
+    // Hide sticky nav at blue section (pixel-perfect touch detection)
+    const stNav = document.querySelector('.st-nav');
+    const stBlue = document.querySelector('.st-blue');
+    if (stNav && stBlue) {
+      window.addEventListener('scroll', () => {
+        const navRect = stNav.getBoundingClientRect();
+        const blueRect = stBlue.getBoundingClientRect();
+        stNav.classList.toggle('hide-sticky', blueRect.top <= navRect.bottom + 5);
+      }, { passive: true });
+    }
+  </script>
+</body>
+
+</html>

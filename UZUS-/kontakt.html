@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="mk">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Контакт информации за ДСУ РЦСОО Коле Неделковски - Велес.">
+  <title>Контакт | ДСУ РЦСОО „Коле Неделковски“ - Велес</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+  <style>
+    /* ══════════════════════════
+       HERO
+    ══════════════════════════ */
+    .k-hero {
+      position: relative;
+      min-height: 58vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding-top: 5rem;
+    }
+
+    .k-hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .k-hero-img {
+      position: absolute;
+      inset: 0;
+      background: url('images/hero-classroom.jpg') center/cover no-repeat;
+      animation: kenBurns 20s ease-out forwards;
+    }
+
+    .k-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg,
+          rgba(30, 58, 95, .78) 0%,
+          rgba(30, 58, 95, .68) 50%,
+          rgba(21, 42, 69, .84) 100%);
+    }
+
+    .k-hero-decor {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .k-hero-decor .hero-decor-circle {
+      position: absolute;
+      border: 2px solid rgba(212, 175, 55, .2);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .k-hero-decor .hero-decor-circle:nth-child(1) {
+      width: 8rem;
+      height: 8rem;
+      top: 5rem;
+      left: 2.5rem;
+    }
+
+    .k-hero-decor .hero-decor-circle:nth-child(2) {
+      width: 5rem;
+      height: 5rem;
+      top: 10rem;
+      right: 5rem;
+      background: rgba(212, 175, 55, .1);
+      border: none;
+      animation: floatSlow 10s ease-in-out infinite;
+    }
+
+    .k-hero-decor .hero-decor-circle:nth-child(3) {
+      width: 4rem;
+      height: 4rem;
+      bottom: 8rem;
+      left: 25%;
+      border-color: rgba(255, 255, 255, .1);
+      animation-delay: 2s;
+    }
+
+    .k-hero-decor .hero-decor-circle:nth-child(4) {
+      width: 6rem;
+      height: 6rem;
+      bottom: 3rem;
+      right: 33%;
+      background: rgba(255, 255, 255, .05);
+      border: none;
+      animation: floatSlow 10s ease-in-out infinite;
+      animation-delay: 1s;
+    }
+
+    .k-hero-grid {
+      position: absolute;
+      inset: 0;
+      opacity: .05;
+      background-image: linear-gradient(rgba(255, 255, 255, .1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .1) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    .k-hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3.5rem;
+      text-align: center;
+    }
+
+    .k-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .35rem 1rem;
+      background: rgba(212, 175, 55, .14);
+      border: 1px solid rgba(212, 175, 55, .35);
+      border-radius: 9999px;
+      margin-bottom: 1.5rem;
+    }
+
+    .k-hero-badge svg {
+      width: 8px;
+      height: 8px;
+      fill: var(--school-gold);
+    }
+
+    .k-hero-badge span {
+      font-family: var(--font-accent);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--school-gold);
+    }
+
+    .k-hero-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--white);
+      font-size: 2.25rem;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+
+    @media(min-width:640px) {
+      .k-hero-title {
+        font-size: 3.5rem;
+      }
+    }
+
+    @media(min-width:1024px) {
+      .k-hero-title {
+        font-size: 5rem;
+      }
+    }
+
+    .k-hero-title em {
+      font-style: italic;
+      color: var(--school-gold);
+    }
+
+    .k-hero-sub {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, .8);
+      max-width: 520px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.65;
+    }
+
+    .k-hero-breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      font-family: var(--font-accent);
+      font-size: .875rem;
+      color: rgba(255, 255, 255, .5);
+    }
+
+    .k-hero-breadcrumb a {
+      color: var(--school-gold);
+      text-decoration: none;
+    }
+
+    /* ══════════════════════════
+       INFO CARDS STRIP
+    ══════════════════════════ */
+    .k-info-strip {
+      background: var(--gray-50);
+      padding: 4rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .k-info-strip::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(30, 58, 95, .04), transparent 70%);
+      top: -150px;
+      right: -150px;
+      pointer-events: none;
+    }
+
+    .k-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .k-info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media(max-width:1024px) {
+      .k-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width:540px) {
+      .k-info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .k-info-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2rem 1.75rem;
+      text-align: center;
+      border: 1px solid var(--gray-100);
+      box-shadow: 0 4px 24px rgba(30, 58, 95, .06);
+      transition: transform .35s cubic-bezier(.4, 0, .2, 1), box-shadow .35s ease, border-color .35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .k-info-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--school-blue), var(--school-gold));
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .k-info-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-school-lg);
+      border-color: transparent;
+    }
+
+    .k-info-card:hover::after {
+      opacity: 1;
+    }
+
+    .k-info-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: rgba(30, 58, 95, .06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      transition: all .3s ease;
+    }
+
+    .k-info-card:hover .k-info-icon {
+      background: var(--school-blue);
+    }
+
+    .k-info-icon svg {
+      color: var(--school-blue);
+      width: 24px;
+      height: 24px;
+      transition: color .3s;
+    }
+
+    .k-info-card:hover .k-info-icon svg {
+      color: var(--school-gold);
+    }
+
+    .k-info-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: .75rem;
+    }
+
+    .k-info-card p,
+    .k-info-card p a {
+      font-size: .9rem;
+      color: var(--gray-600);
+      line-height: 1.75;
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .k-info-card p a:hover {
+      color: var(--school-blue);
+    }
+
+    /* ══════════════════════════
+       MAIN SECTION: FORM + MAP
+    ══════════════════════════ */
+    .k-main {
+      padding: 6rem 0;
+      background: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .k-main::before {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212, 175, 55, .04), transparent 70%);
+      pointer-events: none;
+    }
+
+    .k-main-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    @media(max-width:900px) {
+      .k-main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ── FORM ── */
+    .k-form-wrap {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 3rem;
+      box-shadow: 0 8px 40px rgba(30, 58, 95, .08);
+      border: 1px solid var(--gray-100);
+      border-top: 5px solid var(--school-blue);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .k-form-wrap::after {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212, 175, 55, .07), transparent 70%);
+      pointer-events: none;
+    }
+
+    .k-form-title {
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: .5rem;
+    }
+
+    .k-form-sub {
+      font-size: .9rem;
+      color: var(--gray-500);
+      margin-bottom: 2.25rem;
+      line-height: 1.6;
+    }
+
+    .k-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    @media(max-width:540px) {
+      .k-form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .k-form-group {
+      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .k-form-group label {
+      font-family: var(--font-accent);
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--school-blue);
+      margin-bottom: .45rem;
+      letter-spacing: .02em;
+    }
+
+    .k-required {
+      color: var(--school-gold);
+      margin-left: 2px;
+    }
+
+    .k-form-group input,
+    .k-form-group select,
+    .k-form-group textarea {
+      width: 100%;
+      padding: .875rem 1.1rem;
+      background: var(--gray-50);
+      border: 2px solid transparent;
+      border-radius: 12px;
+      font-family: var(--font-body);
+      font-size: .9rem;
+      color: var(--gray-900);
+      transition: all .25s ease;
+      outline: none;
+    }
+
+    .k-form-group input::placeholder,
+    .k-form-group textarea::placeholder {
+      color: var(--gray-400);
+    }
+
+    .k-form-group input:focus,
+    .k-form-group select:focus,
+    .k-form-group textarea:focus {
+      background: var(--white);
+      border-color: var(--school-gold);
+      box-shadow: 0 0 0 4px rgba(212, 175, 55, .1);
+    }
+
+    .k-form-group textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .k-form-check {
+      display: flex;
+      align-items: flex-start;
+      gap: .65rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .k-form-check input[type="checkbox"] {
+      margin-top: .2rem;
+      flex-shrink: 0;
+      accent-color: var(--school-blue);
+      width: 16px;
+      height: 16px;
+    }
+
+    .k-form-check label {
+      font-size: .82rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+
+    .k-form-check label a {
+      color: var(--school-blue);
+    }
+
+    .k-submit {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      padding: 1rem 2rem;
+      background: var(--school-blue);
+      color: var(--white);
+      font-family: var(--font-accent);
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all .3s ease;
+      box-shadow: 0 8px 24px rgba(30, 58, 95, .25);
+    }
+
+    .k-submit:hover {
+      background: var(--school-blue-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-school-lg);
+    }
+
+    .k-submit svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* ── MAP SIDE ── */
+    .k-map-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .k-map-header {
+      margin-bottom: .25rem;
+    }
+
+    .k-map-header h2 {
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: .5rem;
+    }
+
+    .k-map-header p {
+      font-size: .9rem;
+      color: var(--gray-500);
+    }
+
+    .k-map-frame {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(30, 58, 95, .1);
+      border: 1px solid var(--gray-100);
+      height: 340px;
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+
+    .k-map-frame:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-school-lg);
+    }
+
+    .k-map-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .k-map-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      background: var(--gray-50);
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+      border: 1px solid var(--gray-100);
+    }
+
+    .k-map-addr {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-size: .87rem;
+      color: var(--gray-600);
+    }
+
+    .k-map-addr svg {
+      color: var(--school-blue);
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* Quick contact links below map */
+    .k-quick-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .k-quick-link {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 2px 12px rgba(30, 58, 95, .05);
+      transition: all .25s ease;
+    }
+
+    .k-quick-link:hover {
+      border-color: var(--school-blue);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-school);
+    }
+
+    .k-quick-link:hover .k-ql-icon {
+      background: var(--school-blue);
+    }
+
+    .k-quick-link:hover .k-ql-icon svg {
+      color: var(--school-gold);
+    }
+
+    .k-ql-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(30, 58, 95, .06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all .25s;
+    }
+
+    .k-ql-icon svg {
+      color: var(--school-blue);
+      width: 18px;
+      height: 18px;
+      transition: color .25s;
+    }
+
+    .k-ql-lbl {
+      font-family: var(--font-accent);
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--gray-400);
+      margin-bottom: 2px;
+    }
+
+    .k-ql-val {
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--gray-800);
+    }
+
+    /* ══════════════════════════
+       FAQ — inside blue section
+    ══════════════════════════ */
+    .k-blue {
+      padding: 6rem 0;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--school-blue) 0%, var(--school-blue-light) 50%, var(--school-blue-dark) 100%);
+      background-size: 200% 200%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    .k-blue-decor {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .k-blue-decor .bd-circle {
+      position: absolute;
+      border: 2px solid rgba(255, 255, 255, .1);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .k-blue-decor .bd-circle:nth-child(1) {
+      width: 5rem;
+      height: 5rem;
+      top: 2.5rem;
+      left: 2.5rem;
+    }
+
+    .k-blue-decor .bd-circle:nth-child(2) {
+      width: 8rem;
+      height: 8rem;
+      bottom: 2.5rem;
+      right: 2.5rem;
+      animation: floatSlow 10s ease-in-out infinite;
+    }
+
+    .k-blue-decor .bd-dot {
+      position: absolute;
+      width: 1rem;
+      height: 1rem;
+      background: rgba(212, 175, 55, .3);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .k-blue-decor .bd-dot:nth-child(3) {
+      top: 50%;
+      left: 25%;
+      animation-delay: 1s;
+    }
+
+    .k-blue-decor .bd-dot:nth-child(4) {
+      top: 33%;
+      right: 33%;
+      animation: floatSlow 10s ease-in-out infinite;
+      animation-delay: 2s;
+    }
+
+    .k-blue-decor .bd-star {
+      position: absolute;
+      color: rgba(212, 175, 55, .4);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .k-blue-decor .bd-star:nth-child(5) {
+      top: 5rem;
+      right: 5rem;
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .k-blue-decor .bd-star:nth-child(6) {
+      bottom: 5rem;
+      left: 5rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      animation-delay: 1s;
+    }
+
+    .k-blue-inner {
+      position: relative;
+      z-index: 10;
+    }
+
+    /* FAQ inside blue */
+    .k-faq-head {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .k-faq-head .section-label {
+      background: rgba(255, 255, 255, .12);
+      color: rgba(255, 255, 255, .85);
+    }
+
+    .k-faq-head .section-title {
+      color: var(--white);
+    }
+
+    .k-faq-head .section-description {
+      color: rgba(255, 255, 255, .65);
+    }
+
+    .k-faq-list {
+      max-width: 780px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+
+    .k-faq-item {
+      background: rgba(255, 255, 255, .07);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: background .3s ease, border-color .3s ease;
+    }
+
+    .k-faq-item.open {
+      background: rgba(255, 255, 255, .12);
+      border-color: rgba(212, 175, 55, .3);
+    }
+
+    .k-faq-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.35rem 1.75rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-accent);
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--white);
+      text-align: left;
+      gap: 1rem;
+      transition: color .25s;
+    }
+
+    .k-faq-item.open .k-faq-btn {
+      color: var(--school-gold);
+    }
+
+    .k-faq-btn svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      transition: transform .35s ease;
+      color: rgba(255, 255, 255, .5);
+    }
+
+    .k-faq-item.open .k-faq-btn svg {
+      transform: rotate(180deg);
+      color: var(--school-gold);
+    }
+
+    .k-faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s ease, padding .4s ease;
+      padding: 0 1.75rem;
+    }
+
+    .k-faq-item.open .k-faq-answer {
+      max-height: 300px;
+      padding-bottom: 1.35rem;
+    }
+
+    .k-faq-answer p {
+      font-size: .9rem;
+      color: rgba(255, 255, 255, .72);
+      line-height: 1.75;
+    }
+
+    /* ══════════════════════════
+       RESPONSIVE
+    ══════════════════════════ */
+    @media(max-width:640px) {
+      .k-form-wrap {
+        padding: 2rem 1.25rem;
+      }
+
+      .k-quick-links {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <script type="text/javascript">
+    (function () {
+      // Replace with your actual Public Key from Account Settings -> API Keys
+      emailjs.init({
+        publicKey: "covGW8o0Venl-FZTX",
+      });
+    })();
+  </script>
+</head>
+
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-logo">
+        <div class="navbar-logo-icon"><img src="images/logo-belo%20copy.png" alt="Logo"></div>
+        <div class="navbar-logo-text">
+          <h1>ДСУ РЦСОО</h1>
+          <p>„Коле Неделковски"</p>
+        </div>
+      </a>
+      <div class="navbar-links">
+        <a href="index.html" class="navbar-link">Почетна</a>
+        <a href="index.html#about" class="navbar-link">За Нас</a>
+        <a href="struki.html" class="navbar-link">Струки</a>
+        <a href="profesori.html" class="navbar-link">Професори</a>
+        <a href="galerija.html" class="navbar-link">Галерија</a>
+        <a href="postignuvanja.html" class="navbar-link">Успеси</a>
+        <a href="kontakt.html" class="navbar-link">Контакт</a>
+        
+        <a href="https://ednevnik.edu.mk/" class="navbar-btn" aria-label="E-dnevnik Link" target="_blank">
+          <img src="./images/e-dnevnik.png" width="20" height="20" class="e-dnevnik-logo" alt="">
+        </a>
+      </div>
+      <div class="navbar-actions">
+        <button class="navbar-btn" aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg></button>
+        <a href="upisi.html" class="navbar-cta">Уписи 2026/2027</a>
+        <a href="kalkulator.html" class="navbar-cta navbar-cta-calc"><svg xmlns="http://www.w3.org/2000/svg" width="14"
+            height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <rect width="16" height="20" x="4" y="2" rx="2" />
+            <line x1="8" x2="16" y1="6" y2="6" />
+            <line x1="8" x2="16" y1="10" y2="10" />
+            <line x1="8" x2="12" y1="14" y2="14" />
+          </svg>Калкулатор</a>
+        <button class="navbar-menu-btn" aria-label="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="4" x2="20" y1="12" y2="12" />
+            <line x1="4" x2="20" y1="6" y2="6" />
+            <line x1="4" x2="20" y1="18" y2="18" />
+          </svg></button>
+      </div>
+    </div>
+    <div class="search-bar">
+      <div class="search-bar-content">
+        <div class="search-input-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg><input type="text" class="search-input" placeholder="Пребарувајте на страницата..."></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay"></div>
+  <div class="mobile-menu">
+    <div class="mobile-menu-content">
+      <a href="index.html" class="mobile-menu-link">Почетна</a>
+      <a href="index.html#about" class="mobile-menu-link">За Нас</a>
+      <a href="struki.html" class="mobile-menu-link">Струки</a>
+      <a href="profesori.html" class="mobile-menu-link">Професори</a>
+      <a href="galerija.html" class="mobile-menu-link">Галерија</a>
+      <a href="postignuvanja.html" class="mobile-menu-link">Успеси</a>
+      <a href="kontakt.html" class="mobile-menu-link">Контакт</a>
+      <a href="https://ednevnik.edu.mk/" class="mobile-menu-link" target="_blank">Е-Дневник</a>
+      <a href="upisi.html" class="mobile-menu-cta">Уписи 2026/2027</a>
+      <a href="kalkulator.html" class="mobile-menu-cta-calc">Калкулатор за бодови</a>
+      <div class="mobile-menu-contact">
+        <p>Контакт информации</p><a href="tel:043231460">043/231-460</a><a
+          href="mailto:kolenedelkovski@yahoo.com">kolenedelkovski@yahoo.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="k-hero">
+    <div class="k-hero-bg">
+      <div class="k-hero-img"></div>
+      <div class="k-hero-overlay"></div>
+    </div>
+    <div class="k-hero-decor">
+      <div class="hero-decor-circle"></div>
+      <div class="hero-decor-circle"></div>
+      <div class="hero-decor-circle"></div>
+      <div class="hero-decor-circle"></div>
+    </div>
+    <div class="k-hero-grid"></div>
+    <div class="k-hero-content">
+      <div class="k-hero-badge">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10" />
+        </svg>
+        <span>Стапете во контакт</span>
+      </div>
+      <h1 class="k-hero-title">Контактирајте<br><em>со нас</em></h1>
+      <p class="k-hero-sub">Секогаш сме тука за вашите прашања, сугестии и соработка. Со задоволство ќе Ви одговориме.
+      </p>
+      <nav class="k-hero-breadcrumb">
+        <a href="index.html">Почетна</a><span>/</span><span>Контакт</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ═══ INFO CARDS ═══ -->
+  <section class="k-info-strip">
+    <div class="k-container">
+      <div class="k-info-grid">
+
+        <a href="https://maps.google.com/?q=Андон+Шурков+4а+Велес" target="_blank" rel="noopener noreferrer" <div
+          class="k-info-card reveal">
+          <div class="k-info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+          </div>
+          <h3>Адреса</h3>
+          <p>Ул. Андон Шурков бр. 4а<br>1400 Велес<br>Северна Македонија</p>
+        </a>
+
+        <div class="k-info-card reveal" style="animation-delay:.08s">
+          <div class="k-info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+          </div>
+          <h3>Телефон</h3>
+          <p>
+            <a href="tel:043231460">043/231-460</a><br>
+            <a href="tel:043231461">043/231-461</a><br>
+            <a href="tel:043231462">043/231-462</a>
+          </p>
+        </div>
+
+        <div class="k-info-card reveal" style="animation-delay:.16s">
+          <div class="k-info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <rect width="20" height="16" x="2" y="4" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+          </div>
+          <h3>Email</h3>
+          <p>
+            <a href="mailto:kolenedelkovski@yahoo.com">kolenedelkovski@yahoo.com</a><br>
+            <a href="mailto:info@kolenedelkovski.edu.mk">info@kolenedelkovski.edu.mk</a>
+          </p>
+        </div>
+
+        <div class="k-info-card reveal" style="animation-delay:.24s">
+          <div class="k-info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+          </div>
+          <h3>Работно Време</h3>
+          <p>Пон – Пет: 07:00 – 19:30<br>Сабота – Недела:<br>Затворено</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FORM + MAP ═══ -->
+  <section class="k-main">
+    <div class="k-container">
+      <div class="k-main-grid">
+
+        <!-- FORM -->
+        <div class="k-form-wrap reveal">
+          <h2 class="k-form-title">Испратете ни порака</h2>
+          <p class="k-form-sub">Пополнете го формуларот и ние ќе Ве контактираме наскоро.</p>
+
+          <form id="contactForm">
+            <div class="k-form-row">
+              <div class="k-form-group">
+                <label for="firstName">Име <span class="k-required">*</span></label>
+                <input type="text" id="firstName" name="firstName" required placeholder="Вашето име">
+              </div>
+              <div class="k-form-group">
+                <label for="lastName">Презиме <span class="k-required">*</span></label>
+                <input type="text" id="lastName" name="lastName" required placeholder="Вашето презиме">
+              </div>
+            </div>
+            <div class="k-form-row">
+              <div class="k-form-group">
+                <label for="email">Email <span class="k-required">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="your@email.com">
+              </div>
+              <div class="k-form-group">
+                <label for="phone">Телефон</label>
+                <input type="tel" id="phone" name="phone" placeholder="07X/XXX-XXX">
+              </div>
+            </div>
+            <div class="k-form-group">
+              <label for="subject">Наслов <span class="k-required">*</span></label>
+              <select id="subject" name="subject" required>
+                <option value="">Изберете наслов на пораката</option>
+                <option value="upis">Информации за упис</option>
+                <option value="struki">Информации за струки</option>
+                <option value="praksa">Стручна пракса</option>
+                <option value="sorabotka">Соработка</option>
+                <option value="drugo">Друго</option>
+              </select>
+            </div>
+            <div class="k-form-group">
+              <label for="message">Порака <span class="k-required">*</span></label>
+              <textarea id="message" name="message" rows="5" required
+                placeholder="Напишете ја вашата порака..."></textarea>
+            </div>
+            <div class="k-form-check">
+              <input type="checkbox" id="privacy" name="privacy" required>
+              <label for="privacy">Ги прифаќам <a href="#">условите за користење</a> и <a href="#">политиката за
+                  приватност</a> <span class="k-required">*</span></label>
+            </div>
+            <button type="submit" class="k-submit">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="m22 2-7 20-4-9-9-4 20-7z" />
+              </svg>
+              Испрати порака
+            </button>
+          </form>
+        </div>
+
+        <!-- MAP SIDE -->
+        <div class="k-map-wrap reveal" style="animation-delay:.1s">
+          <div class="k-map-header">
+            <h2>Наша Локација</h2>
+            <p>Посетете нѐ или пронајдете нѐ на картата</p>
+          </div>
+
+          <div class="k-map-frame">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5956.1674424401845!2d21.76197738014833!3d41.718712228572926!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13542bd5737a0c0d%3A0xb9769c0cb51c3081!2sHigh%20School%20%22Kole%20Nedelkovski%22!5e0!3m2!1sen!2smk!4v1773744652428!5m2!1sen!2smk"
+              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
+          <div class="k-map-footer">
+            <div class="k-map-addr">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              Андон Шурков бр.4а, Велес
+            </div>
+            <a href="https://maps.google.com/?q=Veles+North+Macedonia" target="_blank" class="btn btn-outline btn-sm"
+              style="color: var(--school-blue); border-color: var(--school-blue);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              Google Maps
+            </a>
+          </div>
+
+          <div class="k-quick-links">
+            <a href="tel:043231460" class="k-quick-link">
+              <div class="k-ql-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+              </div>
+              <div>
+                <div class="k-ql-lbl">Телефон</div>
+                <div class="k-ql-val">043/231-460</div>
+              </div>
+            </a>
+            <a href="mailto:kolenedelkovski@yahoo.com" class="k-quick-link">
+              <div class="k-ql-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <rect width="20" height="16" x="2" y="4" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+              </div>
+              <div>
+                <div class="k-ql-lbl">Email</div>
+                <div class="k-ql-val">kolenedelkovski@yahoo.com</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ — inside blue section ═══ -->
+  <section class="k-blue">
+    <div class="k-blue-decor">
+      <div class="bd-circle"></div>
+      <div class="bd-circle"></div>
+      <div class="bd-dot"></div>
+      <div class="bd-dot"></div>
+      <svg class="bd-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2">
+        <path
+          d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+      </svg>
+      <svg class="bd-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2">
+        <path
+          d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+      </svg>
+    </div>
+    <div class="k-blue-inner k-container">
+      <div class="k-faq-head reveal">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title">Често Поставувани Прашања</h2>
+        <p class="section-description">Одговори на најчестите прашања од нашите ученици и родители</p>
+      </div>
+      <div class="k-faq-list">
+
+        <div class="k-faq-item reveal">
+          <button class="k-faq-btn">
+            <span>Како можам да се запишам во училиштето?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          <div class="k-faq-answer">
+            <p>За упис потребно е да ги доставите потребните документи во училиштето во роковите за упис. Можете да не
+              контактирате телефонски или преку email за повеќе информации.</p>
+          </div>
+        </div>
+
+        <div class="k-faq-item reveal" style="animation-delay:.05s">
+          <button class="k-faq-btn">
+            <span>Кои струки се достапни во училиштето?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          <div class="k-faq-answer">
+            <p>Во нашето училиште се достапни четири струки: Машинска, Електротехничка, Сообраќајна и
+              Угостителско-туристичка струка. Секоја струка нуди повеќе образовни профили.</p>
+          </div>
+        </div>
+
+        <div class="k-faq-item reveal" style="animation-delay:.1s">
+          <button class="k-faq-btn">
+            <span>Дали училиштето нуди стипендии?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          <div class="k-faq-answer">
+            <p>Да, училиштето нуди стипендии за ученици со одличен успех и за ученици од социјално загрозени семејства.
+              Стипендиите се доделуваат два пати годишно.</p>
+          </div>
+        </div>
+
+        <div class="k-faq-item reveal" style="animation-delay:.15s">
+          <button class="k-faq-btn">
+            <span>Како функционира стручната пракса?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          <div class="k-faq-answer">
+            <p>Училиштето има склучено договори со повеќе компании каде учениците ја изведуваат стручната пракса.
+              Праксата е организирана и надгледувана од страна на училиштето.</p>
+          </div>
+        </div>
+
+        <div class="k-faq-item reveal" style="animation-delay:.2s">
+          <button class="k-faq-btn">
+            <span>Дали училиштето нуди сместување за ученици од други градови?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          <div class="k-faq-answer">
+            <p>Училиштето не нуди сместување, но можеме да ви помогнеме да најдете приватно сместување во Велес.
+              Учениците од други градови можат да аплицираат за државна стипендија.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-border"></div>
+
+    <div class="footer-container">
+      <div class="footer-grid">
+        <!-- Column 1 -->
+        <div class="footer-column">
+          <a href="index.html" class="footer-logo">
+            <div class="footer-logo-icon">
+              <img src="images/logo-yellow.png" alt="Logo">
+            </div>
+            <div class="footer-logo-text">
+              <h3>ДСУ РЦСОО</h3>
+              <p>„Коле Неделковски“</p>
+            </div>
+          </a>
+
+          <p class="footer-text">Квалитетно стручно образование од 1965 година. Подготвуваме идни професионалци за
+            пазарот на труд.</p>
+
+          <div class="footer-contact">
+            <a href="https://maps.google.com/?q=Андон+Шурков+4а+Велес" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>Андон Шурков бр.4а, Велес</span>
+            </a>
+            <a href="tel:043231460">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              <span>043/231-460</span>
+            </a>
+            <a href="mailto:kolenedelkovski@yahoo.com">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+              <span>kolenedelkovski@yahoo.com</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="footer-column">
+          <h4 class="footer-title">Брзи линкови</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Почетна</a></li>
+            <li><a href="index.html#about" class="footer-link">За Нас</a></li>
+            <li><a href="struki.html" class="footer-link">Струки</a></li>
+            <li><a href="profesori.html" class="footer-link">Професори</a></li>
+            <li><a href="galerija.html" class="footer-link">Галерија</a></li>
+            <li><a href="postignuvanja.html" class="footer-link">Успеси</a></li>
+            <li><a href="kontakt.html" class="footer-link">Контакт</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="footer-column">
+          <h4 class="footer-title">Ресурси</h4>
+          <ul class="footer-links">
+            <li><a href="https://ednevnik.edu.mk/" class="footer-link" target="_blank">E-Дневник</a></li>
+            <li><a href="https://csoo.edu.mk/" class="footer-link" target="_blank">Центар за стручно образование</a>
+            </li>
+            <li><a href="kalkulator.html" class="footer-link" target="_blank">Калкулатор за бодови</a></li>
+            <li><a href="https://e-uslugi.mon.gov.mk/" class="footer-link" target="_blank">Систем за упис во средно</a>
+            </li>
+            <li><a href="https://heyzine.com/flip-book/44ad87f9d5.html" class="footer-link" target="_blank">Е-Весник
+                ЕМКУС</a>
+            <li><a href="http://matura.gov.mk/" class="footer-link" target="_blank">Државна матура</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4 -->
+        <div class="footer-column">
+          <h4 class="footer-title">Следете нѐ</h4>
+          <p class="footer-social-text">Бидете во тек со најновите информации и настани.</p>
+
+          <div class="footer-social">
+            <a href="https://www.facebook.com/dsurcsookolenedelkovski" aria-label="Facebook" target="_blank"
+              rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/rcsoo.kolenedelkovski.veles/" aria-label="Instagram" target="_blank"
+              rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+              </svg>
+            </a>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-container">
+        <p class="footer-copyright">© 2026 ДСУ РЦСОО „Коле Неделковски“. Сите права задржани.</p>
+        <div class="footer-legal">
+          <a href="#">Политика за приватност</a>
+          <a href="#">Услови за користење</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <button class="scroll-to-top" aria-label="Scroll to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2">
+      <path d="m18 15-6-6-6 6" />
+    </svg>
+  </button>
+
+  <script src="js/main.js"></script>
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.k-faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.k-faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.k-faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyA1TVtxYUNRbASRw7tKbqyQRYc68x8rBwk",
+      authDomain: "kole-nedelkovski.firebaseapp.com",
+      projectId: "kole-nedelkovski",
+      storageBucket: "kole-nedelkovski.firebasestorage.app",
+      messagingSenderId: "877496607272",
+      appId: "1:877496607272:web:67f095ecb48e2b61e18b1d",
+      measurementId: "G-BWZJXT9DGY"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const contactForm = document.getElementById('contactForm');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = {
+          firstName: document.getElementById('firstName').value,
+          lastName: document.getElementById('lastName').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          subject: document.getElementById('subject').value,
+          message: document.getElementById('message').value,
+          sentAt: new Date()
+        };
+
+        try {
+          // Save to Firestore silently
+          await addDoc(collection(db, "contact_messages"), formData);
+
+          const templateParams = {
+            sentAt: formData.sentAt,
+            firstName: formData.firstName,
+            email: formData.email,
+            message: formData.message
+          };
+
+          // Send to EmailJS silently
+          await emailjs.send("service_ex5zlu3", "template_ggs4xpe", templateParams);
+
+          // Clear form and log success to console for your reference
+          console.log("Database and Email successfully updated.");
+          contactForm.reset();
+
+        } catch (error) {
+          // Log the error for you to debug, but don't show the user
+          console.error("Firebase/EmailJS Error:", error);
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
