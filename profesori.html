@@ -375,25 +375,32 @@
     }
 
     .pr-grid {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .pr-section-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
     }
 
     @media(max-width:1200px) {
-      .pr-grid {
+      .pr-section-grid {
         grid-template-columns: repeat(3, 1fr);
       }
     }
 
     @media(max-width:800px) {
-      .pr-grid {
+      .pr-section-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
     @media(max-width:500px) {
-      .pr-grid {
+      .pr-section-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -755,12 +762,10 @@
   <nav class="navbar">
     <div class="navbar-container">
       <a href="index.html" class="navbar-logo">
-        <div class="navbar-logo-icon">
-          <img src="images/logo-belo%20copy.png" alt="Logo">
-        </div>
+        <div class="navbar-logo-icon"><img src="images/logo-belo%20copy.png" alt="Logo"></div>
         <div class="navbar-logo-text">
           <h1>ДСУ РЦСОО</h1>
-          <p>„Коле Неделковски“</p>
+          <p>„Коле Неделковски"</p>
         </div>
       </a>
       <div class="navbar-links">
@@ -771,15 +776,17 @@
         <a href="galerija.html" class="navbar-link">Галерија</a>
         <a href="postignuvanja.html" class="navbar-link">Успеси</a>
         <a href="kontakt.html" class="navbar-link">Контакт</a>
+        
+        <a href="https://ednevnik.edu.mk/" class="navbar-btn" aria-label="E-dnevnik Link" target="_blank">
+          <img src="./images/e-dnevnik.png" width="20" height="20" class="e-dnevnik-logo" alt="">
+        </a>
       </div>
       <div class="navbar-actions">
-        <button class="navbar-btn" aria-label="Search">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2">
+        <button class="navbar-btn" aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="11" cy="11" r="8" />
             <path d="m21 21-4.3-4.3" />
-          </svg>
-        </button>
+          </svg></button>
         <a href="upisi.html" class="navbar-cta">Уписи 2026/2027</a>
         <a href="kalkulator.html" class="navbar-cta navbar-cta-calc"><svg xmlns="http://www.w3.org/2000/svg" width="14"
             height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -788,26 +795,21 @@
             <line x1="8" x2="16" y1="10" y2="10" />
             <line x1="8" x2="12" y1="14" y2="14" />
           </svg>Калкулатор</a>
-        <button class="navbar-menu-btn" aria-label="Menu">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2">
+        <button class="navbar-menu-btn" aria-label="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="4" x2="20" y1="12" y2="12" />
             <line x1="4" x2="20" y1="6" y2="6" />
             <line x1="4" x2="20" y1="18" y2="18" />
-          </svg>
-        </button>
+          </svg></button>
       </div>
     </div>
     <div class="search-bar">
       <div class="search-bar-content">
-        <div class="search-input-wrapper">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2">
+        <div class="search-input-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="11" cy="11" r="8" />
             <path d="m21 21-4.3-4.3" />
-          </svg>
-          <input type="text" class="search-input" placeholder="Пребарувајте на страницата...">
-        </div>
+          </svg><input type="text" class="search-input" placeholder="Пребарувајте на страницата..."></div>
       </div>
     </div>
   </nav>
@@ -823,12 +825,12 @@
       <a href="galerija.html" class="mobile-menu-link">Галерија</a>
       <a href="postignuvanja.html" class="mobile-menu-link">Успеси</a>
       <a href="kontakt.html" class="mobile-menu-link">Контакт</a>
+      <a href="https://ednevnik.edu.mk/" class="mobile-menu-link" target="_blank">Е-Дневник</a>
       <a href="upisi.html" class="mobile-menu-cta">Уписи 2026/2027</a>
       <a href="kalkulator.html" class="mobile-menu-cta-calc">Калкулатор за бодови</a>
       <div class="mobile-menu-contact">
-        <p>Контакт информации</p>
-        <a href="tel:043231460">043/231-460</a>
-        <a href="mailto:kolenedelkovski@yahoo.com">kolenedelkovski@yahoo.com</a>
+        <p>Контакт информации</p><a href="tel:043231460">043/231-460</a><a
+          href="mailto:kolenedelkovski@yahoo.com">kolenedelkovski@yahoo.com</a>
       </div>
     </div>
   </div>
@@ -906,16 +908,15 @@
     </div>
   </section>
 
-  <!-- ═══ FILTER BAR ═══ -->
   <section class="pr-filter">
     <div class="pr-container">
       <div class="pr-filter-btns">
         <button class="pr-filter-btn active" data-filter="all">Сите</button>
-        <button class="pr-filter-btn" data-filter="masinska">Машинска</button>
-        <button class="pr-filter-btn" data-filter="elektro">Електротехничка</button>
-        <button class="pr-filter-btn" data-filter="soobrakaj">Сообраќајна</button>
-        <button class="pr-filter-btn" data-filter="ugostitelska">Угостителска</button>
         <button class="pr-filter-btn" data-filter="opsto">Општообразовни</button>
+        <button class="pr-filter-btn" data-filter="ugostitelska">Угостителски</button>
+        <button class="pr-filter-btn" data-filter="elektro">Електро</button>
+        <button class="pr-filter-btn" data-filter="soobrakaj">Сообраќајни</button>
+        <button class="pr-filter-btn" data-filter="masinska">Машински</button>
       </div>
     </div>
   </section>
@@ -925,405 +926,967 @@
     <div class="pr-container">
       <div class="pr-grid" id="prGrid">
 
-        <div class="pr-card reveal" data-dept="masinska">
+        <!-- СТРУЧНА СЛУЖБА -->
+         <h2 class="title" data-dept="opsto">СТРУЧНА СЛУЖБА</h2>
+         <div class="pr-section-grid">
+          <div class="pr-card reveal" data-dept="opsto">
           <div class="pr-card-img">
-            <img src="images/professors/prof-1.jpg" alt="Проф. д-р Стојан Стојановски">
-            <span class="pr-dept-badge">Машинска</span>
+            <img src="images/professors/GoranBogoevski.png" alt="Горан Богоевски">
+            <span class="pr-dept-badge">Администрација</span>
             <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Доктор по машинско инженерство со долгогодишно искуство. Автор на повеќе
-                научни трудови и учебници.</p>
+              <p class="pr-card-bio-preview">Директор на училиштето</p>
             </div>
           </div>
           <div class="pr-card-info">
-            <p class="pr-card-name">Проф. д-р Стојан Стојановски</p>
-            <p class="pr-card-title">Директор на училиштето</p>
-            <p class="pr-card-subject">Машинско инженерство</p>
+            <p class="pr-card-name">Горан Богоевски</p>
+            <p class="pr-card-title">Директор</p>
+            <p class="pr-card-subject">Администрација</p>
             <div class="pr-card-tags">
-              <span class="pr-tag exp">30 год. искуство</span>
-              <span class="pr-tag deg">Доктор на науки</span>
+              <span class="pr-tag role">Управување</span>
             </div>
           </div>
-        </div>
+          </div>
 
-        <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.04s">
+          <div class="pr-card reveal" data-dept="opsto">
+            <div class="pr-card-img">
+              <img src="images/professors/PandorceJordanova.png" alt="Пандорче Јорданова">
+              <span class="pr-dept-badge">Стручна служба</span>
+              <div class="pr-card-img-overlay">
+                <p class="pr-card-bio-preview">Педагог и стручњак за образовни процеси</p>
+              </div>
+            </div>
+            <div class="pr-card-info">
+              <p class="pr-card-name">Пандорче Јорданова</p>
+              <p class="pr-card-title">Педагог</p>
+              <p class="pr-card-subject">Педагогија и психологија на образованието</p>
+              <div class="pr-card-tags">
+                <span class="pr-tag role">Стручна служба</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pr-card reveal" data-dept="opsto">
+            <div class="pr-card-img">
+              <img src="images/professors/avatar-default.jpg" alt="Василија Јорданова">
+              <span class="pr-dept-badge">Стручна служба</span>
+              <div class="pr-card-img-overlay">
+                <p class="pr-card-bio-preview">Психолог и консултант за ученици</p>
+              </div>
+            </div>
+            <div class="pr-card-info">
+              <p class="pr-card-name">Василија Јорданова</p>
+              <p class="pr-card-title">Психолог</p>
+              <p class="pr-card-subject">Психолошко советување</p>
+              <div class="pr-card-tags">
+                <span class="pr-tag role">Стручна служба</span>
+              </div>
+            </div>
+          </div>
+         </div>
+        
+         <h2 class="title" data-dept="opsto">ОПШТООБРАЗОВНИ ПРЕДМЕТИ</h2>
+        <div class="pr-section-grid">
+          <div class="pr-card reveal" data-dept="opsto" style="animation-delay:.04s">
+            <div class="pr-card-img">
+              <img src="images/professors/CvetankaGjakovaPanova.png" alt="Цветанка Ѓакова Панова">
+              <span class="pr-dept-badge">Општообразовни</span>
+              <div class="pr-card-img-overlay">
+                <p class="pr-card-bio-preview">Проф. по македонски јазик и литература</p>
+              </div>
+            </div>
+            <div class="pr-card-info">
+              <p class="pr-card-name">Цветанка Ѓакова Панова</p>
+              <p class="pr-card-title">Професор</p>
+              <p class="pr-card-subject">Македонски јазик и литература</p>
+              <div class="pr-card-tags">
+                <span class="pr-tag role">Општообразовни</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pr-card reveal" data-dept="opsto" style="animation-delay:.08s">
+            <div class="pr-card-img">
+              <img src="images/professors/ValentinaShkrekova.png" alt="Валентина Шкрекова">
+              <span class="pr-dept-badge">Општообразовни</span>
+              <div class="pr-card-img-overlay">
+                <p class="pr-card-bio-preview">Проф. по македонски јазик и литература</p>
+              </div>
+            </div>
+            <div class="pr-card-info">
+              <p class="pr-card-name">Валентина Шкрекова</p>
+              <p class="pr-card-title">Професор</p>
+              <p class="pr-card-subject">Македонски јазик и литература</p>
+              <div class="pr-card-tags">
+                <span class="pr-tag role">Општообразовни</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pr-card reveal" data-dept="opsto" style="animation-delay:.12s">
+            <div class="pr-card-img">
+              <img src="images/professors/MariceStojanova.png" alt="Мариче Стојанова">
+              <span class="pr-dept-badge">Општообразовни</span>
+              <div class="pr-card-img-overlay">
+                <p class="pr-card-bio-preview">М-р по македонски јазик и литература</p>
+              </div>
+            </div>
+            <div class="pr-card-info">
+              <p class="pr-card-name">Мариче Стојанова</p>
+              <p class="pr-card-title">Магистер</p>
+              <p class="pr-card-subject">Македонски јазик и литература</p>
+              <div class="pr-card-tags">
+                <span class="pr-tag role">Општообразовни</span>
+              </div>
+            </div>
+          </div>
+        <!-- АНГЛИСКИ ЈАЗИК -->
+        <div class="pr-card reveal" data-dept="opsto" style="animation-delay:.04s">
           <div class="pr-card-img">
-            <img src="images/professors/prof-2.jpg" alt="Проф. Марија Петровска">
-            <span class="pr-dept-badge">Електротехничка</span>
+            <img src="images/professors/MajaZhivanova.png" alt="Маја Живанова">
+            <span class="pr-dept-badge">Општообразовни</span>
             <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Магистер по електротехника посветена на модернизацијата на наставата и
-                воведување нови технологии.</p>
+              <p class="pr-card-bio-preview">Проф. по англиски јазик</p>
             </div>
           </div>
           <div class="pr-card-info">
-            <p class="pr-card-name">Проф. Марија Петровска</p>
-            <p class="pr-card-title">Заменик-директор</p>
-            <p class="pr-card-subject">Електротехника</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag exp">25 год. искуство</span>
-              <span class="pr-tag deg">Магистер</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pr-card reveal" data-dept="masinska" style="animation-delay:.08s">
-          <div class="pr-card-img">
-            <img src="images/professors/prof-3.jpg" alt="Проф. Никола Николовски">
-            <span class="pr-dept-badge">Машинска</span>
-            <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Магистер со богато искуство во индустријата. Експерт за CNC технологии и
-                компјутерско проектирање.</p>
-            </div>
-          </div>
-          <div class="pr-card-info">
-            <p class="pr-card-name">Проф. Никола Николовски</p>
-            <p class="pr-card-title">Раководител на струка</p>
-            <p class="pr-card-subject">Машинска струка</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag exp">28 год. искуство</span>
-              <span class="pr-tag deg">Магистер</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.12s">
-          <div class="pr-card-img">
-            <img src="images/professors/prof-4.jpg" alt="Проф. Елена Димитрова">
-            <span class="pr-dept-badge">Електротехничка</span>
-            <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Специјализација во електроника и програмирање. Водечки експерт за образовни
-                иновации.</p>
-            </div>
-          </div>
-          <div class="pr-card-info">
-            <p class="pr-card-name">Проф. Елена Димитрова</p>
-            <p class="pr-card-title">Раководител на струка</p>
-            <p class="pr-card-subject">Електротехничка струка</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag exp">22 год. искуство</span>
-              <span class="pr-tag deg">Магистер</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pr-card reveal" data-dept="soobrakaj" style="animation-delay:.04s">
-          <div class="pr-card-img">
-            <img src="images/professors/prof-5.jpg" alt="Проф. Горан Илиевски">
-            <span class="pr-dept-badge">Сообраќајна</span>
-            <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Магистер по сообраќајно инженерство со искуство во железничкиот сообраќај.
-              </p>
-            </div>
-          </div>
-          <div class="pr-card-info">
-            <p class="pr-card-name">Проф. Горан Илиевски</p>
-            <p class="pr-card-title">Раководител на струка</p>
-            <p class="pr-card-subject">Сообраќајна струка</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag exp">20 год. искуство</span>
-              <span class="pr-tag deg">Магистер</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pr-card reveal" data-dept="ugostitelska" style="animation-delay:.08s">
-          <div class="pr-card-img">
-            <img src="images/professors/prof-6.jpg" alt="Проф. Ана Михајловска">
-            <span class="pr-dept-badge">Угостителска</span>
-            <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Меѓународно искуство. Претходно работела каке шеф-готвач во водечки
-                ресторани.</p>
-            </div>
-          </div>
-          <div class="pr-card-info">
-            <p class="pr-card-name">Проф. Ана Михајловска</p>
-            <p class="pr-card-title">Раководител на струка</p>
-            <p class="pr-card-subject">Угостителска струка</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag exp">18 год. искуство</span>
-              <span class="pr-tag deg">Магистер</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pr-card reveal" data-dept="masinska" style="animation-delay:.04s">
-          <div class="pr-card-img">
-            <img src="images/professors/prof-7.jpg" alt="Проф. Владимир Трајковски">
-            <span class="pr-dept-badge">Машинска</span>
-            <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Доктор по машинско инженерство. Долгогодишно искуство во предавање
-                механика. Автор на учебници.</p>
-            </div>
-          </div>
-          <div class="pr-card-info">
-            <p class="pr-card-name">Проф. Владимир Трајковски</p>
+            <p class="pr-card-name">Маја Живанова</p>
             <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Механика и отпорност</p>
+            <p class="pr-card-subject">Англиски јазик</p>
             <div class="pr-card-tags">
-              <span class="pr-tag exp">32 год. искуство</span>
-              <span class="pr-tag deg">Доктор</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pr-card reveal" data-dept="masinska" style="animation-delay:.08s">
-          <div class="pr-card-img">
-            <img src="images/professors/prof-8.jpg" alt="Проф. Катерина Стојанова">
-            <span class="pr-dept-badge">Машинска</span>
-            <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Специјализација во компјутерско проектирање. Експерт за AutoCAD, SolidWorks
-                и Inventor.</p>
-            </div>
-          </div>
-          <div class="pr-card-info">
-            <p class="pr-card-name">Проф. Катерина Стојанова</p>
-            <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Техничко цртање и CAD</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag exp">19 год. искуство</span>
-              <span class="pr-tag deg">Магистер</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pr-card reveal" data-dept="masinska" style="animation-delay:.12s">
-          <div class="pr-card-img">
-            <img src="images/professors/prof-9.jpg" alt="Проф. Драган Поповски">
-            <span class="pr-dept-badge">Машинска</span>
-            <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Доктор по термотехника. Специјалист за греење, вентилација и климатизација.
-              </p>
-            </div>
-          </div>
-          <div class="pr-card-info">
-            <p class="pr-card-name">Проф. Драган Поповски</p>
-            <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Термодинамика и термотехника</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag exp">27 год. искуство</span>
-              <span class="pr-tag deg">Доктор</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.04s">
-          <div class="pr-card-img">
-            <img src="images/professors/prof-10.jpg" alt="Проф. Софија Николова">
-            <span class="pr-dept-badge">Електротехничка</span>
-            <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Специјализација во нисконапонски инсталации. Лиценциран проектант за
-                електрични инсталации.</p>
-            </div>
-          </div>
-          <div class="pr-card-info">
-            <p class="pr-card-name">Проф. Софија Николова</p>
-            <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Електрични инсталации</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag exp">21 год. искуство</span>
-              <span class="pr-tag deg">Магистер</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.08s">
-          <div class="pr-card-img">
-            <img src="images/professors/prof-11.jpg" alt="Проф. Борис Јордановски">
-            <span class="pr-dept-badge">Електротехничка</span>
-            <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Специјалист за микроконтролери и вградени системи. Искуство во развој на
-                електронски уреди.</p>
-            </div>
-          </div>
-          <div class="pr-card-info">
-            <p class="pr-card-name">Проф. Борис Јордановски</p>
-            <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Електроника и микропроцесори</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag exp">24 год. искуство</span>
-              <span class="pr-tag deg">Магистер</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.12s">
-          <div class="pr-card-img">
-            <img src="images/professors/prof-12.jpg" alt="Проф. Јасмина Костовска">
-            <span class="pr-dept-badge">Електротехничка</span>
-            <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Експерт за C++, Java, Python и развој на веб-апликации. Искуство во
-                софтверско инженерство.</p>
-            </div>
-          </div>
-          <div class="pr-card-info">
-            <p class="pr-card-name">Проф. Јасмина Костовска</p>
-            <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Програмирање и бази на податоци</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag exp">16 год. искуство</span>
-              <span class="pr-tag deg">Магистер</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.04s">
-          <div class="pr-card-img">
-            <img src="images/professors/prof-13.jpg" alt="Проф. Петар Атанасовски">
-            <span class="pr-dept-badge">Електротехничка</span>
-            <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Сертифициран Cisco и Microsoft инструктор. Специјализација во компјутерски
-                мрежи.</p>
-            </div>
-          </div>
-          <div class="pr-card-info">
-            <p class="pr-card-name">Проф. Петар Атанасовски</p>
-            <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Компјутерски мрежи</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag exp">18 год. искуство</span>
-              <span class="pr-tag deg">Магистер</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pr-card reveal" data-dept="soobrakaj" style="animation-delay:.08s">
-          <div class="pr-card-img">
-            <img src="images/professors/prof-14.jpg" alt="Проф. Тамара Ристовска">
-            <span class="pr-dept-badge">Сообраќајна</span>
-            <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Искуство во сообраќајната полиција. Специјалист за сообраќајна безбедност.
-              </p>
-            </div>
-          </div>
-          <div class="pr-card-info">
-            <p class="pr-card-name">Проф. Тамара Ристовска</p>
-            <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Сообраќајни прописи и безбедност</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag exp">23 год. искуство</span>
-              <span class="pr-tag deg">Магистер</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pr-card reveal" data-dept="soobrakaj" style="animation-delay:.12s">
-          <div class="pr-card-img">
-            <img src="images/professors/prof-15.jpg" alt="Проф. Мартин Георгиевски">
-            <span class="pr-dept-badge">Сообраќајна</span>
-            <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Искуство во автомобилската индустрија. Специјалист за мотори со внатрешно
-                согорување.</p>
-            </div>
-          </div>
-          <div class="pr-card-info">
-            <p class="pr-card-name">Проф. Мартин Георгиевски</p>
-            <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Конструкција на возила</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag exp">26 год. искуство</span>
-              <span class="pr-tag deg">Магистер</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pr-card reveal" data-dept="ugostitelska" style="animation-delay:.04s">
-          <div class="pr-card-img">
-            <img src="images/professors/prof-16.jpg" alt="Проф. Ивана Симоновска">
-            <span class="pr-dept-badge">Угостителска</span>
-            <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Специјалист за македонска и меѓународна кујна. Искуство каке шеф-готвач.
-              </p>
-            </div>
-          </div>
-          <div class="pr-card-info">
-            <p class="pr-card-name">Проф. Ивана Симоновска</p>
-            <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Технологија на готвење</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag exp">17 год. искуство</span>
-              <span class="pr-tag deg">Магистер</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pr-card reveal" data-dept="ugostitelska" style="animation-delay:.08s">
-          <div class="pr-card-img">
-            <img src="images/professors/prof-17.jpg" alt="Проф. Александар Павловски">
-            <span class="pr-dept-badge">Угостителска</span>
-            <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Искуство во хотелскиот менаџмент. Специјалист за угостителски услуги и
-                комуникација со гости.</p>
-            </div>
-          </div>
-          <div class="pr-card-info">
-            <p class="pr-card-name">Проф. Александар Павловски</p>
-            <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Сервирање и угостителска психологија</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag exp">20 год. искуство</span>
-              <span class="pr-tag deg">Магистер</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pr-card reveal" data-dept="ugostitelska" style="animation-delay:.12s">
-          <div class="pr-card-img">
-            <img src="images/professors/prof-18.jpg" alt="Проф. Нина Тодоровска">
-            <span class="pr-dept-badge">Угостителска</span>
-            <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Специјализација во пекарство. Учествувала во меѓународни натпревари.</p>
-            </div>
-          </div>
-          <div class="pr-card-info">
-            <p class="pr-card-name">Проф. Нина Тодоровска</p>
-            <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Пекарство и слаткарство</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag exp">15 год. искуство</span>
-              <span class="pr-tag deg">Дипломиран инженер</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pr-card reveal" data-dept="soobrakaj" style="animation-delay:.04s">
-          <div class="pr-card-img">
-            <img src="images/professors/prof-19.jpg" alt="Проф. Роберт Димитровски">
-            <span class="pr-dept-badge">Сообраќајна</span>
-            <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Лиценциран инструктор за возење. Специјалист за безбедна возачка техника.
-              </p>
-            </div>
-          </div>
-          <div class="pr-card-info">
-            <p class="pr-card-name">Проф. Роберт Димитровски</p>
-            <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Инструктор за возење</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag exp">22 год. искуство</span>
-              <span class="pr-tag deg">Лиценциран инструктор</span>
+              <span class="pr-tag role">Општообразовни</span>
             </div>
           </div>
         </div>
 
         <div class="pr-card reveal" data-dept="opsto" style="animation-delay:.08s">
           <div class="pr-card-img">
-            <img src="images/professors/prof-20.jpg" alt="Проф. Маја Крстевска">
+            <img src="images/professors/VericaAngjusheva.png" alt="Верица Анѓушева">
             <span class="pr-dept-badge">Општообразовни</span>
             <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Специјализација во стручен англиски. Преведувач за техничка документација.
-              </p>
+              <p class="pr-card-bio-preview">Проф. по англиски јазик</p>
             </div>
           </div>
           <div class="pr-card-info">
-            <p class="pr-card-name">Проф. Маја Крстевска</p>
+            <p class="pr-card-name">Верица Анѓушева</p>
             <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Странски јазици</p>
+            <p class="pr-card-subject">Англиски јазик</p>
             <div class="pr-card-tags">
-              <span class="pr-tag exp">19 год. искуство</span>
-              <span class="pr-tag deg">Магистер</span>
+              <span class="pr-tag role">Општообразовни</span>
             </div>
           </div>
         </div>
 
+        <div class="pr-card reveal" data-dept="opsto" style="animation-delay:.12s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Јордан Палашев">
+            <span class="pr-dept-badge">Општообразовни</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по англиски јазик</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Јордан Палашев</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Англиски јазик</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Општообразовни</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ИСТОРИЈА -->
+        <div class="pr-card reveal" data-dept="opsto" style="animation-delay:.04s">
+          <div class="pr-card-img">
+            <img src="images/professors/VesnaStojanovaBogoevska.png" alt="Весна Стојанова Богоевска">
+            <span class="pr-dept-badge">Општообразовни</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по историја</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Весна Стојанова Богоевска</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Историја</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Општообразовни</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="opsto" style="animation-delay:.08s">
+          <div class="pr-card-img">
+            <img src="images/professors/JovancheTalakov.png" alt="Јованче Талаков">
+            <span class="pr-dept-badge">Општообразовни</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по историја</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Јованче Талаков</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Историја</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Општообразовни</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- МУЗИЧКА КУЛТУРА -->
+        <div class="pr-card reveal" data-dept="opsto" style="animation-delay:.12s">
+          <div class="pr-card-img">
+            <img src="images/professors/DushanBanev.png" alt="Душан Банев">
+            <span class="pr-dept-badge">Општообразовни</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по музичка култура</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Душан Банев</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Музичка култура</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Општообразовни</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- СПОРТ И СПОРТСКИ АКТИВНОСТИ -->
+        <div class="pr-card reveal" data-dept="opsto" style="animation-delay:.04s">
+          <div class="pr-card-img">
+            <img src="images/professors/AngelceGushev.png" alt="Ангелче Гушев">
+            <span class="pr-dept-badge">Општообразовни</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">М-р по спорт и спортски активности</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Ангелче Гушев</p>
+            <p class="pr-card-title">Магистер</p>
+            <p class="pr-card-subject">Спорт и спортски активности</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Општообразовни</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="opsto" style="animation-delay:.08s">
+          <div class="pr-card-img">
+            <img src="images/professors/ZlatkoZdravkovski.png" alt="Златко Здравковски">
+            <span class="pr-dept-badge">Општообразовни</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по спорт и спортски активности</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Златко Здравковски</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Спорт и спортски активности</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Општообразовни</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="opsto" style="animation-delay:.12s">
+          <div class="pr-card-img">
+            <img src="images/professors/LeonidTanevski.png" alt="Леонид Таневски">
+            <span class="pr-dept-badge">Општообразовни</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по спорт и спортски активности</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Леонид Таневски</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Спорт и спортски активности</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Општообразовни</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- МАТЕМАТИКА -->
+        <div class="pr-card reveal" data-dept="opsto" style="animation-delay:.04s">
+          <div class="pr-card-img">
+            <img src="images/professors/MagdalenaIvanova.png" alt="Магдалена Иванова">
+            <span class="pr-dept-badge">Општообразовни</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по математика</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Магдалена Иванова</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Математика</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Општообразовни</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="opsto" style="animation-delay:.08s">
+          <div class="pr-card-img">
+            <img src="images/professors/BiljanaIveva.png" alt="Биљана Ивева">
+            <span class="pr-dept-badge">Општообразовни</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по математика</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Биљана Ивева</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Математика</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Општообразовни</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="opsto" style="animation-delay:.12s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Мира Ташкова">
+            <span class="pr-dept-badge">Општообразовни</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по математика</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Мира Ташкова</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Математика</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Општообразовни</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ИНФОРМАТИКА -->
+        <div class="pr-card reveal" data-dept="opsto" style="animation-delay:.04s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Ванчо Костадинов">
+            <span class="pr-dept-badge">Општообразовни</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по информатика</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Ванчо Костадинов</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Информатика</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Општообразовни</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ФИЗИКА -->
+        <div class="pr-card reveal" data-dept="opsto" style="animation-delay:.08s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Силвана Петрова">
+            <span class="pr-dept-badge">Општообразовни</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по физика</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Силвана Петрова</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Физика</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Општообразовни</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="opsto" style="animation-delay:.12s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Надица Теова">
+            <span class="pr-dept-badge">Општообразовни</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по физика</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Надица Теова</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Физика</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Општообразовни</span>
+            </div>
+          </div>
+        </div>
+        </div>
+        <!-- УГОСТИТЕЛСКИ СТРУЧНИ ПРЕДМЕТИ -->
+         <h2 class="title" data-dept="ugostitelska">УГОСТИТЕЛСКИ СТРУЧНИ ПРЕДМЕТИ</h2>
+        <div class="pr-section-grid">
+          <div class="pr-card reveal" data-dept="ugostitelska" style="animation-delay:.04s">
+            <div class="pr-card-img">
+              <img src="images/professors/VlatkoPanov.png" alt="Влатко Панов">
+              <span class="pr-dept-badge">Угостителски</span>
+              <div class="pr-card-img-overlay">
+                <p class="pr-card-bio-preview">Проф. по угостителски стручни предмети</p>
+              </div>
+            </div>
+            <div class="pr-card-info">
+              <p class="pr-card-name">Влатко Панов</p>
+              <p class="pr-card-title">Професор</p>
+              <p class="pr-card-subject">Угостителски стручни предмети</p>
+              <div class="pr-card-tags">
+                <span class="pr-tag role">Угостителски</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pr-card reveal" data-dept="ugostitelska" style="animation-delay:.08s">
+            <div class="pr-card-img">
+              <img src="images/professors/avatar-default.jpg" alt="Марјан Малинов">
+              <span class="pr-dept-badge">Угостителски</span>
+              <div class="pr-card-img-overlay">
+                <p class="pr-card-bio-preview">Проф. по угостителски стручни предмети</p>
+              </div>
+            </div>
+            <div class="pr-card-info">
+              <p class="pr-card-name">Марјан Малинов</p>
+              <p class="pr-card-title">Професор</p>
+              <p class="pr-card-subject">Угостителски стручни предмети</p>
+              <div class="pr-card-tags">
+                <span class="pr-tag role">Угостителски</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pr-card reveal" data-dept="ugostitelska" style="animation-delay:.12s">
+            <div class="pr-card-img">
+              <img src="images/professors/JaneGonev.png" alt="Јане Гонев">
+              <span class="pr-dept-badge">Угостителски</span>
+              <div class="pr-card-img-overlay">
+                <p class="pr-card-bio-preview">Проф. по угостителски стручни предмети</p>
+              </div>
+            </div>
+            <div class="pr-card-info">
+              <p class="pr-card-name">Јане Гонев</p>
+              <p class="pr-card-title">Професор</p>
+              <p class="pr-card-subject">Угостителски стручни предмети</p>
+              <div class="pr-card-tags">
+                <span class="pr-tag role">Угостителски</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ЕЛЕКТРО СТРУЧНИ ПРЕДМЕТИ -->
+         <h2 class="title" data-dept="elektro">ЕЛЕКТРО СТРУЧНИ ПРЕДМЕТИ</h2>
+        <div class="pr-section-grid">
+        <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.04s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Никола Дечев">
+            <span class="pr-dept-badge">Електро</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Никола Дечев</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Електро стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Електро</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.08s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Гордана Мулева">
+            <span class="pr-dept-badge">Електро</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Гордана Мулева</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Електро стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Електро</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.12s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Мимоза Пановска Тодорова">
+            <span class="pr-dept-badge">Електро</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Мимоза Пановска Тодорова</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Електро стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Електро</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.04s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Марјанчо Малинов">
+            <span class="pr-dept-badge">Електро</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Марјанчо Малинов</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Електро стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Електро</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.08s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Симе Мајсторов">
+            <span class="pr-dept-badge">Електро</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Симе Мајсторов</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Електро стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Електро</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.12s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Даниел Здравевски">
+            <span class="pr-dept-badge">Електро</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+            </div>
+          </div>
+        <div class="pr-card-info">
+            <p class="pr-card-name">Даниел Здравевски</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Електро стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Електро</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.04s">
+      <div class="pr-card-img">
+        <img src="images/professors/avatar-default.jpg" alt="Леонид Кодовски">
+        <span class="pr-dept-badge">Електро</span>
+        <div class="pr-card-img-overlay">
+          <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+        </div>
+      </div>
+      <div class="pr-card-info">
+        <p class="pr-card-name">Леонид Кодовски</p>
+        <p class="pr-card-title">Професор</p>
+        <p class="pr-card-subject">Електро стручни предмети</p>
+        <div class="pr-card-tags">
+          <span class="pr-tag role">Електро</span>
+        </div>
+      </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.08s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Љубе Бабунски">
+            <span class="pr-dept-badge">Електро</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Љубе Бабунски</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Електро стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Електро</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.12s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Елена Јосифоска">
+            <span class="pr-dept-badge">Електро</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Елена Јосифоска</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Електро стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Електро</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.04s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Боро Ристовски">
+            <span class="pr-dept-badge">Електро</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Боро Ристовски</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Електро стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Електро</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.08s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Снежана Софијанова">
+            <span class="pr-dept-badge">Електро</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Снежана Софијанова</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Електро стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Електро</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.12s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Игорче Теов">
+            <span class="pr-dept-badge">Електро</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Игорче Теов</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Електро стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Електро</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.04s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Зоранче Темелковски">
+            <span class="pr-dept-badge">Електро</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Зоранче Темелковски</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Електро стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Електро</span>
+            </div>
+          </div>
+        </div>
+        </div>
+
+    <!-- СООБРАЌАЈНИ СТРУЧНИ ПРЕДМЕТИ -->
+     <h2 class="title" data-dept="soobrakaj">СООБРАЌАЈНИ СТРУЧНИ ПРЕДМЕТИ</h2>
+     <div class="pr-section-grid">
+      <div class="pr-card reveal" data-dept="soobrakaj" style="animation-delay:.08s">
+        <div class="pr-card-img">
+          <img src="images/professors/avatar-default.jpg" alt="Катерина Стојадиновиќ">
+          <span class="pr-dept-badge">Сообраќајни</span>
+          <div class="pr-card-img-overlay">
+            <p class="pr-card-bio-preview">Проф. по сообраќајни стручни предмети</p>
+          </div>
+        </div>
+        <div class="pr-card-info">
+          <p class="pr-card-name">Катерина Стојадиновиќ</p>
+          <p class="pr-card-title">Професор</p>
+          <p class="pr-card-subject">Сообраќајни стручни предмети</p>
+          <div class="pr-card-tags">
+            <span class="pr-tag role">Сообраќајни</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pr-card reveal" data-dept="soobrakaj" style="animation-delay:.12s">
+        <div class="pr-card-img">
+          <img src="images/professors/avatar-default.jpg" alt="Маријан Панов">
+          <span class="pr-dept-badge">Сообраќајни</span>
+          <div class="pr-card-img-overlay">
+            <p class="pr-card-bio-preview">Проф. по сообраќајни стручни предмети</p>
+          </div>
+        </div>
+        <div class="pr-card-info">
+          <p class="pr-card-name">Маријан Панов</p>
+          <p class="pr-card-title">Професор</p>
+          <p class="pr-card-subject">Сообраќајни стручни предмети</p>
+          <div class="pr-card-tags">
+            <span class="pr-tag role">Сообраќајни</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pr-card reveal" data-dept="soobrakaj" style="animation-delay:.04s">
+        <div class="pr-card-img">
+          <img src="images/professors/avatar-default.jpg" alt="Митхат Мемиќ">
+          <span class="pr-dept-badge">Сообраќајни</span>
+          <div class="pr-card-img-overlay">
+            <p class="pr-card-bio-preview">Проф. по сообраќајни стручни предмети</p>
+          </div>
+        </div>
+        <div class="pr-card-info">
+          <p class="pr-card-name">Митхат Мемиќ</p>
+          <p class="pr-card-title">Професор</p>
+          <p class="pr-card-subject">Сообраќајни стручни предмети</p>
+          <div class="pr-card-tags">
+            <span class="pr-tag role">Сообраќајни</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- МАШИНСКИ СТРУЧНИ ПРЕДМЕТИ -->
+     <h2 class="title" data-dept="masinska">МАШИНСКИ СТРУЧНИ ПРЕДМЕТИ</h2>
+      <div class="pr-section-grid">
+        <div class="pr-card reveal" data-dept="masinska" style="animation-delay:.08s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Марина Филипова Костадиновска">
+            <span class="pr-dept-badge">Машински</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по машински стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Марина Филипова Костадиновска</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Машински стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Машински</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="masinska" style="animation-delay:.12s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Иванче Иванов">
+            <span class="pr-dept-badge">Машински</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по машински стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Иванче Иванов</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Машински стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Машински</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="masinska" style="animation-delay:.04s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Валентин Елисковски">
+            <span class="pr-dept-badge">Машински</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по машински стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Валентин Елисковски</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Машински стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Машински</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="masinska" style="animation-delay:.08s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Сашо Ѓоргов">
+            <span class="pr-dept-badge">Машински</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по машински стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Сашо Ѓоргов</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Машински стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Машински</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="masinska" style="animation-delay:.12s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Марија Голубовиќ">
+            <span class="pr-dept-badge">Машински</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по машински стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Марија Голубовиќ</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Машински стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Машински</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="masinska" style="animation-delay:.04s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Горан Бузалковски">
+            <span class="pr-dept-badge">Машински</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по машински стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Горан Бузалковски</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Машински стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Машински</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="masinska" style="animation-delay:.08s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Наталија Ашиковска">
+            <span class="pr-dept-badge">Машински</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по машински стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Наталија Ашиковска</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Машински стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Машински</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="masinska" style="animation-delay:.12s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Орданче Амбарков">
+            <span class="pr-dept-badge">Машински</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по машински стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Орданче Амбарков</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Машински стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Машински</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="masinska" style="animation-delay:.04s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Илија Трчилов">
+            <span class="pr-dept-badge">Машински</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по машински стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Илија Трчилов</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Машински стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Машински</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="masinska" style="animation-delay:.08s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Иле Танев">
+            <span class="pr-dept-badge">Машински</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по машински стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Иле Танев</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Машински стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Машински</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="masinska" style="animation-delay:.12s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Христина Трајкова">
+            <span class="pr-dept-badge">Машински</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по машински стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Христина Трајкова</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Машински стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Машински</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="masinska" style="animation-delay:.04s">
+          <div class="pr-card-img">
+            <img src="images/professors/avatar-default.jpg" alt="Зоран Пасламушков">
+            <span class="pr-dept-badge">Машински</span>
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по машински стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Зоран Пасламушков</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Машински стручни предмети</p>
+            <div class="pr-card-tags">
+              <span class="pr-tag role">Машински</span>
+            </div>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   </section>
@@ -1513,6 +2076,7 @@
     // Filter professors by department
     const btns = document.querySelectorAll('.pr-filter-btn');
     const cards = document.querySelectorAll('.pr-card');
+    const titles = document.querySelectorAll('.title')
 
     btns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -1521,6 +2085,9 @@
         const f = btn.dataset.filter;
         cards.forEach(card => {
           card.classList.toggle('hidden', f !== 'all' && card.dataset.dept !== f);
+        });
+        titles.forEach(title => {
+          title.classList.toggle('hidden', f !== 'all' && title.dataset.dept !== f);
         });
       });
     });

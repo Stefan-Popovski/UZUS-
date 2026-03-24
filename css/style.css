@@ -135,7 +135,7 @@ ol {
 .navbar-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 0.8rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -210,7 +210,7 @@ ol {
 
 .navbar-link {
   position: relative;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.8rem;
   font-family: var(--font-accent);
   font-size: 0.875rem;
   font-weight: 500;
@@ -5961,4 +5961,8 @@ ol {
 .flipbook-card:hover .flipbook-btn {
   background: var(--school-blue);
   color: var(--white);
+}
+
+.e-dnevnik-logo {
+  border-radius: 5px;
 }
