@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html lang="mk">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Уписи и пријавување во ДСУ РЦСОО Коле Неделковски - Велес.">
+  <title>Уписи | ДСУ РЦСОО „Коле Неделковски“ - Велес</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+  <style>
+    /* ══════════════════════════════
+       HERO
+    ══════════════════════════════ */
+    .upisi-hero {
+      position: relative;
+      min-height: 58vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding-top: 5rem;
+    }
+
+    .upisi-hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .upisi-hero-img {
+      position: absolute;
+      inset: 0;
+      background: url('images/hero-classroom.jpg') center / cover no-repeat;
+      animation: kenBurns 20s ease-out forwards;
+    }
+
+    .upisi-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg,
+          rgba(30, 58, 95, .78) 0%,
+          rgba(30, 58, 95, .68) 50%,
+          rgba(21, 42, 69, .84) 100%);
+    }
+
+    /* same decorative circles as index hero */
+    .upisi-hero-decor {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .upisi-hero-decor .hero-decor-circle {
+      position: absolute;
+      border: 2px solid rgba(212, 175, 55, .2);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .upisi-hero-decor .hero-decor-circle:nth-child(1) {
+      width: 8rem;
+      height: 8rem;
+      top: 5rem;
+      left: 2.5rem;
+    }
+
+    .upisi-hero-decor .hero-decor-circle:nth-child(2) {
+      width: 5rem;
+      height: 5rem;
+      top: 10rem;
+      right: 5rem;
+      background: rgba(212, 175, 55, .1);
+      border: none;
+      animation: floatSlow 10s ease-in-out infinite;
+    }
+
+    .upisi-hero-decor .hero-decor-circle:nth-child(3) {
+      width: 4rem;
+      height: 4rem;
+      bottom: 8rem;
+      left: 25%;
+      border-color: rgba(255, 255, 255, .1);
+      animation-delay: 2s;
+    }
+
+    .upisi-hero-decor .hero-decor-circle:nth-child(4) {
+      width: 6rem;
+      height: 6rem;
+      bottom: 3rem;
+      right: 33%;
+      background: rgba(255, 255, 255, .05);
+      border: none;
+      animation: floatSlow 10s ease-in-out infinite;
+      animation-delay: 1s;
+    }
+
+    .upisi-hero-grid {
+      position: absolute;
+      inset: 0;
+      opacity: .05;
+      background-image: linear-gradient(rgba(255, 255, 255, .1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .1) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    .upisi-hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3.5rem;
+      text-align: center;
+    }
+
+    .upisi-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .35rem 1rem;
+      background: rgba(212, 175, 55, .14);
+      border: 1px solid rgba(212, 175, 55, .35);
+      border-radius: 9999px;
+      margin-bottom: 1.5rem;
+    }
+
+    .upisi-hero-badge svg {
+      width: 8px;
+      height: 8px;
+      fill: var(--school-gold);
+    }
+
+    .upisi-hero-badge span {
+      font-family: var(--font-accent);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--school-gold);
+    }
+
+    .upisi-hero-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--white);
+      font-size: 2.25rem;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+
+    @media(min-width:640px) {
+      .upisi-hero-title {
+        font-size: 3.5rem;
+      }
+    }
+
+    @media(min-width:1024px) {
+      .upisi-hero-title {
+        font-size: 5rem;
+      }
+    }
+
+    .upisi-hero-title em {
+      font-style: italic;
+      color: var(--school-gold);
+    }
+
+    .upisi-hero-sub {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, .8);
+      max-width: 560px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.65;
+    }
+
+    .upisi-hero-breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      font-family: var(--font-accent);
+      font-size: .875rem;
+      color: rgba(255, 255, 255, .5);
+    }
+
+    .upisi-hero-breadcrumb a {
+      color: var(--school-gold);
+    }
+
+    /* ══════════════════════════════
+       INFO CARDS (same as kontakt.html)
+    ══════════════════════════════ */
+    .upisi-info-strip {
+      background: var(--gray-50);
+      padding: 4rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .upisi-info-strip::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(30, 58, 95, .04), transparent 70%);
+      top: -150px;
+      right: -150px;
+      pointer-events: none;
+    }
+
+    .upisi-info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media(max-width:900px) {
+      .upisi-info-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media(max-width:600px) {
+      .upisi-info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .upisi-info-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2rem 1.75rem;
+      text-align: center;
+      border: 1px solid var(--gray-100);
+      box-shadow: 0 4px 24px rgba(30, 58, 95, .06);
+      transition: transform .35s cubic-bezier(.4, 0, .2, 1), box-shadow .35s ease, border-color .35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .upisi-info-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--school-blue), var(--school-gold));
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .upisi-info-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-school-lg);
+      border-color: transparent;
+    }
+
+    .upisi-info-card:hover::after {
+      opacity: 1;
+    }
+
+    .upisi-info-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: rgba(30, 58, 95, .06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      transition: all .3s ease;
+    }
+
+    .upisi-info-card:hover .upisi-info-icon {
+      background: var(--school-blue);
+    }
+
+    .upisi-info-icon svg {
+      color: var(--school-blue);
+      width: 24px;
+      height: 24px;
+      transition: color .3s;
+    }
+
+    .upisi-info-card:hover .upisi-info-icon svg {
+      color: var(--school-gold);
+    }
+
+    .upisi-info-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: .75rem;
+    }
+
+    .upisi-info-card p {
+      font-size: .9rem;
+      color: var(--gray-600);
+      line-height: 1.75;
+    }
+
+    .upisi-info-card p a {
+      color: var(--gray-600);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .upisi-info-card p a:hover {
+      color: var(--school-blue);
+    }
+
+    /* ══════════════════════════════
+       SHARED SECTION HELPERS
+    ══════════════════════════════ */
+    .upisi-section {
+      padding: 6rem 0;
+    }
+
+    .upisi-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .upisi-sec-head {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    /* ══════════════════════════════
+       DOCUMENT CARDS
+    ══════════════════════════════ */
+    .docs-bg {
+      background: var(--gray-50);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .docs-bg::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(30, 58, 95, .04), transparent 70%);
+      top: -120px;
+      right: -120px;
+      pointer-events: none;
+    }
+
+    .doc-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+      gap: 2rem;
+    }
+
+    @media(max-width:960px) {
+      .doc-cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .enroll-card {
+      background: #fff;
+      border-radius: 20px;
+      border-left: 4px solid var(--school-gold);
+      box-shadow: 0 4px 24px rgba(30, 58, 95, .07);
+      overflow: hidden;
+      transition: transform .35s cubic-bezier(.4, 0, .2, 1), box-shadow .35s ease;
+    }
+
+    .enroll-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-school-lg);
+    }
+
+    .enroll-card-head {
+      background: linear-gradient(135deg, var(--school-blue) 0%, var(--school-blue-light) 100%);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .enroll-card-head::after {
+      content: '';
+      position: absolute;
+      right: -25px;
+      top: -25px;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(212, 175, 55, .12), transparent 70%);
+      border-radius: 50%;
+    }
+
+    .enroll-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, .12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .enroll-card-icon svg {
+      color: var(--school-gold);
+      width: 20px;
+      height: 20px;
+    }
+
+    .enroll-card-head h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .enroll-card-body {
+      padding: 2rem;
+    }
+
+    /* Steps */
+    .steps {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .step {
+      display: flex;
+      gap: 1.25rem;
+      padding-bottom: 1.75rem;
+    }
+
+    .step:last-child {
+      padding-bottom: 0;
+    }
+
+    .step-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .step-num {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      z-index: 1;
+      background: linear-gradient(135deg, var(--school-blue), var(--school-blue-light));
+      border: 3px solid #fff;
+      box-shadow: 0 2px 8px rgba(30, 58, 95, .22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--school-gold);
+      font-family: var(--font-accent);
+      font-size: .68rem;
+      font-weight: 700;
+    }
+
+    .step-line {
+      width: 2px;
+      flex: 1;
+      margin-top: 4px;
+      min-height: 20px;
+      background: linear-gradient(180deg, rgba(30, 58, 95, .12), rgba(212, 175, 55, .2));
+    }
+
+    .step:last-child .step-line {
+      display: none;
+    }
+
+    .step-body {
+      flex: 1;
+      padding-top: 3px;
+    }
+
+    .step-title {
+      font-family: var(--font-accent);
+      font-weight: 700;
+      font-size: .9rem;
+      color: var(--school-blue);
+      margin-bottom: .35rem;
+    }
+
+    .step-desc {
+      font-size: .88rem;
+      color: var(--gray-500);
+      line-height: 1.65;
+      margin-bottom: .75rem;
+    }
+
+    .step-desc strong {
+      color: var(--gray-700);
+    }
+
+    .outline-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .78rem;
+      font-weight: 600;
+      font-family: var(--font-accent);
+      color: var(--school-blue);
+      border: 1.5px solid rgba(30, 58, 95, .2);
+      padding: .4rem .9rem;
+      border-radius: 8px;
+      transition: all .22s ease;
+      text-decoration: none;
+    }
+
+    .outline-btn:hover {
+      background: var(--school-blue);
+      color: var(--school-gold);
+      border-color: var(--school-blue);
+    }
+
+    .outline-btn svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    /* Chips */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      color: var(--gray-600);
+      font-size: .77rem;
+      font-weight: 500;
+      font-family: var(--font-accent);
+      padding: 5px 11px;
+      border-radius: 8px;
+      transition: all .22s ease;
+    }
+
+    .chip:hover {
+      background: var(--school-blue);
+      color: #fff;
+      border-color: var(--school-blue);
+    }
+
+    .chip:hover svg {
+      color: var(--school-gold) !important;
+    }
+
+    .chip svg {
+      width: 12px;
+      height: 12px;
+      color: var(--school-blue);
+      flex-shrink: 0;
+      transition: color .22s;
+    }
+
+    /* Month pills */
+    .months {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .month {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      color: var(--gray-600);
+      font-size: .77rem;
+      font-weight: 600;
+      font-family: var(--font-accent);
+      padding: 5px 13px;
+      border-radius: 9999px;
+      transition: all .22s ease;
+    }
+
+    .month:hover {
+      background: var(--school-blue);
+      color: var(--school-gold);
+      border-color: var(--school-blue);
+      transform: translateY(-2px);
+    }
+
+    /* ══════════════════════════════
+       BLUE SECTIONS
+       (payment + cta) — same as
+       index.html .cta / .stats
+    ══════════════════════════════ */
+    .blue-section {
+      padding: 6rem 0;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--school-blue) 0%, var(--school-blue-light) 50%, var(--school-blue-dark) 100%);
+      background-size: 200% 200%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    /* Decorations — circles, dots, sparkles */
+    .blue-decor {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .blue-decor-circle {
+      position: absolute;
+      border: 2px solid rgba(255, 255, 255, .1);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .blue-decor-circle:nth-child(1) {
+      width: 5rem;
+      height: 5rem;
+      top: 2.5rem;
+      left: 2.5rem;
+    }
+
+    .blue-decor-circle:nth-child(2) {
+      width: 8rem;
+      height: 8rem;
+      bottom: 2.5rem;
+      right: 2.5rem;
+      animation: floatSlow 10s ease-in-out infinite;
+    }
+
+    .blue-decor-dot {
+      position: absolute;
+      width: 1rem;
+      height: 1rem;
+      background: rgba(212, 175, 55, .3);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .blue-decor-dot:nth-child(3) {
+      top: 50%;
+      left: 25%;
+      animation-delay: 1s;
+    }
+
+    .blue-decor-dot:nth-child(4) {
+      top: 33%;
+      right: 33%;
+      animation: floatSlow 10s ease-in-out infinite;
+      animation-delay: 2s;
+    }
+
+    .blue-decor-star {
+      position: absolute;
+      color: rgba(212, 175, 55, .4);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .blue-decor-star:nth-child(5) {
+      top: 5rem;
+      right: 5rem;
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .blue-decor-star:nth-child(6) {
+      bottom: 5rem;
+      left: 5rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      animation-delay: 1s;
+    }
+
+    .blue-inner {
+      position: relative;
+      z-index: 10;
+    }
+
+    /* blue section text overrides */
+    .blue-section .section-label {
+      background: rgba(255, 255, 255, .1);
+      color: #fff;
+    }
+
+    .blue-section .section-title {
+      color: #fff;
+    }
+
+    .blue-section .section-description {
+      color: rgba(255, 255, 255, .75);
+    }
+
+    /* ══════════════════════════════
+       PAYMENT CARDS
+    ══════════════════════════════ */
+    .pay-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 2rem;
+    }
+
+    @media(max-width:800px) {
+      .pay-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pay-card {
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(212, 175, 55, .2);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+    }
+
+    .pay-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, .3);
+      border-color: rgba(212, 175, 55, .45);
+    }
+
+    .pay-top {
+      padding: 1.75rem 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, .07);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .pay-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(212, 175, 55, .12);
+      border: 1px solid rgba(212, 175, 55, .25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pay-icon svg {
+      color: var(--school-gold);
+      width: 18px;
+      height: 18px;
+    }
+
+    .pay-top h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .pay-amount {
+      text-align: center;
+      padding: 1.75rem 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, .05);
+    }
+
+    .pay-amount-lbl {
+      font-family: var(--font-accent);
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .35);
+      margin-bottom: .4rem;
+    }
+
+    .pay-amount-val {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--school-gold-light);
+      letter-spacing: -.02em;
+      line-height: 1;
+    }
+
+    .pay-amount-val sup {
+      font-size: 1rem;
+      font-weight: 400;
+      vertical-align: super;
+      color: rgba(212, 175, 55, .6);
+    }
+
+    .pay-rows {
+      padding: 1.25rem 2rem 1.75rem;
+    }
+
+    .pay-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .6rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .04);
+    }
+
+    .pay-row:last-child {
+      border-bottom: none;
+    }
+
+    .pay-lbl {
+      font-size: .72rem;
+      color: rgba(255, 255, 255, .38);
+      font-family: var(--font-accent);
+    }
+
+    .pay-val {
+      font-size: .78rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, .82);
+      font-family: var(--font-accent);
+    }
+
+    .pay-val.mono {
+      font-family: 'Courier New', monospace;
+      letter-spacing: 1.2px;
+      color: var(--school-gold-light);
+      font-size: .76rem;
+    }
+
+    .pay-note {
+      margin-top: 1rem;
+      padding: .65rem 1rem;
+      background: rgba(212, 175, 55, .08);
+      border: 1px solid rgba(212, 175, 55, .18);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .74rem;
+      color: rgba(212, 175, 55, .85);
+      font-family: var(--font-accent);
+    }
+
+    .pay-note svg {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════
+       MATURA
+    ══════════════════════════════ */
+    .matura-bg {
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .matura-bg::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      left: -80px;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(212, 175, 55, .05), transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .matura-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+      max-width: 840px;
+      margin: 0 auto;
+    }
+
+    @media(max-width:720px) {
+      .matura-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .matura-card {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+      border-radius: 20px;
+      padding: 2.5rem;
+      text-align: center;
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+
+    .matura-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-school-lg);
+    }
+
+    .matura-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--school-blue), var(--school-blue-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+
+    .matura-icon svg {
+      color: var(--school-gold);
+      width: 28px;
+      height: 28px;
+    }
+
+    .matura-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--school-blue);
+      margin-bottom: .7rem;
+    }
+
+    .matura-card p {
+      font-size: .88rem;
+      color: var(--gray-500);
+      line-height: 1.75;
+      margin-bottom: 1.75rem;
+    }
+
+    .matura-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--school-blue);
+      color: #fff;
+      font-family: var(--font-accent);
+      font-size: .84rem;
+      font-weight: 600;
+      padding: .7rem 1.5rem;
+      border-radius: 10px;
+      transition: all .25s ease;
+      text-decoration: none;
+    }
+
+    .matura-btn:hover {
+      background: var(--school-blue-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-school);
+    }
+
+    .matura-btn svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .dl-list {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      text-align: left;
+    }
+
+    .dl-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 13px;
+      padding: .9rem 1.1rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all .25s ease;
+    }
+
+    .dl-row:hover {
+      border-color: var(--school-blue);
+      transform: translateX(4px);
+      box-shadow: var(--shadow);
+    }
+
+    .dl-row:hover .dl-arrow {
+      transform: translateX(3px);
+      opacity: .9;
+    }
+
+    .dl-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(30, 58, 95, .05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .dl-icon svg {
+      color: var(--school-blue);
+      width: 18px;
+      height: 18px;
+    }
+
+    .dl-info {
+      flex: 1;
+    }
+
+    .dl-info strong {
+      display: block;
+      font-size: .88rem;
+      color: var(--school-blue);
+      font-family: var(--font-accent);
+      font-weight: 600;
+    }
+
+    .dl-info span {
+      font-size: .76rem;
+      color: var(--gray-400);
+    }
+
+    .dl-arrow {
+      color: var(--gray-200);
+      opacity: .5;
+      transition: all .25s ease;
+    }
+
+    .dl-arrow svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    /* ══════════════════════════════
+       CTA content inside blue-section
+    ══════════════════════════════ */
+    .upisi-cta-content {
+      max-width: 56rem;
+      margin: 0 auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+
+    .upisi-cta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .25rem 1rem;
+      background: rgba(255, 255, 255, .1);
+      color: #fff;
+      font-family: var(--font-accent);
+      font-size: .875rem;
+      border-radius: 9999px;
+      margin-bottom: 1.5rem;
+    }
+
+    .upisi-cta-badge svg {
+      fill: var(--school-gold);
+      color: var(--school-gold);
+      width: 8px;
+      height: 8px;
+    }
+
+    .upisi-cta-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    @media(min-width:640px) {
+      .upisi-cta-title {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media(min-width:768px) {
+      .upisi-cta-title {
+        font-size: 3rem;
+      }
+    }
+
+    @media(min-width:1024px) {
+      .upisi-cta-title {
+        font-size: 3.75rem;
+      }
+    }
+
+    .upisi-cta-title em {
+      font-style: italic;
+      color: var(--school-gold);
+    }
+
+    .upisi-cta-desc {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, .8);
+      margin-bottom: 2.5rem;
+      max-width: 42rem;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+
+    .upisi-cta-btns {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    @media(min-width:640px) {
+      .upisi-cta-btns {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+
+    .upisi-cta-trust {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      color: rgba(255, 255, 255, .6);
+      font-size: .875rem;
+    }
+
+    .upisi-cta-trust span {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .upisi-cta-trust-dot {
+      width: .5rem;
+      height: .5rem;
+      background: var(--school-gold);
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-logo">
+        <div class="navbar-logo-icon">
+          <img src="images/logo-belo%20copy.png" alt="Logo">
+        </div>
+        <div class="navbar-logo-text">
+          <h1>ДСУ РЦСОО</h1>
+          <p>„Коле Неделковски“</p>
+        </div>
+      </a>
+      <div class="navbar-links">
+        <a href="index.html" class="navbar-link">Почетна</a>
+        <a href="index.html#about" class="navbar-link">За Нас</a>
+        <a href="struki.html" class="navbar-link">Струки</a>
+        <a href="profesori.html" class="navbar-link">Професори</a>
+        <a href="galerija.html" class="navbar-link">Галерија</a>
+        <a href="postignuvanja.html" class="navbar-link">Успеси</a>
+        <a href="kontakt.html" class="navbar-link">Контакт</a>
+      </div>
+      <div class="navbar-actions">
+        <button class="navbar-btn" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+        </button>
+        <a href="upisi.html" class="navbar-cta">Уписи 2026/2027</a>
+        <a href="kalkulator.html" class="navbar-cta navbar-cta-calc"><svg xmlns="http://www.w3.org/2000/svg" width="14"
+            height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <rect width="16" height="20" x="4" y="2" rx="2" />
+            <line x1="8" x2="16" y1="6" y2="6" />
+            <line x1="8" x2="16" y1="10" y2="10" />
+            <line x1="8" x2="12" y1="14" y2="14" />
+          </svg>Калкулатор</a>
+        <button class="navbar-menu-btn" aria-label="Menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <line x1="4" x2="20" y1="12" y2="12" />
+            <line x1="4" x2="20" y1="6" y2="6" />
+            <line x1="4" x2="20" y1="18" y2="18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="search-bar">
+      <div class="search-bar-content">
+        <div class="search-input-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+          <input type="text" class="search-input" placeholder="Пребарувајте на страницата...">
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay"></div>
+  <div class="mobile-menu">
+    <div class="mobile-menu-content">
+      <a href="index.html" class="mobile-menu-link">Почетна</a>
+      <a href="index.html#about" class="mobile-menu-link">За Нас</a>
+      <a href="struki.html" class="mobile-menu-link">Струки</a>
+      <a href="profesori.html" class="mobile-menu-link">Професори</a>
+      <a href="galerija.html" class="mobile-menu-link">Галерија</a>
+      <a href="postignuvanja.html" class="mobile-menu-link">Успеси</a>
+      <a href="kontakt.html" class="mobile-menu-link">Контакт</a>
+      <a href="upisi.html" class="mobile-menu-cta">Уписи 2026/2027</a>
+      <a href="kalkulator.html" class="mobile-menu-cta-calc">Калкулатор за бодови</a>
+      <div class="mobile-menu-contact">
+        <p>Контакт информации</p>
+        <a href="tel:043231460">043/231-460</a>
+        <a href="mailto:kolenedelkovski@yahoo.com">kolenedelkovski@yahoo.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="upisi-hero">
+    <div class="upisi-hero-bg">
+      <div class="upisi-hero-img"></div>
+      <div class="upisi-hero-overlay"></div>
+    </div>
+    <div class="upisi-hero-decor">
+      <div class="hero-decor-circle"></div>
+      <div class="hero-decor-circle"></div>
+      <div class="hero-decor-circle"></div>
+      <div class="hero-decor-circle"></div>
+    </div>
+    <div class="upisi-hero-grid"></div>
+    <div class="upisi-hero-content">
+      <div class="upisi-hero-badge">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10" />
+        </svg>
+        <span>Учебна 2026/2027</span>
+      </div>
+      <h1 class="upisi-hero-title">Уписи и<br><em>Пријавување</em></h1>
+      <p class="upisi-hero-sub">Станете дел од нашето образовно семејство. Сите информации за процесот на запишување.
+      </p>
+      <nav class="upisi-hero-breadcrumb">
+        <a href="index.html">Почетна</a><span>/</span><span>Уписи</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ═══ INFO CARDS ═══ -->
+  <section class="upisi-info-strip">
+    <div class="upisi-container">
+      <div class="upisi-info-grid">
+
+        <div class="upisi-info-card reveal">
+          <div class="upisi-info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <h3>862+ Ученици</h3>
+          <p>Активни ученици во тековната учебна 2025/2026 година</p>
+        </div>
+
+        <div class="upisi-info-card reveal" style="animation-delay:.08s">
+          <div class="upisi-info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            </svg>
+          </div>
+          <h3>25+ Профили</h3>
+          <p>Образовни профили низ четири различни стручни струки</p>
+        </div>
+
+        <div class="upisi-info-card reveal" style="animation-delay:.16s">
+          <div class="upisi-info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <circle cx="12" cy="8" r="7" />
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+            </svg>
+          </div>
+          <h3>60+ Години</h3>
+          <p>Традиција и искуство во стручното образование од 1965 година</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DOCUMENTS ═══ -->
+  <section class="upisi-section docs-bg">
+    <div class="upisi-container">
+      <div class="upisi-sec-head reveal">
+        <span class="section-label">Документи</span>
+        <h2 class="section-title">Потребни документи за упис</h2>
+        <p class="section-description">Подгответе ги потребните документи зависно од тоа дали се запишувате како редовен
+          или вонреден ученик.</p>
+      </div>
+      <div class="doc-cards-grid">
+
+        <!-- Regular students -->
+        <div class="enroll-card reveal">
+          <div class="enroll-card-head">
+            <div class="enroll-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg></div>
+            <h3>Редовни ученици</h3>
+          </div>
+          <div class="enroll-card-body">
+            <div class="steps">
+              <div class="step">
+                <div class="step-left">
+                  <div class="step-num">1</div>
+                  <div class="step-line"></div>
+                </div>
+                <div class="step-body">
+                  <p class="step-title">Електронска пријава</p>
+                  <p class="step-desc">Електронското пријавување се одвива во месец <strong>Јуни</strong>. Потребно е да
+                    се најавите со профилот на платформата schools.mk од вашето основно училиште.</p>
+                  <a href="https://e-uslugi.mon.gov.mk/" target="_blank" class="outline-btn">e-uslugi.mon.gov.mk <svg
+                      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.5">
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg></a>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-left">
+                  <div class="step-num">2</div>
+                  <div class="step-line"></div>
+                </div>
+                <div class="step-body">
+                  <p class="step-title">Доставување документи</p>
+                  <p class="step-desc">По објавата на ранг листата, физички доставете ги следните документи во
+                    училиштето:</p>
+                  <div class="chips">
+                    <div class="chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                      </svg>Пријава за упис</div>
+                    <div class="chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                        <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                      </svg>Свидетелства (VI–IX)</div>
+                    <div class="chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                      </svg>Извод од матична книга</div>
+                    <div class="chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="8" r="7" />
+                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+                      </svg>Дипломи од натпревари</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Part-time students -->
+        <div class="enroll-card reveal" style="animation-delay:.1s">
+          <div class="enroll-card-head">
+            <div class="enroll-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg></div>
+            <h3>Вонредни ученици</h3>
+          </div>
+          <div class="enroll-card-body">
+            <div class="steps">
+              <div class="step">
+                <div class="step-left">
+                  <div class="step-num">1</div>
+                  <div class="step-line"></div>
+                </div>
+                <div class="step-body">
+                  <p class="step-title">Услови за упис</p>
+                  <p class="step-desc">За упис потребно е да исполнувате <strong>барем еден</strong> од следниве услови:
+                  </p>
+                  <div class="chips">
+                    <div class="chip">Постар/а од 17 години</div>
+                    <div class="chip">Подолго боледување</div>
+                    <div class="chip">Во работен однос</div>
+                  </div>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-left">
+                  <div class="step-num">2</div>
+                  <div class="step-line"></div>
+                </div>
+                <div class="step-body">
+                  <p class="step-title">Испитни рокови</p>
+                  <p class="step-desc">Испитите се полагаат во 6 испитни рока (максимум 3 предмети по рок):</p>
+                  <div class="months"><span class="month">Јуни</span><span class="month">Август</span><span
+                      class="month">Октомври</span><span class="month">Декември</span><span
+                      class="month">Февруари</span><span class="month">Април</span></div>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-left">
+                  <div class="step-num">3</div>
+                  <div class="step-line"></div>
+                </div>
+                <div class="step-body">
+                  <p class="step-title">Потребни документи</p>
+                  <div class="chips">
+                    <div class="chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                      </svg>Барање за упис</div>
+                    <div class="chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                        <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                      </svg>Претходни свидетелства</div>
+                    <div class="chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                      </svg>Извод</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PAYMENT ═══ -->
+  <section class="upisi-section blue-section">
+    <div class="blue-decor">
+      <div class="blue-decor-circle"></div>
+      <div class="blue-decor-circle"></div>
+      <div class="blue-decor-dot"></div>
+      <div class="blue-decor-dot"></div>
+      <svg class="blue-decor-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2">
+        <path
+          d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+      </svg>
+      <svg class="blue-decor-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2">
+        <path
+          d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+      </svg>
+    </div>
+    <div class="blue-inner upisi-container">
+      <div class="upisi-sec-head reveal">
+        <span class="section-label">Уплатници</span>
+        <h2 class="section-title">Потребни уплатници (ПП50)</h2>
+        <p class="section-description">Информации за банкарски трансакции при запишување и полагање испити.</p>
+      </div>
+      <div class="pay-grid">
+        <div class="pay-card reveal">
+          <div class="pay-top">
+            <div class="pay-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <rect width="18" height="14" x="3" y="5" rx="2" />
+                <line x1="3" x2="21" y1="10" y2="10" />
+              </svg></div>
+            <h3>Упис на вонреден ученик</h3>
+          </div>
+          <div class="pay-amount">
+            <p class="pay-amount-lbl">Износ за уплата</p>
+            <div class="pay-amount-val"><sup>ден.</sup> 2.500</div>
+          </div>
+          <div class="pay-rows">
+            <div class="pay-row"><span class="pay-lbl">Назив на примач</span><span class="pay-val">Буџет на РМ</span>
+            </div>
+            <div class="pay-row"><span class="pay-lbl">Трансакциска сметка</span><span
+                class="pay-val mono">100000000063095</span></div>
+            <div class="pay-row"><span class="pay-lbl">Сметка на корисник</span><span class="pay-val mono">7320108176
+                787 14</span></div>
+            <div class="pay-row"><span class="pay-lbl">Прих. шифра и програма</span><span class="pay-val mono">723013 N2
+                2</span></div>
+            <div class="pay-note"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="m9 12 2 2 4-4" />
+              </svg>За упис на вонреден ученик</div>
+          </div>
+        </div>
+        <div class="pay-card reveal" style="animation-delay:.1s">
+          <div class="pay-top">
+            <div class="pay-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <line x1="12" x2="12" y1="2" y2="22" />
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+              </svg></div>
+            <h3>Полагање на испит</h3>
+          </div>
+          <div class="pay-amount">
+            <p class="pay-amount-lbl">Износ за уплата</p>
+            <div class="pay-amount-val"><sup>ден.</sup> 1.000</div>
+          </div>
+          <div class="pay-rows">
+            <div class="pay-row"><span class="pay-lbl">Назив на примач</span><span class="pay-val">Буџет на РМ</span>
+            </div>
+            <div class="pay-row"><span class="pay-lbl">Трансакциска сметка</span><span
+                class="pay-val mono">100000000063095</span></div>
+            <div class="pay-row"><span class="pay-lbl">Сметка на корисник</span><span class="pay-val mono">7320108176
+                787 14</span></div>
+            <div class="pay-row"><span class="pay-lbl">Прих. шифра и програма</span><span class="pay-val mono">723013 N2
+                2</span></div>
+            <div class="pay-note"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="m9 12 2 2 4-4" />
+              </svg>За полагање на вонреден испит</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MATURA ═══ -->
+  <section class="upisi-section matura-bg">
+    <div class="upisi-container">
+      <div class="upisi-sec-head reveal">
+        <span class="section-label">Матура</span>
+        <h2 class="section-title">Државна Матура</h2>
+        <p class="section-description">Официјални соопштенија, информации и материјали за полагањето на Државната
+          матура.</p>
+      </div>
+      <div class="matura-grid">
+        <div class="matura-card reveal">
+          <div class="matura-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+              <path d="M6 12v5c3 3 9 3 12 0v-5" />
+            </svg></div>
+          <h3>Официјален Портал</h3>
+          <p>Сите потребни информации за Државна матура може да се добијат преку ИНТЕРНЕТ на официјалниот портал на
+            Државниот испитен центар.</p>
+          <a href="http://www.matura.gov.mk" target="_blank" class="matura-btn">www.matura.gov.mk <svg
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg></a>
+        </div>
+        <div class="matura-card reveal" style="animation-delay:.1s">
+          <h3 style="margin-bottom:1.5rem;">Материјали за преземање</h3>
+          <div class="dl-list">
+            <a href="files/2754_Правила за полагање на испити од државна матура.pdf" class="dl-row">
+              <div class="dl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2">
+                  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                  <path d="M10.4 12.6a2 2 0 1 1 3 3L8 21l-4 1 1-4Z" />
+                  <path d="M18 13.4V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h2" />
+                </svg></div>
+              <div class="dl-info"><strong>Флаер</strong><span>Општи информации</span></div>
+              <div class="dl-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg></div>
+            </a>
+            <a href="files/3931_proektna za MON.pdf" class="dl-row">
+              <div class="dl-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg></div>
+              <div class="dl-info"><strong>Упатство</strong><span>За проектна задача</span></div>
+              <div class="dl-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="upisi-section blue-section">
+    <div class="blue-decor">
+      <div class="blue-decor-circle"></div>
+      <div class="blue-decor-circle"></div>
+      <div class="blue-decor-dot"></div>
+      <div class="blue-decor-dot"></div>
+      <svg class="blue-decor-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2">
+        <path
+          d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+      </svg>
+      <svg class="blue-decor-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2">
+        <path
+          d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+      </svg>
+    </div>
+    <div class="blue-inner upisi-container">
+      <div class="upisi-cta-content reveal">
+        <div class="upisi-cta-badge"><svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" />
+          </svg>Уписи 2026/2027</div>
+        <h2 class="upisi-cta-title">Подготвени сте да<br>станете дел <em>од нас?</em></h2>
+        <p class="upisi-cta-desc">Уписите најчесто се реализираат во месец јуни преку електронска пријава на порталот за
+          Е-услуги. За точниот датум, следете ги нашите соопштенија.</p>
+        <div class="upisi-cta-btns">
+          <a href="https://e-uslugi.mon.gov.mk/" target="_blank" class="btn btn-primary cta-btn-pulse">
+            Уписи 2026/2027 сега
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </a>
+          <a href="kontakt.html" class="btn btn-outline">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            Контактирајте нѐ
+          </a>
+        </div>
+        <div class="upisi-cta-trust">
+          <span><span class="upisi-cta-trust-dot"></span>Бесплатна консултација</span>
+          <span><span class="upisi-cta-trust-dot"></span>Индивидуален пристап</span>
+          <span><span class="upisi-cta-trust-dot"></span>Гаранција за квалитет</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-border"></div>
+
+    <div class="footer-container">
+      <div class="footer-grid">
+        <!-- Column 1 -->
+        <div class="footer-column">
+          <a href="index.html" class="footer-logo">
+            <div class="footer-logo-icon">
+              <img src="images/logo-yellow.png" alt="Logo">
+            </div>
+            <div class="footer-logo-text">
+              <h3>ДСУ РЦСОО</h3>
+              <p>„Коле Неделковски“</p>
+            </div>
+          </a>
+
+          <p class="footer-text">Квалитетно стручно образование од 1965 година. Подготвуваме идни професионалци за
+            пазарот на труд.</p>
+
+          <div class="footer-contact">
+            <a href="https://maps.google.com/?q=Андон+Шурков+4а+Велес" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>Андон Шурков бр.4а, Велес</span>
+            </a>
+            <a href="tel:043231460">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              <span>043/231-460</span>
+            </a>
+            <a href="mailto:kolenedelkovski@yahoo.com">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+              <span>kolenedelkovski@yahoo.com</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="footer-column">
+          <h4 class="footer-title">Брзи линкови</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Почетна</a></li>
+            <li><a href="index.html#about" class="footer-link">За Нас</a></li>
+            <li><a href="struki.html" class="footer-link">Струки</a></li>
+            <li><a href="profesori.html" class="footer-link">Професори</a></li>
+            <li><a href="galerija.html" class="footer-link">Галерија</a></li>
+            <li><a href="postignuvanja.html" class="footer-link">Успеси</a></li>
+            <li><a href="kontakt.html" class="footer-link">Контакт</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="footer-column">
+          <h4 class="footer-title">Ресурси</h4>
+          <ul class="footer-links">
+            <li><a href="https://ednevnik.edu.mk/" class="footer-link" target="_blank">E-Дневник</a></li>
+            <li><a href="https://csoo.edu.mk/" class="footer-link" target="_blank">Центар за стручно образование</a>
+            </li>
+            <li><a href="kalkulator.html" class="footer-link" target="_blank">Калкулатор за бодови</a></li>
+            <li><a href="https://e-uslugi.mon.gov.mk/" class="footer-link" target="_blank">Систем за упис во средно</a>
+            </li>
+            <li><a href="https://heyzine.com/flip-book/44ad87f9d5.html" class="footer-link" target="_blank">Е-Весник
+                ЕМКУС</a>
+            <li><a href="http://matura.gov.mk/" class="footer-link" target="_blank">Државна матура</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4 -->
+        <div class="footer-column">
+          <h4 class="footer-title">Следете нѐ</h4>
+          <p class="footer-social-text">Бидете во тек со најновите информации и настани.</p>
+
+          <div class="footer-social">
+            <a href="https://www.facebook.com/dsurcsookolenedelkovski" aria-label="Facebook" target="_blank"
+              rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/rcsoo.kolenedelkovski.veles/" aria-label="Instagram" target="_blank"
+              rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+              </svg>
+            </a>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-container">
+        <p class="footer-copyright">© 2026 ДСУ РЦСОО „Коле Неделковски“. Сите права задржани.</p>
+        <div class="footer-legal">
+          <a href="#">Политика за приватност</a>
+          <a href="#">Услови за користење</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-to-top" aria-label="Scroll to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2">
+      <path d="m18 15-6-6-6 6" />
+    </svg>
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
