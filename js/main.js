@@ -190,8 +190,10 @@ function initScrollToTop() {
   window.addEventListener('scroll', function () {
     if (window.scrollY > window.innerHeight) {
       scrollTopBtn.classList.add('visible');
+      document.body.classList.add('scroll-top-visible');
     } else {
       scrollTopBtn.classList.remove('visible');
+      document.body.classList.remove('scroll-top-visible');
     }
   });
 
@@ -666,6 +668,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initFAQ();
   initContactForm();
   initFlipbookModal();
+  initCookieBanner();
 });
 
 // Add fadeInUp animation keyframes
@@ -767,3 +770,165 @@ function initFlipbookModal() {
   }
 }
 
+/**
+ * Cookie Consent Banner Injection
+ */
+function initCookieBanner() {
+  const cookieHtml = `
+    <!-- Reopen Button -->
+    <button id="cookie-reopen-btn" class="cookie-reopen-btn" aria-label="Подесувања за колачиња">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5" />
+        <path d="M8.5 8.5v.01" />
+        <path d="M16 12.5v.01" />
+        <path d="M12 16v.01" />
+        <path d="M11 12.5v.01" />
+      </svg>
+    </button>
+    <div id="cookie-consent-card" class="cookie-card">
+      <div class="cookie-card-header">
+        <div class="cookie-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5" />
+            <path d="M8.5 8.5v.01" />
+            <path d="M16 12.5v.01" />
+            <path d="M12 16v.01" />
+            <path d="M11 12.5v.01" />
+          </svg>
+        </div>
+        <span class="cookie-card-title">Колачиња (Cookies)</span>
+      </div>
+      <div class="cookie-card-content">
+        <p class="cookie-card-text">Користиме колачиња за подобро корисничко искуство. <a href="politika.html">Политика за приватност</a></p>
+        <div class="cookie-card-actions">
+          <button id="cookie-settings-btn" class="btn-cookie btn-cookie-outline">Подесувања</button>
+          <button id="cookie-accept-all" class="btn-cookie btn-cookie-primary">Прифати сите</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="cookie-settings-modal" class="cookie-modal-overlay">
+      <div class="cookie-modal">
+        <div class="cookie-modal-header">
+          <h3>Подесувања за колачиња</h3>
+          <button id="close-cookie-modal" class="cookie-modal-close">&times;</button>
+        </div>
+        <div class="cookie-modal-body">
+          <p class="cookie-modal-desc">Изберете кои колачиња сакате да ги дозволите. Неопходните колачиња секогаш се вклучени за правилно функционирање на сајтот. <a href="politika.html" style="color: var(--school-blue); text-decoration: underline;">Прочитајте ја Политиката за приватност</a>.</p>
+          
+          <div class="cookie-toggle-group">
+            <div class="cookie-toggle-info">
+              <h4>Неопходни колачиња</h4>
+              <p>Потребни за основно функционирање на веб-страницата и навигацијата.</p>
+            </div>
+            <label class="cookie-switch">
+              <input type="checkbox" checked disabled>
+              <span class="cookie-slider"></span>
+            </label>
+          </div>
+
+          <div class="cookie-toggle-group">
+            <div class="cookie-toggle-info">
+              <h4>Аналитички колачиња</h4>
+              <p>Ни помагаат да разбереме како се користи страницата преку собирање анонимни податоци.</p>
+            </div>
+            <label class="cookie-switch">
+              <input type="checkbox" id="cookie-analytics" checked>
+              <span class="cookie-slider"></span>
+            </label>
+          </div>
+
+          <div class="cookie-toggle-group">
+            <div class="cookie-toggle-info">
+              <h4>Маркетинг колачиња</h4>
+              <p>Се користат за следење на посетителите низ веб-страниците за приказ на релевантни реклами.</p>
+            </div>
+            <label class="cookie-switch">
+              <input type="checkbox" id="cookie-marketing">
+              <span class="cookie-slider"></span>
+            </label>
+          </div>
+        </div>
+        <div class="cookie-modal-footer">
+          <button id="cookie-reject-all" class="btn-cookie btn-cookie-outline">Одбиј сите</button>
+          <button id="cookie-save-settings" class="btn-cookie btn-cookie-primary">Зачувај</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.body.insertAdjacentHTML('beforeend', cookieHtml);
+
+  const cookieCard = document.getElementById('cookie-consent-card');
+  const settingsModal = document.getElementById('cookie-settings-modal');
+  const reopenBtn = document.getElementById('cookie-reopen-btn');
+  
+  if (!cookieCard || !settingsModal) return;
+
+  const cookieConsent = localStorage.getItem('cookieConsent');
+
+  if (cookieConsent) {
+    try {
+      const prefs = JSON.parse(cookieConsent);
+      const analyticsToggle = document.getElementById('cookie-analytics');
+      const marketingToggle = document.getElementById('cookie-marketing');
+      if (analyticsToggle) analyticsToggle.checked = !!prefs.analytics;
+      if (marketingToggle) marketingToggle.checked = !!prefs.marketing;
+    } catch (e) {}
+    
+    // Banner already dismissed - show reopen button
+    reopenBtn.classList.add('show');
+  } else {
+    // New visitor - show banner
+    setTimeout(() => {
+      cookieCard.classList.add('show');
+      document.body.classList.add('has-cookie-banner');
+    }, 1000);
+  }
+
+  // Card buttons
+  document.getElementById('cookie-accept-all')?.addEventListener('click', () => {
+    saveConsent(true, true);
+  });
+  
+  document.getElementById('cookie-settings-btn')?.addEventListener('click', () => {
+    settingsModal.classList.add('active');
+  });
+
+  // Reopen button triggers modal directly
+  reopenBtn?.addEventListener('click', () => {
+    settingsModal.classList.add('active');
+  });
+
+  // Modal buttons
+  document.getElementById('close-cookie-modal')?.addEventListener('click', () => {
+    settingsModal.classList.remove('active');
+  });
+
+  document.getElementById('cookie-reject-all')?.addEventListener('click', () => {
+    saveConsent(false, false);
+  });
+
+  document.getElementById('cookie-save-settings')?.addEventListener('click', () => {
+    const analytics = document.getElementById('cookie-analytics')?.checked || false;
+    const marketing = document.getElementById('cookie-marketing')?.checked || false;
+    saveConsent(analytics, marketing);
+  });
+
+  function saveConsent(analytics, marketing) {
+    const consentOptions = {
+      necessary: true,
+      analytics: analytics,
+      marketing: marketing,
+      timestamp: new Date().toISOString()
+    };
+    localStorage.setItem('cookieConsent', JSON.stringify(consentOptions));
+    
+    cookieCard.classList.remove('show');
+    settingsModal.classList.remove('active');
+    document.body.classList.remove('has-cookie-banner');
+    
+    reopenBtn.classList.add('show');
+  }
+}
