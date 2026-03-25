@@ -2833,6 +2833,7 @@ ol {
 .footer-link[href*="ednevnik"]::before {
   height: 18px;
   background: url('../images/e-dnevnik.png') center/contain no-repeat;
+  border-radius: 4px;
 }
 
 .footer-link:hover {
