@@ -314,7 +314,7 @@
       background: var(--white);
       padding: 1rem 0;
       position: sticky;
-      top: 68px;
+      top: 85px;
       z-index: 50;
       border-bottom: 1px solid var(--gray-100);
       box-shadow: 0 4px 20px rgba(30, 58, 95, .06);
@@ -442,7 +442,6 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(to top, rgba(30, 58, 95, .75) 0%, transparent 55%);
-      opacity: 0;
       transition: opacity .35s;
       display: flex;
       flex-direction: column;
@@ -847,7 +846,21 @@
   </section>
 
   <!-- ═══ INFO CARDS ═══ -->
-  <section class="pr-info-strip">
+
+  <section class="pr-filter">
+    <div class="pr-container">
+      <div class="pr-filter-btns">
+        <button class="pr-filter-btn active" data-filter="all">Сите</button>
+        <button class="pr-filter-btn" data-filter="opsto">Општообразовни</button>
+        <button class="pr-filter-btn" data-filter="ugostitelska">Угостителски</button>
+        <button class="pr-filter-btn" data-filter="elektro">Електро</button>
+        <button class="pr-filter-btn" data-filter="soobrakaj">Сообраќајни</button>
+        <button class="pr-filter-btn" data-filter="masinska">Машински</button>
+      </div>
+    </div>
+  </section>
+
+    <section class="pr-info-strip">
     <div class="pr-container">
       <div class="pr-info-grid">
         <div class="pr-info-card reveal">
@@ -856,7 +869,7 @@
               <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
               <circle cx="12" cy="7" r="4" />
             </svg></div>
-          <h3>44</h3>
+          <h3>64</h3>   
           <p>Вкупно посветени професори и наставници</p>
         </div>
         <div class="pr-info-card reveal" style="animation-delay:.08s">
@@ -865,7 +878,7 @@
               <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
               <path d="M6 12v5c3 3 9 3 12 0v-5" />
             </svg></div>
-          <h3>15</h3>
+          <h3>2</h3>
           <p>Професори со магистерски или докторски степен</p>
         </div>
         <div class="pr-info-card reveal" style="animation-delay:.16s">
@@ -891,18 +904,6 @@
     </div>
   </section>
 
-  <section class="pr-filter">
-    <div class="pr-container">
-      <div class="pr-filter-btns">
-        <button class="pr-filter-btn active" data-filter="all">Сите</button>
-        <button class="pr-filter-btn" data-filter="opsto">Општообразовни</button>
-        <button class="pr-filter-btn" data-filter="ugostitelska">Угостителски</button>
-        <button class="pr-filter-btn" data-filter="elektro">Електро</button>
-        <button class="pr-filter-btn" data-filter="soobrakaj">Сообраќајни</button>
-        <button class="pr-filter-btn" data-filter="masinska">Машински</button>
-      </div>
-    </div>
-  </section>
 
   <!-- ═══ PROFESSORS GRID ═══ -->
   <section class="pr-section">
@@ -923,9 +924,6 @@
               <p class="pr-card-name">Горан Богоевски</p>
               <p class="pr-card-title">Директор</p>
               <p class="pr-card-subject">Администрација</p>
-              <div class="pr-card-tags">
-                <span class="pr-tag role">Управување</span>
-              </div>
             </div>
            </div>
          </div>
@@ -934,7 +932,7 @@
          <h2 class="title" data-dept="struchna" style="text-align: center;">СТРУЧНА СЛУЖБА</h2>
          <div class="pr-section-grid" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem;">
 
-          <div class="pr-card reveal" data-dept="struchna" style="max-width: 280px; width: 100%;">
+          <div class="pr-card reveal" data-dept="struchna" style="min-width: 280px;">
             <div class="pr-card-img">
               <img src="images/professors/PandorceJordanova.png" alt="Пандорче Јорданова">
               <div class="pr-card-img-overlay">
@@ -945,15 +943,12 @@
               <p class="pr-card-name">Пандорче Јорданова</p>
               <p class="pr-card-title">Педагог</p>
               <p class="pr-card-subject">Педагогија и психологија на образованието</p>
-              <div class="pr-card-tags">
-                <span class="pr-tag role">Стручна служба</span>
-              </div>
             </div>
           </div>
 
-          <div class="pr-card reveal" data-dept="struchna" style="max-width: 280px; width: 100%;">
+          <div class="pr-card reveal" data-dept="struchna" style="min-width: 280px;">
             <div class="pr-card-img">
-              <img src="images/professors/avatar-default.jpg" alt="Василија Јорданова">
+              <img src="images/professors/VasilijaJordanova.jpg" alt="Василија Јорданова">
               <div class="pr-card-img-overlay">
                 <p class="pr-card-bio-preview">Психолог и консултант за ученици</p>
               </div>
@@ -962,9 +957,6 @@
               <p class="pr-card-name">Василија Јорданова</p>
               <p class="pr-card-title">Психолог</p>
               <p class="pr-card-subject">Психолошко советување</p>
-              <div class="pr-card-tags">
-                <span class="pr-tag role">Стручна служба</span>
-              </div>
             </div>
           </div>
          </div>
@@ -982,9 +974,7 @@
               <p class="pr-card-name">Цветанка Ѓакова Панова</p>
               <p class="pr-card-title">Професор</p>
               <p class="pr-card-subject">Македонски јазик и литература</p>
-              <div class="pr-card-tags">
-                <span class="pr-tag role">Општообразовни</span>
-              </div>
+              
             </div>
           </div>
 
@@ -999,9 +989,6 @@
               <p class="pr-card-name">Валентина Шкрекова</p>
               <p class="pr-card-title">Професор</p>
               <p class="pr-card-subject">Македонски јазик и литература</p>
-              <div class="pr-card-tags">
-                <span class="pr-tag role">Општообразовни</span>
-              </div>
             </div>
           </div>
 
@@ -1016,9 +1003,7 @@
               <p class="pr-card-name">Мариче Стојанова</p>
               <p class="pr-card-title">Магистер</p>
               <p class="pr-card-subject">Македонски јазик и литература</p>
-              <div class="pr-card-tags">
-                <span class="pr-tag role">Општообразовни</span>
-              </div>
+              
             </div>
           </div>
         <!-- АНГЛИСКИ ЈАЗИК -->
@@ -1033,9 +1018,6 @@
             <p class="pr-card-name">Маја Живанова</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Англиски јазик</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Општообразовни</span>
-            </div>
           </div>
         </div>
 
@@ -1050,9 +1032,6 @@
             <p class="pr-card-name">Верица Анѓушева</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Англиски јазик</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Општообразовни</span>
-            </div>
           </div>
         </div>
 
@@ -1067,9 +1046,6 @@
             <p class="pr-card-name">Јордан Палашев</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Англиски јазик</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Општообразовни</span>
-            </div>
           </div>
         </div>
 
@@ -1085,9 +1061,6 @@
             <p class="pr-card-name">Весна Стојанова Богоевска</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Историја</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Општообразовни</span>
-            </div>
           </div>
         </div>
 
@@ -1102,9 +1075,6 @@
             <p class="pr-card-name">Јованче Талаков</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Историја</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Општообразовни</span>
-            </div>
           </div>
         </div>
 
@@ -1120,9 +1090,6 @@
             <p class="pr-card-name">Душан Банев</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Музичка култура</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Општообразовни</span>
-            </div>
           </div>
         </div>
 
@@ -1138,9 +1105,6 @@
             <p class="pr-card-name">Ангелче Гушев</p>
             <p class="pr-card-title">Магистер</p>
             <p class="pr-card-subject">Спорт и спортски активности</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Општообразовни</span>
-            </div>
           </div>
         </div>
 
@@ -1155,9 +1119,6 @@
             <p class="pr-card-name">Златко Здравковски</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Спорт и спортски активности</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Општообразовни</span>
-            </div>
           </div>
         </div>
 
@@ -1172,9 +1133,6 @@
             <p class="pr-card-name">Леонид Таневски</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Спорт и спортски активности</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Општообразовни</span>
-            </div>
           </div>
         </div>
 
@@ -1190,9 +1148,6 @@
             <p class="pr-card-name">Магдалена Иванова</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Математика</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Општообразовни</span>
-            </div>
           </div>
         </div>
 
@@ -1207,9 +1162,6 @@
             <p class="pr-card-name">Биљана Ивева</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Математика</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Општообразовни</span>
-            </div>
           </div>
         </div>
 
@@ -1224,9 +1176,6 @@
             <p class="pr-card-name">Мира Ташкова</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Математика</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Општообразовни</span>
-            </div>
           </div>
         </div>
 
@@ -1242,9 +1191,6 @@
             <p class="pr-card-name">Ванчо Костадинов</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Информатика</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Општообразовни</span>
-            </div>
           </div>
         </div>
 
@@ -1260,9 +1206,6 @@
             <p class="pr-card-name">Силвана Петрова</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Физика</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Општообразовни</span>
-            </div>
           </div>
         </div>
         </div>
@@ -1280,9 +1223,6 @@
               <p class="pr-card-name">Влатко Панов</p>
               <p class="pr-card-title">Професор</p>
               <p class="pr-card-subject">Угостителски стручни предмети</p>
-              <div class="pr-card-tags">
-                <span class="pr-tag role">Угостителски</span>
-              </div>
             </div>
           </div>
 
@@ -1297,9 +1237,6 @@
               <p class="pr-card-name">Марјан Малинов</p>
               <p class="pr-card-title">Професор</p>
               <p class="pr-card-subject">Угостителски стручни предмети</p>
-              <div class="pr-card-tags">
-                <span class="pr-tag role">Угостителски</span>
-              </div>
             </div>
           </div>
 
@@ -1314,29 +1251,23 @@
               <p class="pr-card-name">Јане Гонев</p>
               <p class="pr-card-title">Професор</p>
               <p class="pr-card-subject">Угостителски стручни предмети</p>
-              <div class="pr-card-tags">
-                <span class="pr-tag role">Угостителски</span>
-              </div>
             </div>
           </div>
         </div>
         <!-- ЕЛЕКТРО СТРУЧНИ ПРЕДМЕТИ -->
-         <h2 class="title" data-dept="elektro">ЕЛЕКТРО СТРУЧНИ ПРЕДМЕТИ</h2>
+         <h2 class="title" data-dept="elektro">ЕЛЕКТРОТЕХНИЧКИ СТРУЧНИ ПРЕДМЕТИ</h2>
         <div class="pr-section-grid">
         <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.04s">
           <div class="pr-card-img">
             <img src="images/professors/NikolaDecev.png" alt="Никола Дечев">
             <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+              <p class="pr-card-bio-preview">Проф. по електротехнички стручни предмети</p>
             </div>
           </div>
           <div class="pr-card-info">
             <p class="pr-card-name">Никола Дечев</p>
             <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Електро стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Електро</span>
-            </div>
+            <p class="pr-card-subject">Електротехнички стручни предмети</p>
           </div>
         </div>
 
@@ -1344,16 +1275,13 @@
           <div class="pr-card-img">
             <img src="images/professors/GordanaMuleva.png" alt="Гордана Мулева">
             <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+              <p class="pr-card-bio-preview">Проф. по Електротехнички стручни предмети</p>
             </div>
           </div>
           <div class="pr-card-info">
             <p class="pr-card-name">Гордана Мулева</p>
             <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Електро стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Електро</span>
-            </div>
+            <p class="pr-card-subject">Електротехнички стручни предмети</p>
           </div>
         </div>
 
@@ -1361,16 +1289,13 @@
           <div class="pr-card-img">
             <img src="images/professors/MimozaPanovskaTodorova.png" alt="Мимоза Пановска Тодорова">
             <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+              <p class="pr-card-bio-preview">Проф. по Електротехнички стручни предмети</p>
             </div>
           </div>
           <div class="pr-card-info">
             <p class="pr-card-name">Мимоза Пановска Тодорова</p>
             <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Електро стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Електро</span>
-            </div>
+            <p class="pr-card-subject">Електротехнички стручни предмети</p>
           </div>
         </div>
 
@@ -1378,16 +1303,13 @@
           <div class="pr-card-img">
             <img src="images/professors/MarijanMalinov.png" alt="Марјанчо Малинов">
             <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+              <p class="pr-card-bio-preview">Проф. по Електротехнички стручни предмети</p>
             </div>
           </div>
           <div class="pr-card-info">
             <p class="pr-card-name">Марјанчо Малинов</p>
             <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Електро стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Електро</span>
-            </div>
+            <p class="pr-card-subject">Електротехнички стручни предмети</p>
           </div>
         </div>
 
@@ -1395,16 +1317,13 @@
           <div class="pr-card-img">
             <img src="images/professors/SimeMajstorov.png" alt="Симе Мајсторов">
             <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+              <p class="pr-card-bio-preview">Проф. по Електротехнички стручни предмети</p>
             </div>
           </div>
           <div class="pr-card-info">
             <p class="pr-card-name">Симе Мајсторов</p>
             <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Електро стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Електро</span>
-            </div>
+            <p class="pr-card-subject">Електротехнички стручни предмети</p>
           </div>
         </div>
 
@@ -1412,16 +1331,13 @@
           <div class="pr-card-img">
             <img src="images/professors/DanielZdravevski.png" alt="Даниел Здравевски">
             <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+              <p class="pr-card-bio-preview">Проф. по Електротехнички стручни предмети</p>
             </div>
           </div>
         <div class="pr-card-info">
             <p class="pr-card-name">Даниел Здравевски</p>
             <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Електро стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Електро</span>
-            </div>
+            <p class="pr-card-subject">Електротехнички стручни предмети</p>
           </div>
         </div>
 
@@ -1429,16 +1345,13 @@
       <div class="pr-card-img">
         <img src="images/professors/LeonidKodovski.png" alt="Леонид Кодовски">
         <div class="pr-card-img-overlay">
-          <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+          <p class="pr-card-bio-preview">Проф. по Електротехнички стручни предмети</p>
         </div>
       </div>
       <div class="pr-card-info">
         <p class="pr-card-name">Леонид Кодовски</p>
         <p class="pr-card-title">Професор</p>
-        <p class="pr-card-subject">Електро стручни предмети</p>
-        <div class="pr-card-tags">
-          <span class="pr-tag role">Електро</span>
-        </div>
+        <p class="pr-card-subject">Електротехнички стручни предмети</p>
       </div>
         </div>
 
@@ -1446,16 +1359,13 @@
           <div class="pr-card-img">
             <img src="images/professors/LjubeBabunski.png" alt="Љубе Бабунски">
             <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+              <p class="pr-card-bio-preview">Проф. по Електротехнички стручни предмети</p>
             </div>
           </div>
           <div class="pr-card-info">
             <p class="pr-card-name">Љубе Бабунски</p>
             <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Електро стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Електро</span>
-            </div>
+            <p class="pr-card-subject">Електротехнички стручни предмети</p>
           </div>
         </div>
 
@@ -1463,16 +1373,13 @@
           <div class="pr-card-img">
             <img src="images/professors/ElenaJosifoska.png" alt="Елена Јосифоска">
             <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+              <p class="pr-card-bio-preview">Проф. по Електротехнички стручни предмети</p>
             </div>
           </div>
           <div class="pr-card-info">
             <p class="pr-card-name">Елена Јосифоска</p>
             <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Електро стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Електро</span>
-            </div>
+            <p class="pr-card-subject">Електротехнички стручни предмети</p>
           </div>
         </div>
 
@@ -1480,16 +1387,13 @@
           <div class="pr-card-img">
             <img src="images/professors/BoroRistovski.png" alt="Боро Ристовски">
             <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+              <p class="pr-card-bio-preview">Проф. по Електротехнички стручни предмети</p>
             </div>
           </div>
           <div class="pr-card-info">
             <p class="pr-card-name">Боро Ристовски</p>
             <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Електро стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Електро</span>
-            </div>
+            <p class="pr-card-subject">Електротехнички стручни предмети</p>
           </div>
         </div>
 
@@ -1497,16 +1401,13 @@
           <div class="pr-card-img">
             <img src="images/professors/SnezanaSofijanova.png" alt="Снежана Софијанова">
             <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+              <p class="pr-card-bio-preview">Проф. по Електротехнички стручни предмети</p>
             </div>
           </div>
           <div class="pr-card-info">
             <p class="pr-card-name">Снежана Софијанова</p>
             <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Електро стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Електро</span>
-            </div>
+            <p class="pr-card-subject">Електротехнички стручни предмети</p>
           </div>
         </div>
 
@@ -1514,16 +1415,13 @@
           <div class="pr-card-img">
             <img src="images/professors/IgorceTeov.png" alt="Игорче Теов">
             <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Проф. по електро стручни предмети</p>
+              <p class="pr-card-bio-preview">Проф. по Електротехнички стручни предмети</p>
             </div>
           </div>
           <div class="pr-card-info">
             <p class="pr-card-name">Игорче Теов</p>
             <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Електро стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Електро</span>
-            </div>
+            <p class="pr-card-subject">Електротехнички стручни предмети</p>
           </div>
         </div>
         </div>
@@ -1542,9 +1440,6 @@
           <p class="pr-card-name">Катерина Стојадиновиќ</p>
           <p class="pr-card-title">Професор</p>
           <p class="pr-card-subject">Сообраќајни стручни предмети</p>
-          <div class="pr-card-tags">
-            <span class="pr-tag role">Сообраќајни</span>
-          </div>
         </div>
       </div>
 
@@ -1559,9 +1454,6 @@
           <p class="pr-card-name">Маријан Панов</p>
           <p class="pr-card-title">Професор</p>
           <p class="pr-card-subject">Сообраќајни стручни предмети</p>
-          <div class="pr-card-tags">
-            <span class="pr-tag role">Сообраќајни</span>
-          </div>
         </div>
       </div>
 
@@ -1576,9 +1468,6 @@
           <p class="pr-card-name">Митхат Мемиќ</p>
           <p class="pr-card-title">Професор</p>
           <p class="pr-card-subject">Сообраќајни стручни предмети</p>
-          <div class="pr-card-tags">
-            <span class="pr-tag role">Сообраќајни</span>
-          </div>
         </div>
       </div>
     </div>
@@ -1596,9 +1485,6 @@
             <p class="pr-card-name">Марина Филипова Костадиновска</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Машински стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Машински</span>
-            </div>
           </div>
         </div>
 
@@ -1613,9 +1499,6 @@
             <p class="pr-card-name">Иванче Иванов</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Машински стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Машински</span>
-            </div>
           </div>
         </div>
 
@@ -1630,9 +1513,6 @@
             <p class="pr-card-name">Валентин Елисковски</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Машински стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Машински</span>
-            </div>
           </div>
         </div>
 
@@ -1647,9 +1527,6 @@
             <p class="pr-card-name">Сашо Ѓоргов</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Машински стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Машински</span>
-            </div>
           </div>
         </div>
 
@@ -1664,9 +1541,6 @@
             <p class="pr-card-name">Марија Голубовиќ</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Машински стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Машински</span>
-            </div>
           </div>
         </div>
 
@@ -1681,9 +1555,6 @@
             <p class="pr-card-name">Горан Бузалковски</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Машински стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Машински</span>
-            </div>
           </div>
         </div>
 
@@ -1698,9 +1569,6 @@
             <p class="pr-card-name">Наталија Ашиковска</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Машински стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Машински</span>
-            </div>
           </div>
         </div>
 
@@ -1715,9 +1583,6 @@
             <p class="pr-card-name">Орданче Амбарков</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Машински стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Машински</span>
-            </div>
           </div>
         </div>
 
@@ -1732,9 +1597,6 @@
             <p class="pr-card-name">Илија Трчилов</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Машински стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Машински</span>
-            </div>
           </div>
         </div>
 
@@ -1749,9 +1611,6 @@
             <p class="pr-card-name">Иле Танев</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Машински стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Машински</span>
-            </div>
           </div>
         </div>
 
@@ -1766,9 +1625,6 @@
             <p class="pr-card-name">Христина Трајкова</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Машински стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Машински</span>
-            </div>
           </div>
         </div>
 
@@ -1783,9 +1639,6 @@
             <p class="pr-card-name">Зоран Пасламушков</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Машински стручни предмети</p>
-            <div class="pr-card-tags">
-              <span class="pr-tag role">Машински</span>
-            </div>
           </div>
         </div>
       </div>
