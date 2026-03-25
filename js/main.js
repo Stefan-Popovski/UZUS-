@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Initialize all components
   initNavbar();
   initMobileMenu();
-  initSearchBar();
+
   initScrollAnimations();
   initTestimonialsSlider();
   initScrollToTop();
@@ -62,29 +62,6 @@ function initMobileMenu() {
   });
 }
 
-/**
- * Search bar toggle
- */
-function initSearchBar() {
-  const searchBtn = document.querySelector('.navbar-btn[aria-label="Search"]');
-  const searchBar = document.querySelector('.search-bar');
-
-  if (!searchBtn || !searchBar) return;
-
-  searchBtn.addEventListener('click', function () {
-    searchBar.classList.toggle('active');
-    if (searchBar.classList.contains('active')) {
-      searchBar.querySelector('input').focus();
-    }
-  });
-
-  // Close search bar when clicking outside
-  document.addEventListener('click', function (e) {
-    if (!searchBar.contains(e.target) && !searchBtn.contains(e.target)) {
-      searchBar.classList.remove('active');
-    }
-  });
-}
 
 /**
  * Scroll animations (reveal on scroll)

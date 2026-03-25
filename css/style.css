@@ -477,58 +477,6 @@ ol {
   font-weight: 500;
 }
 
-/* Search Bar */
-.search-bar {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: var(--white);
-  box-shadow: var(--shadow-lg);
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: all 0.3s ease;
-}
-
-.search-bar.active {
-  max-height: 5rem;
-  opacity: 1;
-}
-
-.search-bar-content {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-.search-input-wrapper {
-  position: relative;
-}
-
-.search-input-wrapper svg {
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1.25rem;
-  height: 1.25rem;
-  color: var(--gray-400);
-}
-
-.search-input {
-  width: 100%;
-  padding: 0.875rem 1rem 0.875rem 3rem;
-  border: 2px solid var(--gray-200);
-  border-radius: var(--radius-xl);
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: var(--school-blue);
-}
 
 /* ============================================
    HERO SECTION
