@@ -2881,12 +2881,23 @@ ol {
   transition: all 0.3s ease;
 }
 
+/* Specific logo for E-Dnevnik link */
+.footer-link[href*="ednevnik"]::before {
+  height: 18px;
+  background: url('../images/e-dnevnik.png') center/contain no-repeat;
+}
+
 .footer-link:hover {
   color: var(--school-gold);
 }
 
 .footer-link:hover::before {
   width: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.footer-link[href*="ednevnik"]:hover::before {
+  width: 18px;
   margin-right: 0.5rem;
 }
 
