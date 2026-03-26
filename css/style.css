@@ -2110,7 +2110,9 @@ ol {
   max-width: 800px;
   width: 100%;
   max-height: 90vh;
-  overflow-y: auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   transform: scale(0.9);
   transition: transform 0.3s ease;
 }
@@ -2141,7 +2143,7 @@ ol {
 
 .modal-image {
   position: relative;
-  height: 500px;
+  height: clamp(250px, 40vh, 450px);
   overflow: hidden;
   display: flex;
 }
@@ -2207,6 +2209,7 @@ ol {
 
 .modal-content {
   padding: 2rem;
+  overflow-y: auto;
 }
 
 .modal-badge {
