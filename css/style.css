@@ -222,11 +222,13 @@ ol {
   color: var(--gray-700);
 }
 
-.navbar-link:hover {
+.navbar-link:hover,
+.navbar-link.active {
   color: var(--white);
 }
 
-.navbar.scrolled .navbar-link:hover {
+.navbar.scrolled .navbar-link:hover,
+.navbar.scrolled .navbar-link.active {
   color: var(--school-blue);
 }
 
@@ -238,14 +240,13 @@ ol {
   transform: translateX(-50%);
   width: 0;
   height: 2px;
-  background: var(--school-blue);
+  background: currentColor;
   transition: width 0.3s ease;
 }
 
-.navbar-link:hover::after {
+.navbar-link.active::after {
   width: 75%;
 }
-
 .navbar-actions {
   display: flex;
   align-items: center;
@@ -417,7 +418,8 @@ ol {
   transition: all 0.3s ease;
 }
 
-.mobile-menu-link:hover {
+.mobile-menu-link:hover,
+.mobile-menu-link.active {
   background: rgba(30, 58, 95, 0.05);
   color: var(--school-blue);
 }
