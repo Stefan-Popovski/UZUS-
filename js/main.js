@@ -932,3 +932,279 @@ function initCookieBanner() {
     reopenBtn.classList.add('show');
   }
 }
+
+/**
+ * Quiz Modal Integration (only on index)
+ */
+function initQuizModal() {
+  // Only trigger on the homepage. We can check if hero section exists or by pathname.
+  const isHomepage = document.querySelector('.hero') !== null;
+  if (!isHomepage) return;
+
+  // Check if user already completed or saw the quiz this session (optional, but good for UX)
+  if (sessionStorage.getItem('quizSeen')) return;
+  sessionStorage.setItem('quizSeen', 'true');
+
+  const modalHtml = `
+    <div id="quiz-modal" class="quiz-modal-overlay">
+      <div class="quiz-modal">
+        <button id="close-quiz" class="quiz-modal-close" aria-label="Затвори">&times;</button>
+        <div id="quiz-app"></div>
+      </div>
+    </div>
+  `;
+
+  document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+  const modalOverlay = document.getElementById('quiz-modal');
+  const closeBtn = document.getElementById('close-quiz');
+  const appContainer = document.getElementById('quiz-app');
+
+  // Open modal with a slight delay
+  setTimeout(() => {
+    modalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    render();
+  }, 1500);
+
+  closeBtn.addEventListener('click', closeQuizModal);
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) closeQuizModal();
+  });
+
+  function closeQuizModal() {
+    modalOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Quiz Logic
+const questions = [
+  { text: "Кога нешто ќе се расипе дома, јас...", opts: ["Сакам сам/а да го поправам", "Истражувам зошто се случило тоа", "Ги замолувам другите да помогнат", "Не ме интересира многу"], types: ["R","I","S","C"] },
+  { text: "Во слободно време најмногу уживам во...", opts: ["Работа со алати или опрема", "Читање и решавање загатки", "Дружење и помагање на другите", "Организирање и подредување"], types: ["R","I","S","C"] },
+  { text: "На час по физика / математика...", opts: ["Сакам практични задачи и експерименти", "Сакам да разберам ЗОШТО нештата функционираат така", "Сакам да работиме во групи", "Сакам задачи и формули"], types: ["R","I","S","C"] },
+  { text: "Ако треба да се опишам себеси, јас сум...", opts: ["Практичен/на и динамичен/на", "Аналитичен/на и љубопитен/на", "Сочувствителен/на и грижлив/а", "Уреден/на и прецизен/на"], types: ["R","I","S","C"] },
+  { text: "Сонувам за работа каде...", opts: ["Работам со машини, мотори или електрика", "Решавам сложени технички проблеми", "Помагам на луѓе и работам во тим", "Имам јасен распоред и систем"], types: ["R","I","S","C"] },
+  { text: "Во школо, мојот омилен тип на активност е...", opts: ["Работилница / практична настава", "Истражувачки проекти", "Тимски задачи и дискусии", "Тестови со точни одговори"], types: ["R","I","S","C"] },
+  { text: "Кога гледам автомобил или мотор, мислам...", opts: ["Интересно, би сакал/а да го разглобам!", "Прашувам се како точно работи моторот", "Размислувам за луѓето кои патуваат", "Забележувам дали се уредни и одржувани"], types: ["R","I","S","C"] },
+  { text: "Во иднина сакам...", opts: ["Нешто да правам со рацете/физички да работам", "Да истражувам, анализирам, да решавам проблеми", "Да работам со луѓе и да им помагам", "Да работам во канцеларија"], types: ["R","I","S","C"] },
+  { text: "Кога некој пријател ме моли за совет...", opts: ["Понудувам практично решение", "Ја анализираме заедно ситуацијата", "Слушам и поддржувам", "Им давам јасна, структурирана препорака"], types: ["R","I","S","C"] },
+  { text: "Кога гледам некоја зграда или машина, прво мислам на...", opts: ["Конструкцијата — како е направена", "Принципите — зошто функционира така", "Луѓето — кој работи/живее тука", "Системот — дали е сè уредено правилно"], types: ["R","I","S","C"] },
+  { text: "На патување/екскурзија, јас сум тој/таа кој...", opts: ["Помага со багаж, логистика, карти", "Ја истражува историјата или природата на местото", "Се грижи дека сите се добри и весели", "Ги паметам сите резервации и распоред"], types: ["R","I","S","C"] },
+  { text: "Кога слушам збор 'технологија', прво се сетувам на...", opts: ["Машини, мотори, електрична инсталација", "Компјутери, мрежи, електроника", "Апликации и комуникација со луѓе", "Бази на податоци, системи, документација"], types: ["R","I","S","C"] }
+];
+
+  const profiles = {
+    R: { name: "Реалистичен (R)", color: "#1E3A5F", bg: "#E6F1FB", border: "#B5D4F4", text: "#0C447C",
+         desc: "Уживаш во практична работа со раце, алати и машини.",
+         nasoki: [{ name: "Машински техничар" }, { name: "Техничар за компјутерско управување" }, { name: "Автомеханичар" }, { name: "Електротехничар-енергетичар" }] },
+    I: { name: "Истражувачки (I)", color: "#D4AF37", bg: "#FAEEDA", border: "#FAC775", text: "#412402",
+         desc: "Уживаш во анализирање, истражување и решавање сложени проблеми.",
+         nasoki: [{ name: "Електротехничар за електроника и телекомуникации" }, { name: "Техничар за компјутерско управување" }, { name: "Електротехничар-автоматичар" }] },
+    S: { name: "Социјален (S)", color: "#2E5C31", bg: "#EAF3DE", border: "#9FE1CB", text: "#04342C",
+         desc: "Уживаш во работа со луѓе — да помагаш, советуваш и соработуваш.",
+         nasoki: [{ name: "Келнер" }, { name: "Готвач" }, { name: "Техничар за туризам" }, { name: "Техничар за транспорт и шпедиција" }] },
+    C: { name: "Конвенционален (C)", color: "#4A5568", bg: "#EDF2F7", border: "#CBD5E0", text: "#2D3748",
+         desc: "Уживаш во уреден, систематичен начин на работа со прецизни податоци.",
+         nasoki: [{ name: "Техничар за транспорт и шпедиција" }, { name: "Биро за туристички услуги" }, { name: "Електротехничар-енергетичар (дуално)" }] }
+  };
+
+  let answers = {};
+  let current = 0;
+  let showResults = false;
+  let started = false;
+
+  function getScores() {
+    const s = { R: 0, I: 0, S: 0, C: 0 };
+    for (const [qi, ai] of Object.entries(answers)) {
+      const t = questions[qi].types[ai];
+      if (t) s[t]++;
+    }
+    return s;
+  }
+
+  function getSorted() {
+    return Object.entries(getScores()).sort((a, b) => b[1] - a[1]);
+  }
+
+  function render() {
+    if (!started) {
+      renderStartScreen(appContainer);
+    } else if (showResults) {
+      renderResults(appContainer);
+    } else {
+      renderQuiz(appContainer);
+    }
+  }
+
+  function renderStartScreen(app) {
+    app.innerHTML = `
+      <div class="quiz-start-screen">
+        <div class="quiz-start-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 14l9-5-9-5-9 5 9 5z" />
+            <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+            <path d="M12 14v6" />
+          </svg>
+        </div>
+        <h1 class="quiz-result-title">Деветтоодделенец си?</h1>
+        <p class="quiz-result-sub" style="font-size: 1.125rem;">Не знаеш каде во средно?</p>
+        <p class="quiz-desc-text">Овој краток квиз ќе ти помогне да откриеш која струка во <b>„Коле Неделковски“</b> најмногу одговара на твоите интереси.</p>
+        <button class="quiz-nav-btn primary quiz-start-btn" id="start-quiz-btn">Започни го квизот</button>
+      </div>
+    `;
+    document.getElementById('start-quiz-btn').addEventListener('click', () => {
+      started = true;
+      render();
+    });
+  }
+
+  function renderQuiz(app) {
+    const q = questions[current];
+    const answered = answers[current] !== undefined;
+    const total = questions.length;
+    const pct = Math.round((Object.keys(answers).length / total) * 100);
+
+    app.innerHTML = `
+      <div class="quiz-header">
+        <h1>Квиз за избор на насока</h1>
+        <p>Откриј го твојот потенцијал</p>
+      </div>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:${pct}%"></div></div>
+      <div class="quiz-question-card">
+        <div class="quiz-q-num">Прашање ${current + 1} од ${total}</div>
+        <div class="quiz-q-text">${q.text}</div>
+        <div class="quiz-options">
+          ${q.opts.map((o, i) => `
+            <button class="quiz-opt-btn ${answers[current] === i ? 'selected' : ''}" data-idx="${i}">
+              <span style="font-size:1.25rem; font-weight:700; color:inherit;">${['A','Б','В','Г'][i]}</span> ${o}
+            </button>
+          `).join('')}
+        </div>
+      </div>
+      <div class="quiz-nav-row">
+        <button class="quiz-nav-btn secondary" id="quiz-btn-prev" ${current === 0 ? 'disabled' : ''}>← Назад</button>
+        <span class="quiz-q-counter">${Object.keys(answers).length} / ${total}</span>
+        ${current < total - 1
+          ? `<button class="quiz-nav-btn primary" id="quiz-btn-next" ${!answered ? 'disabled' : ''}>Следно →</button>`
+          : `<button class="quiz-nav-btn primary" id="quiz-btn-finish" ${Object.keys(answers).length < total ? 'disabled' : ''}>Резултати</button>`
+        }
+      </div>
+    `;
+
+    app.querySelectorAll('.quiz-opt-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const idx = parseInt(e.currentTarget.dataset.idx);
+        selectOpt(idx);
+      });
+    });
+
+    if (current > 0) document.getElementById('quiz-btn-prev').addEventListener('click', goBack);
+    
+    if (current < total - 1 && answered) {
+      document.getElementById('quiz-btn-next').addEventListener('click', goNext);
+    } else if (current === total - 1 && Object.keys(answers).length === total) {
+      document.getElementById('quiz-btn-finish').addEventListener('click', finish);
+    }
+  }
+
+  function renderResults(app) {
+    const sorted = getSorted();
+    const max = sorted[0][1];
+    const total = questions.length;
+
+    let html = `
+      <div class="quiz-header" style="margin-bottom: 1.5rem;">
+        <h1>Твоите резултати</h1>
+        <p>Врз основа на твоите интереси</p>
+      </div>
+      <div class="quiz-top-banner">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--school-gold); flex-shrink:0; margin-top:2px;"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+        <div class="quiz-top-banner-text">
+          Твојот доминантен профил е <strong>${profiles[sorted[0][0]].name}</strong>.
+          Подолу се прикажани насоките во „Коле Неделковски“ кои најмногу одговараат на твоите одговори.
+        </div>
+      </div>
+    `;
+
+    sorted.forEach(([type, score], idx) => {
+      if (score === 0) return; // Don't show zeroes if user skipped or had none
+      const p = profiles[type];
+      const pct = max > 0 ? Math.round((score / max) * 100) : 0;
+      
+      html += `
+        <div class="quiz-profile-card ${idx === 0 ? 'top' : ''}">
+          <div class="quiz-profile-header">
+            <div class="quiz-profile-badge" style="background:${p.bg}; color:${p.color}">${type}</div>
+            <div>
+              <div class="quiz-profile-name">${p.name}</div>
+              <div class="quiz-profile-score">Совпаѓање: ${Math.round((score/total)*100)}%</div>
+            </div>
+          </div>
+          <div class="quiz-score-bar"><div class="quiz-score-fill" style="width:${pct}%; background:${p.color}"></div></div>
+          <p class="quiz-desc-text">${p.desc}</p>
+          <span class="quiz-nasoki-label">Препорачани насоки:</span>
+          <div class="quiz-nasoki-list">
+            ${p.nasoki.map(n => `<span class="quiz-nasoka-tag" style="background:${p.bg}; color:${p.text}; border-color:${p.border}">${n.name}</span>`).join('')}
+          </div>
+        </div>
+      `;
+    });
+
+    html += `<button class="quiz-restart-btn" id="quiz-btn-restart"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg> Реши повторно</button>`;
+    
+    app.innerHTML = html;
+
+    // We need to animate the bars after insertion
+    setTimeout(() => {
+      const fills = app.querySelectorAll('.quiz-score-fill');
+      fills.forEach(fill => {
+        const w = fill.style.width;
+        fill.style.width = '0%';
+        setTimeout(() => fill.style.width = w, 50);
+      });
+    }, 10);
+
+    document.getElementById('quiz-btn-restart').addEventListener('click', restart);
+  }
+
+  function selectOpt(i) {
+    answers[current] = i;
+    render(); // Update UI immediately so they see the selection
+    if (current < questions.length - 1) {
+      setTimeout(() => { current++; render(); }, 350);
+    }
+  }
+
+  function goNext() {
+    if (answers[current] !== undefined && current < questions.length - 1) {
+      current++;
+      render();
+    }
+  }
+
+  function goBack() {
+    if (current > 0) { current--; render(); }
+  }
+
+  function finish() {
+    if (Object.keys(answers).length === questions.length) {
+      showResults = true;
+      render();
+    }
+  }
+
+  function restart() {
+    answers = {};
+    current = 0;
+    showResults = false;
+    started = false;
+    render();
+  }
+}
+
+// Ensure it's called on load
+document.addEventListener('DOMContentLoaded', function () {
+  // If it's already calling initQuizModal somewhere else this might double call, 
+  // but it's safe to just append it since we haven't modified the main init block.
+  initQuizModal();
+});
