@@ -102,15 +102,22 @@ function initTestimonialsSlider() {
 
   let currentIndex = 0;
 
-  // Use CSS animation end to trigger next slide for perfect synchronization
-  const dotsContainer = document.querySelector('.testimonials-dots');
-  if (dotsContainer) {
-    dotsContainer.addEventListener('animationend', (e) => {
-      if (e.animationName === 'dotFill' && e.target.classList.contains('active')) {
-        nextSlide();
-      }
-    });
-  }
+  window.testimonialsTimer = null;
+  const autoplaySpeed = 8000; // 8 seconds
+
+  const startAutoplay = () => {
+    stopAutoplay();
+    window.testimonialsTimer = setInterval(() => {
+      nextSlide();
+    }, autoplaySpeed);
+  };
+
+  const stopAutoplay = () => {
+    if (window.testimonialsTimer) {
+      clearInterval(window.testimonialsTimer);
+      window.testimonialsTimer = null;
+    }
+  };
 
   function updateSlides() {
     slides.forEach((slide, index) => {
@@ -164,19 +171,46 @@ function initTestimonialsSlider() {
   }
 
   // Event listeners
-  if (prevBtn) prevBtn.addEventListener('click', () => { goToSlide(currentIndex - 1); });
-  if (nextBtn) nextBtn.addEventListener('click', () => { goToSlide(currentIndex + 1); });
-
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => { goToSlide(index); });
+  if (prevBtn) prevBtn.addEventListener('click', () => { 
+    goToSlide(currentIndex - 1); 
+    startAutoplay();
+  });
+  if (nextBtn) nextBtn.addEventListener('click', () => { 
+    goToSlide(currentIndex + 1); 
+    startAutoplay();
   });
 
-  // Pause on hover
-  slider.addEventListener('mouseenter', () => slider.classList.add('is-paused'));
-  slider.addEventListener('mouseleave', () => slider.classList.remove('is-paused'));
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => { 
+      goToSlide(index); 
+      startAutoplay();
+    });
+  });
+
+  // Pause autoplay while the user is interacting with any part of the testimonials section
+  const section = document.querySelector('.testimonials');
+  const pauseSlider = () => {
+    slider.classList.add('is-paused');
+    stopAutoplay();
+  };
+  const resumeSlider = () => {
+    slider.classList.remove('is-paused');
+    startAutoplay();
+  };
+
+  if (section) {
+    section.addEventListener('mouseenter', pauseSlider);
+    section.addEventListener('mouseleave', resumeSlider);
+    section.addEventListener('focusin', pauseSlider);
+    section.addEventListener('focusout', resumeSlider);
+    section.addEventListener('touchstart', pauseSlider, { passive: true });
+    section.addEventListener('touchend', resumeSlider);
+    section.addEventListener('touchcancel', resumeSlider);
+  }
 
   // Initialize
   updateSlides();
+  startAutoplay();
 }
 
 
@@ -414,23 +448,80 @@ function initActivityCarousel() {
     return 300;
   };
 
-  prevBtn.addEventListener('click', () => {
-    if (container.scrollLeft <= 1) {
-      // Loop to end
-      container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
-    } else {
-      container.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+  const nextSlide = () => {
+    if (container.classList.contains('is-paused') || container.classList.contains('autoplay-paused')) {
+      return;
     }
-  });
-
-  nextBtn.addEventListener('click', () => {
-    // Add 1px tolerance for sub-pixel rendering
     if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 1) {
-      // Loop back to start
       container.scrollTo({ left: 0, behavior: 'smooth' });
     } else {
       container.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
     }
+  };
+
+  const prevSlide = () => {
+    if (container.scrollLeft <= 1) {
+      container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
+    } else {
+      container.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+    }
+  };
+
+  prevBtn.addEventListener('click', () => {
+    prevSlide();
+    startAutoplay();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    nextSlide();
+    startAutoplay();
+  });
+
+  // Autoplay functionality - using window for global safety
+  let autoplaySpeed = 5000; // 5 seconds
+  window.activityAutoplayTimer = null;
+
+  const startAutoplay = () => {
+    stopAutoplay();
+    window.activityAutoplayTimer = setInterval(() => {
+      nextSlide();
+    }, autoplaySpeed);
+  };
+
+  const stopAutoplay = () => {
+    if (window.activityAutoplayTimer) {
+      clearInterval(window.activityAutoplayTimer);
+      window.activityAutoplayTimer = null;
+    }
+  };
+
+  // Initial start
+  startAutoplay();
+
+  // Pause on hover
+  container.addEventListener('mouseenter', () => {
+    container.classList.add('is-paused');
+    container.classList.add('autoplay-paused');
+    stopAutoplay();
+  });
+  
+  container.addEventListener('mouseleave', () => {
+    container.classList.remove('is-paused');
+    container.classList.remove('autoplay-paused');
+    startAutoplay();
+  });
+
+  // Pause on focus for accessibility
+  container.addEventListener('focusin', () => {
+    container.classList.add('is-paused');
+    container.classList.add('autoplay-paused');
+    stopAutoplay();
+  });
+  
+  container.addEventListener('focusout', () => {
+    container.classList.remove('is-paused');
+    container.classList.remove('autoplay-paused');
+    startAutoplay();
   });
 }
 

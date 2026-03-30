@@ -2280,6 +2280,10 @@ ol {
   perspective: 1200px;
 }
 
+.testimonials-slider.is-paused .testimonials-dot.active {
+  animation-play-state: paused;
+}
+
 @media (min-width: 768px) {
   .testimonials-slider {
     height: 350px;
