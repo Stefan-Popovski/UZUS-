@@ -25,7 +25,7 @@
         </div>
       </a>
       <div class="navbar-links">
-        <a href="index.html" class="navbar-link">Почетна</a>
+        <a href="index.html" class="navbar-link active">Почетна</a>
         <a href="index.html#about" class="navbar-link">За Нас</a>
         <a href="struki.html" class="navbar-link">Струки</a>
         <a href="profesori.html" class="navbar-link">Професори</a>
@@ -60,7 +60,7 @@
   <div class="mobile-menu-overlay"></div>
   <div class="mobile-menu">
     <div class="mobile-menu-content">
-      <a href="index.html" class="mobile-menu-link">Почетна</a>
+      <a href="index.html" class="mobile-menu-link active">Почетна</a>
       <a href="index.html#about" class="mobile-menu-link">За Нас</a>
       <a href="struki.html" class="mobile-menu-link">Струки</a>
       <a href="profesori.html" class="mobile-menu-link">Професори</a>
@@ -80,8 +80,9 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-bg">
-      <div class="hero-bg-image" style="background-image: url('images/hero-classroom.jpg')"></div>
-      <div class="hero-bg-overlay"></div>
+      <video class="hero-bg-video" autoplay loop muted playsinline style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+        <source src="drone.mp4" type="video/mp4">
+      </video>
     </div>
 
     <div class="hero-decor">
@@ -335,6 +336,33 @@
               <span>Меѓународни програми и размени</span>
             </li>
           </ul>
+          
+          <div class="about-docs reveal">
+            <a href="files/Кодекс-за-однесување-на-ученици.pdf" class="about-doc-link" target="_blank">
+              <div class="about-doc-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              </div>
+              <div class="about-doc-info">
+                <h4>Кодекс на ученици</h4>
+              </div>
+            </a>
+            <a href="files/Кодекс-за-родители.pdf" class="about-doc-link" target="_blank">
+              <div class="about-doc-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </div>
+              <div class="about-doc-info">
+                <h4>Кодекс за родители</h4>
+              </div>
+            </a>
+            <a href="files/Kuken-red-na-ucilisteto.pdf" class="about-doc-link" target="_blank">
+              <div class="about-doc-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+              </div>
+              <div class="about-doc-info">
+                <h4>Куќен ред</h4>
+              </div>
+            </a>
+          </div>
 
           <a href="kontakt.html" class="about-btn reveal">Дознајте повеќе</a>
 
@@ -356,8 +384,8 @@
                 <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
                 <path d="M16 3.13a4 4 0 0 1 0 7.75" />
               </svg>
-              <p class="about-stat-value">72</p>
-              <p class="about-stat-label">Професори</p>
+              <p class="about-stat-value">61</p>
+              <p class="about-stat-label">Професор</p>
             </div>
             <div class="about-stat">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -432,7 +460,7 @@
                   d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
               </svg>
             </div>
-            <h3 class="program-card-title">Машинска струка</h3>
+            <h3 class="program-card-title">Машинство</h3>
             <div class="program-card-stats">
               <span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -472,7 +500,7 @@
                   d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" />
               </svg>
             </div>
-            <h3 class="program-card-title">Електротехничка струка</h3>
+            <h3 class="program-card-title">Електротехника и информациски технологии</h3>
             <div class="program-card-stats">
               <span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -515,7 +543,7 @@
                 <circle cx="17" cy="18" r="2" />
               </svg>
             </div>
-            <h3 class="program-card-title">Сообраќајна струка</h3>
+            <h3 class="program-card-title">Сообраќај, транспорт и складирање</h3>
             <div class="program-card-stats">
               <span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -555,7 +583,7 @@
                 <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />
               </svg>
             </div>
-            <h3 class="program-card-title">Угостителско-Туристичка струка</h3>
+            <h3 class="program-card-title">Угостителство и туризам</h3>
             <div class="program-card-stats">
               <span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -619,7 +647,7 @@
             </svg>
           </div>
           <div class="stat-value">
-            <span class="stat-number" data-counter="862">0</span>
+            <span class="stat-number" data-counter="970">0</span>
             <span class="stat-suffix">+</span>
           </div>
           <p class="stat-label">Ученици</p>
@@ -635,7 +663,7 @@
             </svg>
           </div>
           <div class="stat-value">
-            <span class="stat-number" data-counter="34">0</span>
+            <span class="stat-number" data-counter="38">0</span>
           </div>
           <p class="stat-label">Паралелки</p>
           <p class="stat-description">Организирани паралелки во сите струки</p>
@@ -650,7 +678,7 @@
             </svg>
           </div>
           <div class="stat-value">
-            <span class="stat-number" data-counter="72">0</span>
+            <span class="stat-number" data-counter="61">0</span>
           </div>
           <p class="stat-label">Наставници</p>
           <p class="stat-description">Високо квалификуван наставен кадар</p>
@@ -709,7 +737,7 @@
             </svg>
           </div>
           <div>
-            <p class="stat-extra-value">25+</p>
+            <p class="stat-extra-value">13</p>
             <p class="stat-extra-label">Профили</p>
           </div>
         </div>
@@ -722,7 +750,7 @@
             </svg>
           </div>
           <div>
-            <p class="stat-extra-value">5000+</p>
+            <p class="stat-extra-value">10000+</p>
             <p class="stat-extra-label">Завршени ученици</p>
           </div>
         </div>
@@ -1023,22 +1051,24 @@
           <path d="m6 6 12 12" />
         </svg>
       </button>
-      <div class="modal-image">
-        <!-- Images injected via JS -->
+      <div class="modal-gallery" style="position: relative; width: 100%; flex-shrink: 0;">
+        <div class="modal-image">
+          <!-- Images injected via JS -->
+        </div>
+        <div class="modal-img-nav modal-img-prev">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+        </div>
+        <div class="modal-img-nav modal-img-next">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+        </div>
+        <div class="modal-img-dots"></div>
       </div>
-      <div class="modal-img-nav modal-img-prev">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m15 18-6-6 6-6" />
-        </svg>
-      </div>
-      <div class="modal-img-nav modal-img-next">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m9 18 6-6-6-6" />
-        </svg>
-      </div>
-      <div class="modal-img-dots"></div>
       <div class="modal-content">
         <span class="modal-badge"></span>
         <h3 class="modal-title"></h3>
@@ -1226,8 +1256,7 @@
                   d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
               </svg>
             </div>
-            <p class="testimonial-text">„Коле Неделковски“ е најдобро училиште во градот и пошироко, што е доказ дека
-              луѓето што работат таму се на прав пат и училиштето е воздигнато на многу високо ниво.</p>
+            <p class="testimonial-text">Најдобар доказ за успехот на „Коле Неделковски“ се неговите ученици — со својот труд и талент, го издигнавте училиштето на највисоко ниво.</p>
             <div class="testimonial-author">
               <img src="images/pancekumbev.jpg" alt="Панче Ќумбев" loading="lazy">
               <div>
@@ -1427,8 +1456,8 @@
       <div class="footer-bottom-container">
         <p class="footer-copyright">© 2026 ДСУ РЦСОО „Коле Неделковски“. Сите права задржани.</p>
         <div class="footer-legal">
-          <a href="#">Политика за приватност</a>
-          <a href="#">Услови за користење</a>
+          <a href="politika.html">Политика за приватност</a>
+          <a href="uslovi.html">Услови за користење</a>
         </div>
       </div>
     </div>

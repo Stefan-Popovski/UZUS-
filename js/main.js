@@ -102,15 +102,22 @@ function initTestimonialsSlider() {
 
   let currentIndex = 0;
 
-  // Use CSS animation end to trigger next slide for perfect synchronization
-  const dotsContainer = document.querySelector('.testimonials-dots');
-  if (dotsContainer) {
-    dotsContainer.addEventListener('animationend', (e) => {
-      if (e.animationName === 'dotFill' && e.target.classList.contains('active')) {
-        nextSlide();
-      }
-    });
-  }
+  window.testimonialsTimer = null;
+  const autoplaySpeed = 8000; // 8 seconds
+
+  const startAutoplay = () => {
+    stopAutoplay();
+    window.testimonialsTimer = setInterval(() => {
+      nextSlide();
+    }, autoplaySpeed);
+  };
+
+  const stopAutoplay = () => {
+    if (window.testimonialsTimer) {
+      clearInterval(window.testimonialsTimer);
+      window.testimonialsTimer = null;
+    }
+  };
 
   function updateSlides() {
     slides.forEach((slide, index) => {
@@ -164,19 +171,46 @@ function initTestimonialsSlider() {
   }
 
   // Event listeners
-  if (prevBtn) prevBtn.addEventListener('click', () => { goToSlide(currentIndex - 1); });
-  if (nextBtn) nextBtn.addEventListener('click', () => { goToSlide(currentIndex + 1); });
-
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => { goToSlide(index); });
+  if (prevBtn) prevBtn.addEventListener('click', () => { 
+    goToSlide(currentIndex - 1); 
+    startAutoplay();
+  });
+  if (nextBtn) nextBtn.addEventListener('click', () => { 
+    goToSlide(currentIndex + 1); 
+    startAutoplay();
   });
 
-  // Pause on hover
-  slider.addEventListener('mouseenter', () => slider.classList.add('is-paused'));
-  slider.addEventListener('mouseleave', () => slider.classList.remove('is-paused'));
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => { 
+      goToSlide(index); 
+      startAutoplay();
+    });
+  });
+
+  // Pause autoplay while the user is interacting with any part of the testimonials section
+  const section = document.querySelector('.testimonials');
+  const pauseSlider = () => {
+    slider.classList.add('is-paused');
+    stopAutoplay();
+  };
+  const resumeSlider = () => {
+    slider.classList.remove('is-paused');
+    startAutoplay();
+  };
+
+  if (section) {
+    section.addEventListener('mouseenter', pauseSlider);
+    section.addEventListener('mouseleave', resumeSlider);
+    section.addEventListener('focusin', pauseSlider);
+    section.addEventListener('focusout', resumeSlider);
+    section.addEventListener('touchstart', pauseSlider, { passive: true });
+    section.addEventListener('touchend', resumeSlider);
+    section.addEventListener('touchcancel', resumeSlider);
+  }
 
   // Initialize
   updateSlides();
+  startAutoplay();
 }
 
 
@@ -190,8 +224,10 @@ function initScrollToTop() {
   window.addEventListener('scroll', function () {
     if (window.scrollY > window.innerHeight) {
       scrollTopBtn.classList.add('visible');
+      document.body.classList.add('scroll-top-visible');
     } else {
       scrollTopBtn.classList.remove('visible');
+      document.body.classList.remove('scroll-top-visible');
     }
   });
 
@@ -412,23 +448,80 @@ function initActivityCarousel() {
     return 300;
   };
 
-  prevBtn.addEventListener('click', () => {
-    if (container.scrollLeft <= 1) {
-      // Loop to end
-      container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
-    } else {
-      container.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+  const nextSlide = () => {
+    if (container.classList.contains('is-paused') || container.classList.contains('autoplay-paused')) {
+      return;
     }
-  });
-
-  nextBtn.addEventListener('click', () => {
-    // Add 1px tolerance for sub-pixel rendering
     if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 1) {
-      // Loop back to start
       container.scrollTo({ left: 0, behavior: 'smooth' });
     } else {
       container.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
     }
+  };
+
+  const prevSlide = () => {
+    if (container.scrollLeft <= 1) {
+      container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
+    } else {
+      container.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+    }
+  };
+
+  prevBtn.addEventListener('click', () => {
+    prevSlide();
+    startAutoplay();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    nextSlide();
+    startAutoplay();
+  });
+
+  // Autoplay functionality - using window for global safety
+  let autoplaySpeed = 5000; // 5 seconds
+  window.activityAutoplayTimer = null;
+
+  const startAutoplay = () => {
+    stopAutoplay();
+    window.activityAutoplayTimer = setInterval(() => {
+      nextSlide();
+    }, autoplaySpeed);
+  };
+
+  const stopAutoplay = () => {
+    if (window.activityAutoplayTimer) {
+      clearInterval(window.activityAutoplayTimer);
+      window.activityAutoplayTimer = null;
+    }
+  };
+
+  // Initial start
+  startAutoplay();
+
+  // Pause on hover
+  container.addEventListener('mouseenter', () => {
+    container.classList.add('is-paused');
+    container.classList.add('autoplay-paused');
+    stopAutoplay();
+  });
+  
+  container.addEventListener('mouseleave', () => {
+    container.classList.remove('is-paused');
+    container.classList.remove('autoplay-paused');
+    startAutoplay();
+  });
+
+  // Pause on focus for accessibility
+  container.addEventListener('focusin', () => {
+    container.classList.add('is-paused');
+    container.classList.add('autoplay-paused');
+    stopAutoplay();
+  });
+  
+  container.addEventListener('focusout', () => {
+    container.classList.remove('is-paused');
+    container.classList.remove('autoplay-paused');
+    startAutoplay();
   });
 }
 
@@ -666,6 +759,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initFAQ();
   initContactForm();
   initFlipbookModal();
+  initCookieBanner();
 });
 
 // Add fadeInUp animation keyframes
@@ -767,3 +861,441 @@ function initFlipbookModal() {
   }
 }
 
+/**
+ * Cookie Consent Banner Injection
+ */
+function initCookieBanner() {
+  const cookieHtml = `
+    <!-- Reopen Button -->
+    <button id="cookie-reopen-btn" class="cookie-reopen-btn" aria-label="Подесувања за колачиња">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5" />
+        <path d="M8.5 8.5v.01" />
+        <path d="M16 12.5v.01" />
+        <path d="M12 16v.01" />
+        <path d="M11 12.5v.01" />
+      </svg>
+    </button>
+    <div id="cookie-consent-card" class="cookie-card">
+      <div class="cookie-card-header">
+        <div class="cookie-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5" />
+            <path d="M8.5 8.5v.01" />
+            <path d="M16 12.5v.01" />
+            <path d="M12 16v.01" />
+            <path d="M11 12.5v.01" />
+          </svg>
+        </div>
+        <span class="cookie-card-title">Колачиња (Cookies)</span>
+      </div>
+      <div class="cookie-card-content">
+        <p class="cookie-card-text">Користиме колачиња за подобро корисничко искуство. <a href="politika.html">Политика за приватност</a></p>
+        <div class="cookie-card-actions">
+          <button id="cookie-settings-btn" class="btn-cookie btn-cookie-outline">Подесувања</button>
+          <button id="cookie-accept-all" class="btn-cookie btn-cookie-primary">Прифати сите</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="cookie-settings-modal" class="cookie-modal-overlay">
+      <div class="cookie-modal">
+        <div class="cookie-modal-header">
+          <h3>Подесувања за колачиња</h3>
+          <button id="close-cookie-modal" class="cookie-modal-close">&times;</button>
+        </div>
+        <div class="cookie-modal-body">
+          <p class="cookie-modal-desc">Изберете кои колачиња сакате да ги дозволите. Неопходните колачиња секогаш се вклучени за правилно функционирање на сајтот. <a href="politika.html" style="color: var(--school-blue); text-decoration: underline;">Прочитајте ја Политиката за приватност</a>.</p>
+          
+          <div class="cookie-toggle-group">
+            <div class="cookie-toggle-info">
+              <h4>Неопходни колачиња</h4>
+              <p>Потребни за основно функционирање на веб-страницата и навигацијата.</p>
+            </div>
+            <label class="cookie-switch">
+              <input type="checkbox" checked disabled>
+              <span class="cookie-slider"></span>
+            </label>
+          </div>
+
+          <div class="cookie-toggle-group">
+            <div class="cookie-toggle-info">
+              <h4>Аналитички колачиња</h4>
+              <p>Ни помагаат да разбереме како се користи страницата преку собирање анонимни податоци.</p>
+            </div>
+            <label class="cookie-switch">
+              <input type="checkbox" id="cookie-analytics" checked>
+              <span class="cookie-slider"></span>
+            </label>
+          </div>
+
+          <div class="cookie-toggle-group">
+            <div class="cookie-toggle-info">
+              <h4>Маркетинг колачиња</h4>
+              <p>Се користат за следење на посетителите низ веб-страниците за приказ на релевантни реклами.</p>
+            </div>
+            <label class="cookie-switch">
+              <input type="checkbox" id="cookie-marketing">
+              <span class="cookie-slider"></span>
+            </label>
+          </div>
+        </div>
+        <div class="cookie-modal-footer">
+          <button id="cookie-reject-all" class="btn-cookie btn-cookie-outline">Одбиј сите</button>
+          <button id="cookie-save-settings" class="btn-cookie btn-cookie-primary">Зачувај</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.body.insertAdjacentHTML('beforeend', cookieHtml);
+
+  const cookieCard = document.getElementById('cookie-consent-card');
+  const settingsModal = document.getElementById('cookie-settings-modal');
+  const reopenBtn = document.getElementById('cookie-reopen-btn');
+  
+  if (!cookieCard || !settingsModal) return;
+
+  const cookieConsent = localStorage.getItem('cookieConsent');
+
+  if (cookieConsent) {
+    try {
+      const prefs = JSON.parse(cookieConsent);
+      const analyticsToggle = document.getElementById('cookie-analytics');
+      const marketingToggle = document.getElementById('cookie-marketing');
+      if (analyticsToggle) analyticsToggle.checked = !!prefs.analytics;
+      if (marketingToggle) marketingToggle.checked = !!prefs.marketing;
+    } catch (e) {}
+    
+    // Banner already dismissed - show reopen button
+    reopenBtn.classList.add('show');
+  } else {
+    // New visitor - show banner
+    setTimeout(() => {
+      cookieCard.classList.add('show');
+      document.body.classList.add('has-cookie-banner');
+    }, 1000);
+  }
+
+  // Card buttons
+  document.getElementById('cookie-accept-all')?.addEventListener('click', () => {
+    saveConsent(true, true);
+  });
+  
+  document.getElementById('cookie-settings-btn')?.addEventListener('click', () => {
+    settingsModal.classList.add('active');
+  });
+
+  // Reopen button triggers modal directly
+  reopenBtn?.addEventListener('click', () => {
+    settingsModal.classList.add('active');
+  });
+
+  // Modal buttons
+  document.getElementById('close-cookie-modal')?.addEventListener('click', () => {
+    settingsModal.classList.remove('active');
+  });
+
+  document.getElementById('cookie-reject-all')?.addEventListener('click', () => {
+    saveConsent(false, false);
+  });
+
+  document.getElementById('cookie-save-settings')?.addEventListener('click', () => {
+    const analytics = document.getElementById('cookie-analytics')?.checked || false;
+    const marketing = document.getElementById('cookie-marketing')?.checked || false;
+    saveConsent(analytics, marketing);
+  });
+
+  function saveConsent(analytics, marketing) {
+    const consentOptions = {
+      necessary: true,
+      analytics: analytics,
+      marketing: marketing,
+      timestamp: new Date().toISOString()
+    };
+    localStorage.setItem('cookieConsent', JSON.stringify(consentOptions));
+    
+    cookieCard.classList.remove('show');
+    settingsModal.classList.remove('active');
+    document.body.classList.remove('has-cookie-banner');
+    
+    reopenBtn.classList.add('show');
+  }
+}
+
+/**
+ * Quiz Modal Integration (only on index)
+ */
+function initQuizModal() {
+  // Only trigger on the homepage. We can check if hero section exists or by pathname.
+  const isHomepage = document.querySelector('.hero') !== null;
+  if (!isHomepage) return;
+
+  // Check if user already completed or saw the quiz this session (optional, but good for UX)
+  if (sessionStorage.getItem('quizSeen')) return;
+  sessionStorage.setItem('quizSeen', 'true');
+
+  const modalHtml = `
+    <div id="quiz-modal" class="quiz-modal-overlay">
+      <div class="quiz-modal">
+        <button id="close-quiz" class="quiz-modal-close" aria-label="Затвори">&times;</button>
+        <div id="quiz-app"></div>
+      </div>
+    </div>
+  `;
+
+  document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+  const modalOverlay = document.getElementById('quiz-modal');
+  const closeBtn = document.getElementById('close-quiz');
+  const appContainer = document.getElementById('quiz-app');
+
+  // Open modal with a slight delay
+  setTimeout(() => {
+    modalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    render();
+  }, 1500);
+
+  closeBtn.addEventListener('click', closeQuizModal);
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) closeQuizModal();
+  });
+
+  function closeQuizModal() {
+    modalOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Quiz Logic
+const questions = [
+  { text: "Кога нешто ќе се расипе дома, јас...", opts: ["Сакам сам/а да го поправам", "Истражувам зошто се случило тоа", "Ги замолувам другите да помогнат", "Не ме интересира многу"], types: ["R","I","S","C"] },
+  { text: "Во слободно време најмногу уживам во...", opts: ["Работа со алати или опрема", "Читање и решавање загатки", "Дружење и помагање на другите", "Организирање и подредување"], types: ["R","I","S","C"] },
+  { text: "На час по физика / математика...", opts: ["Сакам практични задачи и експерименти", "Сакам да разберам ЗОШТО нештата функционираат така", "Сакам да работиме во групи", "Сакам задачи и формули"], types: ["R","I","S","C"] },
+  { text: "Ако треба да се опишам себеси, јас сум...", opts: ["Практичен/на и динамичен/на", "Аналитичен/на и љубопитен/на", "Сочувствителен/на и грижлив/а", "Уреден/на и прецизен/на"], types: ["R","I","S","C"] },
+  { text: "Сонувам за работа каде...", opts: ["Работам со машини, мотори или електрика", "Решавам сложени технички проблеми", "Помагам на луѓе и работам во тим", "Имам јасен распоред и систем"], types: ["R","I","S","C"] },
+  { text: "Во школо, мојот омилен тип на активност е...", opts: ["Работилница / практична настава", "Истражувачки проекти", "Тимски задачи и дискусии", "Тестови со точни одговори"], types: ["R","I","S","C"] },
+  { text: "Кога гледам автомобил или мотор, мислам...", opts: ["Интересно, би сакал/а да го разглобам!", "Прашувам се како точно работи моторот", "Размислувам за луѓето кои патуваат", "Забележувам дали се уредни и одржувани"], types: ["R","I","S","C"] },
+  { text: "Во иднина сакам...", opts: ["Нешто да правам со рацете/физички да работам", "Да истражувам, анализирам, да решавам проблеми", "Да работам со луѓе и да им помагам", "Да работам во канцеларија"], types: ["R","I","S","C"] },
+  { text: "Кога некој пријател ме моли за совет...", opts: ["Понудувам практично решение", "Ја анализираме заедно ситуацијата", "Слушам и поддржувам", "Им давам јасна, структурирана препорака"], types: ["R","I","S","C"] },
+  { text: "Кога гледам некоја зграда или машина, прво мислам на...", opts: ["Конструкцијата — како е направена", "Принципите — зошто функционира така", "Луѓето — кој работи/живее тука", "Системот — дали е сè уредено правилно"], types: ["R","I","S","C"] },
+  { text: "На патување/екскурзија, јас сум тој/таа кој...", opts: ["Помага со багаж, логистика, карти", "Ја истражува историјата или природата на местото", "Се грижи дека сите се добри и весели", "Ги паметам сите резервации и распоред"], types: ["R","I","S","C"] },
+  { text: "Кога слушам збор 'технологија', прво се сетувам на...", opts: ["Машини, мотори, електрична инсталација", "Компјутери, мрежи, електроника", "Апликации и комуникација со луѓе", "Бази на податоци, системи, документација"], types: ["R","I","S","C"] }
+];
+
+  const profiles = {
+    R: { name: "Реалистичен (R)", color: "#1E3A5F", bg: "#E6F1FB", border: "#B5D4F4", text: "#0C447C",
+         desc: "Уживаш во практична работа со раце, алати и машини.",
+         nasoki: [{ name: "Машински техничар" }, { name: "Техничар за компјутерско управување" }, { name: "Автомеханичар" }, { name: "Електротехничар-енергетичар" }] },
+    I: { name: "Истражувачки (I)", color: "#D4AF37", bg: "#FAEEDA", border: "#FAC775", text: "#412402",
+         desc: "Уживаш во анализирање, истражување и решавање сложени проблеми.",
+         nasoki: [{ name: "Електротехничар за електроника и телекомуникации" }, { name: "Техничар за компјутерско управување" }, { name: "Електротехничар-автоматичар" }] },
+    S: { name: "Социјален (S)", color: "#2E5C31", bg: "#EAF3DE", border: "#9FE1CB", text: "#04342C",
+         desc: "Уживаш во работа со луѓе — да помагаш, советуваш и соработуваш.",
+         nasoki: [{ name: "Келнер" }, { name: "Готвач" }, { name: "Техничар за туризам" }, { name: "Техничар за транспорт и шпедиција" }] },
+    C: { name: "Конвенционален (C)", color: "#4A5568", bg: "#EDF2F7", border: "#CBD5E0", text: "#2D3748",
+         desc: "Уживаш во уреден, систематичен начин на работа со прецизни податоци.",
+         nasoki: [{ name: "Техничар за транспорт и шпедиција" }, { name: "Биро за туристички услуги" }, { name: "Електротехничар-енергетичар (дуално)" }] }
+  };
+
+  let answers = {};
+  let current = 0;
+  let showResults = false;
+  let started = false;
+
+  function getScores() {
+    const s = { R: 0, I: 0, S: 0, C: 0 };
+    for (const [qi, ai] of Object.entries(answers)) {
+      const t = questions[qi].types[ai];
+      if (t) s[t]++;
+    }
+    return s;
+  }
+
+  function getSorted() {
+    return Object.entries(getScores()).sort((a, b) => b[1] - a[1]);
+  }
+
+  function render() {
+    if (!started) {
+      renderStartScreen(appContainer);
+    } else if (showResults) {
+      renderResults(appContainer);
+    } else {
+      renderQuiz(appContainer);
+    }
+  }
+
+  function renderStartScreen(app) {
+    app.innerHTML = `
+      <div class="quiz-start-screen">
+        <div class="quiz-start-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 14l9-5-9-5-9 5 9 5z" />
+            <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+            <path d="M12 14v6" />
+          </svg>
+        </div>
+        <h1 class="quiz-result-title">Деветтоодделенец си?</h1>
+        <p class="quiz-result-sub" style="font-size: 1.125rem;">Не знаеш каде во средно?</p>
+        <p class="quiz-desc-text">Овој краток квиз ќе ти помогне да откриеш која струка во <b>„Коле Неделковски“</b> најмногу одговара на твоите интереси.</p>
+        <button class="quiz-nav-btn primary quiz-start-btn" id="start-quiz-btn">Започни го квизот</button>
+      </div>
+    `;
+    document.getElementById('start-quiz-btn').addEventListener('click', () => {
+      started = true;
+      render();
+    });
+  }
+
+  function renderQuiz(app) {
+    const q = questions[current];
+    const answered = answers[current] !== undefined;
+    const total = questions.length;
+    const pct = Math.round((Object.keys(answers).length / total) * 100);
+
+    app.innerHTML = `
+      <div class="quiz-header">
+        <h1>Квиз за избор на насока</h1>
+        <p>Откриј го твојот потенцијал</p>
+      </div>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:${pct}%"></div></div>
+      <div class="quiz-question-card">
+        <div class="quiz-q-num">Прашање ${current + 1} од ${total}</div>
+        <div class="quiz-q-text">${q.text}</div>
+        <div class="quiz-options">
+          ${q.opts.map((o, i) => `
+            <button class="quiz-opt-btn ${answers[current] === i ? 'selected' : ''}" data-idx="${i}">
+              <span style="font-size:1.25rem; font-weight:700; color:inherit;">${['A','Б','В','Г'][i]}</span> ${o}
+            </button>
+          `).join('')}
+        </div>
+      </div>
+      <div class="quiz-nav-row">
+        <button class="quiz-nav-btn secondary" id="quiz-btn-prev" ${current === 0 ? 'disabled' : ''}>← Назад</button>
+        <span class="quiz-q-counter">${Object.keys(answers).length} / ${total}</span>
+        ${current < total - 1
+          ? `<button class="quiz-nav-btn primary" id="quiz-btn-next" ${!answered ? 'disabled' : ''}>Следно →</button>`
+          : `<button class="quiz-nav-btn primary" id="quiz-btn-finish" ${Object.keys(answers).length < total ? 'disabled' : ''}>Резултати</button>`
+        }
+      </div>
+    `;
+
+    app.querySelectorAll('.quiz-opt-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const idx = parseInt(e.currentTarget.dataset.idx);
+        selectOpt(idx);
+      });
+    });
+
+    if (current > 0) document.getElementById('quiz-btn-prev').addEventListener('click', goBack);
+    
+    if (current < total - 1 && answered) {
+      document.getElementById('quiz-btn-next').addEventListener('click', goNext);
+    } else if (current === total - 1 && Object.keys(answers).length === total) {
+      document.getElementById('quiz-btn-finish').addEventListener('click', finish);
+    }
+  }
+
+  function renderResults(app) {
+    const sorted = getSorted();
+    const max = sorted[0][1];
+    const total = questions.length;
+
+    let html = `
+      <div class="quiz-header" style="margin-bottom: 1.5rem;">
+        <h1>Твоите резултати</h1>
+        <p>Врз основа на твоите интереси</p>
+      </div>
+      <div class="quiz-top-banner">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--school-gold); flex-shrink:0; margin-top:2px;"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+        <div class="quiz-top-banner-text">
+          Твојот доминантен профил е <strong>${profiles[sorted[0][0]].name}</strong>.
+          Подолу се прикажани насоките во „Коле Неделковски“ кои најмногу одговараат на твоите одговори.
+        </div>
+      </div>
+    `;
+
+    sorted.forEach(([type, score], idx) => {
+      if (score === 0) return; // Don't show zeroes if user skipped or had none
+      const p = profiles[type];
+      const pct = max > 0 ? Math.round((score / max) * 100) : 0;
+      
+      html += `
+        <div class="quiz-profile-card ${idx === 0 ? 'top' : ''}">
+          <div class="quiz-profile-header">
+            <div class="quiz-profile-badge" style="background:${p.bg}; color:${p.color}">${type}</div>
+            <div>
+              <div class="quiz-profile-name">${p.name}</div>
+              <div class="quiz-profile-score">Совпаѓање: ${Math.round((score/total)*100)}%</div>
+            </div>
+          </div>
+          <div class="quiz-score-bar"><div class="quiz-score-fill" style="width:${pct}%; background:${p.color}"></div></div>
+          <p class="quiz-desc-text">${p.desc}</p>
+          <span class="quiz-nasoki-label">Препорачани насоки:</span>
+          <div class="quiz-nasoki-list">
+            ${p.nasoki.map(n => `<span class="quiz-nasoka-tag" style="background:${p.bg}; color:${p.text}; border-color:${p.border}">${n.name}</span>`).join('')}
+          </div>
+        </div>
+      `;
+    });
+
+    html += `<button class="quiz-restart-btn" id="quiz-btn-restart"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg> Реши повторно</button>`;
+    
+    app.innerHTML = html;
+
+    // We need to animate the bars after insertion
+    setTimeout(() => {
+      const fills = app.querySelectorAll('.quiz-score-fill');
+      fills.forEach(fill => {
+        const w = fill.style.width;
+        fill.style.width = '0%';
+        setTimeout(() => fill.style.width = w, 50);
+      });
+    }, 10);
+
+    document.getElementById('quiz-btn-restart').addEventListener('click', restart);
+  }
+
+  function selectOpt(i) {
+    answers[current] = i;
+    render(); // Update UI immediately so they see the selection
+    if (current < questions.length - 1) {
+      setTimeout(() => { current++; render(); }, 350);
+    }
+  }
+
+  function goNext() {
+    if (answers[current] !== undefined && current < questions.length - 1) {
+      current++;
+      render();
+    }
+  }
+
+  function goBack() {
+    if (current > 0) { current--; render(); }
+  }
+
+  function finish() {
+    if (Object.keys(answers).length === questions.length) {
+      showResults = true;
+      render();
+    }
+  }
+
+  function restart() {
+    answers = {};
+    current = 0;
+    showResults = false;
+    started = false;
+    render();
+  }
+}
+
+// Ensure it's called on load
+document.addEventListener('DOMContentLoaded', function () {
+  // If it's already calling initQuizModal somewhere else this might double call, 
+  // but it's safe to just append it since we haven't modified the main init block.
+  initQuizModal();
+});
