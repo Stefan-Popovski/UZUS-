@@ -557,13 +557,14 @@ function initCounters() {
         // Reset text and start
         counter.textContent = '0' + (hasPlus ? '+' : '');
         updateCounter();
-        observer.unobserve(counter);
+        // REMOVED: observer.unobserve(counter);
       }
     });
   }, { threshold: 0.5 });
 
   counters.forEach(counter => observer.observe(counter));
 }
+
 
 /**
  * Smooth scroll for anchor links
