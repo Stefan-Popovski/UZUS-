@@ -386,9 +386,22 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
     }
+    .pr-director-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .pr-rak-section-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.5rem;
+    }
 
     @media(max-width:1200px) {
       .pr-section-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .pr-rak-section-grid {
         grid-template-columns: repeat(3, 1fr);
       }
     }
@@ -397,11 +410,21 @@
       .pr-section-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+      .pr-rak-section-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
     }
 
     @media(max-width:500px) {
       .pr-section-grid {
         grid-template-columns: 1fr;
+      }
+      .pr-rak-section-grid {
+        grid-template-columns: repeat(1, 1fr);
+      }
+      .pr-director-row {
+        grid-template-columns: repeat(1, 1fr);
       }
     }
 
@@ -851,6 +874,7 @@
     <div class="pr-container">
       <div class="pr-filter-btns">
         <button class="pr-filter-btn active" data-filter="all">Сите</button>
+        <button class="pr-filter-btn" data-filter="struchna">Администрација</button>
         <button class="pr-filter-btn" data-filter="opsto">Општообразовни</button>
         <button class="pr-filter-btn" data-filter="ugostitelska">Угостителски</button>
         <button class="pr-filter-btn" data-filter="elektro">Електро</button>
@@ -909,23 +933,118 @@
   <section class="pr-section">
     <div class="pr-container">
       <div class="pr-grid" id="prGrid">
+        <!-- ДИРЕКТОРИ -->
+         <div data-dept="struchna" style="display: flex; flex-direction: column; justify-content: center;">
+          <div class="pr-director-row" style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 3rem;">
+            
+            <div style="display: flex; flex-direction: column; align-items: center; max-width: 300px; width: 100%;">
+              <h2 class="title" data-dept="struchna" style="text-align: center; margin-bottom: 1rem;">ДИРЕКТОР</h2>
+              <div class="pr-card reveal" data-dept="struchna" style="max-width: 300px; width: 100%;">
+                <div class="pr-card-img">
+                  <img src="images/professors/GoranBogoevski.png" alt="Горан Богоевски">
+                  <div class="pr-card-img-overlay">
+                    <p class="pr-card-bio-preview">Директор на училиштето</p>
+                  </div>
+                </div>
+                <div class="pr-card-info">
+                  <p class="pr-card-name">Горан Богоевски</p>
+                  <p class="pr-card-title">Директор</p>
+                  <p class="pr-card-subject">Администрација</p>
+                </div>
+              </div>
+            </div>
 
-         <!-- ДИРЕКТОР -->
-         <h2 class="title" data-dept="struchna" style="text-align: center;">ДИРЕКТОР</h2>
-         <div class="pr-director-row" style="display: flex; justify-content: center; margin-bottom: 3rem;">
+            <div style="display: flex; flex-direction: column; align-items: center; max-width: 300px; width: 100%;">
+              <h2 class="title" data-dept="struchna" style="text-align: center; margin-bottom: 1rem;">ЗАМЕНИК ДИРЕКТОР</h2>
+              <div class="pr-card reveal" data-dept="struchna" style="max-width: 300px; width: 100%;">
+                <div class="pr-card-img">
+                  <img src="images/professors/AngelceGushev.png" alt="заменик Дирекртор">
+                  <div class="pr-card-img-overlay">
+                    <p class="pr-card-bio-preview">Заменик директор на училиштето</p>
+                  </div>
+                </div>
+                <div class="pr-card-info">
+                  <p class="pr-card-name">Ангелче Гушев</p>
+                  <p class="pr-card-title">Заменик директор</p>
+                  <p class="pr-card-subject">Администрација</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+         <!-- РАКОВОДИТЕЛИ -->
+         <h2 class="title" data-dept="struchna" style="text-align: center;">РАКОВОДИТЕЛИ НА СЕКТОРИ</h2>
+         <div class="pr-rak-section-grid" style="display: flex; justify-content: center; margin-bottom: 3rem;">
+
            <div class="pr-card reveal" data-dept="struchna" style="max-width: 300px; width: 100%;">
             <div class="pr-card-img">
-              <img src="images/professors/GoranBogoevski.png" alt="Горан Богоевски">
+              <img src="images/professors/ValentinaShkrekova.png" alt="раководител на сектор">
               <div class="pr-card-img-overlay">
-                <p class="pr-card-bio-preview">Директор на училиштето</p>
+                <p class="pr-card-bio-preview">Раководител на сектор за формално образование</p>
               </div>
             </div>
             <div class="pr-card-info">
-              <p class="pr-card-name">Горан Богоевски</p>
-              <p class="pr-card-title">Директор</p>
-              <p class="pr-card-subject">Администрација</p>
+              <p class="pr-card-name">Валентина Шкрекова</p>
+              <p class="pr-card-title">Раководител на сектор за формално образование</p>
+              <p class="pr-card-subject">Раководител на сектор</p>
             </div>
            </div>
+           <div class="pr-card reveal" data-dept="struchna" style="max-width: 300px; width: 100%;">
+            <div class="pr-card-img">
+              <img src="images/professors/KaterinaStojadinovik.png" alt="раководител на сектор">
+              <div class="pr-card-img-overlay">
+                <p class="pr-card-bio-preview">Раководител на сектор за образование на возрасни</p>
+              </div>
+            </div>
+            <div class="pr-card-info">
+              <p class="pr-card-name">Катерина Стојадиновиќ</p>
+              <p class="pr-card-title">Раководител на сектор за образование на возрасни</p>
+              <p class="pr-card-subject">Раководител на сектор</p>
+            </div>
+           </div>
+           <div class="pr-card reveal" data-dept="struchna" style="max-width: 300px; width: 100%;">
+            <div class="pr-card-img">
+              <img src="images/professors/MarijanPanov.png" alt="раководител на сектор">
+              <div class="pr-card-img-overlay">
+                <p class="pr-card-bio-preview">Раководител на сектор за вмрежување и соработка</p>
+              </div>
+            </div>
+            <div class="pr-card-info">
+              <p class="pr-card-name">Марјанче Панов</p>
+              <p class="pr-card-title">Раководител на сектор за вмрежување и соработка</p>
+              <p class="pr-card-subject">Раководител на сектор</p>
+            </div>
+           </div>
+           <div class="pr-card reveal" data-dept="struchna" style="max-width: 300px; width: 100%;">
+            <div class="pr-card-img">
+              <img src="images/professors/GoranBuzalkovski.png" alt="раководител на сектор">
+              <div class="pr-card-img-overlay">
+                <p class="pr-card-bio-preview">Раководител на сектор за наука, иновации и стопанство</p>
+              </div>
+            </div>
+            <div class="pr-card-info">
+              <p class="pr-card-name">Горан Бузалковски</p>
+              <p class="pr-card-title">Раководител на сектор за наука, иновации и стопанство</p>
+              <p class="pr-card-subject">Раководител на сектор</p>
+            </div>
+           </div>
+           <div class="pr-card reveal" data-dept="struchna" style="max-width: 300px; width: 100%;">
+            <div class="pr-card-img">
+              <img src="images/professors/HristinaTrajkova.png" alt="раководител на сектор">
+              <div class="pr-card-img-overlay">
+                <p class="pr-card-bio-preview">Раководител на сектор за бизнис и маркетинг</p>
+              </div>
+            </div>
+            <div class="pr-card-info">
+              <p class="pr-card-name">Христина Трајкова</p>
+              <p class="pr-card-title">Раководител на сектор за бизнис и маркетинг</p>
+              <p class="pr-card-subject">Раководител на сектор</p>
+            </div>
+           </div>
+
          </div>
 
          <!-- СТРУЧНА СЛУЖБА -->
