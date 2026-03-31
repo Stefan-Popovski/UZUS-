@@ -1,5 +1,5 @@
 /* ============================================
-   ДСУ РЦСОО „Коле Неделковски“ - Велес
+   ДСУ РЦСОО „Коле Неделковски" - Велес
    Main Stylesheet
    ============================================ */
 
@@ -61,7 +61,8 @@ body {
   color: var(--gray-700);
   line-height: 1.6;
   background-color: var(--white);
-  overflow-x: hidden;}
+  overflow-x: hidden;
+}
 
 /* Scroll Lock */
 html.no-scroll,
@@ -719,10 +720,10 @@ ol {
 }
 
 .hero-cta .btn {
-  min-width: 240px; 
+  min-width: 240px;
   justify-content: center;
-  height: 56px; 
-  box-sizing: border-box; 
+  height: 56px;
+  box-sizing: border-box;
   padding: 0 2rem;
 }
 
@@ -1003,12 +1004,14 @@ ol {
   color: var(--white);
 }
 
+/* CHANGE 1: .feature-icon.blue */
 .feature-icon.blue {
-  background: linear-gradient(135deg, var(--school-blue) 0%, var(--school-blue-light) 100%);
+  background: linear-gradient(135deg, var(--school-blue-dark) 0%, var(--school-blue) 100%);
 }
 
+/* CHANGE 2: .feature-icon.green */
 .feature-icon.green {
-  background: linear-gradient(135deg, var(--school-blue-light) 0%, #3a6baf 100%);
+  background: linear-gradient(135deg, var(--school-blue) 0%, (var(--school-blue-dark)) 100%);
 }
 
 .feature-icon.purple {
@@ -1514,10 +1517,10 @@ ol {
   pointer-events: none;
 }
 
-/* Left column (Cards 1 and 3): Navy to Gold */
+/* CHANGE 3: Left column (Cards 1 and 3): now pure blue */
 .program-card-header.blue,
 .program-card-header.green {
-  background: linear-gradient(135deg, #1e3a5f 0%, #264a6e 40%, #96833a 75%, #d4af37 100%);
+  background: linear-gradient(135deg, #100075 0%, #0403FF 40%, #0403FF 75%, #100075 100%);
 }
 
 .program-card-header.blue::before {
@@ -1546,10 +1549,10 @@ ol {
   background: #ffffff;
 }
 
-/* Right column (Cards 2 and 4): Gold to Navy */
+/* CHANGE 4: Right column (Cards 2 and 4): now pure blue */
 .program-card-header.yellow,
 .program-card-header.purple {
-  background: linear-gradient(135deg, #d4af37 0%, #96833a 30%, #264a6e 65%, #1e3a5f 100%);
+  background: linear-gradient(135deg, #100075 0%, #0403FF 40%, #0403FF 75%, #100075 100%);
 }
 
 .program-card-header.yellow::before {
@@ -1663,7 +1666,9 @@ ol {
   padding: 6rem 0;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, var(--school-blue) 0%, var(--school-blue-light) 50%, var(--school-blue-dark) 100%);
+  /* CHANGE 5: flat dark navy instead of gradient */
+  /* background: linear-gradient(135deg, var(--school-blue) 0%, var(--school-blue-light) 50%, var(--school-blue-dark) 100%); */
+  background: #100075;
   background-size: 200% 200%;
   animation: gradientShift 15s ease infinite;
 }
@@ -1763,7 +1768,8 @@ ol {
 .stat-icon {
   width: 3.5rem;
   height: 3.5rem;
-  background: rgba(212, 175, 55, 0.2);
+  /* CHANGE 6: light warm yellow tint instead of gold tint */
+  background: rgba(255, 243, 203, 0.2);
   border-radius: var(--radius-xl);
   display: flex;
   align-items: center;
@@ -1858,9 +1864,10 @@ ol {
   color: var(--white);
 }
 
+/* CHANGE 7: nearly fully opaque white instead of 60% */
 .stat-extra-label {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.958);
 }
 
 /* ============================================
@@ -2777,7 +2784,8 @@ ol {
 
 .footer-border {
   height: 4px;
-  background: linear-gradient(90deg, var(--school-gold) 0%, var(--school-blue-light) 50%, var(--school-gold) 100%);
+  /* CHANGE 8: dark blue gradient instead of gold */
+  background: linear-gradient(90deg, var(--school-blue-dark) 0%, var(--school-blue-light) 50%, var(--school-blue-dark) 100%);
 }
 
 .footer-container {
@@ -3715,6 +3723,7 @@ ol {
   flex-shrink: 0;
 }
 
+/* CHANGE 11: school-blue-dark on hover instead of school-blue */
 .contact-info-card:hover .contact-info-icon {
   background: var(--school-gold);
 }
@@ -4038,7 +4047,8 @@ ol {
 .program-detail-icon {
   width: 5rem;
   height: 5rem;
-  background: linear-gradient(135deg, var(--school-blue) 0%, var(--school-blue-light) 100%);
+  /* CHANGE 23: dark-blue gradient instead of blue-to-light */
+  background: linear-gradient(135deg, var(--school-blue-dark) 0%, var(--school-blue) 50%, var(--school-blue-dark) 100%);
   border-radius: var(--radius-xl);
   display: flex;
   align-items: center;
@@ -5014,18 +5024,20 @@ ol {
   pointer-events: none;
 }
 
+/* CHANGE 9: more opaque particles */
 .payment-particle {
   position: absolute;
   width: 4px;
   height: 4px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.76);
   border-radius: 50%;
   animation: floatParticle 8s ease-in-out infinite;
 }
 
+/* CHANGE 10: white background instead of gray-50 */
 .contact-info-section {
   padding: 4rem 0;
-  background: var(--gray-50);
+  background: var(--white);
 }
 
 .contact-info-grid {
@@ -5095,25 +5107,29 @@ ol {
   transition: all 0.3s ease;
 }
 
+/* CHANGE 11: school-blue-dark on hover */
 .contact-info-card:hover .contact-info-icon {
-  background: var(--school-blue);
+  background: var(--school-blue-dark);
   color: var(--white);
   transform: scale(1.05);
 }
 
+/* CHANGE 12: white text for h3 */
 .contact-info-card h3 {
   font-size: 1.125rem;
-  color: var(--gray-900);
+  color: var(--white);
   margin-bottom: 0.75rem;
 }
 
+/* CHANGE 13: white text for p */
 .contact-info-card p {
-  color: var(--gray-600);
+  color: var(--white);
   line-height: 1.6;
 }
 
+/* CHANGE 14: school-blue-dark for links */
 .contact-info-card a {
-  color: var(--school-blue);
+  color: var(--school-blue-dark);
   transition: color 0.3s ease;
 }
 
@@ -5143,18 +5159,21 @@ ol {
   border-radius: var(--radius-2xl);
   padding: 3.5rem;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
-  border-top: 6px solid var(--school-blue);
+  /* CHANGE 15: school-blue-dark border */
+  border-top: 6px solid var(--school-blue-dark);
   position: relative;
 }
 
+/* CHANGE 16: white title */
 .contact-form-title {
   font-size: 1.75rem;
-  color: var(--gray-900);
+  color: var(--white);
   margin-bottom: 0.5rem;
 }
 
+/* CHANGE 17: white subtitle */
 .contact-form-subtitle {
-  color: var(--gray-500);
+  color: var(--white);
   margin-bottom: 2rem;
 }
 
@@ -5188,12 +5207,13 @@ ol {
   color: #ef4444;
 }
 
+/* CHANGE 18: white background for inputs */
 .contact-form input,
 .contact-form select,
 .contact-form textarea {
   width: 100%;
   padding: 1rem 1.25rem;
-  background-color: var(--gray-50);
+  background-color: var(--white);
   border: 2px solid transparent;
   border-radius: var(--radius-lg);
   font-size: 1rem;
@@ -5232,10 +5252,11 @@ ol {
   margin-top: 0.25rem;
 }
 
+/* CHANGE 19: white checkbox label */
 .form-checkbox label {
   margin-bottom: 0;
   font-size: 0.875rem;
-  color: var(--gray-600);
+  color: var(--white);
 }
 
 .form-checkbox a {
@@ -5259,9 +5280,10 @@ ol {
   flex-direction: column;
 }
 
+/* CHANGE 20: white map title */
 .contact-map-title {
   font-size: 1.75rem;
-  color: var(--gray-900);
+  color: var(--white);
   margin-bottom: 1.5rem;
 }
 
@@ -5690,8 +5712,9 @@ ol {
   transform: translateY(0);
 }
 
+/* CHANGE 21: school-blue-light on hover instead of school-gold-light */
 .scroll-to-top:hover {
-  background: var(--school-gold);
+  background: var(--school-blue-light);
   transform: translateY(-4px) scale(1.05);
   box-shadow: 0 8px 20px rgba(118, 75, 162, 0.5);
 }
@@ -6330,8 +6353,9 @@ body.has-cookie-banner .scroll-to-top {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* CHANGE 22: school-blue-dark for checked toggle */
 input:checked+.cookie-slider {
-  background-color: var(--school-blue);
+  background-color: var(--school-blue-dark);
 }
 
 input:disabled+.cookie-slider {
@@ -6774,7 +6798,8 @@ input:checked+.cookie-slider:before {
 .tour-modal {
   position: fixed;
   inset: 0;
-  z-index: 10001; /* Above navbar (1000) */
+  z-index: 10001;
+  /* Above navbar (1000) */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6852,4 +6877,3 @@ input:checked+.cookie-slider:before {
   height: 100%;
   flex: 1;
 }
-
