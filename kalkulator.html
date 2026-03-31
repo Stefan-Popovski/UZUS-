@@ -12,9 +12,6 @@
         rel="stylesheet">
     <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
     <style>
-        /* ══════════════════════════
-       HERO
-    ══════════════════════════ */
         .st-hero {
             position: relative;
             min-height: 58vh;
@@ -40,8 +37,7 @@
         .st-hero-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg,
-                    rgba(30, 58, 95, .78) 0%, rgba(30, 58, 95, .68) 50%, rgba(21, 42, 69, .84) 100%);
+            background: linear-gradient(135deg, rgba(30, 58, 95, .78) 0%, rgba(30, 58, 95, .68) 50%, rgba(21, 42, 69, .84) 100%);
         }
 
         .st-hero-decor {
@@ -188,79 +184,7 @@
             text-decoration: none;
         }
 
-        /* ══════════════════════════
-       STRUKI NAV TABS
-    ══════════════════════════ */
-        .st-nav {
-            background: var(--white);
-            padding: 2rem 0;
-            position: sticky;
-            top: 68px;
-            z-index: 50;
-            border-bottom: 1px solid var(--gray-100);
-            box-shadow: 0 4px 20px rgba(30, 58, 95, .06);
-        }
-
-        .st-nav-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-        }
-
-        @media(max-width:800px) {
-            .st-nav-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media(max-width:440px) {
-            .st-nav-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .st-nav-btn {
-            display: flex;
-            align-items: center;
-            gap: .75rem;
-            padding: .85rem 1.25rem;
-            border-radius: 14px;
-            background: var(--gray-50);
-            border: 1.5px solid var(--gray-200);
-            color: var(--gray-600);
-            font-family: var(--font-accent);
-            font-size: .85rem;
-            font-weight: 700;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all .25s ease;
-        }
-
-        .st-nav-btn svg {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-        }
-
-        .st-nav-btn:hover {
-            background: rgba(30, 58, 95, .07);
-            color: var(--school-blue);
-            border-color: rgba(30, 58, 95, .2);
-        }
-
-        .st-nav-btn.active {
-            background: var(--school-blue);
-            color: var(--white);
-            border-color: var(--school-blue);
-        }
-
-        .st-nav-btn.active svg {
-            color: var(--school-gold);
-        }
-
-        /* ══════════════════════════════════════
-       CALCULATOR SECTION
-    ══════════════════════════════════════ */
+        /* CALC */
         .calc-sec {
             padding: 4rem 0 6rem;
             background: var(--gray-50);
@@ -291,19 +215,43 @@
             margin-bottom: 3rem;
         }
 
-        .calc-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
+        .calc-inputs {
+            display: flex;
+            flex-direction: column;
         }
 
-        @media(min-width:1024px) {
-            .calc-grid {
-                grid-template-columns: 1fr 340px
+        /* SINGLE COLUMN STACK */
+        .calc-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .calc-stack .cc {
+            margin-bottom: 0;
+            width: 100%;
+        }
+
+        /* PAIR: two cards side by side 50/50 */
+        .calc-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            align-items: stretch;
+        }
+
+        @media(max-width:700px) {
+            .calc-pair {
+                grid-template-columns: 1fr;
             }
         }
 
-        /* ── card ── */
+        .calc-pair .cc {
+            margin-bottom: 0;
+            height: 100%;
+        }
+
+        /* CARDS */
         .cc {
             background: var(--white);
             border-radius: 20px;
@@ -395,7 +343,6 @@
             padding: 1.5rem 1.75rem;
         }
 
-        /* ── field label ── */
         .flbl {
             display: block;
             font-family: 'Montserrat', sans-serif;
@@ -407,7 +354,6 @@
             margin-bottom: .5rem;
         }
 
-        /* ── base input ── */
         .finput {
             width: 100%;
             padding: .7rem 1rem;
@@ -429,7 +375,6 @@
             box-shadow: 0 0 0 3px rgba(212, 175, 55, .12);
         }
 
-        /* ── roman numeral grade cards ── */
         .roman-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -438,7 +383,7 @@
 
         @media(min-width:560px) {
             .roman-grid {
-                grid-template-columns: repeat(4, 1fr)
+                grid-template-columns: repeat(4, 1fr);
             }
         }
 
@@ -502,7 +447,6 @@
             color: var(--school-blue);
         }
 
-        /* ── behaviour card ── */
         .beh-legend {
             display: flex;
             flex-wrap: wrap;
@@ -563,7 +507,7 @@
 
         @media(min-width:560px) {
             .beh-grid {
-                grid-template-columns: repeat(4, 1fr)
+                grid-template-columns: repeat(4, 1fr);
             }
         }
 
@@ -625,7 +569,6 @@
             color: var(--school-blue);
         }
 
-        /* ── subject grid ── */
         .sub-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -658,34 +601,37 @@
             white-space: nowrap;
         }
 
-        /* ── competition radio pills ── */
-        .comp-cols {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
+        /* COMPETITION */
+        .comp-centered {
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        @media(min-width:768px) {
-            .comp-cols {
-                grid-template-columns: 1fr 1fr
-            }
+        .comp-pills-list {
+            display: flex;
+            flex-direction: column;
+            gap: .6rem;
         }
 
-        .comp-grp-title {
+        .comp-group-label {
             display: flex;
             align-items: center;
             gap: .5rem;
             font-family: 'Montserrat', sans-serif;
-            font-size: .68rem;
+            font-size: .63rem;
             font-weight: 700;
-            letter-spacing: .1em;
+            letter-spacing: .12em;
             text-transform: uppercase;
             color: var(--gray-400);
-            margin-bottom: .875rem;
-            flex-wrap: wrap;
+            margin-top: .5rem;
+            margin-bottom: .25rem;
         }
 
-        .comp-grp-title svg {
+        .comp-group-label:first-child {
+            margin-top: 0;
+        }
+
+        .comp-group-label svg {
             flex-shrink: 0;
         }
 
@@ -710,28 +656,39 @@
             color: #7c3aed;
         }
 
-        .comp-list {
-            display: flex;
-            flex-direction: column;
-            gap: .65rem;
-        }
-
-        /* radio pill */
         .rb {
             display: none;
         }
 
         .rb-pill {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: .875rem;
-            padding: .875rem 1.125rem;
+            padding: 1rem 1.25rem;
             border-radius: 14px;
             border: 1.5px solid var(--gray-200);
             background: var(--gray-50);
             cursor: pointer;
             transition: all .22s;
             user-select: none;
+        }
+
+        .rb-pill-left {
+            display: flex;
+            align-items: center;
+            gap: .875rem;
+        }
+
+        .comp-pts {
+            font-family: 'Montserrat', sans-serif;
+            font-size: .85rem;
+            font-weight: 700;
+            color: var(--gray-500);
+            white-space: nowrap;
+        }
+        
+        .rb:checked+.rb-pill .comp-pts {
+            color: var(--school-gold);
         }
 
         .rb-pill:hover {
@@ -787,7 +744,6 @@
             margin-top: .1rem;
         }
 
-        /* medals */
         .medal {
             width: 2.1rem;
             height: 2.1rem;
@@ -821,16 +777,58 @@
             color: #2e1065;
         }
 
-        /* ══════════════════════════════════════
-       RESULT PANEL
-    ══════════════════════════════════════ */
+        /* COMPETITION + RESULT: two cards side by side 50/50 */
+        .comp-result-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            align-items: stretch;
+            margin-top: 1.25rem;
+        }
+
+        @media(max-width:700px) {
+            .comp-result-pair {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .comp-result-pair > .cc {
+            margin-bottom: 0;
+            height: 100%;
+        }
+
+        .result-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .result-col .result-row {
+            margin-top: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .result-col .result-row .result {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .result-col .result-row .result .result-top {
+            flex: 1;
+        }
+
+        /* RESULT ROW standalone (legacy) */
+        .result-row {
+            margin-top: 2rem;
+        }
+
         .result {
             background: var(--school-blue-dark);
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(30, 58, 95, .3);
-            position: sticky;
-            top: 5.5rem;
         }
 
         .result-top {
@@ -839,7 +837,6 @@
             animation: gradientShift 15s ease infinite;
             position: relative;
             overflow: hidden;
-            text-align: center;
         }
 
         .result-top::before {
@@ -859,17 +856,17 @@
         }
 
         .rc:nth-child(1) {
-            width: 4rem;
-            height: 4rem;
+            width: 6rem;
+            height: 6rem;
             top: 1rem;
             left: 1rem;
         }
 
         .rc:nth-child(2) {
-            width: 6rem;
-            height: 6rem;
+            width: 9rem;
+            height: 9rem;
             bottom: 2rem;
-            right: 1rem;
+            right: 2rem;
             animation: floatSlow 10s ease-in-out infinite;
         }
 
@@ -885,27 +882,45 @@
             width: 100%;
         }
 
-        .result-inner {
-            padding: 1.75rem 1.75rem 0;
+        /* Vertical layout inside the result blue band */
+        .result-top-inner {
             position: relative;
             z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 2.5rem 2.5rem 3rem;
+        }
+
+        @media(max-width:768px) {
+            .result-top-inner {
+                padding: 2rem 1.5rem 2.5rem;
+            }
+        }
+
+        .result-ring-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+            width: 100%;
         }
 
         .res-lbl {
             font-family: 'Montserrat', sans-serif;
-            font-size: .68rem;
+            font-size: .8rem;
             font-weight: 700;
-            letter-spacing: .18em;
+            letter-spacing: .2em;
             text-transform: uppercase;
-            color: rgba(255, 255, 255, .4);
-            margin-bottom: .75rem;
+            color: rgba(255, 255, 255, .9);
+            margin-bottom: 1.5rem;
         }
 
         .ring-wrap {
             position: relative;
             width: 11rem;
             height: 11rem;
-            margin: 0 auto;
         }
 
         .ring-wrap svg {
@@ -942,12 +957,18 @@
             margin-top: .3rem;
         }
 
+        .result-bars-col {
+            flex: 1;
+        }
+
         .ring-legend {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: .5rem 1rem;
-            padding: .875rem 1rem .75rem;
+            gap: .75rem 1.25rem;
+            margin-top: 1rem;
+            margin-bottom: 0;
+            width: 100%;
         }
 
         .rl {
@@ -955,8 +976,9 @@
             align-items: center;
             gap: .4rem;
             font-family: 'Montserrat', sans-serif;
-            font-size: .68rem;
-            color: rgba(255, 255, 255, .45);
+            font-size: .8rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, .8);
         }
 
         .rl-dot {
@@ -966,42 +988,34 @@
             flex-shrink: 0;
         }
 
-        .wave {
-            display: block;
+        .bars-in-band {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
             width: 100%;
-        }
-
-        .breakdown {
-            background: var(--white);
-            padding: 1.5rem 1.75rem;
         }
 
         .bar-row {
             display: flex;
             align-items: center;
             gap: .875rem;
-            margin-bottom: .875rem;
-        }
-
-        .bar-row:last-of-type {
-            margin-bottom: 0;
         }
 
         .bar-lbl {
             font-family: 'Montserrat', sans-serif;
-            font-size: .66rem;
+            font-size: .75rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: .06em;
-            color: var(--gray-400);
-            width: 4.5rem;
+            color: var(--gray-600);
+            width: 6.5rem;
             flex-shrink: 0;
         }
 
         .bar-track {
             flex: 1;
             height: .5rem;
-            background: var(--gray-100);
+            background: var(--gray-200);
             border-radius: 9999px;
             overflow: hidden;
         }
@@ -1014,28 +1028,53 @@
 
         .bar-val {
             font-family: 'Playfair Display', serif;
-            font-size: .875rem;
+            font-size: 1.05rem;
             font-weight: 700;
             color: var(--gray-900);
-            width: 3rem;
+            width: 3.5rem;
             text-align: right;
             flex-shrink: 0;
         }
 
         .bar-max {
             font-family: 'Montserrat', sans-serif;
-            font-size: .66rem;
+            font-size: .75rem;
             color: var(--gray-400);
             flex-shrink: 0;
+            width: 3rem;
+        }
+
+        .result-bottom {
+            background: var(--white);
+            padding: 2rem 2.5rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        @media(max-width:768px) {
+            .result-bottom {
+                padding: 1.5rem 1.5rem 2rem;
+                gap: 1.5rem;
+            }
+        }
+        
+        .top-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 24px;
+            z-index: 2;
+            pointer-events: none;
         }
 
         .status-badge {
-            margin-top: 1.25rem;
-            padding: .875rem 1rem;
+            padding: .875rem 1.25rem;
             border-radius: 12px;
             text-align: center;
             font-family: 'Montserrat', sans-serif;
-            font-size: .8rem;
+            font-size: .875rem;
             font-weight: 700;
             transition: all .3s;
         }
@@ -1064,9 +1103,7 @@
             border: 1px solid #fecaca;
         }
 
-        /* ══════════════════════════════════════
-       CTA section (from site design)
-    ══════════════════════════════════════ */
+        /* CTA */
         .cta-sec {
             padding: 6rem 0;
             position: relative;
@@ -1178,19 +1215,19 @@
 
         @media(min-width:640px) {
             .cta-title-txt {
-                font-size: 2.5rem
+                font-size: 2.5rem;
             }
         }
 
         @media(min-width:768px) {
             .cta-title-txt {
-                font-size: 3rem
+                font-size: 3rem;
             }
         }
 
         @media(min-width:1024px) {
             .cta-title-txt {
-                font-size: 3.75rem
+                font-size: 3.75rem;
             }
         }
 
@@ -1220,7 +1257,7 @@
         @media(min-width:640px) {
             .cta-btns-wrap {
                 flex-direction: row;
-                justify-content: center
+                justify-content: center;
             }
         }
 
@@ -1296,70 +1333,55 @@
 
 <body>
 
-    <!-- ═══ NAVBAR ═══ -->
     <nav class="navbar">
-    <div class="navbar-container">
-      <a href="index.html" class="navbar-logo">
-        <div class="navbar-logo-icon"><img src="images/logo-belo%20copy.png" alt="Logo"></div>
-        <div class="navbar-logo-text">
-          <h1>ДСУ РЦСОО</h1>
-          <p>„Коле Неделковски"</p>
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <div class="navbar-logo-icon"><img src="images/logo-belo%20copy.png" alt="Logo"></div>
+                <div class="navbar-logo-text">
+                    <h1>ДСУ РЦСОО</h1>
+                    <p>„Коле Неделковски"</p>
+                </div>
+            </a>
+            <div class="navbar-links">
+                <a href="index.html" class="navbar-link">Почетна</a>
+                <a href="index.html#about" class="navbar-link">За Нас</a>
+                <a href="struki.html" class="navbar-link">Струки</a>
+                <a href="profesori.html" class="navbar-link">Професори</a>
+                <a href="postignuvanja.html" class="navbar-link">Успеси</a>
+                <a href="kontakt.html" class="navbar-link">Контакт</a>
+            </div>
+            <div class="navbar-actions">
+                <a href="upisi.html" class="navbar-cta">Уписи 2026/2027</a>
+                <button class="navbar-menu-btn" aria-label="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="4" x2="20" y1="12" y2="12" />
+                        <line x1="4" x2="20" y1="6" y2="6" />
+                        <line x1="4" x2="20" y1="18" y2="18" />
+                    </svg></button>
+            </div>
         </div>
-      </a>
-      <div class="navbar-links">
-        <a href="index.html" class="navbar-link">Почетна</a>
-        <a href="index.html#about" class="navbar-link">За Нас</a>
-        <a href="struki.html" class="navbar-link">Струки</a>
-        <a href="profesori.html" class="navbar-link">Професори</a>
-
-        <a href="postignuvanja.html" class="navbar-link">Успеси</a>
-        <a href="kontakt.html" class="navbar-link">Контакт</a>
-        
-
-      </div>
-      <div class="navbar-actions">
-
-        <a href="upisi.html" class="navbar-cta">Уписи 2026/2027</a>
-        <a href="kalkulator.html" class="navbar-cta navbar-cta-calc"><svg xmlns="http://www.w3.org/2000/svg" width="14"
-            height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <rect width="16" height="20" x="4" y="2" rx="2" />
-            <line x1="8" x2="16" y1="6" y2="6" />
-            <line x1="8" x2="16" y1="10" y2="10" />
-            <line x1="8" x2="12" y1="14" y2="14" />
-          </svg>Калкулатор</a>
-        <button class="navbar-menu-btn" aria-label="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="4" x2="20" y1="12" y2="12" />
-            <line x1="4" x2="20" y1="6" y2="6" />
-            <line x1="4" x2="20" y1="18" y2="18" />
-          </svg></button>
-      </div>
-    </div>
-
     </nav>
 
-    <!-- Mobile Menu -->
     <div class="mobile-menu-overlay"></div>
     <div class="mobile-menu">
         <div class="mobile-menu-content">
-        <a href="index.html" class="mobile-menu-link">Почетна</a>
-        <a href="index.html#about" class="mobile-menu-link">За Нас</a>
-        <a href="struki.html" class="mobile-menu-link">Струки</a>
-        <a href="profesori.html" class="mobile-menu-link">Професори</a>
-
-        <a href="postignuvanja.html" class="mobile-menu-link">Успеси</a>
-        <a href="kontakt.html" class="mobile-menu-link">Контакт</a>
-        <a href="https://ednevnik.edu.mk/" class="mobile-menu-link" target="_blank">Е-Дневник</a>
-        <a href="upisi.html" class="mobile-menu-cta">Уписи 2026/2027</a>
-        <a href="kalkulator.html" class="mobile-menu-cta-calc">Калкулатор за бодови</a>
-        <div class="mobile-menu-contact">
-            <p>Контакт информации</p><a href="tel:043231460">043/231-460</a><a
-            href="mailto:kolenedelkovski@yahoo.com">kolenedelkovski@yahoo.com</a>
-        </div>
+            <a href="index.html" class="mobile-menu-link">Почетна</a>
+            <a href="index.html#about" class="mobile-menu-link">За Нас</a>
+            <a href="struki.html" class="mobile-menu-link">Струки</a>
+            <a href="profesori.html" class="mobile-menu-link">Професори</a>
+            <a href="postignuvanja.html" class="mobile-menu-link">Успеси</a>
+            <a href="kontakt.html" class="mobile-menu-link">Контакт</a>
+            <a href="https://ednevnik.edu.mk/" class="mobile-menu-link" target="_blank">Е-Дневник</a>
+            <a href="upisi.html" class="mobile-menu-cta">Уписи 2026/2027</a>
+            <a href="kalkulator.html" class="mobile-menu-cta-calc">Калкулатор за бодови</a>
+            <div class="mobile-menu-contact">
+                <p>Контакт информации</p>
+                <a href="tel:043231460">043/231-460</a>
+                <a href="mailto:kolenedelkovski@yahoo.com">kolenedelkovski@yahoo.com</a>
+            </div>
         </div>
     </div>
 
-    <!-- ═══ HERO ═══ -->
     <section class="st-hero">
         <div class="st-hero-bg">
             <div class="st-hero-img"></div>
@@ -1384,8 +1406,6 @@
         </div>
     </section>
 
-
-    <!-- ═══ CALCULATOR ═══ -->
     <section class="calc-sec">
         <div class="calc-wrap">
             <div class="calc-hd reveal">
@@ -1394,288 +1414,283 @@
                 <p class="section-description">Внеси ги оценките и поведението за да видиш колку бодови би имал при
                     конкурсот.</p>
             </div>
-            <div class="calc-grid">
-                <!-- ── LEFT: inputs ── -->
-                <div>
 
-                    <!-- Track -->
-                    <div class="cc reveal">
-                        <div class="cc-h">
-                            <div class="cc-h-left">
-                                <div class="cc-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2">
-                                        <polygon points="12 2 2 7 12 12 22 7 12 2" />
-                                        <polyline points="2 17 12 22 22 17" />
-                                        <polyline points="2 12 12 17 22 12" />
-                                    </svg></div>
-                                <h3>Образовен профил</h3>
-                            </div>
-                        </div>
-                        <div class="cc-b">
-                            <label class="flbl" for="smer">Струка</label>
-                            <select id="smer" class="finput"
-                                style="cursor:pointer;text-align:left;background-image:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2714%27 height=%2714%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%231e3a5f%27 stroke-width=%272.5%27%3E%3Cpath d=%27m6 9 6 6 6-6%27/%3E%3C/svg%3E');background-repeat:no-repeat;background-position:right .75rem center;-webkit-appearance:none;appearance:none;padding-right:2.5rem">
-                                <option value="masinska">Машинска / Електротехничка струка</option>
-                                <option value="soobrakaj">Сообраќај и логистика</option>
-                                <option value="ugo">Угостителство / Туризам</option>
-                            </select>
+            <!-- SINGLE COLUMN STACK -->
+            <div class="calc-stack">
+
+                <!-- Track -->
+                <div class="cc reveal">
+                    <div class="cc-h">
+                        <div class="cc-h-left">
+                            <div class="cc-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                                    <polyline points="2 17 12 22 22 17" />
+                                    <polyline points="2 12 12 17 22 12" />
+                                </svg></div>
+                            <h3>Образовен профил</h3>
                         </div>
                     </div>
-
-                    <!-- GPA -->
-                    <div class="cc reveal">
-                        <div class="cc-h">
-                            <div class="cc-h-left">
-                                <div class="cc-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-                                    </svg></div>
-                                <h3>Средна оценка (VI–IX одд.)</h3>
-                            </div>
-                            <span class="cc-tag">макс. 50 бода</span>
-                        </div>
-                        <div class="cc-b">
-                            <p class="flbl" style="margin-bottom:.875rem">Средна оценка по одделение (1,00 – 5,00)</p>
-                            <div class="roman-grid">
-                                <div class="roman-card">
-                                    <div class="roman-hd"><span class="roman-num">VI</span><span
-                                            class="roman-sub">одделение</span></div><input type="number" id="gpa6"
-                                        class="roman-input" min="1" max="5" step="0.01" value="5.00">
-                                </div>
-                                <div class="roman-card">
-                                    <div class="roman-hd"><span class="roman-num">VII</span><span
-                                            class="roman-sub">одделение</span></div><input type="number" id="gpa7"
-                                        class="roman-input" min="1" max="5" step="0.01" value="5.00">
-                                </div>
-                                <div class="roman-card">
-                                    <div class="roman-hd"><span class="roman-num">VIII</span><span
-                                            class="roman-sub">одделение</span></div><input type="number" id="gpa8"
-                                        class="roman-input" min="1" max="5" step="0.01" value="5.00">
-                                </div>
-                                <div class="roman-card">
-                                    <div class="roman-hd"><span class="roman-num">IX</span><span
-                                            class="roman-sub">одделение</span></div><input type="number" id="gpa9"
-                                        class="roman-input" min="1" max="5" step="0.01" value="5.00">
-                                </div>
-                            </div>
-                        </div>
+                    <div class="cc-b">
+                        <label class="flbl" for="smer">Струка</label>
+                        <select id="smer" class="finput"
+                            style="cursor:pointer;text-align:left;background-image:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2714%27 height=%2714%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%231e3a5f%27 stroke-width=%272.5%27%3E%3Cpath d=%27m6 9 6 6 6-6%27/%3E%3C/svg%3E');background-repeat:no-repeat;background-position:right .75rem center;-webkit-appearance:none;appearance:none;padding-right:2.5rem">
+                            <option value="masinska">Машинска / Електротехничка струка</option>
+                            <option value="soobrakaj">Сообраќај и логистика</option>
+                            <option value="ugo">Угостителство / Туризам</option>
+                        </select>
                     </div>
+                </div>
 
-                    <!-- Behaviour -->
-                    <div class="cc reveal">
-                        <div class="cc-h">
-                            <div class="cc-h-left">
-                                <div class="cc-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                                    </svg></div>
-                                <h3>Поведение (VI–IX одд.)</h3>
-                            </div>
-                            <span class="cc-tag">макс. 5 бода</span>
+                <!-- GPA + Behaviour: paired 50/50 row -->
+                <div class="calc-pair">
+
+                <!-- GPA -->
+                <div class="cc reveal">
+                    <div class="cc-h">
+                        <div class="cc-h-left">
+                            <div class="cc-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                                </svg></div>
+                            <h3>Средна оценка (VI–IX одд.)</h3>
                         </div>
-                        <div class="cc-b">
-                            <div class="beh-legend">
-                                <span class="beh-chip g"><span class="dot"></span>Примерно = 5</span>
-                                <span class="beh-chip b"><span class="dot"></span>Добро = 3</span>
-                                <span class="beh-chip r"><span class="dot"></span>Незадоволително = 0</span>
+                        <span class="cc-tag">макс. 50 бода</span>
+                    </div>
+                    <div class="cc-b">
+                        <p class="flbl" style="margin-bottom:.875rem">Средна оценка по одделение (1,00 – 5,00)</p>
+                        <div class="roman-grid">
+                            <div class="roman-card">
+                                <div class="roman-hd"><span class="roman-num">VI</span><span
+                                        class="roman-sub">одделение</span></div><input type="number" id="gpa6"
+                                    class="roman-input" min="1" max="5" step="0.01" value="5.00">
                             </div>
-                            <div class="beh-grid">
-                                <div class="beh-card">
-                                    <div class="beh-hd"><span class="roman-num">VI</span><span
-                                            class="roman-sub">одделение</span></div>
-                                    <div class="sel-wrap"><select id="beh6" class="beh-sel">
-                                            <option value="5">Примерно</option>
-                                            <option value="3">Добро</option>
-                                            <option value="0">Незадоволително</option>
-                                        </select></div>
-                                </div>
-                                <div class="beh-card">
-                                    <div class="beh-hd"><span class="roman-num">VII</span><span
-                                            class="roman-sub">одделение</span></div>
-                                    <div class="sel-wrap"><select id="beh7" class="beh-sel">
-                                            <option value="5">Примерно</option>
-                                            <option value="3">Добро</option>
-                                            <option value="0">Незадоволително</option>
-                                        </select></div>
-                                </div>
-                                <div class="beh-card">
-                                    <div class="beh-hd"><span class="roman-num">VIII</span><span
-                                            class="roman-sub">одделение</span></div>
-                                    <div class="sel-wrap"><select id="beh8" class="beh-sel">
-                                            <option value="5">Примерно</option>
-                                            <option value="3">Добро</option>
-                                            <option value="0">Незадоволително</option>
-                                        </select></div>
-                                </div>
-                                <div class="beh-card">
-                                    <div class="beh-hd"><span class="roman-num">IX</span><span
-                                            class="roman-sub">одделение</span></div>
-                                    <div class="sel-wrap"><select id="beh9" class="beh-sel">
-                                            <option value="5">Примерно</option>
-                                            <option value="3">Добро</option>
-                                            <option value="0">Незадоволително</option>
-                                        </select></div>
-                                </div>
+                            <div class="roman-card">
+                                <div class="roman-hd"><span class="roman-num">VII</span><span
+                                        class="roman-sub">одделение</span></div><input type="number" id="gpa7"
+                                    class="roman-input" min="1" max="5" step="0.01" value="5.00">
+                            </div>
+                            <div class="roman-card">
+                                <div class="roman-hd"><span class="roman-num">VIII</span><span
+                                        class="roman-sub">одделение</span></div><input type="number" id="gpa8"
+                                    class="roman-input" min="1" max="5" step="0.01" value="5.00">
+                            </div>
+                            <div class="roman-card">
+                                <div class="roman-hd"><span class="roman-num">IX</span><span
+                                        class="roman-sub">одделение</span></div><input type="number" id="gpa9"
+                                    class="roman-input" min="1" max="5" step="0.01" value="5.00">
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Subjects -->
-                    <div class="cc reveal">
-                        <div class="cc-h">
-                            <div class="cc-h-left">
-                                <div class="cc-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2">
-                                        <rect width="20" height="14" x="2" y="7" rx="2" />
-                                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-                                    </svg></div>
-                                <h3>Оценки од IX одделение</h3>
-                            </div>
-                            <span class="cc-tag">макс. 20 бода</span>
+                <!-- Behaviour -->
+                <div class="cc reveal">
+                    <div class="cc-h">
+                        <div class="cc-h-left">
+                            <div class="cc-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                </svg></div>
+                            <h3>Поведение (VI–IX одд.)</h3>
                         </div>
-                        <div class="cc-b">
-                            <p class="flbl" style="margin-bottom:.875rem">Задолжителни предмети</p>
-                            <div class="sub-grid">
-                                <div><label class="flbl" for="mk">Македонски јазик</label><input type="number" id="mk"
-                                        class="finput" min="1" max="5" step="0.01" value="5.00"></div>
-                                <div><label class="flbl" for="en">Англиски јазик</label><input type="number" id="en"
-                                        class="finput" min="1" max="5" step="0.01" value="5.00"></div>
+                        <span class="cc-tag">макс. 5 бода</span>
+                    </div>
+                    <div class="cc-b">
+                        <div class="beh-legend">
+                            <span class="beh-chip g"><span class="dot"></span>Примерно = 5</span>
+                            <span class="beh-chip b"><span class="dot"></span>Добро = 3</span>
+                            <span class="beh-chip r"><span class="dot"></span>Незадоволително = 0</span>
+                        </div>
+                        <div class="beh-grid">
+                            <div class="beh-card">
+                                <div class="beh-hd"><span class="roman-num">VI</span><span
+                                        class="roman-sub">одделение</span></div>
+                                <div class="sel-wrap"><select id="beh6" class="beh-sel">
+                                        <option value="5">Примерно</option>
+                                        <option value="3">Добро</option>
+                                        <option value="0">Незадоволително</option>
+                                    </select></div>
                             </div>
-                            <div class="divider"><span id="spec-label">Специфични за струката</span></div>
-                            <div class="sub-grid" id="spec-cont"></div>
+                            <div class="beh-card">
+                                <div class="beh-hd"><span class="roman-num">VII</span><span
+                                        class="roman-sub">одделение</span></div>
+                                <div class="sel-wrap"><select id="beh7" class="beh-sel">
+                                        <option value="5">Примерно</option>
+                                        <option value="3">Добро</option>
+                                        <option value="0">Незадоволително</option>
+                                    </select></div>
+                            </div>
+                            <div class="beh-card">
+                                <div class="beh-hd"><span class="roman-num">VIII</span><span
+                                        class="roman-sub">одделение</span></div>
+                                <div class="sel-wrap"><select id="beh8" class="beh-sel">
+                                        <option value="5">Примерно</option>
+                                        <option value="3">Добро</option>
+                                        <option value="0">Незадоволително</option>
+                                    </select></div>
+                            </div>
+                            <div class="beh-card">
+                                <div class="beh-hd"><span class="roman-num">IX</span><span
+                                        class="roman-sub">одделение</span></div>
+                                <div class="sel-wrap"><select id="beh9" class="beh-sel">
+                                        <option value="5">Примерно</option>
+                                        <option value="3">Добро</option>
+                                        <option value="0">Незадоволително</option>
+                                    </select></div>
+                            </div>
                         </div>
                     </div>
+                </div><!-- end Behaviour -->
+                </div><!-- end GPA+Behaviour pair -->
 
-                    <!-- Competition -->
-                    <div class="cc reveal">
-                        <div class="cc-h">
-                            <div class="cc-h-left">
-                                <div class="cc-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2">
-                                        <circle cx="12" cy="8" r="7" />
-                                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
-                                    </svg></div>
-                                <h3>Натпреварувачки успеси</h3>
-                            </div>
-                            <span class="cc-tag">бонус бода</span>
+                <!-- Subjects: full-width row -->
+                <div class="cc reveal">
+                    <div class="cc-h">
+                        <div class="cc-h-left">
+                            <div class="cc-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <rect width="20" height="14" x="2" y="7" rx="2" />
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                                </svg></div>
+                            <h3>Оценки од IX одделение</h3>
                         </div>
-                        <div class="cc-b">
-                            <p class="flbl" style="margin-bottom:1rem">Избери го твојот <strong
-                                    style="color:var(--school-blue)">највисок</strong> резултат</p>
-                            <div class="comp-cols">
-                                <!-- International -->
+                        <span class="cc-tag">макс. 20 бода</span>
+                    </div>
+                    <div class="cc-b">
+                        <p class="flbl" style="margin-bottom:.875rem">Задолжителни предмети</p>
+                        <div class="sub-grid">
+                            <div><label class="flbl" for="mk">Македонски јазик</label><input type="number" id="mk"
+                                    class="finput" min="1" max="5" step="0.01" value="5.00"></div>
+                            <div><label class="flbl" for="en">Англиски јазик</label><input type="number" id="en"
+                                    class="finput" min="1" max="5" step="0.01" value="5.00"></div>
+                        </div>
+                        <div class="divider"><span id="spec-label">Специфични за струката</span></div>
+                        <div class="sub-grid" id="spec-cont"></div>
+                    </div>
+                </div><!-- end Subjects -->
+
+            </div><!-- end calc-stack -->
+
+            <!-- Competition + Result: paired 50/50 row -->
+            <div class="comp-result-pair">
+
+                <!-- Competition card -->
+                <div class="cc reveal" style="margin-bottom:0">
+                    <div class="cc-h">
+                        <div class="cc-h-left">
+                            <div class="cc-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="8" r="7" />
+                                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+                                </svg></div>
+                            <h3>Натпреварувачки успеси</h3>
+                        </div>
+                        <span class="cc-tag">бонус бода</span>
+                    </div>
+                    <div class="cc-b">
+                        <p class="flbl" style="margin-bottom:1rem">Избери го твојот <strong
+                                style="color:var(--school-blue)">највисок</strong> резултат</p>
+                        <div class="comp-centered">
+                            <div class="comp-pills-list">
+                                <div class="comp-group-label">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
+                                    Меѓународен <span class="comp-tag tag-i">само еден</span>
+                                </div>
                                 <div>
-                                    <div class="comp-grp-title">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                            <circle cx="12" cy="12" r="10" />
-                                            <path
-                                                d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                                        </svg>
-                                        Меѓународен <span class="comp-tag tag-i">само еден</span>
-                                    </div>
-                                    <div class="comp-list">
-                                        <div>
-                                            <input type="radio" id="a1" name="award" value="5" class="rb">
-                                            <label for="a1" class="rb-pill">
-                                                <div class="medal m-intl">I</div>
-                                                <div class="rad"><svg xmlns="http://www.w3.org/2000/svg"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2.5">
-                                                        <path d="M20 6 9 17l-5-5" />
-                                                    </svg></div>
-                                                <div class="comp-lbl">
-                                                    <h4>Меѓународен натпревар</h4>
-                                                    <p>Учество · +5 бода</p>
-                                                </div>
-                                            </label>
+                                    <input type="radio" id="a1" name="award" value="5" class="rb">
+                                    <label for="a1" class="rb-pill">
+                                        <div class="rb-pill-left">
+                                            <div class="medal m-intl">I</div>
+                                            <div class="rad"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5" /></svg></div>
+                                            <div class="comp-lbl">
+                                                <h4>Меѓународен натпревар</h4>
+                                                <p>Учество</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <div class="comp-pts">+5 бода</div>
+                                    </label>
                                 </div>
-                                <!-- National -->
+                                <div class="comp-group-label" style="margin-top:.75rem">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 11l19-9-9 19-2-8-8-2z" /></svg>
+                                    Државен <span class="comp-tag tag-n">само еден</span>
+                                </div>
                                 <div>
-                                    <div class="comp-grp-title">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                            <path d="M3 11l19-9-9 19-2-8-8-2z" />
-                                        </svg>
-                                        Државен <span class="comp-tag tag-n">само еден</span>
-                                    </div>
-                                    <div class="comp-list">
-                                        <div><input type="radio" id="a2" name="award" value="3" class="rb"><label
-                                                for="a2" class="rb-pill">
-                                                <div class="medal m-gold">I</div>
-                                                <div class="rad"><svg xmlns="http://www.w3.org/2000/svg"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2.5">
-                                                        <path d="M20 6 9 17l-5-5" />
-                                                    </svg></div>
-                                                <div class="comp-lbl">
-                                                    <h4>Прво место</h4>
-                                                    <p>Државен натпревар · +3 бода</p>
-                                                </div>
-                                            </label></div>
-                                        <div><input type="radio" id="a3" name="award" value="2" class="rb"><label
-                                                for="a3" class="rb-pill">
-                                                <div class="medal m-silver">II</div>
-                                                <div class="rad"><svg xmlns="http://www.w3.org/2000/svg"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2.5">
-                                                        <path d="M20 6 9 17l-5-5" />
-                                                    </svg></div>
-                                                <div class="comp-lbl">
-                                                    <h4>Второ место</h4>
-                                                    <p>Државен натпревар · +2 бода</p>
-                                                </div>
-                                            </label></div>
-                                        <div><input type="radio" id="a4" name="award" value="1" class="rb"><label
-                                                for="a4" class="rb-pill">
-                                                <div class="medal m-bronze">III</div>
-                                                <div class="rad"><svg xmlns="http://www.w3.org/2000/svg"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2.5">
-                                                        <path d="M20 6 9 17l-5-5" />
-                                                    </svg></div>
-                                                <div class="comp-lbl">
-                                                    <h4>Трето место</h4>
-                                                    <p>Државен натпревар · +1 бод</p>
-                                                </div>
-                                            </label></div>
-                                    </div>
+                                    <input type="radio" id="a2" name="award" value="3" class="rb">
+                                    <label for="a2" class="rb-pill">
+                                        <div class="rb-pill-left">
+                                            <div class="medal m-gold">I</div>
+                                            <div class="rad"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5" /></svg></div>
+                                            <div class="comp-lbl">
+                                                <h4>Прво место</h4>
+                                                <p>Државен натпревар</p>
+                                            </div>
+                                        </div>
+                                        <div class="comp-pts">+3 бода</div>
+                                    </label>
                                 </div>
-                            </div>
-                            <!-- None -->
-                            <div style="margin-top:.75rem">
-                                <input type="radio" id="a0" name="award" value="0" class="rb" checked>
-                                <label for="a0" class="rb-pill" style="opacity:.45">
-                                    <div style="width:2.1rem;height:2.1rem;flex-shrink:0"></div>
-                                    <div class="rad"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                            fill="none" stroke="currentColor" stroke-width="2.5">
-                                            <path d="M20 6 9 17l-5-5" />
-                                        </svg></div>
-                                    <div class="comp-lbl">
-                                        <h4 style="color:var(--gray-400)">Без натпреварувачки успеси</h4>
-                                        <p>Не учествував на натпревари</p>
-                                    </div>
-                                </label>
+                                <div>
+                                    <input type="radio" id="a3" name="award" value="2" class="rb">
+                                    <label for="a3" class="rb-pill">
+                                        <div class="rb-pill-left">
+                                            <div class="medal m-silver">II</div>
+                                            <div class="rad"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5" /></svg></div>
+                                            <div class="comp-lbl">
+                                                <h4>Второ место</h4>
+                                                <p>Државен натпревар</p>
+                                            </div>
+                                        </div>
+                                        <div class="comp-pts">+2 бода</div>
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="a4" name="award" value="1" class="rb">
+                                    <label for="a4" class="rb-pill">
+                                        <div class="rb-pill-left">
+                                            <div class="medal m-bronze">III</div>
+                                            <div class="rad"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5" /></svg></div>
+                                            <div class="comp-lbl">
+                                                <h4>Трето место</h4>
+                                                <p>Државен натпревар</p>
+                                            </div>
+                                        </div>
+                                        <div class="comp-pts">+1 бод</div>
+                                    </label>
+                                </div>
+                                <div style="margin-top:.25rem">
+                                    <input type="radio" id="a0" name="award" value="0" class="rb" checked>
+                                    <label for="a0" class="rb-pill" style="opacity:.45">
+                                        <div class="rb-pill-left">
+                                            <div style="width:2.1rem;height:2.1rem;flex-shrink:0"></div>
+                                            <div class="rad"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5" /></svg></div>
+                                            <div class="comp-lbl">
+                                                <h4 style="color:var(--gray-400)">Без натпреварувачки успеси</h4>
+                                                <p>Не учествував на натпревари</p>
+                                            </div>
+                                        </div>
+                                        <div class="comp-pts">0 бода</div>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                </div><!-- end left col -->
-
-                <!-- ── RIGHT: result panel ── -->
-                <div>
-                    <div class="result reveal">
-                        <div class="result-top">
-                            <div class="rc"></div>
-                            <div class="rc"></div>
-                            <div class="prog-strip">
-                                <div class="prog-fill" id="strip"></div>
-                            </div>
-                            <div class="result-inner">
-                                <p class="res-lbl">Вкупни бодови</p>
+                <!-- Result panel -->
+                <div class="result-col">
+            <div class="result-row reveal">
+                <div class="result">
+                    <div class="result-top">
+                        <div class="rc"></div>
+                        <div class="rc"></div>
+                        <div class="prog-strip">
+                            <div class="prog-fill" id="strip"></div>
+                        </div>
+                        <div class="result-top-inner">
+                            <!-- Ring Col -->
+                            <div class="result-ring-col">
+                                <p class="res-lbl">ВКУПНИ БОДОВИ</p>
                                 <div class="ring-wrap">
                                     <svg viewBox="0 0 176 176">
                                         <circle cx="88" cy="88" r="72" fill="none" stroke="rgba(255,255,255,0.08)"
@@ -1698,6 +1713,8 @@
                                         <span class="ring-max">/ 75 + бонус</span>
                                     </div>
                                 </div>
+                                
+                                <!-- Legend -->
                                 <div class="ring-legend">
                                     <span class="rl"><span class="rl-dot"
                                             style="background:#3b82f6"></span>Оценки</span>
@@ -1710,41 +1727,49 @@
                                 </div>
                             </div>
                         </div>
-                        <svg class="wave" viewBox="0 0 300 20" preserveAspectRatio="none"
-                            style="height:22px;display:block">
-                            <path d="M0,10 C50,20 100,0 150,10 C200,20 250,0 300,10 L300,20 L0,20 Z" fill="white" />
+                        <svg class="top-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0,30 C320,60 420,-10 720,30 C1020,70 1120,0 1440,30 L1440,60 L0,60 Z" fill="#ffffff" />
                         </svg>
-                        <div class="breakdown">
+                    </div>
+                    
+                    <div class="result-bottom">
+                        <div class="bars-in-band">
                             <div class="bar-row"><span class="bar-lbl">Оценки</span>
                                 <div class="bar-track">
-                                    <div class="bar-fill" id="bar-gpa" style="background:#3b82f6;width:100%"></div>
+                                    <div class="bar-fill" id="bar-gpa" style="background:#3b82f6;width:100%">
+                                    </div>
                                 </div><span class="bar-val" id="pts-gpa">50,00</span><span class="bar-max">/ 50</span>
                             </div>
                             <div class="bar-row"><span class="bar-lbl">Поведение</span>
                                 <div class="bar-track">
-                                    <div class="bar-fill" id="bar-beh" style="background:#d4af37;width:100%"></div>
+                                    <div class="bar-fill" id="bar-beh" style="background:#d4af37;width:100%">
+                                    </div>
                                 </div><span class="bar-val" id="pts-beh">5,00</span><span class="bar-max">/ 5</span>
                             </div>
                             <div class="bar-row"><span class="bar-lbl">Предмети</span>
                                 <div class="bar-track">
-                                    <div class="bar-fill" id="bar-sub" style="background:#10b981;width:100%"></div>
+                                    <div class="bar-fill" id="bar-sub" style="background:#10b981;width:100%">
+                                    </div>
                                 </div><span class="bar-val" id="pts-sub">20,00</span><span class="bar-max">/ 20</span>
                             </div>
                             <div class="bar-row"><span class="bar-lbl">Натпревар</span>
                                 <div class="bar-track">
                                     <div class="bar-fill" id="bar-aw" style="background:#f59e0b;width:0%"></div>
-                                </div><span class="bar-val" id="pts-aw">+0</span><span class="bar-max">бонус</span>
+                                </div><span class="bar-val" id="pts-aw">+0</span><span
+                                    class="bar-max">бонус</span>
                             </div>
-                            <div class="status-badge s-ex" id="status">Одличен резултат — висока шанса за упис</div>
                         </div>
+
+                        <div class="status-badge s-ex" id="status">Одличен резултат — висока шанса за упис во
+                            посакуваната струка</div>
                     </div>
                 </div>
-
-            </div><!-- end calc-grid -->
-        </div>
+            </div>
+        </div><!-- end result-col -->
+        </div><!-- end comp-result-pair -->
+        </div><!-- end calc-wrap -->
     </section>
 
-    <!-- ═══ CTA ═══ -->
     <section class="cta-sec">
         <div class="cta-grid-bg"></div>
         <div class="cta-decor-wrap">
@@ -1785,61 +1810,43 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-border"></div>
-
         <div class="footer-container">
             <div class="footer-grid">
-                <!-- Column 1 -->
                 <div class="footer-column">
                     <a href="index.html" class="footer-logo">
-                        <div class="footer-logo-icon">
-                            <img src="images/logo-yellow.png" alt="Logo" width="28" height="28">
-                        </div>
+                        <div class="footer-logo-icon"><img src="images/logo-yellow.png" alt="Logo" width="28"
+                                height="28"></div>
                         <div class="footer-logo-text">
                             <h3>ДСУ РЦСОО</h3>
-                            <p>„Коле Неделковски“</p>
+                            <p>„Коле Неделковски"</p>
                         </div>
                     </a>
-
                     <p class="footer-text">Квалитетно стручно образование од 1965 година. Подготвуваме идни
-                        професионалци за
-                        пазарот на труд.</p>
-
+                        професионалци за пазарот на труд.</p>
                     <div class="footer-contact">
                         <a href="https://maps.google.com/?q=Андон+Шурков+4а+Велес" target="_blank"
-                            rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
+                            rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                                 <circle cx="12" cy="10" r="3" />
-                            </svg>
-                            <span>Андон Шурков бр.4а, Велес</span>
-                        </a>
-                        <a href="tel:043231460">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
+                            </svg><span>Андон Шурков бр.4а, Велес</span></a>
+                        <a href="tel:043231460"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <path
                                     d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                            </svg>
-                            <span>043/231-460</span>
-                        </a>
-                        <a href="mailto:kolenedelkovski@yahoo.com">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
+                            </svg><span>043/231-460</span></a>
+                        <a href="mailto:kolenedelkovski@yahoo.com"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <rect width="20" height="16" x="2" y="4" rx="2" />
                                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                            </svg>
-                            <span>kolenedelkovski@yahoo.com</span>
-                        </a>
+                            </svg><span>kolenedelkovski@yahoo.com</span></a>
                     </div>
                 </div>
-
-                <!-- Column 2 -->
                 <div class="footer-column">
                     <h4 class="footer-title">Брзи линкови</h4>
                     <ul class="footer-links">
@@ -1847,13 +1854,10 @@
                         <li><a href="index.html#about" class="footer-link">За Нас</a></li>
                         <li><a href="struki.html" class="footer-link">Струки</a></li>
                         <li><a href="profesori.html" class="footer-link">Професори</a></li>
-
                         <li><a href="postignuvanja.html" class="footer-link">Успеси</a></li>
                         <li><a href="kontakt.html" class="footer-link">Контакт</a></li>
                     </ul>
                 </div>
-
-                <!-- Column 3 -->
                 <div class="footer-column">
                     <h4 class="footer-title">Ресурси</h4>
                     <ul class="footer-links">
@@ -1864,46 +1868,35 @@
                         <li><a href="https://e-uslugi.mon.gov.mk/" class="footer-link" target="_blank">Систем за упис во
                                 средно</a></li>
                         <li><a href="https://heyzine.com/flip-book/44ad87f9d5.html" class="footer-link"
-                                target="_blank">Е-Весник
-                                ЕМКУС</a>
+                                target="_blank">Е-Весник ЕМКУС</a></li>
                         <li><a href="http://matura.gov.mk/" class="footer-link" target="_blank">Државна матура</a></li>
                     </ul>
                 </div>
-
-                <!-- Column 4 -->
                 <div class="footer-column">
                     <h4 class="footer-title">Следете нѐ</h4>
                     <p class="footer-social-text">Бидете во тек со најновите информации и настани.</p>
-
                     <div class="footer-social">
                         <a href="https://www.facebook.com/dsurcsookolenedelkovski" aria-label="Facebook" target="_blank"
-                            rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
+                            rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                            </svg>
-                        </a>
+                            </svg></a>
                         <a href="https://www.instagram.com/rcsoo.kolenedelkovski.veles/" aria-label="Instagram"
-                            target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
+                            target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
                                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                                 <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                            </svg>
-                        </a>
+                            </svg></a>
                     </div>
-
-
                 </div>
             </div>
         </div>
-
         <div class="footer-bottom">
             <div class="footer-bottom-container">
-                <p class="footer-copyright">© 2026 ДСУ РЦСОО „Коле Неделковски“. Сите права задржани.</p>
+                <p class="footer-copyright">© 2026 ДСУ РЦСОО „Коле Неделковски". Сите права задржани.</p>
                 <div class="footer-legal">
                     <a href="politika.html">Политика за приватност</a>
                     <a href="uslovi.html">Услови за користење</a>
@@ -1912,7 +1905,6 @@
         </div>
     </footer>
 
-
     <button class="scroll-to-top" aria-label="Scroll to top">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2">
@@ -1920,20 +1912,15 @@
         </svg>
     </button>
 
-    <!-- main.js handles navbar scroll, mobile menu, search, scroll-to-top, reveal animations -->
     <script src="js/main.js"></script>
     <script>
-        /* ────────────────────────────────────────────────────
-           SCORING — verified:
-           All 5s + all Примерно → 50+5+20 = 75.00 ✓
-           One Незадоволително   → (5+5+5+0)/4 = 3.75 → 73.75 ✓
-        ──────────────────────────────────────────────────── */
         var TRACKS = {
             masinska: [{ id: 's1', lbl: 'Физика' }, { id: 's2', lbl: 'Математика' }],
             soobrakaj: [{ id: 's1', lbl: 'Математика' }, { id: 's2', lbl: 'Географија' }],
             ugo: [{ id: 's1', lbl: 'Германски јазик' }, { id: 's2', lbl: 'Географија' }]
         };
-        var CIRC = 2 * Math.PI * 72; // 452.39
+        var CIRC = 2 * Math.PI * 72;
+        var CSP_CIRC = 2 * Math.PI * 36;
 
         function fmt(n) { return n.toFixed(2).replace('.', ','); }
         function clamp(v, lo, hi) { var n = parseFloat(v); return isNaN(n) ? lo : Math.min(hi, Math.max(lo, n)); }
@@ -1955,9 +1942,7 @@
             cont.innerHTML = '';
             cfg.forEach(function (s) {
                 var d = document.createElement('div');
-                d.innerHTML =
-                    '<label class="flbl" for="' + s.id + '">' + s.lbl + '</label>' +
-                    '<input type="number" id="' + s.id + '" class="finput" min="1" max="5" step="0.01" value="5.00">';
+                d.innerHTML = '<label class="flbl" for="' + s.id + '">' + s.lbl + '</label><input type="number" id="' + s.id + '" class="finput" min="1" max="5" step="0.01" value="5.00">';
                 cont.appendChild(d);
                 var inp = d.querySelector('input');
                 inp.addEventListener('input', recalc);
@@ -2004,6 +1989,7 @@
             else if (base >= 55) { el.className = 'status-badge s-go'; el.textContent = 'Добар резултат'; }
             else if (base >= 40) { el.className = 'status-badge s-av'; el.textContent = 'Просечен резултат — подобри некои оценки'; }
             else { el.className = 'status-badge s-lo'; el.textContent = 'Потребно е значително подобрување'; }
+
         }
 
         ['gpa6', 'gpa7', 'gpa8', 'gpa9', 'mk', 'en'].forEach(function (id) {

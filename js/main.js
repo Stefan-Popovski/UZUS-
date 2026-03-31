@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initActivityModals();
   initActivityCarousel();
   initCounters();
+  initActiveNavLinks();
 });
 
 /**
