@@ -9,10 +9,10 @@
 /* CSS Variables */
 :root {
   --school-blue: #0403FF;
-  --school-blue-dark: #009DDC;
-  --school-blue-light: #E8F6FF;
+  --school-blue-dark: #100075;
+  --school-blue-light: #00b7ff;
   --school-gold: #FFCF24;
-  --school-gold-light: #fff7d9;
+  --school-gold-light: #ffe588;
 
   --white: #ffffff;
   --gray-50: #f5f5f5;
@@ -6549,7 +6549,7 @@ input:checked+.cookie-slider:before {
 }
 
 .quiz-nav-btn.primary {
-  background: var(--school-blue);
+  background: var(--school-blue-dark);
   color: var(--white);
   box-shadow: 0 4px 12px rgba(30, 58, 95, 0.15);
 }
@@ -6615,7 +6615,7 @@ input:checked+.cookie-slider:before {
 }
 
 .quiz-profile-card.top {
-  border-color: var(--school-blue);
+  border-color: var(--school-blue-dark);
   background: var(--white);
   box-shadow: 0 10px 30px rgba(30, 58, 95, 0.08);
   transform: scale(1.02);
@@ -6627,7 +6627,7 @@ input:checked+.cookie-slider:before {
 }
 
 .quiz-profile-card.top:hover {
-  border-color: var(--school-blue);
+  border-color: var(--school-blue-dark);
 }
 
 .quiz-profile-header {
