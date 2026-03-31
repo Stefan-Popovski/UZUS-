@@ -393,12 +393,22 @@
       gap: 1.5rem;
     }
 
+    .pr-director-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+
     @media(max-width:1200px) {
       .pr-section-grid {
         grid-template-columns: repeat(3, 1fr);
       }
       .pr-rak-section-grid {
         grid-template-columns: repeat(3, 1fr);
+      }
+      .pr-director-row {
+        grid-template-columns: repeat(1, 1fr);
       }
     }
 
@@ -927,9 +937,13 @@
     <div class="pr-container">
       <div class="pr-grid" id="prGrid">
         <!-- ДИРЕКТОРИ -->
-         <h2 class="title" data-dept="struchna">ДИРЕКТОР И ЗАМЕНИК ДИРЕКТОР</h2>
-         <div class="pr-section-grid">
-            <div class="pr-card reveal" data-dept="struchna">
+                  <div data-dept="struchna" style="display: flex; flex-direction: column; justify-content: center;">
+          <div class="pr-director-row" style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 3rem;">
+            
+            <div style="display: flex; flex-direction: column; align-items: center; max-width: 300px; width: 100%;">
+              <h2 class="title" data-dept="struchna" style="text-align: center; margin-bottom: 1rem;">ДИРЕКТОР</h2>
+              <div class="pr-card reveal" data-dept="struchna" style="max-width: 300px; width: 100%;">
+
                   <div class="pr-card-img">
                     <img src="images/professors/GoranBogoevski.png" alt="Горан Богоевски">
                     <div class="pr-card-img-overlay">
@@ -941,9 +955,13 @@
                     <p class="pr-card-title">Директор</p>
                     <p class="pr-card-subject">Администрација</p>
                   </div>
+                  </div>
             </div>
 
-            <div class="pr-card reveal" data-dept="struchna">
+            <div style="display: flex; flex-direction: column; align-items: center; max-width: 300px; width: 100%;">
+              <h2 class="title" data-dept="struchna" style="text-align: center; margin-bottom: 1rem;">ЗАМЕНИК ДИРЕКТОР</h2>
+              <div class="pr-card reveal" data-dept="struchna" style="max-width: 300px; width: 100%;">
+
                 <div class="pr-card-img">
                   <img src="images/professors/AngelceGushev.png" alt="заменик Дирекртор">
                   <div class="pr-card-img-overlay">
@@ -957,12 +975,20 @@
                 </div>
             </div>
          </div>
+
+
+          </div>
+        </div>
+
+
         
          <!-- РАКОВОДИТЕЛИ -->
-         <h2 class="title" data-dept="struchna">РАКОВОДИТЕЛИ НА СЕКТОРИ</h2>
-         <div class="pr-rak-section-grid">
+        <h2 class="title" data-dept="struchna" style="text-align: center;">РАКОВОДИТЕЛИ НА СЕКТОРИ</h2>
+        <div class="pr-rak-section-grid" style="display: flex; justify-content: center; margin-bottom: 3rem;">
 
-           <div class="pr-card reveal" data-dept="struchna">
+
+          <div class="pr-card reveal" data-dept="struchna" style="max-width: 300px; width: 100%;">
+
             <div class="pr-card-img">
               <img src="images/professors/ValentinaShkrekova.png" alt="раководител на сектор">
               <div class="pr-card-img-overlay">
@@ -975,7 +1001,7 @@
               <p class="pr-card-subject">Раководител на сектор</p>
             </div>
            </div>
-           <div class="pr-card reveal" data-dept="struchna">
+           <div class="pr-card reveal" data-dept="struchna" style="max-width: 300px; width: 100%;">
             <div class="pr-card-img">
               <img src="images/professors/KaterinaStojadinovik.png" alt="раководител на сектор">
               <div class="pr-card-img-overlay">
@@ -988,7 +1014,7 @@
               <p class="pr-card-subject">Раководител на сектор</p>
             </div>
            </div>
-           <div class="pr-card reveal" data-dept="struchna">
+           <div class="pr-card reveal" data-dept="struchna" style="max-width: 300px; width: 100%;">
             <div class="pr-card-img">
               <img src="images/professors/MarijanPanov.png" alt="раководител на сектор">
               <div class="pr-card-img-overlay">
@@ -1001,7 +1027,7 @@
               <p class="pr-card-subject">Раководител на сектор</p>
             </div>
            </div>
-           <div class="pr-card reveal" data-dept="struchna">
+           <div class="pr-card reveal" data-dept="struchna" style="max-width: 300px; width: 100%;">
             <div class="pr-card-img">
               <img src="images/professors/GoranBuzalkovski.png" alt="раководител на сектор">
               <div class="pr-card-img-overlay">
@@ -1014,7 +1040,7 @@
               <p class="pr-card-subject">Раководител на сектор</p>
             </div>
            </div>
-           <div class="pr-card reveal" data-dept="struchna">
+           <div class="pr-card reveal" data-dept="struchna" style="max-width: 300px; width: 100%;">
             <div class="pr-card-img">
               <img src="images/professors/HristinaTrajkova.png" alt="раководител на сектор">
               <div class="pr-card-img-overlay">
@@ -1031,10 +1057,11 @@
          </div>
 
          <!-- СТРУЧНА СЛУЖБА -->
-         <h2 class="title" data-dept="struchna">СТРУЧНА СЛУЖБА</h2>
-         <div class="pr-section-grid">
+         <h2 class="title" data-dept="struchna" style="text-align: center;">СТРУЧНА СЛУЖБА</h2>
+         <div class="pr-section-grid" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem;">
 
-          <div class="pr-card reveal" data-dept="struchna">
+
+          <div class="pr-card reveal" data-dept="struchna" style="max-width: 300px; width: 100%;">
             <div class="pr-card-img">
               <img src="images/professors/PandorceJordanova.png" alt="Пандорче Јорданова">
               <div class="pr-card-img-overlay">
@@ -1048,7 +1075,7 @@
             </div>
           </div>
 
-          <div class="pr-card reveal" data-dept="struchna">
+          <div class="pr-card reveal" data-dept="struchna" style="max-width: 300px; width: 100%;">
             <div class="pr-card-img">
               <img src="images/professors/VasilijaJordanova.jpg" alt="Василија Јорданова">
               <div class="pr-card-img-overlay">
@@ -1946,7 +1973,7 @@
         titles.forEach(title => {
           title.classList.toggle('hidden', f !== 'all' && title.dataset.dept !== f);
         });
-        document.querySelectorAll('.pr-section-grid').forEach(grid => {
+        document.querySelectorAll('.pr-section-grid, .pr-director-row').forEach(grid => {
           const visible = grid.querySelectorAll('.pr-card:not(.hidden)');
           grid.classList.toggle('hidden', visible.length === 0);
         });
