@@ -319,25 +319,29 @@
       box-shadow: 0 4px 20px rgba(30, 58, 95, .06);
     }
 
+    @media(max-width: 800px) {
+      .st-nav {
+        padding: 1rem 0;
+      }
+    }
+
     .st-nav-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      display: flex;
       gap: 1rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 0.25rem;
     }
 
-    @media(max-width:800px) {
-      .st-nav-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media(max-width:440px) {
-      .st-nav-grid {
-        grid-template-columns: 1fr;
-      }
+    .st-nav-grid::-webkit-scrollbar {
+      display: none;
     }
 
     .st-nav-btn {
+      flex-shrink: 0;
+      white-space: nowrap;
       display: flex;
       align-items: center;
       gap: .75rem;
@@ -748,7 +752,7 @@
     .st-equip-img img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       transition: transform .5s ease;
       display: block;
     }
@@ -1001,7 +1005,8 @@
       <div class="navbar-actions">
 
         <a href="upisi.html" class="navbar-cta">Уписи 2026/2027</a>
-        <a href="kalkulator.html" class="navbar-cta navbar-cta-calc"><svg xmlns="http://www.w3.org/2000/svg" width="14"
+        
+                <a href="kalkulator.html" class="navbar-cta navbar-cta-calc"><svg xmlns="http://www.w3.org/2000/svg" width="14"
             height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <rect width="16" height="20" x="4" y="2" rx="2" />
             <line x1="8" x2="16" y1="6" y2="6" />
@@ -1030,9 +1035,10 @@
 
       <a href="postignuvanja.html" class="mobile-menu-link">Успеси</a>
       <a href="kontakt.html" class="mobile-menu-link">Контакт</a>
-      <a href="https://ednevnik.edu.mk/" class="mobile-menu-link" target="_blank">Е-Дневник</a>
+            <a href="https://ednevnik.edu.mk/" class="mobile-menu-link" target="_blank">Е-Дневник</a>
       <a href="upisi.html" class="mobile-menu-cta">Уписи 2026/2027</a>
       <a href="kalkulator.html" class="mobile-menu-cta-calc">Калкулатор за бодови</a>
+      
       <div class="mobile-menu-contact">
         <p>Контакт информации</p><a href="tel:043231460">043/231-460</a><a
           href="mailto:kolenedelkovski@yahoo.com">kolenedelkovski@yahoo.com</a>
@@ -1278,9 +1284,9 @@
 
       <h3 class="st-partners-title reveal">Соработка со Компании</h3>
       <div class="st-partners-row reveal">
-        <span class="st-partner">Макпетрол</span><span class="st-partner">ОКТА</span><span
-          class="st-partner">Железници</span><span class="st-partner">Макстил</span><span
-          class="st-partner">Бетон</span><span class="st-partner">АД Инг</span>
+        <span class="st-partner">Маркарт</span><span class="st-partner">Будо Моторс Велес</span><span
+          class="st-partner">Пескара Вел</span><span class="st-partner">Самаров Трејд</span><span
+          class="st-partner">Метал Рафт</span>
       </div>
 
       <h3 class="st-equip-title reveal">Фотографии</h3>
@@ -1333,7 +1339,7 @@
               <div class="st-stat-l">ученици</div>
             </div>
             <div class="st-stat">
-              <div class="st-stat-n">14</div>
+              <div class="st-stat-n">18</div>
               <div class="st-stat-l">професори</div>
             </div>
           </div>
@@ -1418,9 +1424,8 @@
 
       <h3 class="st-partners-title reveal">Соработка со Компании</h3>
       <div class="st-partners-row reveal">
-        <span class="st-partner">ЕВН</span><span class="st-partner">МЕПСО</span><span class="st-partner">А1</span><span
-          class="st-partner">Телеком</span><span class="st-partner">Нетселект</span><span
-          class="st-partner">Солвео</span>
+        <span class="st-partner">ЕВН</span><span class="st-partner">Јомак ком</span><span class="st-partner">Магна Мекатроникс</span><span
+          class="st-partner">Електрон ББ</span><span class="st-partner">АГРИА</span><span class="st-partner">Кристал 1923</span>
       </div>
 
       <h3 class="st-equip-title reveal">Фотографии</h3>
@@ -1476,7 +1481,7 @@
               <div class="st-stat-l">ученици</div>
             </div>
             <div class="st-stat">
-              <div class="st-stat-n">8</div>
+              <div class="st-stat-n">4</div>
               <div class="st-stat-l">професори</div>
             </div>
           </div>
@@ -1507,9 +1512,7 @@
 
       <h3 class="st-partners-title reveal">Соработка со Компании</h3>
       <div class="st-partners-row reveal">
-        <span class="st-partner">Макпетрол</span><span class="st-partner">Железници</span><span class="st-partner">Даути
-          Транс</span><span class="st-partner">Балкан Експрес</span><span class="st-partner">Трансмет</span><span
-          class="st-partner">Автокоманди</span>
+        <span class="st-partner">Македонски Железници</span><span class="st-partner">Пан Промет</span>
       </div>
 
       <h3 class="st-equip-title reveal">Фотографии</h3>
@@ -1563,7 +1566,7 @@
               <div class="st-stat-l">ученици</div>
             </div>
             <div class="st-stat">
-              <div class="st-stat-n">10</div>
+              <div class="st-stat-n">3</div>
               <div class="st-stat-l">професори</div>
             </div>
           </div>
@@ -1582,9 +1585,10 @@
             <h4>Готвач/келнер</h4>
           </div>
           <div class="st-profile-body">
+            <p>30 поени минимум</p>
             <p class="st-profile-dur">⏱ 3 години</p>
-            <p class="st-profile-desc">Практична обука во училишната кујна. Подготовка на јадења, сечење техники,
-              сосови, супи, главни јадења и десерти.</p>
+            <p class="st-profile-desc">Практична обука во училишната кујна. Подготовка на јадења:
+              сосови, супи, салати, главни јадења и десерти.</p>
             <div class="st-profile-tags"><span class="st-tag">Технологија на готвење</span><span
                 class="st-tag">Сечење</span><span class="st-tag">Сосови и супи</span><span
                 class="st-tag">Пекарство</span></div>
@@ -1594,9 +1598,8 @@
 
       <h3 class="st-partners-title reveal">Соработка со Компании</h3>
       <div class="st-partners-row reveal">
-        <span class="st-partner">Хотелски Скопје</span><span class="st-partner">Ресторани Велес</span><span
-          class="st-partner">Кафулиња</span><span class="st-partner">Туристички Агенции</span><span
-          class="st-partner">Хотел Романтик</span><span class="st-partner">Ресторан Стар</span>
+        <span class="st-partner">Екстра Боем</span><span class="st-partner">Хотел Романтик</span><span
+          class="st-partner">Шато Сопот</span>
       </div>
 
       <h3 class="st-equip-title reveal">Фотографии</h3>

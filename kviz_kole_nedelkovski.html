@@ -94,14 +94,6 @@
       animation-delay: 1s;
     }
 
-    .upisi-hero-grid {
-      position: absolute;
-      inset: 0;
-      opacity: .05;
-      background-image: linear-gradient(rgba(255, 255, 255, .1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .1) 1px, transparent 1px);
-      background-size: 50px 50px;
-    }
-
     .upisi-hero-content {
       position: relative;
       z-index: 10;
@@ -110,32 +102,6 @@
       margin: 0 auto;
       padding: 1rem 1.5rem 0.75rem;
       text-align: center;
-    }
-
-    .upisi-hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      padding: .35rem 1rem;
-      background: rgba(212, 175, 55, .14);
-      border: 1px solid rgba(212, 175, 55, .35);
-      border-radius: 9999px;
-      margin-bottom: 1.5rem;
-    }
-
-    .upisi-hero-badge svg {
-      width: 8px;
-      height: 8px;
-      fill: var(--school-gold);
-    }
-
-    .upisi-hero-badge span {
-      font-family: var(--font-accent);
-      font-size: .72rem;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--school-gold);
     }
 
     .upisi-hero-title {
@@ -171,146 +137,6 @@
       margin: 0 auto 1.5rem;
       line-height: 1.65;
     }
-
-    .upisi-hero-breadcrumb {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: .5rem;
-      font-family: var(--font-accent);
-      font-size: .875rem;
-      color: rgba(255, 255, 255, .5);
-    }
-
-    .upisi-hero-breadcrumb a {
-      color: var(--school-gold);
-    }
-
-    /* ══════════════════════════════
-       INFO CARDS (same as kontakt.html)
-    ══════════════════════════════ */
-    .upisi-info-strip {
-      background: var(--gray-50);
-      padding: 4rem 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .upisi-info-strip::before {
-      content: '';
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(30, 58, 95, .04), transparent 70%);
-      top: -150px;
-      right: -150px;
-      pointer-events: none;
-    }
-
-    .upisi-info-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-
-    @media(max-width:900px) {
-      .upisi-info-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media(max-width:600px) {
-      .upisi-info-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .upisi-info-card {
-      background: var(--white);
-      border-radius: 20px;
-      padding: 2rem 1.75rem;
-      text-align: center;
-      border: 1px solid var(--gray-100);
-      box-shadow: 0 4px 24px rgba(30, 58, 95, .06);
-      transition: transform .35s cubic-bezier(.4, 0, .2, 1), box-shadow .35s ease, border-color .35s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .upisi-info-card::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--school-blue), var(--school-gold));
-      opacity: 0;
-      transition: opacity .3s;
-    }
-
-    .upisi-info-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-school-lg);
-      border-color: transparent;
-    }
-
-    .upisi-info-card:hover::after {
-      opacity: 1;
-    }
-
-    .upisi-info-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
-      background: rgba(30, 58, 95, .06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.25rem;
-      transition: all .3s ease;
-    }
-
-    .upisi-info-card:hover .upisi-info-icon {
-      background: var(--school-blue);
-    }
-
-    .upisi-info-icon svg {
-      color: var(--school-blue);
-      width: 24px;
-      height: 24px;
-      transition: color .3s;
-    }
-
-    .upisi-info-card:hover .upisi-info-icon svg {
-      color: var(--school-gold);
-    }
-
-    .upisi-info-card h3 {
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--gray-900);
-      margin-bottom: .75rem;
-    }
-
-    .upisi-info-card p {
-      font-size: .9rem;
-      color: var(--gray-600);
-      line-height: 1.75;
-    }
-
-    .upisi-info-card p a {
-      color: var(--gray-600);
-      text-decoration: none;
-      transition: color .2s;
-    }
-
-    .upisi-info-card p a:hover {
-      color: var(--school-blue);
-    }
-
     /* ══════════════════════════════
        SHARED SECTION HELPERS
     ══════════════════════════════ */
@@ -324,819 +150,62 @@
       padding: 0 1.5rem;
     }
 
-    .upisi-sec-head {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    /* ══════════════════════════════
-       DOCUMENT CARDS
-    ══════════════════════════════ */
-    .docs-bg {
-      background: var(--gray-50);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .docs-bg::before {
-      content: '';
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(30, 58, 95, .04), transparent 70%);
-      top: -120px;
-      right: -120px;
-      pointer-events: none;
-    }
-
-    .doc-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
-      gap: 2rem;
-    }
-
-    @media(max-width:960px) {
-      .doc-cards-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .enroll-card {
-      background: #fff;
-      border-radius: 20px;
-      border-left: 4px solid var(--school-gold);
-      box-shadow: 0 4px 24px rgba(30, 58, 95, .07);
-      overflow: hidden;
-      transition: transform .35s cubic-bezier(.4, 0, .2, 1), box-shadow .35s ease;
-    }
-
-    .enroll-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-school-lg);
-    }
-
-    .enroll-card-head {
-      background: linear-gradient(135deg, var(--school-blue) 0%, var(--school-blue-light) 100%);
-      padding: 1.6rem 2rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .enroll-card-head::after {
-      content: '';
-      position: absolute;
-      right: -25px;
-      top: -25px;
-      width: 100px;
-      height: 100px;
-      background: radial-gradient(circle, rgba(212, 175, 55, .12), transparent 70%);
-      border-radius: 50%;
-    }
-
-    .enroll-card-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, .12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .enroll-card-icon svg {
-      color: var(--school-gold);
-      width: 20px;
-      height: 20px;
-    }
-
-    .enroll-card-head h3 {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .enroll-card-body {
-      padding: 2rem;
-    }
-
-    /* Steps */
-    .steps {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .step {
-      display: flex;
-      gap: 1.25rem;
-      padding-bottom: 1.75rem;
-    }
-
-    .step:last-child {
-      padding-bottom: 0;
-    }
-
-    .step-left {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .step-num {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      z-index: 1;
-      background: linear-gradient(135deg, var(--school-blue), var(--school-blue-light));
-      border: 3px solid #fff;
-      box-shadow: 0 2px 8px rgba(30, 58, 95, .22);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--school-gold);
-      font-family: var(--font-accent);
-      font-size: .68rem;
-      font-weight: 700;
-    }
-
-    .step-line {
-      width: 2px;
-      flex: 1;
-      margin-top: 4px;
-      min-height: 20px;
-      background: linear-gradient(180deg, rgba(30, 58, 95, .12), rgba(212, 175, 55, .2));
-    }
-
-    .step:last-child .step-line {
-      display: none;
-    }
-
-    .step-body {
-      flex: 1;
-      padding-top: 3px;
-    }
-
-    .step-title {
-      font-family: var(--font-accent);
-      font-weight: 700;
-      font-size: .9rem;
-      color: var(--school-blue);
-      margin-bottom: .35rem;
-    }
-
-    .step-desc {
-      font-size: .88rem;
-      color: var(--gray-500);
-      line-height: 1.65;
-      margin-bottom: .75rem;
-    }
-
-    .step-desc strong {
-      color: var(--gray-700);
-    }
-
-    .outline-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      font-size: .78rem;
-      font-weight: 600;
-      font-family: var(--font-accent);
-      color: var(--school-blue);
-      border: 1.5px solid rgba(30, 58, 95, .2);
-      padding: .4rem .9rem;
-      border-radius: 8px;
-      transition: all .22s ease;
-      text-decoration: none;
-    }
-
-    .outline-btn:hover {
-      background: var(--school-blue);
-      color: var(--school-gold);
-      border-color: var(--school-blue);
-    }
-
-    .outline-btn svg {
-      width: 12px;
-      height: 12px;
-    }
-
-    /* Chips */
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--gray-50);
-      border: 1px solid var(--gray-200);
-      color: var(--gray-600);
-      font-size: .77rem;
-      font-weight: 500;
-      font-family: var(--font-accent);
-      padding: 5px 11px;
-      border-radius: 8px;
-      transition: all .22s ease;
-    }
-
-    .chip:hover {
-      background: var(--school-blue);
-      color: #fff;
-      border-color: var(--school-blue);
-    }
-
-    .chip:hover svg {
-      color: var(--school-gold) !important;
-    }
-
-    .chip svg {
-      width: 12px;
-      height: 12px;
-      color: var(--school-blue);
-      flex-shrink: 0;
-      transition: color .22s;
-    }
-
-    /* Month pills */
-    .months {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .month {
-      background: #fff;
-      border: 1px solid var(--gray-200);
-      color: var(--gray-600);
-      font-size: .77rem;
-      font-weight: 600;
-      font-family: var(--font-accent);
-      padding: 5px 13px;
-      border-radius: 9999px;
-      transition: all .22s ease;
-    }
-
-    .month:hover {
-      background: var(--school-blue);
-      color: var(--school-gold);
-      border-color: var(--school-blue);
-      transform: translateY(-2px);
-    }
-
-    /* ══════════════════════════════
-       BLUE SECTIONS
-       (payment + cta) — same as
-       index.html .cta / .stats
-    ══════════════════════════════ */
-    .blue-section {
-      padding: 6rem 0;
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(135deg, var(--school-blue) 0%, var(--school-blue-light) 50%, var(--school-blue-dark) 100%);
-      background-size: 200% 200%;
-      animation: gradientShift 15s ease infinite;
-    }
-
-    /* Decorations — circles, dots, sparkles */
-    .blue-decor {
+    .upisi-hero-grid {
       position: absolute;
       inset: 0;
-      pointer-events: none;
+      opacity: 0.05;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
     }
 
-    .blue-decor-circle {
-      position: absolute;
-      border: 2px solid rgba(255, 255, 255, .1);
-      border-radius: 50%;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .blue-decor-circle:nth-child(1) {
-      width: 5rem;
-      height: 5rem;
-      top: 2.5rem;
-      left: 2.5rem;
-    }
-
-    .blue-decor-circle:nth-child(2) {
-      width: 8rem;
-      height: 8rem;
-      bottom: 2.5rem;
-      right: 2.5rem;
-      animation: floatSlow 10s ease-in-out infinite;
-    }
-
-    .blue-decor-dot {
-      position: absolute;
-      width: 1rem;
-      height: 1rem;
-      background: rgba(212, 175, 55, .3);
-      border-radius: 50%;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .blue-decor-dot:nth-child(3) {
-      top: 50%;
-      left: 25%;
-      animation-delay: 1s;
-    }
-
-    .blue-decor-dot:nth-child(4) {
-      top: 33%;
-      right: 33%;
-      animation: floatSlow 10s ease-in-out infinite;
-      animation-delay: 2s;
-    }
-
-    .blue-decor-star {
-      position: absolute;
-      color: rgba(212, 175, 55, .4);
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    .blue-decor-star:nth-child(5) {
-      top: 5rem;
-      right: 5rem;
-      width: 2rem;
-      height: 2rem;
-    }
-
-    .blue-decor-star:nth-child(6) {
-      bottom: 5rem;
-      left: 5rem;
-      width: 1.5rem;
-      height: 1.5rem;
-      animation-delay: 1s;
-    }
-
-    .blue-inner {
-      position: relative;
-      z-index: 10;
-    }
-
-    /* blue section text overrides */
-    .blue-section .section-label {
-      background: rgba(255, 255, 255, .1);
-      color: #fff;
-    }
-
-    .blue-section .section-title {
-      color: #fff;
-    }
-
-    .blue-section .section-description {
-      color: rgba(255, 255, 255, .75);
-    }
-
-    /* ══════════════════════════════
-       PAYMENT CARDS
-    ══════════════════════════════ */
-    .pay-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 2rem;
-    }
-
-    @media(max-width:800px) {
-      .pay-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .pay-card {
-      background: rgba(255, 255, 255, .06);
-      border: 1px solid rgba(212, 175, 55, .2);
-      border-radius: 20px;
-      overflow: hidden;
-      transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
-    }
-
-    .pay-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, .3);
-      border-color: rgba(212, 175, 55, .45);
-    }
-
-    .pay-top {
-      padding: 1.75rem 2rem;
-      border-bottom: 1px solid rgba(255, 255, 255, .07);
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .pay-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: rgba(212, 175, 55, .12);
-      border: 1px solid rgba(212, 175, 55, .25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .pay-icon svg {
-      color: var(--school-gold);
-      width: 18px;
-      height: 18px;
-    }
-
-    .pay-top h3 {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .pay-amount {
-      text-align: center;
-      padding: 1.75rem 2rem;
-      border-bottom: 1px solid rgba(255, 255, 255, .05);
-    }
-
-    .pay-amount-lbl {
-      font-family: var(--font-accent);
-      font-size: .62rem;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, .35);
-      margin-bottom: .4rem;
-    }
-
-    .pay-amount-val {
-      font-family: var(--font-display);
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: var(--school-gold-light);
-      letter-spacing: -.02em;
-      line-height: 1;
-    }
-
-    .pay-amount-val sup {
-      font-size: 1rem;
-      font-weight: 400;
-      vertical-align: super;
-      color: rgba(212, 175, 55, .6);
-    }
-
-    .pay-rows {
-      padding: 1.25rem 2rem 1.75rem;
-    }
-
-    .pay-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: .6rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, .04);
-    }
-
-    .pay-row:last-child {
-      border-bottom: none;
-    }
-
-    .pay-lbl {
-      font-size: .72rem;
-      color: rgba(255, 255, 255, .38);
-      font-family: var(--font-accent);
-    }
-
-    .pay-val {
-      font-size: .78rem;
-      font-weight: 500;
-      color: rgba(255, 255, 255, .82);
-      font-family: var(--font-accent);
-    }
-
-    .pay-val.mono {
-      font-family: 'Courier New', monospace;
-      letter-spacing: 1.2px;
-      color: var(--school-gold-light);
-      font-size: .76rem;
-    }
-
-    .pay-note {
-      margin-top: 1rem;
-      padding: .65rem 1rem;
-      background: rgba(212, 175, 55, .08);
-      border: 1px solid rgba(212, 175, 55, .18);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-      font-size: .74rem;
-      color: rgba(212, 175, 55, .85);
-      font-family: var(--font-accent);
-    }
-
-    .pay-note svg {
-      width: 13px;
-      height: 13px;
-      flex-shrink: 0;
-    }
-
-    /* ══════════════════════════════
-       MATURA
-    ══════════════════════════════ */
-    .matura-bg {
-      background: #fff;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .matura-bg::after {
-      content: '';
-      position: absolute;
-      bottom: -80px;
-      left: -80px;
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle, rgba(212, 175, 55, .05), transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .matura-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 2rem;
-      max-width: 840px;
-      margin: 0 auto;
-    }
-
-    @media(max-width:720px) {
-      .matura-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .matura-card {
-      background: var(--gray-50);
-      border: 1px solid var(--gray-100);
-      border-radius: 20px;
-      padding: 2.5rem;
-      text-align: center;
-      transition: transform .35s ease, box-shadow .35s ease;
-    }
-
-    .matura-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-school-lg);
-    }
-
-    .matura-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, var(--school-blue), var(--school-blue-light));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.5rem;
-    }
-
-    .matura-icon svg {
-      color: var(--school-gold);
-      width: 28px;
-      height: 28px;
-    }
-
-    .matura-card h3 {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--school-blue);
-      margin-bottom: .7rem;
-    }
-
-    .matura-card p {
-      font-size: .88rem;
-      color: var(--gray-500);
-      line-height: 1.75;
-      margin-bottom: 1.75rem;
-    }
-
-    .matura-btn {
+    .upisi-hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: .5rem;
-      background: var(--school-blue);
-      color: #fff;
-      font-family: var(--font-accent);
-      font-size: .84rem;
-      font-weight: 600;
-      padding: .7rem 1.5rem;
-      border-radius: 10px;
-      transition: all .25s ease;
-      text-decoration: none;
-    }
-
-    .matura-btn:hover {
-      background: var(--school-blue-dark);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-school);
-    }
-
-    .matura-btn svg {
-      width: 14px;
-      height: 14px;
-    }
-
-    .dl-list {
-      display: flex;
-      flex-direction: column;
-      gap: .75rem;
-      text-align: left;
-    }
-
-    .dl-row {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      background: #fff;
-      border: 1px solid var(--gray-200);
-      border-radius: 13px;
-      padding: .9rem 1.1rem;
-      text-decoration: none;
-      color: inherit;
-      transition: all .25s ease;
-    }
-
-    .dl-row:hover {
-      border-color: var(--school-blue);
-      transform: translateX(4px);
-      box-shadow: var(--shadow);
-    }
-
-    .dl-row:hover .dl-arrow {
-      transform: translateX(3px);
-      opacity: .9;
-    }
-
-    .dl-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: rgba(30, 58, 95, .05);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .dl-icon svg {
-      color: var(--school-blue);
-      width: 18px;
-      height: 18px;
-    }
-
-    .dl-info {
-      flex: 1;
-    }
-
-    .dl-info strong {
-      display: block;
-      font-size: .88rem;
-      color: var(--school-blue);
-      font-family: var(--font-accent);
-      font-weight: 600;
-    }
-
-    .dl-info span {
-      font-size: .76rem;
-      color: var(--gray-400);
-    }
-
-    .dl-arrow {
-      color: var(--gray-200);
-      opacity: .5;
-      transition: all .25s ease;
-    }
-
-    .dl-arrow svg {
-      width: 15px;
-      height: 15px;
-    }
-
-    /* ══════════════════════════════
-       CTA content inside blue-section
-    ══════════════════════════════ */
-    .upisi-cta-content {
-      max-width: 56rem;
-      margin: 0 auto;
-      padding: 0 1rem;
-      text-align: center;
-    }
-
-    .upisi-cta-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      padding: .25rem 1rem;
-      background: rgba(255, 255, 255, .1);
-      color: #fff;
-      font-family: var(--font-accent);
-      font-size: .875rem;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(4px);
       border-radius: 9999px;
       margin-bottom: 1.5rem;
     }
 
-    .upisi-cta-badge svg {
+    .upisi-hero-badge svg {
+      width: 0.5rem;
+      height: 0.5rem;
       fill: var(--school-gold);
       color: var(--school-gold);
-      width: 8px;
-      height: 8px;
+      flex-shrink: 0;
     }
 
-    .upisi-cta-title {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
+    .upisi-hero-badge span {
+      font-family: var(--font-accent);
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.9);
     }
 
-    @media(min-width:640px) {
-      .upisi-cta-title {
-        font-size: 2.5rem;
-      }
-    }
-
-    @media(min-width:768px) {
-      .upisi-cta-title {
-        font-size: 3rem;
-      }
-    }
-
-    @media(min-width:1024px) {
-      .upisi-cta-title {
-        font-size: 3.75rem;
-      }
-    }
-
-    .upisi-cta-title em {
-      font-style: italic;
-      color: var(--school-gold);
-    }
-
-    .upisi-cta-desc {
-      font-size: 1.125rem;
-      color: rgba(255, 255, 255, .8);
-      margin-bottom: 2.5rem;
-      max-width: 42rem;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.7;
-    }
-
-    .upisi-cta-btns {
+    .upisi-hero-breadcrumb {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 1rem;
-      margin-bottom: 3rem;
-    }
-
-    @media(min-width:640px) {
-      .upisi-cta-btns {
-        flex-direction: row;
-        justify-content: center;
-      }
-    }
-
-    .upisi-cta-trust {
-      display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 1.5rem;
-      color: rgba(255, 255, 255, .6);
-      font-size: .875rem;
+      gap: 0.5rem;
+      font-family: var(--font-accent);
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.6);
     }
 
-    .upisi-cta-trust span {
-      display: flex;
-      align-items: center;
-      gap: .5rem;
+    .upisi-hero-breadcrumb a {
+      color: rgba(255, 255, 255, 0.6);
+      transition: color 0.3s;
     }
 
-    .upisi-cta-trust-dot {
-      width: .5rem;
-      height: .5rem;
-      background: var(--school-gold);
-      border-radius: 50%;
+    .upisi-hero-breadcrumb a:hover {
+      color: var(--white);
+    }
+
+    .upisi-hero-breadcrumb span {
+      color: rgba(255, 255, 255, 0.4);
     }
   </style>
   <link rel="stylesheet" href="css/style.css">
@@ -1168,7 +237,8 @@
       <div class="navbar-actions">
 
         <a href="upisi.html" class="navbar-cta">Уписи 2026/2027</a>
-        <a href="kalkulator.html" class="navbar-cta navbar-cta-calc"><svg xmlns="http://www.w3.org/2000/svg" width="14"
+        
+                <a href="kalkulator.html" class="navbar-cta navbar-cta-calc"><svg xmlns="http://www.w3.org/2000/svg" width="14"
             height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <rect width="16" height="20" x="4" y="2" rx="2" />
             <line x1="8" x2="16" y1="6" y2="6" />
@@ -1197,9 +267,10 @@
 
       <a href="postignuvanja.html" class="mobile-menu-link">Успеси</a>
       <a href="kontakt.html" class="mobile-menu-link">Контакт</a>
-      <a href="https://ednevnik.edu.mk/" class="mobile-menu-link" target="_blank">Е-Дневник</a>
+            <a href="https://ednevnik.edu.mk/" class="mobile-menu-link" target="_blank">Е-Дневник</a>
       <a href="upisi.html" class="mobile-menu-cta">Уписи 2026/2027</a>
       <a href="kalkulator.html" class="mobile-menu-cta-calc">Калкулатор за бодови</a>
+      
       <div class="mobile-menu-contact">
         <p>Контакт информации</p><a href="tel:043231460">043/231-460</a><a
           href="mailto:kolenedelkovski@yahoo.com">kolenedelkovski@yahoo.com</a>
@@ -1221,8 +292,8 @@
     <div class="upisi-hero-grid"></div>
     <div class="upisi-hero-content">
       <div class="upisi-hero-badge">
-        <svg viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="10" />
+        <svg viewBox="0 0 24 24" width="8" height="8" style="flex-shrink:0">
+          <circle cx="12" cy="12" r="10" fill="var(--school-gold)" />
         </svg>
         <span>Квиз за насока</span>
       </div>

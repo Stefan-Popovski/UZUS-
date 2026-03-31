@@ -2916,6 +2916,11 @@ ol {
   border-radius: 4px;
 }
 
+/* Hide E-Dnevnik from mobile menu everywhere */
+.mobile-menu-link[href*="ednevnik"] {
+  display: none !important;
+}
+
 .footer-link:hover {
   color: var(--school-gold);
 }
