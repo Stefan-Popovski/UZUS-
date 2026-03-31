@@ -1,7 +1,56 @@
-/**
- * ДСУ РЦСОО „Коле Неделковски“ - Велес
- * Main JavaScript File
- */
+const openBtn = document.getElementById('open-tour');
+const closeBtn = document.getElementById('close-tour');
+const modal = document.getElementById('tour-modal');
+const modalContent = document.getElementById('modal-content');
+const overlay = document.getElementById('modal-overlay');
+const holder = document.getElementById('iframe-holder');
+
+const tourUrl = "https://my.matterport.com/show/?m=aJTdHEVUkx7&brand=0&play=1&qs=1";
+
+const openModal = () => {
+  holder.innerHTML = `
+    <iframe 
+      width="100%" 
+      height="100%" 
+      src="${tourUrl}" 
+      frameborder="0" 
+      allowfullscreen 
+      allow="autoplay; fullscreen; web-share; xr-spatial-tracking;"
+      class="w-full h-full">
+    </iframe>`;
+
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+
+  setTimeout(() => {
+    modal.classList.remove('opacity-0');
+    modalContent.classList.remove('scale-95');
+    modalContent.classList.add('scale-100');
+  }, 10);
+};
+
+const closeModal = () => {
+  modal.classList.add('opacity-0');
+  modalContent.classList.remove('scale-100');
+  modalContent.classList.add('scale-95');
+
+  setTimeout(() => {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    holder.innerHTML = "";
+  }, 300);
+};
+
+if (openBtn && closeBtn && modal && overlay && holder) {
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+  });
+}
+
 
 document.addEventListener('DOMContentLoaded', function () {
   // Initialize all components
@@ -172,18 +221,18 @@ function initTestimonialsSlider() {
   }
 
   // Event listeners
-  if (prevBtn) prevBtn.addEventListener('click', () => { 
-    goToSlide(currentIndex - 1); 
+  if (prevBtn) prevBtn.addEventListener('click', () => {
+    goToSlide(currentIndex - 1);
     startAutoplay();
   });
-  if (nextBtn) nextBtn.addEventListener('click', () => { 
-    goToSlide(currentIndex + 1); 
+  if (nextBtn) nextBtn.addEventListener('click', () => {
+    goToSlide(currentIndex + 1);
     startAutoplay();
   });
 
   dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => { 
-      goToSlide(index); 
+    dot.addEventListener('click', () => {
+      goToSlide(index);
       startAutoplay();
     });
   });
@@ -505,7 +554,7 @@ function initActivityCarousel() {
     container.classList.add('autoplay-paused');
     stopAutoplay();
   });
-  
+
   container.addEventListener('mouseleave', () => {
     container.classList.remove('is-paused');
     container.classList.remove('autoplay-paused');
@@ -518,7 +567,7 @@ function initActivityCarousel() {
     container.classList.add('autoplay-paused');
     stopAutoplay();
   });
-  
+
   container.addEventListener('focusout', () => {
     container.classList.remove('is-paused');
     container.classList.remove('autoplay-paused');
@@ -956,7 +1005,7 @@ function initCookieBanner() {
   const cookieCard = document.getElementById('cookie-consent-card');
   const settingsModal = document.getElementById('cookie-settings-modal');
   const reopenBtn = document.getElementById('cookie-reopen-btn');
-  
+
   if (!cookieCard || !settingsModal) return;
 
   const cookieConsent = localStorage.getItem('cookieConsent');
@@ -968,8 +1017,8 @@ function initCookieBanner() {
       const marketingToggle = document.getElementById('cookie-marketing');
       if (analyticsToggle) analyticsToggle.checked = !!prefs.analytics;
       if (marketingToggle) marketingToggle.checked = !!prefs.marketing;
-    } catch (e) {}
-    
+    } catch (e) { }
+
     // Banner already dismissed - show reopen button
     reopenBtn.classList.add('show');
   } else {
@@ -984,7 +1033,7 @@ function initCookieBanner() {
   document.getElementById('cookie-accept-all')?.addEventListener('click', () => {
     saveConsent(true, true);
   });
-  
+
   document.getElementById('cookie-settings-btn')?.addEventListener('click', () => {
     settingsModal.classList.add('active');
   });
@@ -1017,11 +1066,11 @@ function initCookieBanner() {
       timestamp: new Date().toISOString()
     };
     localStorage.setItem('cookieConsent', JSON.stringify(consentOptions));
-    
+
     cookieCard.classList.remove('show');
     settingsModal.classList.remove('active');
     document.body.classList.remove('has-cookie-banner');
-    
+
     reopenBtn.classList.add('show');
   }
 }
@@ -1034,9 +1083,8 @@ function initQuizModal() {
   const isHomepage = document.querySelector('.hero') !== null;
   if (!isHomepage) return;
 
-  // Check if user already completed or saw the quiz this session (optional, but good for UX)
-  if (sessionStorage.getItem('quizSeen')) return;
-  sessionStorage.setItem('quizSeen', 'true');
+  // Popup will be shown every time on homepage
+  // The session check was removed to ensure the popup always opens
 
   const modalHtml = `
     <div id="quiz-modal" class="quiz-modal-overlay">
@@ -1071,34 +1119,42 @@ function initQuizModal() {
   }
 
   // Quiz Logic
-const questions = [
-  { text: "Кога нешто ќе се расипе дома, јас...", opts: ["Сакам сам/а да го поправам", "Истражувам зошто се случило тоа", "Ги замолувам другите да помогнат", "Не ме интересира многу"], types: ["R","I","S","C"] },
-  { text: "Во слободно време најмногу уживам во...", opts: ["Работа со алати или опрема", "Читање и решавање загатки", "Дружење и помагање на другите", "Организирање и подредување"], types: ["R","I","S","C"] },
-  { text: "На час по физика / математика...", opts: ["Сакам практични задачи и експерименти", "Сакам да разберам ЗОШТО нештата функционираат така", "Сакам да работиме во групи", "Сакам задачи и формули"], types: ["R","I","S","C"] },
-  { text: "Ако треба да се опишам себеси, јас сум...", opts: ["Практичен/на и динамичен/на", "Аналитичен/на и љубопитен/на", "Сочувствителен/на и грижлив/а", "Уреден/на и прецизен/на"], types: ["R","I","S","C"] },
-  { text: "Сонувам за работа каде...", opts: ["Работам со машини, мотори или електрика", "Решавам сложени технички проблеми", "Помагам на луѓе и работам во тим", "Имам јасен распоред и систем"], types: ["R","I","S","C"] },
-  { text: "Во школо, мојот омилен тип на активност е...", opts: ["Работилница / практична настава", "Истражувачки проекти", "Тимски задачи и дискусии", "Тестови со точни одговори"], types: ["R","I","S","C"] },
-  { text: "Кога гледам автомобил или мотор, мислам...", opts: ["Интересно, би сакал/а да го разглобам!", "Прашувам се како точно работи моторот", "Размислувам за луѓето кои патуваат", "Забележувам дали се уредни и одржувани"], types: ["R","I","S","C"] },
-  { text: "Во иднина сакам...", opts: ["Нешто да правам со рацете/физички да работам", "Да истражувам, анализирам, да решавам проблеми", "Да работам со луѓе и да им помагам", "Да работам во канцеларија"], types: ["R","I","S","C"] },
-  { text: "Кога некој пријател ме моли за совет...", opts: ["Понудувам практично решение", "Ја анализираме заедно ситуацијата", "Слушам и поддржувам", "Им давам јасна, структурирана препорака"], types: ["R","I","S","C"] },
-  { text: "Кога гледам некоја зграда или машина, прво мислам на...", opts: ["Конструкцијата — како е направена", "Принципите — зошто функционира така", "Луѓето — кој работи/живее тука", "Системот — дали е сè уредено правилно"], types: ["R","I","S","C"] },
-  { text: "На патување/екскурзија, јас сум тој/таа кој...", opts: ["Помага со багаж, логистика, карти", "Ја истражува историјата или природата на местото", "Се грижи дека сите се добри и весели", "Ги паметам сите резервации и распоред"], types: ["R","I","S","C"] },
-  { text: "Кога слушам збор 'технологија', прво се сетувам на...", opts: ["Машини, мотори, електрична инсталација", "Компјутери, мрежи, електроника", "Апликации и комуникација со луѓе", "Бази на податоци, системи, документација"], types: ["R","I","S","C"] }
-];
+  const questions = [
+    { text: "Кога нешто ќе се расипе дома, јас...", opts: ["Сакам сам/а да го поправам", "Истражувам зошто се случило тоа", "Ги замолувам другите да помогнат", "Не ме интересира многу"], types: ["R", "I", "S", "C"] },
+    { text: "Во слободно време најмногу уживам во...", opts: ["Работа со алати или опрема", "Читање и решавање загатки", "Дружење и помагање на другите", "Организирање и подредување"], types: ["R", "I", "S", "C"] },
+    { text: "На час по физика / математика...", opts: ["Сакам практични задачи и експерименти", "Сакам да разберам ЗОШТО нештата функционираат така", "Сакам да работиме во групи", "Сакам задачи и формули"], types: ["R", "I", "S", "C"] },
+    { text: "Ако треба да се опишам себеси, јас сум...", opts: ["Практичен/на и динамичен/на", "Аналитичен/на и љубопитен/на", "Сочувствителен/на и грижлив/а", "Уреден/на и прецизен/на"], types: ["R", "I", "S", "C"] },
+    { text: "Сонувам за работа каде...", opts: ["Работам со машини, мотори или електрика", "Решавам сложени технички проблеми", "Помагам на луѓе и работам во тим", "Имам јасен распоред и систем"], types: ["R", "I", "S", "C"] },
+    { text: "Во школо, мојот омилен тип на активност е...", opts: ["Работилница / практична настава", "Истражувачки проекти", "Тимски задачи и дискусии", "Тестови со точни одговори"], types: ["R", "I", "S", "C"] },
+    { text: "Кога гледам автомобил или мотор, мислам...", opts: ["Интересно, би сакал/а да го разглобам!", "Прашувам се како точно работи моторот", "Размислувам за луѓето кои патуваат", "Забележувам дали се уредни и одржувани"], types: ["R", "I", "S", "C"] },
+    { text: "Во иднина сакам...", opts: ["Нешто да правам со рацете/физички да работам", "Да истражувам, анализирам, да решавам проблеми", "Да работам со луѓе и да им помагам", "Да работам во канцеларија"], types: ["R", "I", "S", "C"] },
+    { text: "Кога некој пријател ме моли за совет...", opts: ["Понудувам практично решение", "Ја анализираме заедно ситуацијата", "Слушам и поддржувам", "Им давам јасна, структурирана препорака"], types: ["R", "I", "S", "C"] },
+    { text: "Кога гледам некоја зграда или машина, прво мислам на...", opts: ["Конструкцијата — како е направена", "Принципите — зошто функционира така", "Луѓето — кој работи/живее тука", "Системот — дали е сè уредено правилно"], types: ["R", "I", "S", "C"] },
+    { text: "На патување/екскурзија, јас сум тој/таа кој...", opts: ["Помага со багаж, логистика, карти", "Ја истражува историјата или природата на местото", "Се грижи дека сите се добри и весели", "Ги паметам сите резервации и распоред"], types: ["R", "I", "S", "C"] },
+    { text: "Кога слушам збор 'технологија', прво се сетувам на...", opts: ["Машини, мотори, електрична инсталација", "Компјутери, мрежи, електроника", "Апликации и комуникација со луѓе", "Бази на податоци, системи, документација"], types: ["R", "I", "S", "C"] }
+  ];
 
   const profiles = {
-    R: { name: "Реалистичен (R)", color: "#1E3A5F", bg: "#E6F1FB", border: "#B5D4F4", text: "#0C447C",
-         desc: "Уживаш во практична работа со раце, алати и машини.",
-         nasoki: [{ name: "Машински техничар" }, { name: "Техничар за компјутерско управување" }, { name: "Автомеханичар" }, { name: "Електротехничар-енергетичар" }] },
-    I: { name: "Истражувачки (I)", color: "#D4AF37", bg: "#FAEEDA", border: "#FAC775", text: "#412402",
-         desc: "Уживаш во анализирање, истражување и решавање сложени проблеми.",
-         nasoki: [{ name: "Електротехничар за електроника и телекомуникации" }, { name: "Техничар за компјутерско управување" }, { name: "Електротехничар-автоматичар" }] },
-    S: { name: "Социјален (S)", color: "#2E5C31", bg: "#EAF3DE", border: "#9FE1CB", text: "#04342C",
-         desc: "Уживаш во работа со луѓе — да помагаш, советуваш и соработуваш.",
-         nasoki: [{ name: "Келнер" }, { name: "Готвач" }, { name: "Техничар за туризам" }, { name: "Техничар за транспорт и шпедиција" }] },
-    C: { name: "Конвенционален (C)", color: "#4A5568", bg: "#EDF2F7", border: "#CBD5E0", text: "#2D3748",
-         desc: "Уживаш во уреден, систематичен начин на работа со прецизни податоци.",
-         nasoki: [{ name: "Техничар за транспорт и шпедиција" }, { name: "Биро за туристички услуги" }, { name: "Електротехничар-енергетичар (дуално)" }] }
+    R: {
+      name: "Реалистичен (R)", color: "#1E3A5F", bg: "#E6F1FB", border: "#B5D4F4", text: "#0C447C",
+      desc: "Уживаш во практична работа со раце, алати и машини.",
+      nasoki: [{ name: "Машински техничар" }, { name: "Техничар за компјутерско управување" }, { name: "Автомеханичар" }, { name: "Електротехничар-енергетичар" }]
+    },
+    I: {
+      name: "Истражувачки (I)", color: "#D4AF37", bg: "#FAEEDA", border: "#FAC775", text: "#412402",
+      desc: "Уживаш во анализирање, истражување и решавање сложени проблеми.",
+      nasoki: [{ name: "Електротехничар за електроника и телекомуникации" }, { name: "Техничар за компјутерско управување" }, { name: "Електротехничар-автоматичар" }]
+    },
+    S: {
+      name: "Социјален (S)", color: "#2E5C31", bg: "#EAF3DE", border: "#9FE1CB", text: "#04342C",
+      desc: "Уживаш во работа со луѓе — да помагаш, советуваш и соработуваш.",
+      nasoki: [{ name: "Келнер" }, { name: "Готвач" }, { name: "Техничар за туризам" }, { name: "Техничар за транспорт и шпедиција" }]
+    },
+    C: {
+      name: "Конвенционален (C)", color: "#4A5568", bg: "#EDF2F7", border: "#CBD5E0", text: "#2D3748",
+      desc: "Уживаш во уреден, систематичен начин на работа со прецизни податоци.",
+      nasoki: [{ name: "Техничар за транспорт и шпедиција" }, { name: "Биро за туристички услуги" }, { name: "Електротехничар-енергетичар (дуално)" }]
+    }
   };
 
   let answers = {};
@@ -1169,7 +1225,7 @@ const questions = [
         <div class="quiz-options">
           ${q.opts.map((o, i) => `
             <button class="quiz-opt-btn ${answers[current] === i ? 'selected' : ''}" data-idx="${i}">
-              <span style="font-size:1.25rem; font-weight:700; color:inherit;">${['A','Б','В','Г'][i]}</span> ${o}
+              <span style="font-size:1.25rem; font-weight:700; color:inherit;">${['A', 'Б', 'В', 'Г'][i]}</span> ${o}
             </button>
           `).join('')}
         </div>
@@ -1178,9 +1234,9 @@ const questions = [
         <button class="quiz-nav-btn secondary" id="quiz-btn-prev" ${current === 0 ? 'disabled' : ''}>← Назад</button>
         <span class="quiz-q-counter">${Object.keys(answers).length} / ${total}</span>
         ${current < total - 1
-          ? `<button class="quiz-nav-btn primary" id="quiz-btn-next" ${!answered ? 'disabled' : ''}>Следно →</button>`
-          : `<button class="quiz-nav-btn primary" id="quiz-btn-finish" ${Object.keys(answers).length < total ? 'disabled' : ''}>Резултати</button>`
-        }
+        ? `<button class="quiz-nav-btn primary" id="quiz-btn-next" ${!answered ? 'disabled' : ''}>Следно →</button>`
+        : `<button class="quiz-nav-btn primary" id="quiz-btn-finish" ${Object.keys(answers).length < total ? 'disabled' : ''}>Резултати</button>`
+      }
       </div>
     `;
 
@@ -1192,7 +1248,7 @@ const questions = [
     });
 
     if (current > 0) document.getElementById('quiz-btn-prev').addEventListener('click', goBack);
-    
+
     if (current < total - 1 && answered) {
       document.getElementById('quiz-btn-next').addEventListener('click', goNext);
     } else if (current === total - 1 && Object.keys(answers).length === total) {
@@ -1223,14 +1279,14 @@ const questions = [
       if (score === 0) return; // Don't show zeroes if user skipped or had none
       const p = profiles[type];
       const pct = max > 0 ? Math.round((score / max) * 100) : 0;
-      
+
       html += `
         <div class="quiz-profile-card ${idx === 0 ? 'top' : ''}">
           <div class="quiz-profile-header">
             <div class="quiz-profile-badge" style="background:${p.bg}; color:${p.color}">${type}</div>
             <div>
               <div class="quiz-profile-name">${p.name}</div>
-              <div class="quiz-profile-score">Совпаѓање: ${Math.round((score/total)*100)}%</div>
+              <div class="quiz-profile-score">Совпаѓање: ${Math.round((score / total) * 100)}%</div>
             </div>
           </div>
           <div class="quiz-score-bar"><div class="quiz-score-fill" style="width:${pct}%; background:${p.color}"></div></div>
@@ -1244,7 +1300,7 @@ const questions = [
     });
 
     html += `<button class="quiz-restart-btn" id="quiz-btn-restart"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg> Реши повторно</button>`;
-    
+
     app.innerHTML = html;
 
     // We need to animate the bars after insertion
