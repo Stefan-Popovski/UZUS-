@@ -108,7 +108,7 @@
       max-width: 1280px;
       width: 100%;
       margin: 0 auto;
-      padding: 2rem 1.5rem 3.5rem;
+      padding: 1rem 1.5rem 0.75rem;
       text-align: center;
     }
 
@@ -1206,173 +1206,454 @@
       </div>
     </div>
   </div>
-
-  <style>
-  
-  
-  #app { max-width: 640px; margin: 0 auto; transform: translateY(130px); }
-  .header { margin-bottom: 1.5rem; }
-  .header h1 { font-size: 20px; font-weight: 500; margin-bottom: 4px; }
-  .header p { font-size: 14px; color: #666; line-height: 1.5; }
-  .progress-bar { height: 4px; background: #ddd; border-radius: 2px; margin-bottom: 1.5rem; overflow: hidden; }
-  .progress-fill { height: 100%; background: #378ADD; border-radius: 2px; transition: width 0.3s ease; }
-  .question-card { background: #fff; border: 0.5px solid #ddd; border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; }
-  .q-num { font-size: 12px; color: #999; margin-bottom: 8px; }
-  .q-text { font-size: 16px; line-height: 1.6; margin-bottom: 1rem; }
-  .options { display: flex; flex-direction: column; gap: 8px; }
-  .opt-btn { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: #f5f5f3; border: 0.5px solid #ddd; border-radius: 8px; cursor: pointer; text-align: left; font-size: 14px; color: #1a1a1a; transition: border-color 0.15s, background 0.15s; }
-  .opt-btn:hover { border-color: #aaa; background: #fff; }
-  .opt-btn.selected { border-color: #378ADD; background: #E6F1FB; color: #0C447C; }
-  .nav-row { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; }
-  .nav-btn { padding: 8px 20px; border: 0.5px solid #ccc; border-radius: 8px; background: transparent; color: #1a1a1a; font-size: 14px; cursor: pointer; }
-  .nav-btn:hover { background: #f0f0f0; }
-  .nav-btn.primary { background: #378ADD; border-color: #378ADD; color: #fff; }
-  .nav-btn.primary:hover { background: #185FA5; }
-  .nav-btn:disabled { opacity: 0.35; cursor: default; }
-  .q-counter { font-size: 13px; color: #888; }
-  .result-title { font-size: 18px; font-weight: 500; margin-bottom: 4px; }
-  .result-sub { font-size: 14px; color: #666; margin-bottom: 1.5rem; }
-  .profile-card { border: 0.5px solid #ddd; border-radius: 12px; padding: 1.25rem; margin-bottom: 10px; background: #fff; }
-  .profile-card.top { border-color: #378ADD; border-width: 1.5px; }
-  .profile-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-  .profile-badge { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 500; flex-shrink: 0; }
-  .profile-name { font-size: 15px; font-weight: 500; }
-  .profile-score { font-size: 13px; color: #666; }
-  .score-bar { height: 6px; background: #eee; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
-  .score-fill { height: 100%; border-radius: 3px; transition: width 0.6s ease; }
-  .nasoki-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
-  .nasoka-tag { font-size: 12px; padding: 3px 10px; border-radius: 20px; border: 0.5px solid; }
-  .top-banner { background: #E6F1FB; border: 0.5px solid #B5D4F4; border-radius: 8px; padding: 10px 14px; margin-bottom: 1.5rem; display: flex; align-items: flex-start; gap: 10px; }
-  .top-banner-text { font-size: 14px; color: #0C447C; line-height: 1.5; }
-  .restart-btn { margin-top: 1rem; padding: 10px 24px; border: 0.5px solid #ccc; border-radius: 8px; background: transparent; color: #1a1a1a; font-size: 14px; cursor: pointer; }
-  .restart-btn:hover { background: #f0f0f0; }
-
-  .opt-btn { width: 100%; transition: all 0.2s ease; border-radius: var(--radius) !important; padding: 1rem !important; margin-bottom: 0.5rem; font-family: var(--font-body); }
-  .opt-btn:hover { border-color: var(--school-blue) !important; background: var(--school-blue-light) !important; }
-  .opt-btn.selected { background: var(--school-blue) !important; color: white !important; border-color: var(--school-blue) !important; }
-  .nav-btn { font-family: var(--font-accent); font-weight: 600; padding: 0.75rem 1.5rem !important; border-radius: var(--radius) !important; transition: all 0.3s ease; }
-  .nav-btn.primary { background: var(--school-gold) !important; color: var(--school-blue-dark) !important; border:none !important;}
-  .nav-btn.primary:hover { transform: scale(1.05); }
-  .restart-btn { font-family: var(--font-accent); font-weight: 600; padding: 0.75rem 1.5rem !important; border-radius: var(--radius) !important; margin-top: 2rem !important; width:100%; background: var(--school-gold) !important; border:none !important; color: var(--school-blue-dark) !important; transition: all 0.3s ease; }
-  .restart-btn:hover { transform: scale(1.02); }
-  #app { background: white; padding: 2rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-school); margin-bottom: 4rem; margin-top:-6rem; position:relative; z-index:20; }
-  @media(max-width: 600px) { #app { padding: 1.5rem; margin-top: -3rem; } }
-</style>
-  <section class="upisi-hero" style="min-height: 45vh; padding-top: 8rem;">
+  <!-- ═══ HERO ═══ -->
+  <section class="upisi-hero">
     <div class="upisi-hero-bg">
+      <div class="upisi-hero-img"></div>
       <div class="upisi-hero-overlay"></div>
     </div>
     <div class="upisi-hero-decor">
       <div class="hero-decor-circle"></div>
       <div class="hero-decor-circle"></div>
       <div class="hero-decor-circle"></div>
+      <div class="hero-decor-circle"></div>
     </div>
+    <div class="upisi-hero-grid"></div>
     <div class="upisi-hero-content">
-      <h1 class="upisi-hero-title">Квиз за <br><em>избор на насока</em></h1>
-      <p class="upisi-hero-sub">Откриј го твојот потенцијал</p>
+      <div class="upisi-hero-badge">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10" />
+        </svg>
+        <span>Квиз за насока</span>
+      </div>
+      <h1 class="upisi-hero-title">Квиз за<br><em>насока</em></h1>
+      <p class="upisi-hero-sub">Одговорете на неколку прашања и откријте која струка најмногу одговара на вашите
+        интереси.</p>
+      <nav class="upisi-hero-breadcrumb">
+        <a href="index.html">Почетна</a><span>/</span><span>Квиз за насока</span>
+      </nav>
     </div>
   </section>
 
-  <section class="upisi-section" style="padding-top: 0; background-color: var(--gray-50);">
+  <style>
+
+
+    .header {
+      margin-bottom: 1.5rem;
+    }
+
+    .header h1 {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .header p {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .progress-bar {
+      height: 4px;
+      background: #ddd;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #378ADD;
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    .question-card {
+      background: #fff;
+      border: 0.5px solid #ddd;
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .q-num {
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 8px;
+    }
+
+    .q-text {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .opt-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: #f5f5f3;
+      border: 0.5px solid #ddd;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: left;
+      font-size: 14px;
+      color: #1a1a1a;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .opt-btn:hover {
+      border-color: #aaa;
+      background: #fff;
+    }
+
+    .opt-btn.selected {
+      border-color: #378ADD;
+      background: #E6F1FB;
+      color: #0C447C;
+    }
+
+    .nav-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .nav-btn {
+      padding: 8px 20px;
+      border: 0.5px solid #ccc;
+      border-radius: 8px;
+      background: transparent;
+      color: #1a1a1a;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .nav-btn:hover {
+      background: #f0f0f0;
+    }
+
+    .nav-btn.primary {
+      background: #378ADD;
+      border-color: #378ADD;
+      color: #fff;
+    }
+
+    .nav-btn.primary:hover {
+      background: #185FA5;
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    .q-counter {
+      font-size: 13px;
+      color: #888;
+    }
+
+    .result-title {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .result-sub {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+
+    .profile-card {
+      border: 0.5px solid #ddd;
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 10px;
+      background: #fff;
+    }
+
+    .profile-card.top {
+      border-color: #378ADD;
+      border-width: 1.5px;
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .profile-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    .profile-name {
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .profile-score {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .score-bar {
+      height: 6px;
+      background: #eee;
+      border-radius: 3px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    .score-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.6s ease;
+    }
+
+    .nasoki-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .nasoka-tag {
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: 0.5px solid;
+    }
+
+    .top-banner {
+      background: #E6F1FB;
+      border: 0.5px solid #B5D4F4;
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .top-banner-text {
+      font-size: 14px;
+      color: #0C447C;
+      line-height: 1.5;
+    }
+
+    .restart-btn {
+      margin-top: 1rem;
+      padding: 10px 24px;
+      border: 0.5px solid #ccc;
+      border-radius: 8px;
+      background: transparent;
+      color: #1a1a1a;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .restart-btn:hover {
+      background: #f0f0f0;
+    }
+
+    .opt-btn {
+      width: 100%;
+      transition: all 0.2s ease;
+      border-radius: var(--radius) !important;
+      padding: 1rem !important;
+      margin-bottom: 0.5rem;
+      font-family: var(--font-body);
+    }
+
+    .opt-btn:hover {
+      border-color: var(--school-blue) !important;
+      background: var(--school-blue-light) !important;
+    }
+
+    .opt-btn.selected {
+      background: var(--school-blue) !important;
+      color: white !important;
+      border-color: var(--school-blue) !important;
+    }
+
+    .nav-btn {
+      font-family: var(--font-accent);
+      font-weight: 600;
+      padding: 0.75rem 1.5rem !important;
+      border-radius: var(--radius) !important;
+      transition: all 0.3s ease;
+    }
+
+    .nav-btn.primary {
+      background: var(--school-gold) !important;
+      color: var(--school-blue-dark) !important;
+      border: none !important;
+    }
+
+    .nav-btn.primary:hover {
+      transform: scale(1.05);
+    }
+
+    .restart-btn {
+      font-family: var(--font-accent);
+      font-weight: 600;
+      padding: 0.75rem 1.5rem !important;
+      border-radius: var(--radius) !important;
+      margin-top: 2rem !important;
+      width: 100%;
+      background: var(--school-gold) !important;
+      border: none !important;
+      color: var(--school-blue-dark) !important;
+      transition: all 0.3s ease;
+    }
+
+    .restart-btn:hover {
+      transform: scale(1.02);
+    }
+
+    #app {
+      max-width: 640px;
+      background: white;
+      padding: 2rem;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-school);
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 4rem;
+      margin-top: 0;
+      position: relative;
+      z-index: 20;
+    }
+
+    @media(max-width: 600px) {
+      #app {
+        padding: 1.5rem;
+        margin-top: 0;
+      }
+    }
+  </style>
+
+
+  <section class="upisi-section" style="padding-top: 4rem; background-color: var(--gray-50);">
     <div class="upisi-container" style="max-width: 700px;">
       <div id="app"></div>
     </div>
   </section>
-<script>
-const questions = [
-  { text: "Кога нешто ќе се расипе дома, јас...", opts: ["Сакам сам/а да го поправам", "Истражувам зошто се случило тоа", "Ги замолувам другите да помогнат", "Не ме интересира многу"], types: ["R","I","S","C"] },
-  { text: "Во слободно време најмногу уживам во...", opts: ["Работа со алати или опрема", "Читање и решавање загатки", "Дружење и помагање на другите", "Организирање и подредување"], types: ["R","I","S","C"] },
-  { text: "На час по физика / математика...", opts: ["Сакам практични задачи и експерименти", "Сакам да разберам ЗОШТО нештата функционираат така", "Сакам да работиме во групи", "Сакам задачи и формули"], types: ["R","I","S","C"] },
-  { text: "Ако треба да се опишам себеси, јас сум...", opts: ["Практичен/на и динамичен/на", "Аналитичен/на и љубопитен/на", "Сочувствителен/на и грижлив/а", "Уреден/на и прецизен/на"], types: ["R","I","S","C"] },
-  { text: "Сонувам за работа каде...", opts: ["Работам со машини, мотори или електрика", "Решавам сложени технички проблеми", "Помагам на луѓе и работам во тим", "Имам јасен распоред и систем"], types: ["R","I","S","C"] },
-  { text: "Во школо, мојот омилен тип на активност е...", opts: ["Работилница / практична настава", "Истражувачки проекти", "Тимски задачи и дискусии", "Тестови со точни одговори"], types: ["R","I","S","C"] },
-  { text: "Кога гледам автомобил или мотор, мислам...", opts: ["Интересно, би сакал/а да го разглобам!", "Прашувам се како точно работи моторот", "Размислувам за луѓето кои патуваат", "Забележувам дали се уредни и одржувани"], types: ["R","I","S","C"] },
-  { text: "Во иднина сакам...", opts: ["Нешто да правам со рацете/физички да работам", "Да истражувам, анализирам, да решавам проблеми", "Да работам со луѓе и да им помагам", "Да работам во канцеларија"], types: ["R","I","S","C"] },
-  { text: "Кога некој пријател ме моли за совет...", opts: ["Понудувам практично решение", "Ја анализираме заедно ситуацијата", "Слушам и поддржувам", "Им давам јасна, структурирана препорака"], types: ["R","I","S","C"] },
-  { text: "Кога гледам некоја зграда или машина, прво мислам на...", opts: ["Конструкцијата — како е направена", "Принципите — зошто функционира така", "Луѓето — кој работи/живее тука", "Системот — дали е сè уредено правилно"], types: ["R","I","S","C"] },
-  { text: "На патување/екскурзија, јас сум тој/таа кој...", opts: ["Помага со багаж, логистика, карти", "Ја истражува историјата или природата на местото", "Се грижи дека сите се добри и весели", "Ги паметам сите резервации и распоред"], types: ["R","I","S","C"] },
-  { text: "Кога слушам збор 'технологија', прво се сетувам на...", opts: ["Машини, мотори, електрична инсталација", "Компјутери, мрежи, електроника", "Апликации и комуникација со луѓе", "Бази на податоци, системи, документација"], types: ["R","I","S","C"] }
-];
+  <script>
+    const questions = [
+      { text: "Кога нешто ќе се расипе дома, јас...", opts: ["Сакам сам/а да го поправам", "Истражувам зошто се случило тоа", "Ги замолувам другите да помогнат", "Не ме интересира многу"], types: ["R", "I", "S", "C"] },
+      { text: "Во слободно време најмногу уживам во...", opts: ["Работа со алати или опрема", "Читање и решавање загатки", "Дружење и помагање на другите", "Организирање и подредување"], types: ["R", "I", "S", "C"] },
+      { text: "На час по физика / математика...", opts: ["Сакам практични задачи и експерименти", "Сакам да разберам ЗОШТО нештата функционираат така", "Сакам да работиме во групи", "Сакам задачи и формули"], types: ["R", "I", "S", "C"] },
+      { text: "Ако треба да се опишам себеси, јас сум...", opts: ["Практичен/на и динамичен/на", "Аналитичен/на и љубопитен/на", "Сочувствителен/на и грижлив/а", "Уреден/на и прецизен/на"], types: ["R", "I", "S", "C"] },
+      { text: "Сонувам за работа каде...", opts: ["Работам со машини, мотори или електрика", "Решавам сложени технички проблеми", "Помагам на луѓе и работам во тим", "Имам јасен распоред и систем"], types: ["R", "I", "S", "C"] },
+      { text: "Во школо, мојот омилен тип на активност е...", opts: ["Работилница / практична настава", "Истражувачки проекти", "Тимски задачи и дискусии", "Тестови со точни одговори"], types: ["R", "I", "S", "C"] },
+      { text: "Кога гледам автомобил или мотор, мислам...", opts: ["Интересно, би сакал/а да го разглобам!", "Прашувам се како точно работи моторот", "Размислувам за луѓето кои патуваат", "Забележувам дали се уредни и одржувани"], types: ["R", "I", "S", "C"] },
+      { text: "Во иднина сакам...", opts: ["Нешто да правам со рацете/физички да работам", "Да истражувам, анализирам, да решавам проблеми", "Да работам со луѓе и да им помагам", "Да работам во канцеларија"], types: ["R", "I", "S", "C"] },
+      { text: "Кога некој пријател ме моли за совет...", opts: ["Понудувам практично решение", "Ја анализираме заедно ситуацијата", "Слушам и поддржувам", "Им давам јасна, структурирана препорака"], types: ["R", "I", "S", "C"] },
+      { text: "Кога гледам некоја зграда или машина, прво мислам на...", opts: ["Конструкцијата — како е направена", "Принципите — зошто функционира така", "Луѓето — кој работи/живее тука", "Системот — дали е сè уредено правилно"], types: ["R", "I", "S", "C"] },
+      { text: "На патување/екскурзија, јас сум тој/таа кој...", opts: ["Помага со багаж, логистика, карти", "Ја истражува историјата или природата на местото", "Се грижи дека сите се добри и весели", "Ги паметам сите резервации и распоред"], types: ["R", "I", "S", "C"] },
+      { text: "Кога слушам збор 'технологија', прво се сетувам на...", opts: ["Машини, мотори, електрична инсталација", "Компјутери, мрежи, електроника", "Апликации и комуникација со луѓе", "Бази на податоци, системи, документација"], types: ["R", "I", "S", "C"] }
+    ];
 
-const profiles = {
-  R: {
-    name: "Реалистичен (R)",
-    color: "#639922", bg: "#EAF3DE", border: "#C0DD97", text: "#173404",
-    desc: "Ти уживаш во практична работа со раце, алати и машини.",
-    nasoki: [
-      { name: "Машински техничар" },
-      { name: "Техничар за компјутерско управување" },
-      { name: "Автомеханичар" },
-      { name: "Електротехничар-енергетичар" }
-    ]
-  },
-  I: {
-    name: "Истражувачки (I)",
-    color: "#185FA5", bg: "#E6F1FB", border: "#B5D4F4", text: "#042C53",
-    desc: "Ти уживаш во анализирање, истражување и решавање сложени проблеми.",
-    nasoki: [
-      { name: "Електротехничар за електроника и телекомуникации" },
-      { name: "Техничар за компјутерско управување" },
-      { name: "Електротехничар-автоматичар" }
-    ]
-  },
-  S: {
-    name: "Социјален (S)",
-    color: "#3B6D11", bg: "#EAF3DE", border: "#9FE1CB", text: "#04342C",
-    desc: "Ти уживаш во работа со луѓе — да помагаш, советуваш и соработуваш.",
-    nasoki: [
-      { name: "Келнер" },
-      { name: "Готвач" },
-      { name: "Техничар за туризам" },
-      { name: "Техничар за транспорт и шпедиција" }
-    ]
-  },
-  C: {
-    name: "Конвенционален (C)",
-    color: "#854F0B", bg: "#FAEEDA", border: "#FAC775", text: "#412402",
-    desc: "Ти уживаш во уреден, систематичен начин на работа со прецизни податоци.",
-    nasoki: [
-      { name: "Техничар за транспорт и шпедиција" },
-      { name: "Биро за туристички услуги" },
-      { name: "Електротехничар-енергетичар (дуално)" }
-    ]
-  }
-};
+    const profiles = {
+      R: {
+        name: "Реалистичен (R)",
+        color: "#639922", bg: "#EAF3DE", border: "#C0DD97", text: "#173404",
+        desc: "Ти уживаш во практична работа со раце, алати и машини.",
+        nasoki: [
+          { name: "Машински техничар" },
+          { name: "Техничар за компјутерско управување" },
+          { name: "Автомеханичар" },
+          { name: "Електротехничар-енергетичар" }
+        ]
+      },
+      I: {
+        name: "Истражувачки (I)",
+        color: "#185FA5", bg: "#E6F1FB", border: "#B5D4F4", text: "#042C53",
+        desc: "Ти уживаш во анализирање, истражување и решавање сложени проблеми.",
+        nasoki: [
+          { name: "Електротехничар за електроника и телекомуникации" },
+          { name: "Техничар за компјутерско управување" },
+          { name: "Електротехничар-автоматичар" }
+        ]
+      },
+      S: {
+        name: "Социјален (S)",
+        color: "#3B6D11", bg: "#EAF3DE", border: "#9FE1CB", text: "#04342C",
+        desc: "Ти уживаш во работа со луѓе — да помагаш, советуваш и соработуваш.",
+        nasoki: [
+          { name: "Келнер" },
+          { name: "Готвач" },
+          { name: "Техничар за туризам" },
+          { name: "Техничар за транспорт и шпедиција" }
+        ]
+      },
+      C: {
+        name: "Конвенционален (C)",
+        color: "#854F0B", bg: "#FAEEDA", border: "#FAC775", text: "#412402",
+        desc: "Ти уживаш во уреден, систематичен начин на работа со прецизни податоци.",
+        nasoki: [
+          { name: "Техничар за транспорт и шпедиција" },
+          { name: "Биро за туристички услуги" },
+          { name: "Електротехничар-енергетичар (дуално)" }
+        ]
+      }
+    };
 
-let answers = {};
-let current = 0;
-let showResults = false;
+    let answers = {};
+    let current = 0;
+    let showResults = false;
 
-function getScores() {
-  const s = { R: 0, I: 0, S: 0, C: 0 };
-  for (const [qi, ai] of Object.entries(answers)) {
-    const t = questions[qi].types[ai];
-    if (t) s[t]++;
-  }
-  return s;
-}
+    function getScores() {
+      const s = { R: 0, I: 0, S: 0, C: 0 };
+      for (const [qi, ai] of Object.entries(answers)) {
+        const t = questions[qi].types[ai];
+        if (t) s[t]++;
+      }
+      return s;
+    }
 
-function getSorted() {
-  const s = getScores();
-  return Object.entries(s).sort((a, b) => b[1] - a[1]);
-}
+    function getSorted() {
+      const s = getScores();
+      return Object.entries(s).sort((a, b) => b[1] - a[1]);
+    }
 
-function render() {
-  const app = document.getElementById('app');
-  if (showResults) {
-    renderResults(app);
-  } else {
-    renderQuiz(app);
-  }
-}
+    function render() {
+      const app = document.getElementById('app');
+      if (showResults) {
+        renderResults(app);
+      } else {
+        renderQuiz(app);
+      }
+    }
 
-function renderQuiz(app) {
-  const q = questions[current];
-  const answered = answers[current] !== undefined;
-  const total = questions.length;
-  const pct = Math.round((Object.keys(answers).length / total) * 100);
+    function renderQuiz(app) {
+      const q = questions[current];
+      const answered = answers[current] !== undefined;
+      const total = questions.length;
+      const pct = Math.round((Object.keys(answers).length / total) * 100);
 
-  app.innerHTML = `
+      app.innerHTML = `
     <div class="header">
       <h1>Квиз за избор на насока</h1>
       <p>ДСУ РЦСОО „Коле Неделковски" — Велес</p>
@@ -1391,19 +1672,19 @@ function renderQuiz(app) {
       <button class="nav-btn" onclick="goBack()" ${current === 0 ? 'disabled' : ''}>← Назад</button>
       <span class="q-counter">${Object.keys(answers).length}/${total} одговорени</span>
       ${current < total - 1
-        ? `<button class="nav-btn primary" onclick="goNext()" ${!answered ? 'disabled' : ''}>Следно →</button>`
-        : `<button class="nav-btn primary" onclick="finish()" ${Object.keys(answers).length < total ? 'disabled' : ''}>Видете резултати</button>`
-      }
+          ? `<button class="nav-btn primary" onclick="goNext()" ${!answered ? 'disabled' : ''}>Следно →</button>`
+          : `<button class="nav-btn primary" onclick="finish()" ${Object.keys(answers).length < total ? 'disabled' : ''}>Видете резултати</button>`
+        }
     </div>
   `;
-}
+    }
 
-function renderResults(app) {
-  const sorted = getSorted();
-  const max = sorted[0][1];
-  const total = questions.length;
+    function renderResults(app) {
+      const sorted = getSorted();
+      const max = sorted[0][1];
+      const total = questions.length;
 
-  app.innerHTML = `
+      app.innerHTML = `
     <div class="result-title">Твои резултати</div>
     <div class="result-sub">Врз основа на Холандовиот модел на интереси (RISC)</div>
     <div class="top-banner">
@@ -1413,9 +1694,9 @@ function renderResults(app) {
       </div>
     </div>
     ${sorted.map(([type, score], idx) => {
-      const p = profiles[type];
-      const pct = max > 0 ? Math.round((score / max) * 100) : 0;
-      return `
+        const p = profiles[type];
+        const pct = max > 0 ? Math.round((score / max) * 100) : 0;
+        return `
         <div class="profile-card ${idx === 0 ? 'top' : ''}">
           <div class="profile-header">
             <div class="profile-badge" style="background:${p.bg}; color:${p.color}">${type}</div>
@@ -1434,47 +1715,47 @@ function renderResults(app) {
           </div>
         </div>
       `;
-    }).join('')}
+      }).join('')}
     <button class="restart-btn" onclick="restart()">↺ Реши повторно</button>
   `;
-}
+    }
 
-function selectOpt(i) {
-  answers[current] = i;
-  if (current < questions.length - 1) {
-    setTimeout(() => { current++; render(); }, 220);
-  } else {
+    function selectOpt(i) {
+      answers[current] = i;
+      if (current < questions.length - 1) {
+        setTimeout(() => { current++; render(); }, 220);
+      } else {
+        render();
+      }
+    }
+
+    function goNext() {
+      if (answers[current] !== undefined && current < questions.length - 1) {
+        current++;
+        render();
+      }
+    }
+
+    function goBack() {
+      if (current > 0) { current--; render(); }
+    }
+
+    function finish() {
+      if (Object.keys(answers).length === questions.length) {
+        showResults = true;
+        render();
+      }
+    }
+
+    function restart() {
+      answers = {};
+      current = 0;
+      showResults = false;
+      render();
+    }
+
     render();
-  }
-}
-
-function goNext() {
-  if (answers[current] !== undefined && current < questions.length - 1) {
-    current++;
-    render();
-  }
-}
-
-function goBack() {
-  if (current > 0) { current--; render(); }
-}
-
-function finish() {
-  if (Object.keys(answers).length === questions.length) {
-    showResults = true;
-    render();
-  }
-}
-
-function restart() {
-  answers = {};
-  current = 0;
-  showResults = false;
-  render();
-}
-
-render();
-</script><!-- Footer -->
+  </script><!-- Footer -->
   <footer class="footer">
     <div class="footer-border"></div>
 

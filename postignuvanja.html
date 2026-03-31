@@ -228,7 +228,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
-      align-items: center;
+      align-items: stretch;
       background: var(--white);
       border-radius: 24px;
       overflow: hidden;
@@ -265,6 +265,9 @@
 
     .n-feat-body {
       padding: 3rem 4rem 3rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     @media(max-width: 992px) {
@@ -310,6 +313,11 @@
       color: var(--gray-900);
       line-height: 1.2;
       margin-bottom: 1rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     @media(max-width: 768px) {
@@ -323,6 +331,11 @@
       color: var(--gray-500);
       line-height: 1.7;
       margin-bottom: 2rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .n-meta {
@@ -527,7 +540,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: .06em;
-      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
       z-index: 2;
       display: flex;
       align-items: center;
@@ -546,7 +559,7 @@
       left: 1rem;
       right: auto;
       width: max-content;
-      background: rgba(0,0,0,.55);
+      background: rgba(0, 0, 0, .55);
       color: #fff;
       font-family: var(--font-accent);
       font-size: .72rem;
@@ -1245,10 +1258,10 @@
       </div>
 
       <!-- FEATURED NEWS CARD -->
-      <article class="n-featured reveal" onclick="openModal('makinova')" role="button" tabindex="0">
+      <article class="n-featured reveal" onclick="openNewsModal('makinova')" role="button" tabindex="0">
         <div class="n-feat-img">
-          <img src="images/makinova-ekinova.jpg" onerror="this.src='images/hero-classroom.jpg'"
-            alt="Featured News Image">
+          <img src="images/sega.com/naslovna.jpg" onerror="this.src='images/hero-classroom.jpg'"
+            alt="Нов простор за млади идеи: Успешно реализирана ученичка иницијатива за опремување на училишна просторија">
         </div>
         <div class="n-feat-body">
           <span class="n-tag n-gold-tag">
@@ -1256,13 +1269,13 @@
               stroke="currentColor" stroke-width="2">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
             </svg>
-            Макинова &amp; Еконова
+            Ученичка иницијатива
           </span>
-          <h3 class="n-title">Учениците на ДСУ РЦСОО „Коле Неделковски“ во улога на врснички едукатори за дуално
-            образование</h3>
-          <p class="n-desc">Нашите ученици уште еднаш докажаа дека се најдобри во иновациите. Тимот се истакна на
-            овогодинешната меѓународна изложба МАКИНОВА и ЕКОНОВА, каде беа наградени за нивните еколошки и технички
-            решенија.</p>
+          <h3 class="n-title">Нов простор за млади идеи: Успешно реализирана ученичка иницијатива за опремување на
+            училишна просторија</h3>
+          <p class="n-desc">Во рамките на проектот „Промоција на безбедна училишна средина", нашето училиште со гордост
+            ја најавува успешно реализираната втора ученичка иницијатива — комплетно опремување на современа ученичка
+            просторија, поддржана од Детската фондација „Песталоци" и Коалицијата на младински организации „СЕГА".</p>
           <div class="n-meta">
             <span class="n-date">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -1272,7 +1285,7 @@
                 <line x1="8" y1="2" x2="8" y2="6" />
                 <line x1="3" y1="10" x2="21" y2="10" />
               </svg>
-              11 Март 2026
+              31 Март 2026
             </span>
             <span class="n-read-btn">
               Прочитај повеќе
@@ -1290,7 +1303,7 @@
       <div class="n-grid">
 
         <!-- Cards imported from index.html – exact same structure & JS -->
-        <article class="activity-card reveal" onclick="openModal('vrsnicki-idx')" role="button" tabindex="0">
+        <article class="activity-card reveal" onclick="openNewsModal('vrsnicki-idx')" role="button" tabindex="0">
           <div class="activity-image">
             <img src="images/vrsnicki-edukatori.jpg" alt="Ученици едукатори" loading="lazy">
             <div class="activity-image-overlay"></div>
@@ -1315,7 +1328,9 @@
           </div>
           <div class="activity-content">
             <h3 class="activity-title">Ученици во улога на врснички едукатори за дуално образование</h3>
-            <p class="activity-description">Учениците на ДСУ РЦСОО „Коле Неделковски", Анѓела Колодезни, Матеа Христова, Борјан Бузалковски и Кристијан Димовски, денеска спроведоа работилници за дуално образование со деветоодделенци</p>
+            <p class="activity-description">Учениците на ДСУ РЦСОО „Коле Неделковски", Анѓела Колодезни, Матеа Христова,
+              Борјан Бузалковски и Кристијан Димовски, денеска спроведоа работилници за дуално образование со
+              деветоодделенци</p>
             <span class="activity-link">
               Прочитај повеќе
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -1327,7 +1342,7 @@
           </div>
         </article>
 
-        <article class="activity-card reveal" onclick="openModal('sapka-idx')" role="button" tabindex="0">
+        <article class="activity-card reveal" onclick="openNewsModal('sapka-idx')" role="button" tabindex="0">
           <div class="activity-image">
             <img src="images/popova-shapka.jpg" alt="Еразмус+ проект" loading="lazy">
             <div class="activity-image-overlay"></div>
@@ -1353,7 +1368,8 @@
           </div>
           <div class="activity-content">
             <h3 class="activity-title">Снежна авантура на Попова Шапка</h3>
-            <p class="activity-description">Еднодневна снежна авантура на Попова Шапка за учениците на ДСУ РЦСОО „Коле Неделковски". Со многу насмевки, адреналин ...</p>
+            <p class="activity-description">Еднодневна снежна авантура на Попова Шапка за учениците на ДСУ РЦСОО „Коле
+              Неделковски". Со многу насмевки, адреналин ...</p>
             <span class="activity-link">
               Прочитај повеќе
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -1365,7 +1381,7 @@
           </div>
         </article>
 
-        <article class="activity-card reveal" onclick="openModal('prezentacii-idx')" role="button" tabindex="0">
+        <article class="activity-card reveal" onclick="openNewsModal('prezentacii-idx')" role="button" tabindex="0">
           <div class="activity-image">
             <img src="images/poseta-osnovni.jpg" alt="Дуално образование" loading="lazy">
             <div class="activity-image-overlay"></div>
@@ -1389,8 +1405,11 @@
             </span>
           </div>
           <div class="activity-content">
-            <h3 class="activity-title">Промотивна кампања на ДСУ РЦСОО „Коле Неделковски" низ велешките основни училишта и околината</h3>
-            <p class="activity-description">Учениците и наставниот кадар на ДСУ РЦСОО „Коле Неделковски" во изминатиов период спроведоа интензивна кампања за промоција на училиштето низ основните училишта во Велес, kako и во ООУ „Рајко Жинзифов" – с. Оризари.</p>
+            <h3 class="activity-title">Промотивна кампања на ДСУ РЦСОО „Коле Неделковски" низ велешките основни училишта
+              и околината</h3>
+            <p class="activity-description">Учениците и наставниот кадар на ДСУ РЦСОО „Коле Неделковски" во изминатиов
+              период спроведоа интензивна кампања за промоција на училиштето низ основните училишта во Велес, kako и во
+              ООУ „Рајко Жинзифов" – с. Оризари.</p>
             <span class="activity-link">
               Прочитај повеќе
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -1402,7 +1421,7 @@
           </div>
         </article>
 
-        <article class="activity-card reveal" onclick="openModal('makinova-idx')" role="button" tabindex="0">
+        <article class="activity-card reveal" onclick="openNewsModal('makinova-idx')" role="button" tabindex="0">
           <div class="activity-image">
             <img src="images/makinova-ekonova/photo1.jpg" alt="Натпревар Макинова и Еконова" loading="lazy">
             <div class="activity-image-overlay"></div>
@@ -1426,8 +1445,10 @@
             </span>
           </div>
           <div class="activity-content">
-            <h3 class="activity-title">Успешно претставени и наградени учениците на ДСУ РЦСОО „Коле Неделковски" на Макинова и Еконова</h3>
-            <p class="activity-description">Нашите ученици освоија награди на државниот натпревар во електротехничка струка. Натпреварот се одржа во Скопје и на него учествуваа ученици од цела Македонија.</p>
+            <h3 class="activity-title">Успешно претставени и наградени учениците на ДСУ РЦСОО „Коле Неделковски" на
+              Макинова и Еконова</h3>
+            <p class="activity-description">Нашите ученици освоија награди на државниот натпревар во електротехничка
+              струка. Натпреварот се одржа во Скопје и на него учествуваа ученици од цела Македонија.</p>
             <span class="activity-link">
               Прочитај повеќе
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -1439,7 +1460,7 @@
           </div>
         </article>
 
-        <article class="activity-card reveal" onclick="openModal('albania-idx')" role="button" tabindex="0">
+        <article class="activity-card reveal" onclick="openNewsModal('albania-idx')" role="button" tabindex="0">
           <div class="activity-image">
             <img src="images/albania.jpg" alt="Училишна размена Албанија" loading="lazy">
             <div class="activity-image-overlay"></div>
@@ -1463,24 +1484,32 @@
             </span>
           </div>
           <div class="activity-content">
-            <h3 class="activity-title">Успеш            <h3 class="activity-title">Извонреден успех на нашите ученици на државниот натпревар „Средношколец Милионер"</h3>
-                        <p class="activity-description">Во изминатиов месец, ДСУ РЦСОО „Коле Неделковски" со гордост беше претставено на големиот државен натпревар „Средношколец Милионер", организиран од Brainster. Во конкуренција од дури 438 тимови од цела Македонија, нашите ученици преку тимовите „Nex$tep Finance" и „Wearly" покажаа дека размислуваат смело, модерно и во чекор со потребите на младите.</p>
-            <span class="activity-link">
-              Прочитај повеќе
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </span>
+            <h3 class="activity-title">Успеш <h3 class="activity-title">Извонреден успех на нашите ученици на државниот
+                натпревар „Средношколец Милионер"</h3>
+              <p class="activity-description">Во изминатиов месец, ДСУ РЦСОО „Коле Неделковски" со гордост беше
+                претставено на големиот државен натпревар „Средношколец Милионер", организиран од Brainster. Во
+                конкуренција од дури 438 тимови од цела Македонија, нашите ученици преку тимовите „Nex$tep Finance" и
+                „Wearly" покажаа дека размислуваат смело, модерно и во чекор со потребите на младите.</p>
+              <span class="activity-link">
+                Прочитај повеќе
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </span>
           </div>
         </article>
 
-                <article class="activity-card reveal" onclick="openModal('brussels')" role="button" tabindex="0">
+        <article class="activity-card reveal" onclick="openNewsModal('brussels')" role="button" tabindex="0">
           <div class="activity-image">
-            <img src="images/Brisel/naslovna.jpg" alt="Успешно претставување на нашето училиште на европскиот Форум за жени и девојки во STEM во Брисел" loading="lazy">
+            <img src="images/Brisel/naslovna.jpg"
+              alt="Успешно претставување на нашето училиште на европскиот Форум за жени и девојки во STEM во Брисел"
+              loading="lazy">
             <div class="activity-image-overlay"></div>
             <span class="activity-badge projects">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10" />
                 <line x1="2" x2="22" y1="12" y2="12" />
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
@@ -1488,7 +1517,8 @@
               Настан
             </span>
             <span class="activity-date">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                 <line x1="16" y1="2" x2="16" y2="6" />
                 <line x1="8" y1="2" x2="8" y2="6" />
@@ -1498,11 +1528,14 @@
             </span>
           </div>
           <div class="activity-content">
-            <h3 class="activity-title">Успешно претставување на нашето училиште на европскиот Форум за жени и девојки во STEM во Брисел</h3>
-            <p class="activity-description">Во периодот од 14 до 17 октомври 2025 година, нашето училиште со гордост учествуваше на престижниот „Форум за жени и девојки во STEM“ во Брисел.</p>
+            <h3 class="activity-title">Успешно претставување на нашето училиште на европскиот Форум за жени и девојки во
+              STEM во Брисел</h3>
+            <p class="activity-description">Во периодот од 14 до 17 октомври 2025 година, нашето училиште со гордост
+              учествуваше на престижниот „Форум за жени и девојки во STEM“ во Брисел.</p>
             <span class="activity-link">
               Прочитај повеќе
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
               </svg>
@@ -1510,12 +1543,15 @@
           </div>
         </article>
 
-        <article class="activity-card reveal" onclick="openModal('meguetnicka')" role="button" tabindex="0">
+        <article class="activity-card reveal" onclick="openNewsModal('meguetnicka')" role="button" tabindex="0">
           <div class="activity-image">
-            <img src="images/megu-etnicka/naslovna.jpg" alt="Успешно реализирана музичка активност во рамките на Проектот за меѓуетничка интеграција" loading="lazy">
+            <img src="images/megu-etnicka/naslovna.jpg"
+              alt="Успешно реализирана музичка активност во рамките на Проектот за меѓуетничка интеграција"
+              loading="lazy">
             <div class="activity-image-overlay"></div>
             <span class="activity-badge projects">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10" />
                 <line x1="2" x2="22" y1="12" y2="12" />
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
@@ -1523,7 +1559,8 @@
               Проект
             </span>
             <span class="activity-date">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                 <line x1="16" y1="2" x2="16" y2="6" />
                 <line x1="8" y1="2" x2="8" y2="6" />
@@ -1533,11 +1570,14 @@
             </span>
           </div>
           <div class="activity-content">
-            <h3 class="activity-title">Успешно реализирана музичка активност во рамките на Проектот за меѓуетничка интеграција</h3>
-            <p class="activity-description">Учениците од двете училишта покажаа дека уметноста не познава граници и ја реализираа инспиративната активност „Светот низ музиката".</p>
+            <h3 class="activity-title">Успешно реализирана музичка активност во рамките на Проектот за меѓуетничка
+              интеграција</h3>
+            <p class="activity-description">Учениците од двете училишта покажаа дека уметноста не познава граници и ја
+              реализираа инспиративната активност „Светот низ музиката".</p>
             <span class="activity-link">
               Прочитај повеќе
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
               </svg>
@@ -1545,12 +1585,14 @@
           </div>
         </article>
 
-        <article class="activity-card reveal" onclick="openModal('sport')" role="button" tabindex="0">
+        <article class="activity-card reveal" onclick="openNewsModal('sport')" role="button" tabindex="0">
           <div class="activity-image">
-            <img src="images/sport/naslovna.jpg" alt="Спорт за сите деца: Нашите ученици дел од Европската недела на спортот" loading="lazy">
+            <img src="images/sport/naslovna.jpg"
+              alt="Спорт за сите деца: Нашите ученици дел од Европската недела на спортот" loading="lazy">
             <div class="activity-image-overlay"></div>
             <span class="activity-badge projects">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10" />
                 <line x1="2" x2="22" y1="12" y2="12" />
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
@@ -1558,7 +1600,8 @@
               Спорт
             </span>
             <span class="activity-date">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                 <line x1="16" y1="2" x2="16" y2="6" />
                 <line x1="8" y1="2" x2="8" y2="6" />
@@ -1569,10 +1612,12 @@
           </div>
           <div class="activity-content">
             <h3 class="activity-title">„Спорт за сите деца": Нашите ученици дел од Европската недела на спортот</h3>
-            <p class="activity-description">Нашите ученици зедоа активно учество во натпреварите во мал фудбал, одбојка и баскет 3x3 – дел од настанот кој обедини над 1.000 деца од Велес, Чашка и Лозово.</p>
+            <p class="activity-description">Нашите ученици зедоа активно учество во натпреварите во мал фудбал, одбојка
+              и баскет 3x3 – дел од настанот кој обедини над 1.000 деца од Велес, Чашка и Лозово.</p>
             <span class="activity-link">
               Прочитај повеќе
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
               </svg>
@@ -1580,12 +1625,14 @@
           </div>
         </article>
 
-        <article class="activity-card reveal" onclick="openModal('ekologija')" role="button" tabindex="0">
+        <article class="activity-card reveal" onclick="openNewsModal('ekologija')" role="button" tabindex="0">
           <div class="activity-image">
-            <img src="images/something page 10/naslovna.jpg" alt="Успешна реализација на обука за одржлив развој и еколошки предизвици" loading="lazy">
+            <img src="images/something page 10/naslovna.jpg"
+              alt="Успешна реализација на обука за одржлив развој и еколошки предизвици" loading="lazy">
             <div class="activity-image-overlay"></div>
             <span class="activity-badge projects">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10" />
                 <line x1="2" x2="22" y1="12" y2="12" />
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
@@ -1593,7 +1640,8 @@
               Обука
             </span>
             <span class="activity-date">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                 <line x1="16" y1="2" x2="16" y2="6" />
                 <line x1="8" y1="2" x2="8" y2="6" />
@@ -1603,11 +1651,15 @@
             </span>
           </div>
           <div class="activity-content">
-            <h3 class="activity-title">Успешна реализација на обука за одржлив развој и еколошки предизвици во нашето училиште</h3>
-            <p class="activity-description">Стручна обука на тема „Поттикнување на одржлив начин на размислување кај учениците за решавање на глобални еколошки предизвици" обедини 35 наставници под менторство на м-р Љубинка Чанева.</p>
+            <h3 class="activity-title">Успешна реализација на обука за одржлив развој и еколошки предизвици во нашето
+              училиште</h3>
+            <p class="activity-description">Стручна обука на тема „Поттикнување на одржлив начин на размислување кај
+              учениците за решавање на глобални еколошки предизвици" обедини 35 наставници под менторство на м-р Љубинка
+              Чанева.</p>
             <span class="activity-link">
               Прочитај повеќе
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
               </svg>
@@ -1615,12 +1667,14 @@
           </div>
         </article>
 
-        <article class="activity-card reveal" onclick="openModal('patronat')" role="button" tabindex="0">
+        <article class="activity-card reveal" onclick="openNewsModal('patronat')" role="button" tabindex="0">
           <div class="activity-image">
-            <img src="images/patronat praznik/naslovna.jpg" alt="84 Години од смртта на патронот на нашето училиште Коле Неделковски" loading="lazy">
+            <img src="images/patronat praznik/naslovna.jpg"
+              alt="84 Години од смртта на патронот на нашето училиште Коле Неделковски" loading="lazy">
             <div class="activity-image-overlay"></div>
             <span class="activity-badge projects">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10" />
                 <line x1="2" x2="22" y1="12" y2="12" />
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
@@ -1628,7 +1682,8 @@
               Патронатен празник
             </span>
             <span class="activity-date">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                 <line x1="16" y1="2" x2="16" y2="6" />
                 <line x1="8" y1="2" x2="8" y2="6" />
@@ -1639,10 +1694,12 @@
           </div>
           <div class="activity-content">
             <h3 class="activity-title">84 Години од смртта на патронот на нашето училиште, Коле Неделковски</h3>
-            <p class="activity-description">Достоинствено одбележување на 84-годишнината од смртта на великанот на македонската поезија и револуцијата – патронот на нашето училиште.</p>
+            <p class="activity-description">Достоинствено одбележување на 84-годишнината од смртта на великанот на
+              македонската поезија и револуцијата – патронот на нашето училиште.</p>
             <span class="activity-link">
               Прочитај повеќе
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
               </svg>
@@ -1650,19 +1707,23 @@
           </div>
         </article>
 
-        <article class="activity-card reveal" onclick="openModal('barpraksa')" role="button" tabindex="0">
+        <article class="activity-card reveal" onclick="openNewsModal('barpraksa')" role="button" tabindex="0">
           <div class="activity-image">
-            <img src="images/bar-praksa/naslovna.jpg" alt="Усовршување на професионалните вештини: Нашите професори на обука за баристи во „Lavazza Training Center“" loading="lazy">
+            <img src="images/bar-praksa/naslovna.jpg"
+              alt="Усовршување на професионалните вештини: Нашите професори на обука за баристи во „Lavazza Training Center“"
+              loading="lazy">
             <div class="activity-image-overlay"></div>
             <span class="activity-badge education">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
                 <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
               </svg>
               Обука
             </span>
             <span class="activity-date">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                 <line x1="16" y1="2" x2="16" y2="6" />
                 <line x1="8" y1="2" x2="8" y2="6" />
@@ -1672,11 +1733,14 @@
             </span>
           </div>
           <div class="activity-content">
-            <h3 class="activity-title">Усовршување на професионалните вештини: Нашите професори на обука за баристи во „Lavazza Training Center“</h3>
-            <p class="activity-description">На 22.08.2025 година, во просториите на „Lavazza Training Center“ во Скопје, се реализираше специјализирана обука за баристички вештини за нашите професори.</p>
+            <h3 class="activity-title">Усовршување на професионалните вештини: Нашите професори на обука за баристи во
+              „Lavazza Training Center“</h3>
+            <p class="activity-description">На 22.08.2025 година, во просториите на „Lavazza Training Center“ во Скопје,
+              се реализираше специјализирана обука за баристички вештини за нашите професори.</p>
             <span class="activity-link">
               Прочитај повеќе
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
               </svg>
@@ -1684,19 +1748,23 @@
           </div>
         </article>
 
-        <article class="activity-card reveal" onclick="openModal('junior')" role="button" tabindex="0">
+        <article class="activity-card reveal" onclick="openNewsModal('junior')" role="button" tabindex="0">
           <div class="activity-image">
-            <img src="images/juniour-achivments/naslovna.jpg" alt="Продолжуваат активностите на училишните компании: Успешна обука за „зелени“ бизнис идеи во Охрид" loading="lazy">
+            <img src="images/juniour-achivments/naslovna.jpg"
+              alt="Продолжуваат активностите на училишните компании: Успешна обука за „зелени“ бизнис идеи во Охрид"
+              loading="lazy">
             <div class="activity-image-overlay"></div>
             <span class="activity-badge education">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
                 <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
               </svg>
               Обука
             </span>
             <span class="activity-date">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                 <line x1="16" y1="2" x2="16" y2="6" />
                 <line x1="8" y1="2" x2="8" y2="6" />
@@ -1706,11 +1774,14 @@
             </span>
           </div>
           <div class="activity-content">
-            <h3 class="activity-title">Продолжуваат активностите на училишните компании: Успешна обука за „зелени“ бизнис идеи во Охрид</h3>
-            <p class="activity-description">Дводневна интензивна обука во Охрид посветена на развојот на претприемачкиот дух кај младите и трансформација на зелени идеи во реалност.</p>
+            <h3 class="activity-title">Продолжуваат активностите на училишните компании: Успешна обука за „зелени“
+              бизнис идеи во Охрид</h3>
+            <p class="activity-description">Дводневна интензивна обука во Охрид посветена на развојот на претприемачкиот
+              дух кај младите и трансформација на зелени идеи во реалност.</p>
             <span class="activity-link">
               Прочитај повеќе
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
               </svg>
@@ -1718,19 +1789,23 @@
           </div>
         </article>
 
-        <article class="activity-card reveal" onclick="openModal('praksa')" role="button" tabindex="0">
+        <article class="activity-card reveal" onclick="openNewsModal('praksa')" role="button" tabindex="0">
           <div class="activity-image">
-            <img src="images/praksa/main.jpg" alt="Успешно реализиран завршен испит по германски стандарди во компанијата „Маркарт Македонија“" loading="lazy">
+            <img src="images/praksa/main.jpg"
+              alt="Успешно реализиран завршен испит по германски стандарди во компанијата „Маркарт Македонија“"
+              loading="lazy">
             <div class="activity-image-overlay"></div>
             <span class="activity-badge education">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
                 <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
               </svg>
               Образование
             </span>
             <span class="activity-date">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                 <line x1="16" y1="2" x2="16" y2="6" />
                 <line x1="8" y1="2" x2="8" y2="6" />
@@ -1740,11 +1815,14 @@
             </span>
           </div>
           <div class="activity-content">
-            <h3 class="activity-title">Успешно реализиран завршен испит по германски стандарди во компанијата „Маркарт Македонија“</h3>
-            <p class="activity-description">Вчера, во просториите на компанијата „Маркарт Македонија“, успешно се реализираше полагањето на практичниот дел од завршниот испит по германски стандарди.</p>
+            <h3 class="activity-title">Успешно реализиран завршен испит по германски стандарди во компанијата „Маркарт
+              Македонија“</h3>
+            <p class="activity-description">Вчера, во просториите на компанијата „Маркарт Македонија“, успешно се
+              реализираше полагањето на практичниот дел од завршниот испит по германски стандарди.</p>
             <span class="activity-link">
               Прочитај повеќе
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
               </svg>
@@ -1752,19 +1830,23 @@
           </div>
         </article>
 
-        <article class="activity-card reveal" onclick="openModal('jadenje')" role="button" tabindex="0">
+        <article class="activity-card reveal" onclick="openNewsModal('jadenje')" role="button" tabindex="0">
           <div class="activity-image">
-            <img src="images/jadenje/naslovna.jpg" alt="Гастрономска магија на завршниот испит: Нашите млади готвачи ги покажаа своите врвни вештини" loading="lazy">
+            <img src="images/jadenje/naslovna.jpg"
+              alt="Гастрономска магија на завршниот испит: Нашите млади готвачи ги покажаа своите врвни вештини"
+              loading="lazy">
             <div class="activity-image-overlay"></div>
             <span class="activity-badge education">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
                 <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
               </svg>
               Гастрономија
             </span>
             <span class="activity-date">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                 <line x1="16" y1="2" x2="16" y2="6" />
                 <line x1="8" y1="2" x2="8" y2="6" />
@@ -1774,11 +1856,14 @@
             </span>
           </div>
           <div class="activity-content">
-            <h3 class="activity-title">Гастрономска магија на завршниот испит: Нашите млади готвачи ги покажаа своите врвни вештини</h3>
-            <p class="activity-description">Успешно реализиран завршен испит по практична настава во областа на готварството каде учениците подготвија вистински гастрономски ремек-дела.</p>
+            <h3 class="activity-title">Гастрономска магија на завршниот испит: Нашите млади готвачи ги покажаа своите
+              врвни вештини</h3>
+            <p class="activity-description">Успешно реализиран завршен испит по практична настава во областа на
+              готварството каде учениците подготвија вистински гастрономски ремек-дела.</p>
             <span class="activity-link">
               Прочитај повеќе
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
               </svg>
@@ -1786,12 +1871,14 @@
           </div>
         </article>
 
-        <article class="activity-card reveal" onclick="openModal('racinovi')" role="button" tabindex="0">
+        <article class="activity-card reveal" onclick="openNewsModal('racinovi')" role="button" tabindex="0">
           <div class="activity-image">
-            <img src="images/racinovi/naslovna.jpg" alt="Научна конференција посветена на ликот и делото на Кочо Рацин" loading="lazy">
+            <img src="images/racinovi/naslovna.jpg" alt="Научна конференција посветена на ликот и делото на Кочо Рацин"
+              loading="lazy">
             <div class="activity-image-overlay"></div>
             <span class="activity-badge projects">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10" />
                 <line x1="2" x2="22" y1="12" y2="12" />
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
@@ -1799,7 +1886,8 @@
               Научна конференција
             </span>
             <span class="activity-date">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                 <line x1="16" y1="2" x2="16" y2="6" />
                 <line x1="8" y1="2" x2="8" y2="6" />
@@ -1810,10 +1898,12 @@
           </div>
           <div class="activity-content">
             <h3 class="activity-title">Научна конференција посветена на ликот и делото на Кочо Рацин</h3>
-            <p class="activity-description">Нашето училиште достојно претставено со стручен труд од м-р Мариче Стојанова на тема „Методските единици за Рацин во основното и средното образование“.</p>
+            <p class="activity-description">Нашето училиште достојно претставено со стручен труд од м-р Мариче Стојанова
+              на тема „Методските единици за Рацин во основното и средното образование“.</p>
             <span class="activity-link">
               Прочитај повеќе
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
               </svg>
@@ -1821,12 +1911,14 @@
           </div>
         </article>
 
-        <article class="activity-card reveal" onclick="openModal('peru')" role="button" tabindex="0">
+        <article class="activity-card reveal" onclick="openNewsModal('peru')" role="button" tabindex="0">
           <div class="activity-image">
-            <img src="images/peru/naslovna.jpg" alt="Патување низ културата на Перу: Креативна работилница за нашите ученици во Велес" loading="lazy">
+            <img src="images/peru/naslovna.jpg"
+              alt="Патување низ културата на Перу: Креативна работилница за нашите ученици во Велес" loading="lazy">
             <div class="activity-image-overlay"></div>
             <span class="activity-badge projects">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10" />
                 <line x1="2" x2="22" y1="12" y2="12" />
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
@@ -1834,7 +1926,8 @@
               Култура
             </span>
             <span class="activity-date">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                 <line x1="16" y1="2" x2="16" y2="6" />
                 <line x1="8" y1="2" x2="8" y2="6" />
@@ -1844,11 +1937,14 @@
             </span>
           </div>
           <div class="activity-content">
-            <h3 class="activity-title">Патување низ културата на Перу: Креативна работилница за нашите ученици во Велес</h3>
-            <p class="activity-description">Нашите ученици се запознаа со богатата култура и историја на Перу преку креативна работилница и разговор со почесниот конзул на Република Перу.</p>
+            <h3 class="activity-title">Патување низ културата на Перу: Креативна работилница за нашите ученици во Велес
+            </h3>
+            <p class="activity-description">Нашите ученици се запознаа со богатата култура и историја на Перу преку
+              креативна работилница и разговор со почесниот конзул на Република Перу.</p>
             <span class="activity-link">
               Прочитај повеќе
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
               </svg>
@@ -1856,12 +1952,15 @@
           </div>
         </article>
 
-        <article class="activity-card reveal" onclick="openModal('prvakniga')" role="button" tabindex="0">
+        <article class="activity-card reveal" onclick="openNewsModal('prvakniga')" role="button" tabindex="0">
           <div class="activity-image">
-            <img src="images/prvakniga/naslovna.jpg" alt="Ново партнерство во дуалното образование: Потпишан Меморандум за соработка со компанијата „1-ва Книга“" loading="lazy">
+            <img src="images/prvakniga/naslovna.jpg"
+              alt="Ново партнерство во дуалното образование: Потпишан Меморандум за соработка со компанијата „1-ва Книга“"
+              loading="lazy">
             <div class="activity-image-overlay"></div>
             <span class="activity-badge synergy">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
                 <circle cx="9" cy="7" r="4" />
                 <line x1="19" x2="19" y1="8" y2="14" />
@@ -1870,7 +1969,8 @@
               Соработка
             </span>
             <span class="activity-date">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                 <line x1="16" y1="2" x2="16" y2="6" />
                 <line x1="8" y1="2" x2="8" y2="6" />
@@ -1880,11 +1980,14 @@
             </span>
           </div>
           <div class="activity-content">
-            <h3 class="activity-title">Ново партнерство во дуалното образование: Потпишан Меморандум за соработка со компанијата „1-ва Книга“</h3>
-            <p class="activity-description">Официјално потпишан Меморандум за соработка со реномираната компанија „1-ва Книга“ – стратешки чекор кој ќе овозможи уште поквалитетна подготовка на нашите кадри.</p>
+            <h3 class="activity-title">Ново партнерство во дуалното образование: Потпишан Меморандум за соработка со
+              компанијата „1-ва Книга“</h3>
+            <p class="activity-description">Официјално потпишан Меморандум за соработка со реномираната компанија „1-ва
+              Книга“ – стратешки чекор кој ќе овозможи уште поквалитетна подготовка на нашите кадри.</p>
             <span class="activity-link">
               Прочитај повеќе
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
               </svg>
@@ -1892,12 +1995,15 @@
           </div>
         </article>
 
-        <article class="activity-card reveal" onclick="openModal('likovno')" role="button" tabindex="0">
+        <article class="activity-card reveal" onclick="openNewsModal('likovno')" role="button" tabindex="0">
           <div class="activity-image">
-            <img src="images/diplomi likovno/naslovna.jpg" alt="Специјални награди за нашите ученици на ликовниот конкурс во организација на „Ротари клуб“ – Велес" loading="lazy">
+            <img src="images/diplomi likovno/naslovna.jpg"
+              alt="Специјални награди за нашите ученици на ликовниот конкурс во организација на „Ротари клуб“ – Велес"
+              loading="lazy">
             <div class="activity-image-overlay"></div>
             <span class="activity-badge synergy">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10" />
                 <line x1="2" x2="22" y1="12" y2="12" />
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
@@ -1905,7 +2011,8 @@
               Уметност
             </span>
             <span class="activity-date">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                 <line x1="16" y1="2" x2="16" y2="6" />
                 <line x1="8" y1="2" x2="8" y2="6" />
@@ -1915,11 +2022,14 @@
             </span>
           </div>
           <div class="activity-content">
-            <h3 class="activity-title">Специјални награди за нашите ученици на ликовниот конкурс во организација на „Ротари клуб“ – Велес</h3>
-            <p class="activity-description">Нашите ученици постигнаа извонреден успех освојувајќи престижни признанија и Специјални награди за својот уметнички израз.</p>
+            <h3 class="activity-title">Специјални награди за нашите ученици на ликовниот конкурс во организација на
+              „Ротари клуб“ – Велес</h3>
+            <p class="activity-description">Нашите ученици постигнаа извонреден успех освојувајќи престижни признанија и
+              Специјални награди за својот уметнички израз.</p>
             <span class="activity-link">
               Прочитај повеќе
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
               </svg>
@@ -1927,7 +2037,7 @@
           </div>
         </article>
 
-        
+
 
       </div>
     </div>
@@ -1938,7 +2048,7 @@
 
     <div class="modal-box" id="modalBox">
       <!-- Close button -->
-      <button class="modal-close" id="modalClose" onclick="closeModal()" aria-label="Затвори">
+      <button class="modal-close" id="modalClose" onclick="closeNewsModal()" aria-label="Затвори">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2.5">
           <path d="M18 6 6 18" />
           <path d="m6 6 12 12" />
@@ -2031,7 +2141,7 @@
           <span><span class="p-cta-trust-dot"></span>Индивидуален пристап</span>
           <span><span class="p-cta-trust-dot"></span>Гаранција за квалитет</span>
         </div>
-                
+
       </div>
     </div>
   </section>
@@ -2165,6 +2275,8 @@
 
   <script src="js/main.js"></script>
   <script>
+    /* Disable main.js modal interference — this page uses its own modal system */
+    function initActivityModals() { /* no-op for postignuvanja.html */ }
     /* ══════ NEWS DATA ══════ */
     const newsData = {
       /* ── Imported from index.html ── */
@@ -2173,7 +2285,7 @@
         tagClass: 'modal-tag-blue',
         title: 'Ученици во улога на врснички едукатори за дуално образование',
         date: '11 Март 2026',
-desc: 'Учениците на ДСУ РЦСОО „Коле Неделковски“, Анѓела Колодезни, Матеа Христова, Борјан Бузалковски и Кристијан Димовски, денеска спроведоа работилници за дуално образование со деветоодделенци во ООУ „Св. Кирил и Методиј“ и ООУ „Васил Главинов“..\\n\\nНиз интересни интерактивни игри, врсничките едукатори ги поттикнаа учениците да зборуваат за својата идна професија. Откако открија дека најголем број од деветоодделенците себеси се гледаат како идни програмери, беа применети вежби преку кои се информираа за можностите на стручното и дуалното образование во Велес.\\n\\nЧеститки до вредните едукатори за успешно реализираните работилници!',
+        desc: 'Учениците на ДСУ РЦСОО „Коле Неделковски“, Анѓела Колодезни, Матеа Христова, Борјан Бузалковски и Кристијан Димовски, денеска спроведоа работилници за дуално образование со деветоодделенци во ООУ „Св. Кирил и Методиј“ и ООУ „Васил Главинов“..\\n\\nНиз интересни интерактивни игри, врсничките едукатори ги поттикнаа учениците да зборуваат за својата идна професија. Откако открија дека најголем број од деветоодделенците себеси се гледаат како идни програмери, беа применети вежби преку кои се информираа за можностите на стручното и дуалното образование во Велес.\\n\\nЧеститки до вредните едукатори за успешно реализираните работилници!',
         photos: ['images/vrsnicki-edukatori/card1photo1.jpg', 'images/vrsnicki-edukatori/card1photo2.jpg', 'images/vrsnicki-edukatori/card1photo3.jpg']
       },
       'sapka-idx': {
@@ -2181,7 +2293,7 @@ desc: 'Учениците на ДСУ РЦСОО „Коле Неделковс�
         tagClass: 'modal-tag-gold',
         title: 'Снежна авантура на Попова Шапка',
         date: '1 Март 2026',
-desc: 'Еднодневна снежна авантура на Попова Шапка за учениците на ДСУ РЦСОО „Коле Неделковски“. Со многу насмевки, адреналин и тимски дух, нашите ученици реализираа прекрасно еднодневно скијање во зимскиот центар.\\n\\nУчениците, со помош на своите професори, имаа одлична можност да ги научат основите на скијањето и да ги усовршат своите вештини на снегот. Денот беше исполнет со дружење, меѓусебна поддршка и активен одмор во природа.\\n\\nОваа активност е дел од програмата за поттикнување здрави животни навики и спортски дух кај младите, создавајќи спомени кои долго ќе се паметат.',
+        desc: 'Еднодневна снежна авантура на Попова Шапка за учениците на ДСУ РЦСОО „Коле Неделковски“. Со многу насмевки, адреналин и тимски дух, нашите ученици реализираа прекрасно еднодневно скијање во зимскиот центар.\\n\\nУчениците, со помош на своите професори, имаа одлична можност да ги научат основите на скијањето и да ги усовршат своите вештини на снегот. Денот беше исполнет со дружење, меѓусебна поддршка и активен одмор во природа.\\n\\nОваа активност е дел од програмата за поттикнување здрави животни навики и спортски дух кај младите, создавајќи спомени кои долго ќе се паметат.',
         photos: ['images/sapka/card2photo1.jpg', 'images/sapka/card2photo2.jpg', 'images/sapka/card2photo3.jpg']
       },
       'prezentacii-idx': {
@@ -2189,7 +2301,7 @@ desc: 'Еднодневна снежна авантура на Попова Ша
         tagClass: 'modal-tag-blue',
         title: 'Промотивна кампања на ДСУ РЦСОО „Коле Неделковски" низ велешките основни училишта и околината',
         date: '14 Февруари 2026',
-desc: 'Учениците и наставниот кадар на ДСУ РЦСОО „Коле Неделковски“ во изминатиов период спроведоа интензивна кампања за промоција на училиштето низ основните училишта во Велес, како и во ООУ „Рајко Жинзифов“ – с. Оризари.\\n\\nОвие посети се клучни за правилно професионално насочување на идните средношколци, помагајќи им да ги откријат своите таленти и да го изберат вистинскиот пат за нивната идна кариера.\\n\\nПреку презентации и директни средби со деветоодделенците, нашиот тим ги претстави образовните профили, современите кабинети и предностите на дуалното образование. Посебен интерес кај учениците во Оризари предизвикаа практичните вежби и можностите за брзо вработување по завршување на школувањето.\\n\\nГолема благодарност до сите основни училишта за гостопримството и одличната соработка во процесот на информирање на младите!',
+        desc: 'Учениците и наставниот кадар на ДСУ РЦСОО „Коле Неделковски“ во изминатиов период спроведоа интензивна кампања за промоција на училиштето низ основните училишта во Велес, како и во ООУ „Рајко Жинзифов“ – с. Оризари.\\n\\nОвие посети се клучни за правилно професионално насочување на идните средношколци, помагајќи им да ги откријат своите таленти и да го изберат вистинскиот пат за нивната идна кариера.\\n\\nПреку презентации и директни средби со деветоодделенците, нашиот тим ги претстави образовните профили, современите кабинети и предностите на дуалното образование. Посебен интерес кај учениците во Оризари предизвикаа практичните вежби и можностите за брзо вработување по завршување на школувањето.\\n\\nГолема благодарност до сите основни училишта за гостопримството и одличната соработка во процесот на информирање на младите!',
         photos: ['images/prezentacii-osnovno/photo1.jpg', 'images/prezentacii-osnovno/photo2.jpg', 'images/prezentacii-osnovno/photo3.jpg']
       },
       'makinova-idx': {
@@ -2197,7 +2309,7 @@ desc: 'Учениците и наставниот кадар на ДСУ РЦС�
         tagClass: 'modal-tag-gold',
         title: 'Успешно претставени и наградени учениците на ДСУ РЦСОО „Коле Неделковски" на Макинова и Еконова',
         date: '6 Декември 2025',
-desc: 'Горди сме што нашите ученици успешно учествуваа на престижните натпревари Макинова 23 и Еконова 57. Секој од учесниците покажа голема посветеност, креативност и иновативен дух, достоинствено претставувајќи го нашето училиште.\\n\\nПод менторство на професорката Христина Трајкова, своите вештини ги покажаа Снежана Кузманова, Јована Дојчиновска и Јована Рашевска, додека тимот на професорката Кристина Пачукова, составен од Стефанија Бојковска и Ивана Стојановска, се претстави со одлични проекти. Сите учесници заслужено се закитија со пофалници за нивниот труд.\\n\\nПосебно внимание привлече проектот „Софтвер за возачки дозволи“ на учениците Сара Димовска и Александар Јордановски (IV-4), изработен под водство на менторката Мимоза Пановска-Тодорова. Исто така, големи честитки упатуваме до Миа Ефтимова и Бојана Гавевска, кои заедно со менторот Марјан Малинов беа наградени и со парична награда.\\n\\nБраво за нашите млади таленти – продолжете да блескате и да создавате нови успеси!',
+        desc: 'Горди сме што нашите ученици успешно учествуваа на престижните натпревари Макинова 23 и Еконова 57. Секој од учесниците покажа голема посветеност, креативност и иновативен дух, достоинствено претставувајќи го нашето училиште.\\n\\nПод менторство на професорката Христина Трајкова, своите вештини ги покажаа Снежана Кузманова, Јована Дојчиновска и Јована Рашевска, додека тимот на професорката Кристина Пачукова, составен од Стефанија Бојковска и Ивана Стојановска, се претстави со одлични проекти. Сите учесници заслужено се закитија со пофалници за нивниот труд.\\n\\nПосебно внимание привлече проектот „Софтвер за возачки дозволи“ на учениците Сара Димовска и Александар Јордановски (IV-4), изработен под водство на менторката Мимоза Пановска-Тодорова. Исто така, големи честитки упатуваме до Миа Ефтимова и Бојана Гавевска, кои заедно со менторот Марјан Малинов беа наградени и со парична награда.\\n\\nБраво за нашите млади таленти – продолжете да блескате и да создавате нови успеси!',
         photos: ['images/makinova-ekonova/photo1.jpg', 'images/makinova-ekonova/photo2.jpg', 'images/makinova-ekonova/photo3.jpg']
       },
       'albania-idx': {
@@ -2205,7 +2317,7 @@ desc: 'Горди сме што нашите ученици успешно уч�
         tagClass: 'modal-tag-blue',
         title: 'Успешно завршена RYCO програма: Продубено пријателство и нови искуства во Тирана',
         date: '4 Декември 2025',
-desc: 'Учениците на ДСУ РЦСОО „Коле Неделковски“ со голем успех ја реализираа училишната размена со врсниците од училиштето „Херман Гмајнер“ во Тирана. Во рамките на програмата поддржана од RYCO, нашите ученици активно учествуваа во тематски работилници каде ги презентираа културата, традицијата и фолклорот на двете држави.\\n\\nПосебен акцент беше ставен на делот „Спорт за развој“, каде преку наменски игри се градеше спортскиот дух, довербата и взаемното почитување помеѓу младите. Покрај едукативните активности, учениците имаа можност да го истражат и културното богатство на Тирана, посетувајќи ја Намаз Џамијата и црквата посветена на Мајка Тереза.\\n\\nПо неколку дена исполнети со заедништво и нови знаења, утрово нашите ученици се збогуваа со своите домаќини и тргнаа на пат кон Македонија. Оваа размена остава зад себе трајни пријателства и спомени кои долго ќе се паметат.\\n\\nСо нетрпение го очекуваме доаѓањето на нашите пријатели од Албанија во пролетната посета на Велес!',
+        desc: 'Учениците на ДСУ РЦСОО „Коле Неделковски“ со голем успех ја реализираа училишната размена со врсниците од училиштето „Херман Гмајнер“ во Тирана. Во рамките на програмата поддржана од RYCO, нашите ученици активно учествуваа во тематски работилници каде ги презентираа културата, традицијата и фолклорот на двете држави.\\n\\nПосебен акцент беше ставен на делот „Спорт за развој“, каде преку наменски игри се градеше спортскиот дух, довербата и взаемното почитување помеѓу младите. Покрај едукативните активности, учениците имаа можност да го истражат и културното богатство на Тирана, посетувајќи ја Намаз Џамијата и црквата посветена на Мајка Тереза.\\n\\nПо неколку дена исполнети со заедништво и нови знаења, утрово нашите ученици се збогуваа со своите домаќини и тргнаа на пат кон Македонија. Оваа размена остава зад себе трајни пријателства и спомени кои долго ќе се паметат.\\n\\nСо нетрпение го очекуваме доаѓањето на нашите пријатели од Албанија во пролетната посета на Велес!',
         photos: ['images/albania2025/photo1.jpg', 'images/albania2025/photo2.jpg', 'images/albania2025/photo3.jpg']
       },
       'milioner-idx': {
@@ -2213,17 +2325,17 @@ desc: 'Учениците на ДСУ РЦСОО „Коле Неделковс�
         tagClass: 'modal-tag-blue',
         title: 'Извонреден успех на нашите ученици на државниот натпревар „Средношколец Милионер"',
         date: '30 Ноември 2025',
-desc: 'Во изминатиов месец, ДСУ РЦСОО „Коле Неделковски“ со гордост беше претставено на големиот државен натпревар „Средношколец Милионер“, организиран од Brainster. Во конкуренција од дури 438 тимови од цела Македонија, нашите ученици преку тимовите „Nex$tep Finance“ и „Wearly“ покажаа дека размислуваат смело, модерно и во чекор со потребите на младите.\\n\\nОсобено се истакна тимот „Nex$tep Finance“, составен од учениците од III-8 клас: Стефан Поповски, Ивана Милошева, Ангела Здравковска, Димитри Кочов, Марија Михајлова и Лука Панов. Нивниот пат до врвот започна во четвртфиналето, каде со неверојатни 1.759 гласа добија најголема поддршка од јавноста на ниво на цела држава, обезбедувајќи си убедливо место меѓу најдобрите.\\n\\nУспехот продолжи и во полуфиналето, каде тимот блесна во категоријата „Elevator Pitch“, освојувајќи го првото место за својата извонредна 90-секундна презентација и јасна визија. Во големото финале, во силна конкуренција на најиновативните идеи во земјата, тимот „Nex$tep Finance“ се пласираше на високото четврто место на државно ниво.\\n\\nОвој резултат, заедно со пласманот на тимот „Wearly“ во ТОП 50 идеите, претставува огромен успех за нашето училиште и силен мотив за понатамошен развој на претприемачкиот дух кај младите. Честитки до нашите ученици за нивниот труд, знаење и истрајност!',
+        desc: 'Во изминатиов месец, ДСУ РЦСОО „Коле Неделковски“ со гордост беше претставено на големиот државен натпревар „Средношколец Милионер“, организиран од Brainster. Во конкуренција од дури 438 тимови од цела Македонија, нашите ученици преку тимовите „Nex$tep Finance“ и „Wearly“ покажаа дека размислуваат смело, модерно и во чекор со потребите на младите.\\n\\nОсобено се истакна тимот „Nex$tep Finance“, составен од учениците од III-8 клас: Стефан Поповски, Ивана Милошева, Ангела Здравковска, Димитри Кочов, Марија Михајлова и Лука Панов. Нивниот пат до врвот започна во четвртфиналето, каде со неверојатни 1.759 гласа добија најголема поддршка од јавноста на ниво на цела држава, обезбедувајќи си убедливо место меѓу најдобрите.\\n\\nУспехот продолжи и во полуфиналето, каде тимот блесна во категоријата „Elevator Pitch“, освојувајќи го првото место за својата извонредна 90-секундна презентација и јасна визија. Во големото финале, во силна конкуренција на најиновативните идеи во земјата, тимот „Nex$tep Finance“ се пласираше на високото четврто место на државно ниво.\\n\\nОвој резултат, заедно со пласманот на тимот „Wearly“ во ТОП 50 идеите, претставува огромен успех за нашето училиште и силен мотив за понатамошен развој на претприемачкиот дух кај младите. Честитки до нашите ученици за нивниот труд, знаење и истрајност!',
         photos: ['images/milioner/photo1.jpg', 'images/milioner/photo2.jpg', 'images/milioner/photo3.jpg']
       },
       /* ── Original cards ── */
       makinova: {
-        tag: 'Макинова & Еконова',
+        tag: 'Ученичка иницијатива',
         tagClass: 'modal-tag-gold',
-        title: 'Учениците на ДСУ РЦСОО „Коле Неделковски“ во улога на врснички едукатори за дуално образование',
-        date: '11 Март 2026',
-        desc: '',
-        photos: ['images/makinova-ekinova.jpg', 'images/makinova-ekinova-2.jpg', 'images/makinova-ekinova-3.jpg']
+        title: 'Нов простор за млади идеи: Успешно реализирана ученичка иницијатива за опремување на училишна просторија',
+        date: '31 Март 2026',
+        desc: 'Во рамките на проектот „Промоција на безбедна училишна средина“, нашето училиште ДСУ РЦСОО „Коле Неделковски“ со гордост ја најавува успешно реализираната втора ученичка иницијатива. Станува збор за комплетно опремување на современа ученичка просторија, проект поддржан од Детската фондација „Песталоци“, во партнерство со МЦГО, Првата детска амбасада во светот „МЕЃАШИ“ и „СМАРТ АП“, со средства обезбедени од Коалицијата на младински организации „СЕГА“.\n\nОфицијалното пуштање во употреба на овој нов креативен кат се одржа на 30 март, преку организирање на инспиративна дебата на тема „Младите и медиумите“. Настанот беше одлична можност учениците веднаш да го искористат новиот амбиент за критичко размислување и размена на ставови за улогата на современите медиуми во нивното секојдневие.\n\nОвој успех е директен резултат на ангажманот на нашите млади активисти кои покажаа дека со јасна визија и меѓусебна соработка можат да создадат безбедно и поттикнувачко опкружување за сите врсници. Новата просторија ќе претставува центар за дружење, учење и развој на идни иновативни иницијативи во рамките на училиштето.\n\nИм честитаме на учениците за нивната истрајност и на сите партнери за поддршката во креирањето подобра училишна средина!',
+        photos: ['images/sega.com/naslovna.jpg', 'images/sega.com/img1.jpg', 'images/sega.com/img2.jpg']
       },
       albania: {
         tag: 'Еразмус+',
@@ -2321,7 +2433,7 @@ desc: 'Во изминатиов месец, ДСУ РЦСОО „Коле Не�
         desc: 'Детален опис на настанот, активноста или постигнувањето. Овде ќе го внесете целосниот текст за овој настан кога ќе ги додадете фотографиите.',
         photos: ['images/card12-photo1.jpg', 'images/card12-photo2.jpg', 'images/card12-photo3.jpg']
       },
-            junior: {
+      junior: {
         tag: 'Обука',
         tagClass: 'modal-tag-blue',
         title: 'Продолжуваат активностите на училишните компании: Успешна обука за „зелени“ бизнис идеи во Охрид',
@@ -2426,10 +2538,10 @@ desc: 'Во изминатиов месец, ДСУ РЦСОО „Коле Не�
         photos: ['images/diplomi likovno/naslovna.jpg', 'images/diplomi likovno/img1.jpg', 'images/diplomi likovno/img2.jpg']
       }
     };
-let currentSlide = 0;
+    let currentSlide = 0;
     let totalSlides = 0;
 
-    function openModal(key) {
+    function openNewsModal(key) {
       const data = newsData[key];
       if (!data) return;
 
@@ -2476,13 +2588,13 @@ let currentSlide = 0;
       document.body.style.overflow = 'hidden';
     }
 
-    function closeModal() {
+    function closeNewsModal() {
       document.getElementById('newsModal').classList.remove('active');
       document.body.style.overflow = '';
     }
 
     function handleOverlayClick(e) {
-      if (e.target === document.getElementById('newsModal')) closeModal();
+      if (e.target === document.getElementById('newsModal')) closeNewsModal();
     }
 
     function galleryNav(dir) {
@@ -2506,7 +2618,7 @@ let currentSlide = 0;
     document.addEventListener('keydown', function (e) {
       const modal = document.getElementById('newsModal');
       if (!modal.classList.contains('active')) return;
-      if (e.key === 'Escape') closeModal();
+      if (e.key === 'Escape') closeNewsModal();
       if (e.key === 'ArrowRight') galleryNav(1);
       if (e.key === 'ArrowLeft') galleryNav(-1);
     });
