@@ -3049,43 +3049,6 @@ ol {
   color: var(--white);
 }
 
-/* Scroll to Top Button */
-.scroll-top {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 3rem;
-  height: 3rem;
-  background-color: var(--school-gold);
-  color: white;
-  border-radius: 50%;
-  box-shadow: var(--shadow-lg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px);
-  transition: all 0.3s ease;
-  z-index: 100;
-}
-
-.scroll-top.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.scroll-top:hover {
-  background: var(--school-gold-light);
-  transform: scale(1.1);
-}
-
-.scroll-top svg {
-  width: 1.25rem;
-  height: 1.25rem;
-}
-
 /* ============================================
    ANIMATIONS
    ============================================ */
@@ -5682,7 +5645,7 @@ ol {
   right: 2rem;
   width: 3rem;
   height: 3rem;
-  background: var(--school-gold-light);
+  background: var(--school-gold);
   border-radius: 50%;
   display: flex;
   align-items: center;

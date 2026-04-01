@@ -356,10 +356,9 @@
        PROFESSORS GRID
     ══════════════════════════ */
     .pr-section {
-      padding: 1.5rem 0;
+      padding: 1.5rem 0 8rem;
       background: var(--gray-50);
       position: relative;
-      overflow: hidden;
     }
 
     .pr-section::before {
@@ -424,10 +423,32 @@
 
     @media(max-width:650px) {
       .pr-section-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
       }
       .pr-rak-section-grid {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: 1fr !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+      }
+      .pr-director-row {
+        grid-template-columns: 1fr !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+      }
+      .pr-card {
+        max-width: 100% !important;
+        width: 100% !important;
+      }
+      /* Ensure wrappers from direct-row also stack */
+      .pr-director-row > div {
+        max-width: 100% !important;
+        width: 100% !important;
+      }
+      .pr-section-grid[style*="display: flex"] {
+        flex-direction: column !important;
+        align-items: center !important;
       }
     }
 
@@ -965,7 +986,6 @@
                   <div class="pr-card-info">
                     <p class="pr-card-name">Горан Богоевски</p>
                     <p class="pr-card-title">Директор</p>
-                    <p class="pr-card-subject">Администрација</p>
                   </div>
                   </div>
             </div>
@@ -983,7 +1003,6 @@
                 <div class="pr-card-info">
                   <p class="pr-card-name">Ангелче Гушев</p>
                   <p class="pr-card-title">Заменик директор</p>
-                  <p class="pr-card-subject">Администрација</p>
                 </div>
             </div>
          </div>
@@ -1083,7 +1102,6 @@
             <div class="pr-card-info">
               <p class="pr-card-name">Пандорче Јорданова</p>
               <p class="pr-card-title">Педагог</p>
-              <p class="pr-card-subject">Педагогија и психологија на образованието</p>
             </div>
           </div>
 
@@ -1097,13 +1115,39 @@
             <div class="pr-card-info">
               <p class="pr-card-name">Василија Јорданова</p>
               <p class="pr-card-title">Психолог</p>
-              <p class="pr-card-subject">Психолошко советување</p>
+            </div>
+          </div>
+
+          <div class="pr-card reveal" data-dept="struchna" style="max-width: 300px; width: 100%;">
+            <div class="pr-card-img">
+              <img src="images/professors/aleksandraklimkarova.jpg" alt="Александра Климкарова">
+              <div class="pr-card-img-overlay">
+                <p class="pr-card-bio-preview">Социјален работник</p>
+              </div>
+            </div>
+            <div class="pr-card-info">
+              <p class="pr-card-name">Александра Климкарова</p>
+              <p class="pr-card-title">Стручна служба</p>
             </div>
           </div>
          </div>
         
          <h2 class="title" data-dept="opsto">ОПШТООБРАЗОВНИ ПРЕДМЕТИ</h2>
         <div class="pr-section-grid">
+          <div class="pr-card reveal" data-dept="opsto" style="animation-delay:.12s">
+          <div class="pr-card-img">
+            <img src="images/professors/JordanPalashev.png" alt="Јордан Палашев">
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по англиски јазик</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Јордан Палашев</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Претседател на општообразовен актив</p>
+          </div>
+        </div>
+
           <div class="pr-card reveal" data-dept="opsto" style="animation-delay:.04s">
             <div class="pr-card-img">
               <img src="images/professors/CvetankaGjakovaPanova.png" alt="Цветанка Ѓакова Панова">
@@ -1176,19 +1220,6 @@
           </div>
         </div>
 
-        <div class="pr-card reveal" data-dept="opsto" style="animation-delay:.12s">
-          <div class="pr-card-img">
-            <img src="images/professors/JordanPalashev.png" alt="Јордан Палашев">
-            <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Проф. по англиски јазик</p>
-            </div>
-          </div>
-          <div class="pr-card-info">
-            <p class="pr-card-name">Јордан Палашев</p>
-            <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Англиски јазик</p>
-          </div>
-        </div>
 
         <!-- ИСТОРИЈА -->
         <div class="pr-card reveal" data-dept="opsto" style="animation-delay:.04s">
@@ -1398,6 +1429,20 @@
         <!-- ЕЛЕКТРО СТРУЧНИ ПРЕДМЕТИ -->
          <h2 class="title" data-dept="elektro">ЕЛЕКТРОТЕХНИЧКИ СТРУЧНИ ПРЕДМЕТИ</h2>
         <div class="pr-section-grid">
+          <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.08s">
+          <div class="pr-card-img">
+            <img src="images/professors/GordanaMuleva.png" alt="Гордана Мулева">
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по Електротехнички стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Гордана Мулева</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Електротехнички стручни предмети</p>
+          </div>
+        </div>
+
         <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.04s">
           <div class="pr-card-img">
             <img src="images/professors/NikolaDecev.png" alt="Никола Дечев">
@@ -1407,20 +1452,6 @@
           </div>
           <div class="pr-card-info">
             <p class="pr-card-name">Никола Дечев</p>
-            <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Електротехнички стручни предмети</p>
-          </div>
-        </div>
-
-        <div class="pr-card reveal" data-dept="elektro" style="animation-delay:.08s">
-          <div class="pr-card-img">
-            <img src="images/professors/GordanaMuleva.png" alt="Гордана Мулева">
-            <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Проф. по Електротехнички стручни предмети</p>
-            </div>
-          </div>
-          <div class="pr-card-info">
-            <p class="pr-card-name">Гордана Мулева</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Електротехнички стручни предмети</p>
           </div>
@@ -1617,6 +1648,20 @@
       <div class="pr-section-grid">
         <div class="pr-card reveal" data-dept="masinska" style="animation-delay:.08s">
           <div class="pr-card-img">
+            <img src="images/professors/SasoGjorgov.png" alt="Сашо Ѓоргов">
+            <div class="pr-card-img-overlay">
+              <p class="pr-card-bio-preview">Проф. по машински стручни предмети</p>
+            </div>
+          </div>
+          <div class="pr-card-info">
+            <p class="pr-card-name">Сашо Ѓоргов</p>
+            <p class="pr-card-title">Професор</p>
+            <p class="pr-card-subject">Машински стручни предмети</p>
+          </div>
+        </div>
+
+        <div class="pr-card reveal" data-dept="masinska" style="animation-delay:.08s">
+          <div class="pr-card-img">
             <img src="images/professors/MarinaFilipovaKostadinovska.png" alt="Марина Филипова Костадиновска">
             <div class="pr-card-img-overlay">
               <p class="pr-card-bio-preview">Проф. по машински стручни предмети</p>
@@ -1652,20 +1697,6 @@
           </div>
           <div class="pr-card-info">
             <p class="pr-card-name">Валентин Елисковски</p>
-            <p class="pr-card-title">Професор</p>
-            <p class="pr-card-subject">Машински стручни предмети</p>
-          </div>
-        </div>
-
-        <div class="pr-card reveal" data-dept="masinska" style="animation-delay:.08s">
-          <div class="pr-card-img">
-            <img src="images/professors/SasoGjorgov.png" alt="Сашо Ѓоргов">
-            <div class="pr-card-img-overlay">
-              <p class="pr-card-bio-preview">Проф. по машински стручни предмети</p>
-            </div>
-          </div>
-          <div class="pr-card-info">
-            <p class="pr-card-name">Сашо Ѓоргов</p>
             <p class="pr-card-title">Професор</p>
             <p class="pr-card-subject">Машински стручни предмети</p>
           </div>
