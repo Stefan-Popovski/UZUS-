@@ -1011,7 +1011,7 @@ ol {
 
 /* CHANGE 2: .feature-icon.green */
 .feature-icon.green {
-  background: linear-gradient(135deg, var(--school-blue) 0%, (var(--school-blue-dark)) 100%);
+  background: linear-gradient(135deg, var(--school-blue) 0%, var(--school-blue-dark) 100%);
 }
 
 .feature-icon.purple {
