@@ -971,11 +971,44 @@ ol {
 }
 
 .feature-card {
+  position: relative;
   padding: 2rem;
   background: var(--white);
   border-radius: var(--radius-2xl);
   box-shadow: var(--shadow);
   transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.feature-badge-new {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--school-gold);
+  color: var(--school-blue-dark);
+  padding: 0.4rem 0.8rem;
+  border-radius: 9999px;
+  font-family: var(--font-accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  box-shadow: 0 4px 12px rgba(255, 207, 36, 0.4);
+  z-index: 5;
+  pointer-events: none;
+  animation: badge-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes badge-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+    background: var(--school-gold-light);
+  }
 }
 
 .feature-card:hover {
